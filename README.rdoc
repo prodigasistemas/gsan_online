@@ -1,0 +1,3 @@
+== README
+
+* Configurar a TimeZone no config/application.rb
