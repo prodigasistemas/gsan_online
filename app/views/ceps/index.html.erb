@@ -1,0 +1,7 @@
+<%= link_to "Novo CEP", new_cep_path %>
+
+<ul>
+  <% @ceps.each do |cep| %>
+    <li><%= link_to cep.codigo, cep_path(cep) %> <%= cep.codigo %></li>
+  <% end %>
+</ul>

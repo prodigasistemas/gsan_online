@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'angular-rails-templates'
 
 group :development, :test do
   gem 'byebug'
@@ -15,4 +16,3 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
 end
-

@@ -1,0 +1,21 @@
+<h1>Novo CEP</h1>
+
+<div class="alert alert-danger" ng-show="formErrors">
+  <span ng-click="formErrors = undefined">X</spa>
+  <ul>
+    <li ng-repeat="erro in formErrors.errors">{{erro}}</li>
+  </ul>
+</div>
+
+<form ng-submit="createCep()" name="form">
+  <label for="municipio">Municipio</label>
+  <input id="municipio" ng-model="cep.municipio" required>
+
+  <label for="codigo">codigo</label>
+  <input id="codigo" ng-model="cep.codigo" required>
+
+  <label for="uf">UF</label>
+  <input id="uf" ng-model="cep.uf" required>
+
+  <input type="submit" value="Criar" ng-disabled="form.$invalid">
+</form>

@@ -1,0 +1,15 @@
+<%= form_for @cep do |f| %>
+  <%= f.label :municipio %>
+  <%= f.text_field :municipio %>
+
+  <%= f.label :codigo %>
+  <%= f.text_field :codigo %>
+
+  <%= f.label :uf %>
+  <%= f.text_field :uf %>
+
+  <%= f.label :bairro %>
+  <%= f.text_field :bairro %>
+
+  <%= f.submit %>
+<% end %>
