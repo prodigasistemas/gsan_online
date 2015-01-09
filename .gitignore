@@ -12,3 +12,5 @@
 !/log/.keep
 /tmp
 .rvmrc
+.DS_Store
+.keep
