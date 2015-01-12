@@ -4,6 +4,27 @@
 
 <a href="/ceps/novo">Criar CEP</a>
 
-<ul>
-  <li ng-repeat="cep in ceps">{{cep.codigo}}</li>
-</ul>
+<table class="table">
+  <thead>
+    <tr>
+      <th>CEP</th>
+      <th>Tipo</th>
+      <th>Município</th>
+      <th>Estado</th>
+      <th>Tipo Logradouro</th>
+      <th>Logradouro</th>
+      <th>Bairro</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="cep in ceps">
+      <td>{{cep.codigo}}</td>
+      <td>{{cep.cep_tipo.descricao}}</td>
+      <td>{{cep.municipio}}</td>
+      <td>{{cep.uf}}</td>
+      <td>{{cep.tipo_logradouro}}</td>
+      <td>{{cep.logradouro}}</td>
+      <td>{{cep.bairro}}</td>
+    </tr>
+  </tbody>
+</table>

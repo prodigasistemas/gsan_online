@@ -17,5 +17,12 @@ describe "Como um cadastrista", type: :feature, js: true do
     click_button "Salvar CEP"
 
     expect(page).to have_content "CEP criado com sucesso"
+
+    expect(page).to have_content "66050380"
+    expect(page).to have_content "ÚNICO"
+    expect(page).to have_content "BELÉM"
+    expect(page).to have_content "UMARIZAL"
+    expect(page).to have_content "RUA"
+    expect(page).to have_content "OLIVEIRA-BELO"
   end
 end

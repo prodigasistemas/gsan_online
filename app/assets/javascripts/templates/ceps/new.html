@@ -17,7 +17,7 @@
     <label for="cep_tipo_id">Tipo de CEP</label>
     <select id="cep_tipo_id" ng-model="cep.tipo_id" class="form-control">
       <option value="">Selecione um tipo</option>
-      <option ng-repeat="tipo in cepTipos" value="tipo.id">{{tipo.descricao}}</option>
+      <option ng-repeat="tipo in cepTipos" value="{{tipo.id}}">{{tipo.descricao}}</option>
     </select>
   </div>
 
