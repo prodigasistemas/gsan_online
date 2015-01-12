@@ -1,6 +1,8 @@
+<div class="alert alert-success" ng-show="flash.getMessage()">{{flash.getMessage()}}</div>
+
 <h1>CEPs</h1>
 
-<a href="/ceps/novo">Novo CEP</a>
+<a href="/ceps/novo">Criar CEP</a>
 
 <ul>
   <li ng-repeat="cep in ceps">{{cep.codigo}}</li>

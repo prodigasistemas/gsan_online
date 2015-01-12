@@ -1,4 +1,4 @@
-app = angular.module("gsan", ['ngRoute','templates']);
+var app = angular.module("gsan", ['ngRoute','templates']);
 
 app.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
@@ -18,18 +18,11 @@ app.config(['$routeProvider', '$locationProvider',
     $locationProvider.html5Mode(true);
   }]);
 
-app.controller("CepsIndexController", function($scope, $http) {
-  $http.get("http://localhost:3001/ceps").success(function(data) {
+app.controller("CepsIndexController", function(Flash, $scope, $http, CadastroUrl) {
+  $scope.flash = Flash;
+  $http.get(CadastroUrl() + "/ceps").success(function(data) {
     $scope.ceps = data;
   });
 })
 
-app.controller("CepsNewController", function($scope, $http, $location) {
-  $scope.createCep = function() {
-    $http.post("http://localhost:3001/ceps", { cep: $scope.cep }).success(function(data) {
-      $location.url("/")
-    }).error(function(data, code) {
-      $scope.formErrors = data;
-    });
-  }
-})
+app.constant("CadastroUrl", function() { return $("body").data("cadastro-url") });

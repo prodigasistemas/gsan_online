@@ -7,8 +7,9 @@
   <%= csrf_meta_tags %>
   <base href="/">
 </head>
-<body ng-app="gsan">
+<body ng-app="gsan" data-cadastro-url="<%= CADASTRO_URL %>">
   <%= render "shared/header" %>
+  <%= render "shared/nav" %>
 
   <div class="container">
     <div ng-view></div>
