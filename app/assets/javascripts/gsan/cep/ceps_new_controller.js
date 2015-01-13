@@ -28,7 +28,7 @@ app.controller("CepsNewController", ["CadastroUrl", "$scope", "$http", "$locatio
     $http.post(CadastroUrl() + "/ceps", { cep: $scope.cep })
     .success(function(data) {
       Flash.setMessage("CEP criado com sucesso");
-      $location.url("/");
+      $location.url("/ceps");
     }).error(function(data, code) {
       $scope.formErrors = data;
     });

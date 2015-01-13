@@ -44,7 +44,7 @@
 
   <div class="form-group">
     <label for="cep_bairro">Bairro</label>
-    <select id="cep_bairro" ng-model="cep.bairro" class="form-control">
+    <select id="cep_bairro" ng-model="cep.bairro" class="form-control" ng-disabled="!bairros.length">
       <option value="">Selecione um bairro</option>
       <option ng-repeat="bairro in bairros">{{bairro.nome}}</option>
     </select>
