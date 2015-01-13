@@ -3,7 +3,7 @@ var app = angular.module("gsan", ['ngRoute','templates']);
 app.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
     $routeProvider.
-      when('/', {
+      when('/ceps', {
         templateUrl: 'ceps/index.html',
         controller: 'CepsIndexController'
       }).
@@ -24,7 +24,7 @@ app.config(['$routeProvider', '$locationProvider',
         controller: 'MunicipiosEditController'
       }).
       otherwise({
-        redirectTo: '/'
+        redirectTo: '/ceps'
       });
 
     $locationProvider.html5Mode(true);

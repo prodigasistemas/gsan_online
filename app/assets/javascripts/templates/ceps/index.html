@@ -1,8 +1,12 @@
 <div class="alert alert-success" ng-show="flash.getMessage()">{{flash.getMessage()}}</div>
 
-<h1>CEPs</h1>
+<header class="with_actions">
+  <h1>CEPs</h1>
 
-<a href="/ceps/novo">Criar CEP</a>
+  <nav class="actions">
+    <a href="/ceps/novo" class="btn btn-primary">Criar CEP</a>
+  </nav>
+</header>
 
 <table class="table">
   <thead>

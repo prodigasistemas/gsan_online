@@ -1,6 +1,10 @@
-<nav>
-  <ul>
-    <li><a href="/ceps">CEPs</a></li>
-    <li><a href="/municipios">Municípios</a></li>
+<nav ng-controller="NavController" class="container">
+  <ul class="nav nav-tabs">
+    <li role="presentation" ng-class="{active: ceps}">
+      <a href="/ceps">CEPs</a>
+    </li>
+    <li role="presentation" ng-class="{active: municipios}">
+      <a href="/municipios">Municípios</a>
+    </li>
   </ul>
 </nav>
