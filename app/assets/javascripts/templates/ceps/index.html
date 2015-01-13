@@ -15,10 +15,11 @@
       <th>Logradouro</th>
       <th>Bairro</th>
       <th>Ativo</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="cep in ceps">
+    <tr ng-repeat="cep in ceps" class="cep">
       <td>{{cep.codigo}}</td>
       <td>{{cep.cep_tipo.descricao}}</td>
       <td>{{cep.municipio}}</td>
@@ -27,6 +28,7 @@
       <td>{{cep.logradouro}}</td>
       <td>{{cep.bairro}}</td>
       <td class="cep_ativo"><span yes-no="cep.ativo"></span></td>
+      <td><a href="/ceps/{{cep.id}}/editar">Editar</a></td>
     </tr>
   </tbody>
 </table>

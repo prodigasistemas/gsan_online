@@ -11,13 +11,13 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'ceps/new.html',
         controller: 'CepsNewController'
       }).
+      when('/ceps/:id/editar', {
+        templateUrl: 'ceps/edit.html',
+        controller: 'CepsEditController'
+      }).
       when('/municipios', {
         templateUrl: 'municipios/index.html',
         controller: 'MunicipiosIndexController'
-      }).
-      when('/municipios/novo', {
-        templateUrl: 'municipios/new.html',
-        controller: 'MunicipiosNewController'
       }).
       otherwise({
         redirectTo: '/'
