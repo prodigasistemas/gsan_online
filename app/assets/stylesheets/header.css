@@ -1,5 +1,6 @@
 #main_header {
   border-bottom: 1px solid #CCD6EB;
+  margin-bottom: 20px;
 }
 
 #main_header  h1 {
@@ -11,4 +12,13 @@
 
 #logo {
   width: 75px;
+}
+
+header.with_actions h1 {
+  display: inline-block;
+}
+
+header.with_actions nav {
+  float: right;
+  margin-top: 20px;
 }

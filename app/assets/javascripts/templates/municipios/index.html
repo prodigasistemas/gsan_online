@@ -1,8 +1,12 @@
 <div class="alert alert-success" ng-show="flash.getMessage()">{{flash.getMessage()}}</div>
 
-<h1>Municípios</h1>
+<header class="with_actions">
+  <h1>Municípios</h1>
 
-<a href="/municipios/novo">Criar Município</a>
+  <nav class="actions">
+    <a href="/municipios/novo" class="btn btn-primary">Criar Município</a>
+  </nav>
+</header>
 
 <table class="table">
   <thead>
@@ -16,10 +20,11 @@
       <th>CEP inicial</th>
       <th>CEP final</th>
       <th>Ativo</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="municipio in municipios">
+    <tr id="municipio_{{municipio.id}}" class="municipio" ng-repeat="municipio in municipios">
       <td>{{municipio.codigo_ibge}}</td>
       <td>{{municipio.nome}}</td>
       <td>{{municipio.uf.sigla}}</td>
@@ -29,6 +34,7 @@
       <td>{{municipio.cep_inicial}}</td>
       <td>{{municipio.cep_final}}</td>
       <td class="municipio_ativo"><span yes-no="municipio.ativo"></span></td>
+      <td><a ng-href="/municipios/{{municipio.id}}/editar">Editar</a></td>
     </tr>
   </tbody>
 </table>

@@ -1,7 +1,9 @@
 var app = angular.module("gsan");
 
-app.controller("MunicipiosNewController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", function(CadastroUrl, $scope, $http, $location, Flash) {
-  $scope.municipio = {};
+app.controller("MunicipiosEditController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", function(CadastroUrl, $scope, $http, $location, Flash, $route) {
+  $http.get(CadastroUrl() + "/municipios/" + $route.current.params.id).success(function(data) {
+    $scope.municipio = data;
+  });
 
   $http.get(CadastroUrl() + "/micro_regioes").success(function(data) {
     $scope.micro_regioes = data;
@@ -16,9 +18,9 @@ app.controller("MunicipiosNewController", ["CadastroUrl", "$scope", "$http", "$l
   });
 
   $scope.submeter = function() {
-    $http.post(CadastroUrl() + "/municipios", { municipio: $scope.municipio })
+    $http.put(CadastroUrl() + "/municipios/" + $scope.municipio.id, { municipio: $scope.municipio })
     .success(function(data) {
-      Flash.setMessage("Município criado com sucesso");
+      Flash.setMessage("Município editado com sucesso");
       $location.url("/municipios");
     }).error(function(data, code) {
       $scope.formErrors = data;
