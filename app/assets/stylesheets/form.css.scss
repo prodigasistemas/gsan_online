@@ -1,0 +1,11 @@
+form {
+  input.ng-dirty.ng-invalid,
+  select.ng-dirty.ng-invalid,
+  textarea.ng-dirty.ng-invalid {
+    border: 1px solid red;
+  }
+
+  span.required {
+    color: red;
+  }
+}
