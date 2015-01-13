@@ -19,6 +19,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'municipios/new.html',
         controller: 'MunicipiosNewController'
       }).
+      when('/municipios/:id/editar', {
+        templateUrl: 'municipios/edit.html',
+        controller: 'MunicipiosEditController'
+      }).
       otherwise({
         redirectTo: '/'
       });

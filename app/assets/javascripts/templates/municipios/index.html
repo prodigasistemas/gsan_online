@@ -16,10 +16,11 @@
       <th>CEP inicial</th>
       <th>CEP final</th>
       <th>Ativo</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="municipio in municipios">
+    <tr id="municipio_{{municipio.id}}" class="municipio" ng-repeat="municipio in municipios">
       <td>{{municipio.codigo_ibge}}</td>
       <td>{{municipio.nome}}</td>
       <td>{{municipio.uf.sigla}}</td>
@@ -29,6 +30,7 @@
       <td>{{municipio.cep_inicial}}</td>
       <td>{{municipio.cep_final}}</td>
       <td class="municipio_ativo"><span yes-no="municipio.ativo"></span></td>
+      <td><a ng-href="/municipios/{{municipio.id}}/editar">Editar</a></td>
     </tr>
   </tbody>
 </table>
