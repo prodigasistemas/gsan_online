@@ -33,6 +33,14 @@
   </div>
 
   <div class="form-group">
+    <label for="cep_uf">Unidade da Federação <span class="required">*</span></label>
+    <select id="cep_uf" ng-model="cep.uf" class="form-control" required>
+      <option value="">Selecione a Unidade da Federação</option>
+      <option ng-repeat="estado in unidade_federacoes" value="{{estado.sigla}}">{{estado.sigla}} - {{estado.descricao}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
     <label for="cep_bairro">Bairro <span class="required">*</span></label>
     <select id="cep_bairro" ng-model="cep.bairro" class="form-control" ng-disabled="!bairros.length" ng-required="bairros.length">
       <option value="">Selecione um bairro</option>

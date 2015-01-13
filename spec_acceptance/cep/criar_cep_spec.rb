@@ -11,6 +11,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     select "ÚNICO",                 from: "cep_tipo_id"
     select "BELÉM",                 from: "cep_municipio_id"
     select "UMARIZAL",              from: "cep_bairro"
+    select "PA",                    from: "cep_uf"
     select "RUA",                   from: "cep_tipo_logradouro"
     fill_in "cep_logradouro",       with: "OLIVEIRA-BELO"
 
@@ -23,6 +24,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     expect(page).to have_content "BELÉM"
     expect(page).to have_content "UMARIZAL"
     expect(page).to have_content "RUA"
+    expect(page).to have_content "PA"
     expect(page).to have_content "OLIVEIRA-BELO"
   end
 end
