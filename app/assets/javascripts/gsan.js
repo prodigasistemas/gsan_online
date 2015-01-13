@@ -11,18 +11,19 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'ceps/new.html',
         controller: 'CepsNewController'
       }).
+      when('/municipios', {
+        templateUrl: 'municipios/index.html',
+        controller: 'MunicipiosIndexController'
+      }).
+      when('/municipios/novo', {
+        templateUrl: 'municipios/new.html',
+        controller: 'MunicipiosNewController'
+      }).
       otherwise({
         redirectTo: '/'
       });
 
     $locationProvider.html5Mode(true);
   }]);
-
-app.controller("CepsIndexController", function(Flash, $scope, $http, CadastroUrl) {
-  $scope.flash = Flash;
-  $http.get(CadastroUrl() + "/ceps").success(function(data) {
-    $scope.ceps = data;
-  });
-})
 
 app.constant("CadastroUrl", function() { return $("body").data("cadastro-url") });

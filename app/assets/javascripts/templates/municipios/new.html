@@ -1,0 +1,78 @@
+<h1>Novo Município</h1>
+
+<div class="alert alert-danger" ng-show="formErrors">
+  <button ng-click="formErrors = undefined" class="close" aria-label="Close" type="button">
+    <span aria-hidden="true">×</span>
+  </button>
+  <ul>
+    <li ng-repeat="erro in formErrors.errors">{{erro}}</li>
+  </ul>
+</div>
+
+<form ng-submit="criarMunicipio()" name="form" novalidate>
+  <div class="form-group">
+    <label for="municipio_codigo_ibge">Código IGBE <span class="required">*</span></label>
+    <input id="municipio_codigo_ibge" ng-model="municipio.codigo_ibge" class="form-control" >
+  </div>
+
+  <div class="form-group">
+    <label for="municipio_nome">Nome <span class="required">*</span></label>
+    <input id="municipio_nome" ng-model="municipio.nome" class="form-control" >
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="municipio_ddd">DDD <span class="required">*</span></label>
+        <input type="number" id="municipio_ddd" ng-model="municipio.ddd" class="form-control" >
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="municipio_cep_inicial">CEP Inicial</label>
+        <input id="municipio_cep_inicial" ng-model="municipio.cep_inicial" class="form-control">
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="municipio_cep_final">CEP Final</label>
+        <input id="municipio_cep_final" ng-model="municipio.cep_final" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="municipio_uf_id">Unidade de Federação <span class="required">*</span></label>
+    <select id="municipio_uf_id" ng-model="municipio.uf_id" class="form-control" >
+      <option value="">Selecione a Unidade de Federação</option>
+      <option ng-repeat="uf in unidade_federacoes" value="{{uf.id}}">{{uf.sigla}} - {{uf.descricao}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="municipio_micro_regiao_id">Micro região <span class="required">*</span></label>
+    <select id="municipio_micro_regiao_id" ng-model="municipio.micro_regiao_id" class="form-control" >
+      <option value="">Selecione a micro região</option>
+      <option ng-repeat="micro_regiao in micro_regioes" value="{{micro_regiao.id}}">{{micro_regiao.nome}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="municipio_regiao_desenvolvimento_id">Região de desenvolvimento <span class="required">*</span></label>
+    <select id="municipio_regiao_desenvolvimento_id" ng-model="municipio.regiao_desenvolvimento_id" class="form-control" >
+      <option value="">Selecione a região de desenvolvimento</option>
+      <option ng-repeat="regiao in regioes_desenvolvimento" value="{{regiao.id}}">{{regiao.nome}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="municipio_ativo">
+    <input id="municipio_ativo" type="checkbox" ng-model="municipio.ativo"> Ativo</label>
+  </div>
+
+  <input type="submit" value="Salvar Município" class="btn btn-primary" ng-disabled="form.$invalid">
+</form>

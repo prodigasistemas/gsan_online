@@ -1,0 +1,34 @@
+<div class="alert alert-success" ng-show="flash.getMessage()">{{flash.getMessage()}}</div>
+
+<h1>Municípios</h1>
+
+<a href="/municipios/novo">Criar Município</a>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Código IBGE</th>
+      <th>Nome</th>
+      <th>UF</th>
+      <th>DDD</th>
+      <th>Micro Região</th>
+      <th>Região de Desenvolvimento</th>
+      <th>CEP inicial</th>
+      <th>CEP final</th>
+      <th>Ativo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="municipio in municipios">
+      <td>{{municipio.codigo_ibge}}</td>
+      <td>{{municipio.nome}}</td>
+      <td>{{municipio.uf.sigla}}</td>
+      <td>{{municipio.ddd}}</td>
+      <td>{{municipio.micro_regiao.nome}}</td>
+      <td>{{municipio.regiao_desenvolvimento.nome}}</td>
+      <td>{{municipio.cep_inicial}}</td>
+      <td>{{municipio.cep_final}}</td>
+      <td class="municipio_ativo"><span yes-no="municipio.ativo"></span></td>
+    </tr>
+  </tbody>
+</table>
