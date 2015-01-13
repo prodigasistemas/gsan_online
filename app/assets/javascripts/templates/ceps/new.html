@@ -1,16 +1,21 @@
 <h1>Novo CEP</h1>
 
 <div class="alert alert-danger" ng-show="formErrors">
-  <span ng-click="formErrors = undefined">X</spa>
+    <button ng-click="formErrors = undefined" class="close" aria-label="Close" type="button">
+      <span aria-hidden="true">×</span>
+    </button>
   <ul>
     <li ng-repeat="erro in formErrors.errors">{{erro}}</li>
   </ul>
 </div>
 
-<form ng-submit="createCep()" name="form">
+<form ng-submit="createCep()" name="form" novalidate>
   <div class="form-group">
     <label for="cep_codigo">Código</label>
-    <input id="cep_codigo" ng-model="cep.codigo" class="form-control">
+    <input id="cep_codigo" ng-model="cep.codigo" name="codigoCep" class="form-control">
+    <div ng-show="form.$submitted || form.codigoCep.$touched">
+      <div ng-show="form.codigoCep.$error.required">Campo é obrigatório.</div>
+    </div>
   </div>
 
   <div class="form-group">
