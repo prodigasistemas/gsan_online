@@ -16,4 +16,5 @@
 //= require_tree ./lib
 //= require angular-rails-templates
 //= require_tree ./templates
+//= require gsan
 //= require_tree .
