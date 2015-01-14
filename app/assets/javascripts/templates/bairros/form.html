@@ -1,0 +1,40 @@
+<div class="alert alert-danger" ng-show="formErrors">
+  <button ng-click="formErrors = undefined" class="close" aria-label="close" type="button">
+    <span aria-hidden="true">x</span>
+  </button>
+  <ul>
+    <li ng-repeat="erro in formErrors.errors">{{erro}}</li>
+  </ul>
+</div>
+
+<form ng-submit="submeter()" name="form" novalidate>
+  <div class="form-group">
+    <label for="bairro_municipio_id">Município <span class="required">*</span></label>
+    <select id="bairro_municipio_id" ng-model="bairro.municipio_id" class="form-control" required>
+      <option value="">Selecione o Município</option>
+      <option ng-repeat="municipio in municipios" value="{{municipio.id}}" ng-selected="bairro.municipio_id === municipio.id">{{municipio.nome}} - {{municipio.uf.sigla}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="bairro_codigo">Código <span class="required">*</span></label>
+    <input id="bairro_codigo" ng-model="bairro.codigo" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="bairro_nome">Nome <span class="required">*</span></label>
+    <input id="bairro_nome" ng-model="bairro.nome" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="bairro_codigo_prefeitura">Código na Prefeitura <span class="required">*</span></label>
+    <input id="bairro_codigo_prefeitura" ng-model="bairro.codigo_prefeitura" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="bairro_ativo">
+    <input id="bairro_ativo" type="checkbox" ng-model="bairro.ativo"> Ativo</label>
+  </div>
+
+  <input type="submit" value="Salvar Bairro" class="btn btn-primary" ng-disabled="form.$invalid">
+</form>

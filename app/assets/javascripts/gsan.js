@@ -31,6 +31,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'bairros/index.html',
         controller: 'BairrosIndexController'
       }).
+      when('/bairros/novo', {
+        templateUrl: 'bairros/new.html',
+        controller: 'BairrosNewController'
+      }).
       otherwise({
         redirectTo: '/ceps'
       });
