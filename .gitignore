@@ -14,3 +14,5 @@
 .rvmrc
 .DS_Store
 .keep
+.ruby-version
+.ruby-gemset
