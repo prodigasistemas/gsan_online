@@ -47,9 +47,14 @@ app.controller("CepsIndexController", ["Flash", "$scope", "$http", "CadastroUrl"
 
   var submeterPesquisa = function() {
     var query = $.param($scope.queryCache);
-    $http.get(CadastroUrl() + "/ceps?" + query).success(function(data) {
+    $scope.loading = true;
+    $http.get(CadastroUrl() + "/ceps?" + query)
+    .success(function(data) {
       $scope.ceps = data.ceps;
       $scope.page = data.page
+      $scope.loading = false;
+    }).error(function() {
+      $scope.loading = false;
     });
   }
 }]);
