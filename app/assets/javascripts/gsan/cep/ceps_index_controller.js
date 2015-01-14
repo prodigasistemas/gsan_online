@@ -2,6 +2,7 @@ var app = angular.module("gsan");
 
 app.controller("CepsIndexController", ["Flash", "$scope", "$http", "CadastroUrl", function(Flash, $scope, $http, CadastroUrl) {
   $scope.flash = Flash;
+  $scope.query = {};
 
   $http.get(CadastroUrl() + "/cep_tipos").success(function(data) {
     $scope.cepTipos = data;

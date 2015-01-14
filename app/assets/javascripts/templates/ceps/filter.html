@@ -1,0 +1,54 @@
+<div class="panel panel-default panel-filter">
+  <form ng-submit="pesquisar()" class="form-inline">
+    <div class="panel-body">
+      <div class="form-group">
+        <input name="cep_cdcep" ng-model="query.cep_cdcep" type="text" class="form-control" placeholder="CEP">
+      </div>
+
+      <div class="form-group">
+        <select style="width: 200px" id="cep_tipo_id" ng-model="query.cept_id" class="form-control">
+          <option value="">Tipo de CEP</option>
+          <option ng-repeat="tipo in cepTipos" value="{{tipo.id}}">{{tipo.descricao}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select id="cep_municipio_id" ng-model="query.cep_nmmunicipio" class="form-control">
+          <option value="">Município</option>
+          <option ng-repeat="municipio in municipios">{{municipio.nome}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select id="cep_uf" ng-model="query.cep_dsufsigla" class="form-control">
+          <option value="">UF</option>
+          <option ng-repeat="estado in unidade_federacoes" value="{{estado.sigla}}">{{estado.sigla}} - {{estado.descricao}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Bairro">
+      </div>
+
+      <div class="form-group">
+        <select style="width: 200px" id="cep_tipo_logradouro" ng-model="query.cep_dslogradourotipo" class="form-control">
+          <option value="">Tipo de logradouro</option>
+          <option ng-repeat="tipo in tipo_logradouros">{{tipo.descricao}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input type="text" size="47" class="form-control" placeholder="Logradouro">
+      </div>
+    </div>
+    <div class="panel-footer clearfix">
+      <div class="pull-left">
+        <button class="btn btn-primary">Pesquisar</button>
+        ou
+        <button class="btn btn-default">Resetar filtros</button>
+      </div>
+
+      <div class="pull-right">Total de resultados: {{ceps.length}}</div>
+    </div>
+  </form>
+</div>
