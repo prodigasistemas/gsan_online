@@ -20,6 +20,9 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     expect(page).to have_content "CEP criado com sucesso"
 
+    fill_in "cep_cdcep", with: "66050381"
+    click_button "Pesquisar"
+
     expect(page).to have_content "66050381"
     expect(page).to have_content "ÚNICO"
     expect(page).to have_content "BELÉM"

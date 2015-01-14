@@ -9,10 +9,15 @@
 </head>
 <body ng-app="gsan" data-cadastro-url="<%= CADASTRO_URL %>">
   <%= render "shared/header" %>
-  <%= render "shared/nav" %>
-
-  <div class="container">
-    <div ng-view></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 sidebar">
+        <%= render "shared/nav" %>
+      </div>
+      <div class="col-md-10 main">
+        <div ng-view></div>
+      </div>
+    </div>
   </div>
 </body>
 </html>

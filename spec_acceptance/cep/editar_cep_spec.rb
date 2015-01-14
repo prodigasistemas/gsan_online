@@ -5,6 +5,8 @@ describe "Como um cadastrista", type: :feature, js: true do
     visit root_path
 
     click_link "CEPs"
+    fill_in "cep_cdcep", with: "66050381"
+    click_button "Pesquisar"
     find('tr.cep:last-child').click_link("Editar")
 
     fill_in "cep_codigo",           with: "66050383"
@@ -19,6 +21,9 @@ describe "Como um cadastrista", type: :feature, js: true do
     click_button "Salvar CEP"
 
     expect(page).to have_content "CEP atualizado com sucesso"
+
+    fill_in "cep_cdcep", with: "66050383"
+    click_button "Pesquisar"
 
     expect(page).to have_content "66050383"
     expect(page).to have_content "ÚNICO"
