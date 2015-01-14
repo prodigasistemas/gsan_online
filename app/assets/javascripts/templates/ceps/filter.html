@@ -43,12 +43,10 @@
     </div>
     <div class="panel-footer clearfix">
       <div class="pull-left">
-        <button class="btn btn-primary">Pesquisar</button>
-        ou
-        <button class="btn btn-default">Resetar filtros</button>
+        <button class="btn btn-primary" ng-disabled="queryVazia()">Pesquisar</button>
       </div>
 
-      <div class="pull-right">Total de resultados: {{ceps.length}}</div>
+      <div class="pull-right">Total de resultados: {{page.total}}</div>
     </div>
   </form>
 </div>

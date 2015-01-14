@@ -10,31 +10,48 @@
 
 <div ng-include="'ceps/filter.html'"></div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>CEP</th>
-      <th>Tipo</th>
-      <th>Município</th>
-      <th>Estado</th>
-      <th>Tipo Logradouro</th>
-      <th>Logradouro</th>
-      <th>Bairro</th>
-      <th>Ativo</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="cep in ceps" class="cep">
-      <td>{{cep.codigo}}</td>
-      <td>{{cep.cep_tipo.descricao}}</td>
-      <td>{{cep.municipio}}</td>
-      <td>{{cep.uf}}</td>
-      <td>{{cep.tipo_logradouro}}</td>
-      <td>{{cep.logradouro}}</td>
-      <td>{{cep.bairro}}</td>
-      <td class="cep_ativo"><span yes-no="cep.ativo"></span></td>
-      <td><a class="btn btn-info" href="/ceps/{{cep.id}}/editar">Editar</a></td>
-    </tr>
-  </tbody>
-</table>
+<div ng-show="ceps.length">
+  <nav>
+    <ul class="pagination">
+      <li ng-class="{disabled: page.first_page}">
+        <a href ng-click="pagina(-1)">Anterior</a>
+      </li>
+      <li><span>Página {{page.current_page}} de {{page.total_pages}}</span></li>
+      <li ng-class="{disabled: page.last_page}">
+        <a href ng-click="pagina(1)">Próximo</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="panel panel-default">
+    <div class="panel-heading">CEPs</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>CEP</th>
+          <th>Tipo</th>
+          <th>Município</th>
+          <th>Estado</th>
+          <th>Tipo Logradouro</th>
+          <th>Logradouro</th>
+          <th>Bairro</th>
+          <th>Ativo</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="cep in ceps" class="cep">
+          <td>{{cep.codigo}}</td>
+          <td>{{cep.cep_tipo.descricao}}</td>
+          <td>{{cep.municipio}}</td>
+          <td>{{cep.uf}}</td>
+          <td>{{cep.tipo_logradouro}}</td>
+          <td>{{cep.logradouro}}</td>
+          <td>{{cep.bairro}}</td>
+          <td class="cep_ativo"><span yes-no="cep.ativo"></span></td>
+          <td><a class="btn btn-info" href="/ceps/{{cep.id}}/editar">Editar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

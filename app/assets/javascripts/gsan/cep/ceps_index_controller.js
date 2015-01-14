@@ -20,10 +20,36 @@ app.controller("CepsIndexController", ["Flash", "$scope", "$http", "CadastroUrl"
     $scope.tipo_logradouros = data;
   });
 
+  $scope.queryVazia = function() {
+    for (var input in $scope.query) {
+      if ($scope.query[input] !== "" && $scope.query[input] !== undefined) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  $scope.pagina = function(soma) {
+    if ($scope.page.current_page + soma > $scope.page.total_pages ||
+        $scope.page.current_page + soma < 1) {
+      return
+    }
+    $scope.queryCache.page = $scope.page.current_page + soma;
+
+    submeterPesquisa();
+  }
+
   $scope.pesquisar = function() {
-    var query = $.param({ query: $scope.query });
+    var copiedQuery = jQuery.extend({},$scope.query);
+    $scope.queryCache = { query: copiedQuery };
+    submeterPesquisa();
+  }
+
+  var submeterPesquisa = function() {
+    var query = $.param($scope.queryCache);
     $http.get(CadastroUrl() + "/ceps?" + query).success(function(data) {
-      $scope.ceps = data;
+      $scope.ceps = data.ceps;
+      $scope.page = data.page
     });
   }
 }]);
