@@ -10,33 +10,49 @@
 
 <div ng-include="'municipios/filter.html'"></div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Código IBGE</th>
-      <th>Nome</th>
-      <th>UF</th>
-      <th>DDD</th>
-      <th>Micro Região</th>
-      <th>Região de Desenvolvimento</th>
-      <th>CEP inicial</th>
-      <th>CEP final</th>
-      <th>Ativo</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr id="municipio_{{municipio.id}}" class="municipio" ng-repeat="municipio in municipios">
-      <td>{{municipio.codigo_ibge}}</td>
-      <td>{{municipio.nome}}</td>
-      <td>{{municipio.uf.sigla}}</td>
-      <td>{{municipio.ddd}}</td>
-      <td>{{municipio.micro_regiao.nome}}</td>
-      <td>{{municipio.regiao_desenvolvimento.nome}}</td>
-      <td>{{municipio.cep_inicial}}</td>
-      <td>{{municipio.cep_final}}</td>
-      <td class="municipio_ativo"><span yes-no="municipio.ativo"></span></td>
-      <td><a ng-href="/municipios/{{municipio.id}}/editar">Editar</a></td>
-    </tr>
-  </tbody>
-</table>
+<div ng-show="municipios.length">
+  <nav>
+    <ul class="pagination">
+      <li ng-class="{disabled: page.first_page}">
+        <a href ng-click="pagina(-1)">Anterior</a>
+      </li>
+      <li><span>Página {{page.current_page}} de {{page.total_pages}}</span></li>
+      <li ng-class="{disabled: page.last_page}">
+        <a href ng-click="pagina(1)">Próximo</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="panel panel-default">
+    <div class="panel-heading">CEPs</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Código IBGE</th>
+          <th>Nome</th>
+          <th>UF</th>
+          <th>DDD</th>
+          <th>Micro Região</th>
+          <th>Região de Desenvolvimento</th>
+          <th>CEP inicial</th>
+          <th>CEP final</th>
+          <th>Ativo</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="municipio_{{municipio.id}}" class="municipio" ng-repeat="municipio in municipios">
+          <td>{{municipio.codigo_ibge}}</td>
+          <td>{{municipio.nome}}</td>
+          <td>{{municipio.uf.sigla}}</td>
+          <td>{{municipio.ddd}}</td>
+          <td>{{municipio.micro_regiao.nome}}</td>
+          <td>{{municipio.regiao_desenvolvimento.nome}}</td>
+          <td>{{municipio.cep_inicial}}</td>
+          <td>{{municipio.cep_final}}</td>
+          <td class="municipio_ativo"><span yes-no="municipio.ativo"></span></td>
+          <td><a ng-href="/municipios/{{municipio.id}}/editar">Editar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

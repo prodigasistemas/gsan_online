@@ -44,10 +44,11 @@
     </div>
     <div class="panel-footer clearfix">
       <div class="pull-left">
-        <button class="btn btn-primary">Pesquisar</button>
+        <button class="btn btn-primary" ng-disabled="queryVazia() || loading">Pesquisar</button>
+        <span ng-show="loading"><%= image_tag "spinner.gif" %></span>
       </div>
 
-      <div class="pull-right">Total de resultados: {{ceps.length}}</div>
+      <div class="pull-right">Total de resultados: {{page.total}}</div>
     </div>
   </form>
 </div>
