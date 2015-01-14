@@ -13,10 +13,6 @@ app.controller("CepsNewController", ["CadastroUrl", "$scope", "$http", "$locatio
     $scope.tipo_logradouros = data;
   });
 
-  $http.get(CadastroUrl() + "/unidade_federacoes").success(function(data) {
-    $scope.unidade_federacoes = data;
-  });
-
   $scope.atualizaBairros = function() {
     var query = $.param({ query: { muni_id: $scope.cep.muni_id} })
     $http.get(CadastroUrl() + "/bairros?" + query).success(function(data) {

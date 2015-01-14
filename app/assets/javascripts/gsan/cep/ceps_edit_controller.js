@@ -14,10 +14,6 @@ app.controller("CepsEditController", ["CadastroUrl", "$scope", "$http", "$locati
     $scope.tipo_logradouros = data;
   });
 
-  $http.get(CadastroUrl() + "/unidade_federacoes").success(function(data) {
-    $scope.unidade_federacoes = data;
-  });
-
   $http.get(CadastroUrl() + "/ceps/"+ id +"/edit").success(function(data) {
     $scope.bairros = data.bairros;
     $scope.cep = data.cep;
@@ -31,7 +27,7 @@ app.controller("CepsEditController", ["CadastroUrl", "$scope", "$http", "$locati
     });
   }
 
-  $scope.updateCep = function() {
+  $scope.atualizaCep = function() {
     $http.put(CadastroUrl() + "/ceps/" + id, { cep: $scope.cep })
     .success(function(data) {
       Flash.setMessage("CEP atualizado com sucesso");
