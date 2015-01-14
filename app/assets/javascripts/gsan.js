@@ -27,6 +27,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'municipios/edit.html',
         controller: 'MunicipiosEditController'
       }).
+      when('/bairros', {
+        templateUrl: 'bairros/index.html',
+        controller: 'BairrosIndexController'
+      }).
       otherwise({
         redirectTo: '/ceps'
       });

@@ -1,0 +1,49 @@
+<div class="alert alert-sucess" ng-show="flash.getMessage()">{{flash.getMessage()}}</div>
+
+<header class="with_actions">
+	<h1>Bairros</h1>
+
+  <nav class="actions">
+    <a href="/bairros/novo" class="btn btn-primary">Criar Bairro</a>
+  </nav>
+</header>
+
+<div ng-include="'bairros/filter.html'"></div>
+
+<div ng-show="bairros.length">
+  <nav>
+    <ul class="pagination">
+      <li ng-class="{disabled: page.first_page}">
+        <a href ng-click="pagina(-1)">Anterior</a>
+      </li>
+      <li><span>Página {{page.current_page}} de {{page.total_pages}}</span></li>
+      <li ng-class="{disabled: page.last_page}">
+        <a href ng-click="pagina(1)">Próximo</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="panel panel-default">
+    <div class="panel-feading">Bairros</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Município</th>
+          <th>Código do Bairro</th>
+          <th>Nome do Bairro</th>
+          <th>Código na Prefeitura</th>
+          <th>Ativo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="bairro_{{bairro.id}}" class="bairro" ng-repeat="bairro in bairros">
+          <td>{{bairro.municipio.nome}}</td>
+          <td>{{bairro.codigo}}</td>
+          <td>{{bairro.nome}}</td>
+          <td>{{bairro.codigo_prefeitura}}</td>
+          <td class="bairro_ativo"><span yes-no="bairro.ativo"></span></td>
+          <td><a ng-href="/bairros/{{bairro.id}}/editar">Editar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
