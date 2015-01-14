@@ -1,0 +1,53 @@
+<div class="panel panel-default panel-filter">
+  <form ng-submit="pesquisar()" class="form-inline">
+    <div class="panel-body">
+      <div class="form-group">
+        <input ng-model="query.muni_cdibge" type="text" class="form-control" placeholder="Código IBGE">
+      </div>
+
+      <div class="form-group">
+        <input ng-model="query.muni_nmmunicipio" type="text" class="form-control" placeholder="Nome">
+      </div>
+
+      <div class="form-group">
+        <select id="unfe_id" ng-model="query.unfe_id" class="form-control">
+          <option value="">UF</option>
+          <option ng-repeat="estado in unidade_federacoes" value="{{estado.id}}">{{estado.sigla}} - {{estado.descricao}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input ng-model="query.muni_cdddd" type="text" class="form-control" size="3" placeholder="DDD">
+      </div>
+
+      <div class="form-group">
+        <select id="municipio_micro_regiao_id" ng-model="query.mreg_id" class="form-control">
+          <option value="">Micro região</option>
+          <option ng-repeat="micro_regiao in micro_regioes" value="{{micro_regiao.id}}">{{micro_regiao.nome}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select id="municipio_regiao_desenvolvimento_id" ng-model="query.rdes_id" class="form-control">
+          <option value="">Região de desenvolvimento</option>
+          <option ng-repeat="regiao in regioes_desenvolvimento" value="{{regiao.id}}">{{regiao.nome}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input id="municipio_cep_inicial" ng-model="query.muni_cdcepinicio" class="form-control" placeholder="CEP inicial">
+      </div>
+
+      <div class="form-group">
+        <input id="municipio_cep_inicial" ng-model="query.muni_cdcepfim" class="form-control" placeholder="CEP final">
+      </div>
+    </div>
+    <div class="panel-footer clearfix">
+      <div class="pull-left">
+        <button class="btn btn-primary">Pesquisar</button>
+      </div>
+
+      <div class="pull-right">Total de resultados: {{ceps.length}}</div>
+    </div>
+  </form>
+</div>

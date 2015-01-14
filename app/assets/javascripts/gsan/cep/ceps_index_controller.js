@@ -7,7 +7,7 @@ app.controller("CepsIndexController", ["Flash", "$scope", "$http", "CadastroUrl"
   $http.get(CadastroUrl() + "/cep_tipos").success(function(data) {
     $scope.cepTipos = data;
   });
-
+  
   $http.get(CadastroUrl() + "/municipios").success(function(data) {
     $scope.municipios = data;
   });
