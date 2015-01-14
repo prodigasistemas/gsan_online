@@ -20,7 +20,13 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     expect(page).to have_content "CEP criado com sucesso"
 
-    fill_in "cep_cdcep", with: "66050381"
+    fill_in "cep_codigo",           with: "66050381"
+    fill_in "cep_municipio",        with: "bel"
+    fill_in "cep_bairro",           with: "umar"
+    fill_in "cep_logradouro",       with: "oliv"
+    select "RUA",                   from: "cep_tipo_logradouro"
+    select "ÚNICO",                 from: "cep_tipo_id"
+    select "PA",                    from: "cep_uf"
     click_button "Pesquisar"
 
     expect(page).to have_content "66050381"
