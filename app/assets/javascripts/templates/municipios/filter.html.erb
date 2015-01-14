@@ -2,44 +2,44 @@
   <form ng-submit="pesquisar()" class="form-inline">
     <div class="panel-body">
       <div class="form-group">
-        <input ng-model="query.muni_cdibge" type="text" class="form-control" placeholder="Código IBGE">
+        <input id="municipio_codigo_ibge" ng-model="query.codigo_ibge" type="text" class="form-control" placeholder="Código IBGE">
       </div>
 
       <div class="form-group">
-        <input ng-model="query.muni_nmmunicipio" type="text" class="form-control" placeholder="Nome">
+        <input id="municipio_nome" ng-model="query.nome" type="text" class="form-control" placeholder="Nome">
       </div>
 
       <div class="form-group">
-        <select id="unfe_id" ng-model="query.unfe_id" class="form-control">
+        <select id="municipio_uf_id" ng-model="query.uf_id" class="form-control">
           <option value="">UF</option>
           <option ng-repeat="estado in unidade_federacoes" value="{{estado.id}}">{{estado.sigla}} - {{estado.descricao}}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <input ng-model="query.muni_cdddd" type="text" class="form-control" size="3" placeholder="DDD">
+        <input id="municipio_ddd" ng-model="query.ddd" type="text" class="form-control" size="3" placeholder="DDD">
       </div>
 
       <div class="form-group">
-        <select id="municipio_micro_regiao_id" ng-model="query.mreg_id" class="form-control">
+        <select id="municipio_micro_regiao_id" ng-model="query.micro_regiao_id" class="form-control">
           <option value="">Micro região</option>
           <option ng-repeat="micro_regiao in micro_regioes" value="{{micro_regiao.id}}">{{micro_regiao.nome}}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <select id="municipio_regiao_desenvolvimento_id" ng-model="query.rdes_id" class="form-control">
+        <select id="municipio_regiao_desenvolvimento_id" ng-model="query.regiao_desenvolvimento_id" class="form-control">
           <option value="">Região de desenvolvimento</option>
           <option ng-repeat="regiao in regioes_desenvolvimento" value="{{regiao.id}}">{{regiao.nome}}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <input id="municipio_cep_inicial" ng-model="query.muni_cdcepinicio" class="form-control" placeholder="CEP inicial">
+        <input id="municipio_cep_inicial" ng-model="query.cep_inicial" class="form-control" placeholder="CEP inicial">
       </div>
 
       <div class="form-group">
-        <input id="municipio_cep_inicial" ng-model="query.muni_cdcepfim" class="form-control" placeholder="CEP final">
+        <input id="municipio_cep_final" ng-model="query.cep_final" class="form-control" placeholder="CEP final">
       </div>
     </div>
     <div class="panel-footer clearfix">

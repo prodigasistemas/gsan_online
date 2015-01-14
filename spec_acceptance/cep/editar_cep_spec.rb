@@ -11,7 +11,7 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     fill_in "cep_codigo",           with: "66050383"
     select "ÚNICO",                 from: "cep_tipo_id"
-    select "BELÉM",                 from: "cep_municipio_id"
+    select "BELEM",                 from: "cep_municipio_id"
     select "UMARIZAL",              from: "cep_bairro"
     select "PA",                    from: "cep_uf"
     select "RUA",                   from: "cep_tipo_logradouro"
@@ -33,7 +33,7 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     expect(page).to have_content "66050383"
     expect(page).to have_content "ÚNICO"
-    expect(page).to have_content "BELÉM"
+    expect(page).to have_content "BELEM"
     expect(page).to have_content "UMARIZAL"
     expect(page).to have_content "RUA"
     expect(page).to have_content "OLIVEIRA-BELO"

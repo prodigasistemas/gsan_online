@@ -7,7 +7,7 @@ app.controller("CepsEditController", ["CadastroUrl", "$scope", "$http", "$locati
   });
 
   $http.get(CadastroUrl() + "/municipios").success(function(data) {
-    $scope.municipios = data;
+    $scope.municipios = data.municipios;
   });
 
   $http.get(CadastroUrl() + "/tipo_logradouros").success(function(data) {
