@@ -1,7 +1,7 @@
 var app = angular.module("gsan");
 
 app.controller("MunicipiosNewController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", function(CadastroUrl, $scope, $http, $location, Flash) {
-  $scope.municipio = {};
+  $scope.municipio = {ativo: 2};
 
   $http.get(CadastroUrl() + "/micro_regioes").success(function(data) {
     $scope.micro_regioes = data;

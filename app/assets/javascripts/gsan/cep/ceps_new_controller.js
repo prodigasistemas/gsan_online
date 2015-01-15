@@ -1,6 +1,8 @@
 var app = angular.module("gsan");
 
 app.controller("CepsNewController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", function(CadastroUrl, $scope, $http, $location, Flash) {
+  $scope.cep = {ativo: 2};
+
   $http.get(CadastroUrl() + "/cep_tipos").success(function(data) {
     $scope.cepTipos = data;
   });
