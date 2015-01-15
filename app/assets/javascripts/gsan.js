@@ -1,4 +1,4 @@
-var app = angular.module("gsan", ['ngRoute','templates']);
+var app = angular.module("gsan", ['ngRoute','templates', 'ui.select', 'ngSanitize']);
 
 app.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
@@ -38,6 +38,14 @@ app.config(['$routeProvider', '$locationProvider',
       when('/bairros/:id/editar', {
         templateUrl: 'bairros/edit.html',
         controller: 'BairrosEditController'
+      }).
+      when('/logradouros', {
+        templateUrl: 'logradouros/index.html',
+        controller: 'LogradourosIndexController'
+      }).
+      when('/logradouros/novo', {
+        templateUrl: 'logradouros/new.html',
+        controller: 'LogradourosNewController'
       }).
       otherwise({
         redirectTo: '/ceps'

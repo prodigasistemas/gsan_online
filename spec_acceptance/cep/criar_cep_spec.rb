@@ -6,7 +6,7 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     click_link "CEPs"
     click_link "Criar CEP"
-
+    
     fill_in "cep_codigo",           with: "66050381"
     select "ÚNICO",                 from: "cep_tipo_id"
     select "BELEM - PA",            from: "cep_municipio_id"
