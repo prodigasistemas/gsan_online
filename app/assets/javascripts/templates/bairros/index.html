@@ -23,8 +23,8 @@
     </ul>
   </nav>
   <div class="panel panel-default">
-    <div class="panel-feading">Bairros</div>
-    <table class="table">
+    <div class="panel-heading">Bairros</div>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Município</th>
@@ -41,7 +41,7 @@
           <td>{{bairro.nome}}</td>
           <td>{{bairro.codigo_prefeitura}}</td>
           <td class="bairro_ativo"><span yes-no="bairro.ativo"></span></td>
-          <td><a ng-href="/bairros/{{bairro.id}}/editar">Editar</a></td>
+          <td><a class="btn btn-info" ng-href="/bairros/{{bairro.id}}/editar">Editar</a></td>
         </tr>
       </tbody>
     </table>

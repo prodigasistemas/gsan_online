@@ -23,8 +23,8 @@
     </ul>
   </nav>
   <div class="panel panel-default">
-    <div class="panel-heading">CEPs</div>
-    <table class="table">
+    <div class="panel-heading">Municípios</div>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Código IBGE</th>
@@ -50,7 +50,7 @@
           <td>{{municipio.cep_inicial}}</td>
           <td>{{municipio.cep_final}}</td>
           <td class="municipio_ativo"><span yes-no="municipio.ativo"></span></td>
-          <td><a ng-href="/municipios/{{municipio.id}}/editar">Editar</a></td>
+          <td><a class="btn btn-info" ng-href="/municipios/{{municipio.id}}/editar">Editar</a></td>
         </tr>
       </tbody>
     </table>
