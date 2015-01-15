@@ -1,24 +1,13 @@
 var app = angular.module("gsan");
 
-app.controller("CepsIndexController", ["Flash", "$scope", "$http", "CadastroUrl", function(Flash, $scope, $http, CadastroUrl) {
+app.controller("CepsIndexController", ["Cep", "CepTipo", "Municipio", "TipoLogradouro", "UnidadeFederacao", "Flash", "$scope", "$http", "CadastroUrl", function(Cep, CepTipo, Municipio, TipoLogradouro, UnidadeFederacao, Flash, $scope, $http, CadastroUrl) {
   $scope.flash = Flash;
   $scope.query = {};
 
-  $http.get(CadastroUrl() + "/cep_tipos").success(function(data) {
-    $scope.cepTipos = data;
-  });
-
-  $http.get(CadastroUrl() + "/municipios").success(function(data) {
-    $scope.municipios = data;
-  });
-
-  $http.get(CadastroUrl() + "/unidade_federacoes").success(function(data) {
-    $scope.unidade_federacoes = data;
-  });
-
-  $http.get(CadastroUrl() + "/tipo_logradouros").success(function(data) {
-    $scope.tipo_logradouros = data;
-  });
+  $scope.cepTipos = CepTipo.query();
+  $scope.municipios = Municipio.query();
+  $scope.tipo_logradouros = TipoLogradouro.query();
+  $scope.unidade_federacoes = UnidadeFederacao.query();
 
   $scope.queryVazia = function() {
     for (var input in $scope.query) {
@@ -41,20 +30,20 @@ app.controller("CepsIndexController", ["Flash", "$scope", "$http", "CadastroUrl"
 
   $scope.pesquisar = function() {
     var copiedQuery = jQuery.extend({},$scope.query);
-    $scope.queryCache = { query: copiedQuery };
+    $scope.queryCache = { query: copiedQuery, page: 1 };
     submeterPesquisa();
   };
 
   var submeterPesquisa = function() {
     var query = $.param($scope.queryCache);
     $scope.loading = true;
+
     $http.get(CadastroUrl() + "/ceps?" + query)
     .success(function(data) {
       $scope.ceps = data.ceps;
       $scope.page = data.page
       $scope.loading = false;
     }).error(function() {
-      $scope.loading = false;
     });
   };
 }]);

@@ -1,27 +1,20 @@
 var app = angular.module("gsan");
 
-app.controller("MunicipiosNewController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", function(CadastroUrl, $scope, $http, $location, Flash) {
+app.controller("MunicipiosNewController", ["Municipio", "UnidadeFederacao", "MicroRegiao", "RegiaoDesenvolvimento", "CadastroUrl", "$scope", "$http", "$location", "Flash", function(Municipio, UnidadeFederacao, MicroRegiao, RegiaoDesenvolvimento, CadastroUrl, $scope, $http, $location, Flash) {
+  $scope.municipio = {};
+  $scope.unidade_federacoes = UnidadeFederacao.query();
+  $scope.micro_regioes = MicroRegiao.query();
+  $scope.regioes_desenvolvimento = RegiaoDesenvolvimento.query();
+
   $scope.municipio = {ativo: 2};
 
-  $http.get(CadastroUrl() + "/micro_regioes").success(function(data) {
-    $scope.micro_regioes = data;
-  });
-
-  $http.get(CadastroUrl() + "/regioes_desenvolvimento").success(function(data) {
-    $scope.regioes_desenvolvimento = data;
-  });
-
-  $http.get(CadastroUrl() + "/unidade_federacoes").success(function(data) {
-    $scope.unidade_federacoes = data;
-  });
-
   $scope.submeter = function() {
-    $http.post(CadastroUrl() + "/municipios", { municipio: $scope.municipio })
-    .success(function(data) {
+    var municipio = new Municipio({municipio: $scope.municipio});
+    municipio.$save(function() {
       Flash.setMessage("Município criado com sucesso");
       $location.url("/municipios");
-    }).error(function(data, code) {
-      $scope.formErrors = data;
+    }, function(response) {
+      $scope.formErrors = response.data.errors;
     });
   }
 }]);

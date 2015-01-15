@@ -1,20 +1,11 @@
 var app = angular.module("gsan");
 
-app.controller("CepsEditController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", "$filter", function(CadastroUrl, $scope, $http, $location, Flash, $route, $filter) {
-  var id = $route.current.params.id;
-  $http.get(CadastroUrl() + "/cep_tipos").success(function(data) {
-    $scope.cepTipos = data;
-  });
+app.controller("CepsEditController", ["Cep", "CepTipo", "Municipio", "TipoLogradouro", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", function(Cep, CepTipo, Municipio, TipoLogradouro, CadastroUrl, $scope, $http, $location, Flash, $route) {
+  $scope.cepTipos = CepTipo.query();
+  $scope.municipios = Municipio.query();
+  $scope.tipo_logradouros = TipoLogradouro.query();
 
-  $http.get(CadastroUrl() + "/municipios").success(function(data) {
-    $scope.municipios = data.municipios;
-  });
-
-  $http.get(CadastroUrl() + "/tipo_logradouros").success(function(data) {
-    $scope.tipo_logradouros = data;
-  });
-
-  $http.get(CadastroUrl() + "/ceps/"+ id +"/edit").success(function(data) {
+  $http.get(CadastroUrl() + "/ceps/"+ $route.current.params.id +"/edit").success(function(data) {
     $scope.bairros = data.bairros;
     $scope.cep     = data.cep;
     $scope.cep.municipio = { nome: $scope.cep.municipio, uf: { descricao: $scope.cep.uf } }
@@ -30,13 +21,13 @@ app.controller("CepsEditController", ["CadastroUrl", "$scope", "$http", "$locati
     });
   }
 
-  $scope.atualizaCep = function() {
-    $http.put(CadastroUrl() + "/ceps/" + id, { cep: $scope.cep })
-    .success(function(data) {
+  $scope.submeter = function() {
+    var cep = new Cep({id: $scope.cep.id, cep: $scope.cep});
+    cep.$update(function() {
       Flash.setMessage("CEP atualizado com sucesso");
       $location.url("/ceps");
-    }).error(function(data, code) {
-      $scope.formErrors = data;
+    }, function(response) {
+      $scope.formErrors = response.data.errors;
     });
   }
 }]);

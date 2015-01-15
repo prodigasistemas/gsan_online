@@ -15,7 +15,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     select "UMARIZAL",              from: "cep_bairro"
     select "RUA",                   from: "cep_tipo_logradouro"
     fill_in "cep_logradouro",       with: "OLIVEIRA-BELO"
-    check "cep_ativo"
+    uncheck "cep_ativo"
 
     click_button "Salvar CEP"
 
@@ -36,5 +36,6 @@ describe "Como um cadastrista", type: :feature, js: true do
     expect(page).to have_content "UMARIZAL"
     expect(page).to have_content "RUA"
     expect(page).to have_content "OLIVEIRA-BELO"
+    expect(page).to have_css ".cep_ativo", text: ""
   end
 end

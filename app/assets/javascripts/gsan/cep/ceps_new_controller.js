@@ -1,21 +1,11 @@
 var app = angular.module("gsan");
 
-app.controller("CepsNewController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", function(CadastroUrl, $scope, $http, $location, Flash) {
+app.controller("CepsNewController", ["Cep", "CepTipo", "Municipio", "TipoLogradouro", "CadastroUrl", "$scope", "$http", "$location", "Flash", function(Cep, CepTipo, Municipio, TipoLogradouro, CadastroUrl, $scope, $http, $location, Flash) {
+  $scope.cepTipos = CepTipo.query();
+  $scope.municipios = Municipio.query();
+  $scope.tipo_logradouros = TipoLogradouro.query();
+
   $scope.cep = {ativo: 2};
-
-  $http.get(CadastroUrl() + "/cep_tipos").success(function(data) {
-    $scope.cepTipos = data;
-  });
-
-  $http.get(CadastroUrl() + "/municipios").success(function(data) {
-    $scope.municipios = data.municipios;
-  });
-
-  $http.get(CadastroUrl() + "/tipo_logradouros").success(function(data) {
-    $scope.tipo_logradouros = data;
-  });
-
-  $scope.cep = {};
 
   $scope.atualizaBairros = function() {
     $scope.cep.bairro = "";
@@ -27,13 +17,13 @@ app.controller("CepsNewController", ["CadastroUrl", "$scope", "$http", "$locatio
     });
   }
 
-  $scope.createCep = function() {
-    $http.post(CadastroUrl() + "/ceps", { cep: $scope.cep })
-    .success(function(data) {
+  $scope.submeter = function() {
+    var cep = new Cep({cep: $scope.cep});
+    cep.$save(function() {
       Flash.setMessage("CEP criado com sucesso");
       $location.url("/ceps");
-    }).error(function(data, code) {
-      $scope.formErrors = data;
+    }, function(response) {
+      $scope.formErrors = response.data.errors;
     });
   }
 }]);
