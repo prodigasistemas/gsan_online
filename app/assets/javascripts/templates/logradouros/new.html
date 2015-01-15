@@ -9,16 +9,18 @@
 
 <form class="">
   <div class="form-group">
-    <label for="tipo_logradouro" class="control-label">Tipo de Logradouro</label>
-    <select id="tipo_logradouro" class="form-control">
-      <option>RUA</option>
+    <label for="tipo_logradouro">Tipo do logradouro <span class="required">*</span></label>
+    <select id="tipo_logradouro" ng-model="logradouro.tipo_logradouro" class="form-control" required>
+      <option value="">Selecione um tipo de logradouro</option>
+      <option ng-repeat="tipo in tipo_logradouros">{{tipo.descricao}}</option>
     </select>
   </div>
 
   <div class="form-group">
-    <label for="titulo_logradouro" class="control-label">Título do Logradouro</label>
-    <select id="titulo_logradouro" class="form-control">
-      <option>GOV</option>
+    <label for="titulo_logradouro">Título do logradouro <span class="required">*</span></label>
+    <select id="titulo_logradouro" ng-model="logradouro.titulo_logradouro" class="form-control" required>
+      <option value="">Selecione um tipo de logradouro</option>
+      <option ng-repeat="tipo in titulo_logradouros">{{tipo.descricao}}</option>
     </select>
   </div>
 
@@ -32,14 +34,6 @@
     <input type="text" class="form-control" id="nome_popular_logradouro" placeholder="Nome popular">
   </div>
 
-  <!-- <div class="form-group">
-    <label for="minicipios" class="control-label">Município</label>
-    <select id="minicipios" class="form-control" ng-model="logradouro.muni_id" ng-change="atualizaBairros()">
-      <option value="">Selecione um município</option>
-      <option ng-repeat="municipio in municipios" value="{{municipio.id}}">{{municipio.nome}} - {{municipio.uf.sigla}}</option>
-    </select>
-  </div> -->
-  
   <div class="form-group">
     <label for="minicipios" class="control-label">Município</label>
     <ui-select ng-model="logradouro.municipio"
@@ -48,7 +42,8 @@
              reset-search-input="false"
              title="Choose an address"
              ng-disabled="false"
-             on-select="atualizaBairros()">
+             on-select="atualizaBairros()"
+             id="municipios">
       <ui-select-match placeholder="Digite o nome de um município">{{logradouro.municipio.nome}}</ui-select-match>
       <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
         {{municipio.nome}} | {{municipio.uf.descricao}}
@@ -61,7 +56,7 @@
     <div class="panel-body">
       <div class="form-group">
         <label for="bairros">Bairro</label>
-        <select id="bairros" ng-model="bairro" class="form-control" ng-disabled="!bairros.length" ng-change="adicionaBairro()" ng-options="bairro.nome for bairro in bairros">
+        <select id="Bairros" ng-model="bairro" class="form-control" ng-disabled="!bairros.length" ng-change="adicionaBairro()" ng-options="bairro.nome for bairro in bairros">
         </select>
       </div>
 
