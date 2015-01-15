@@ -13,10 +13,15 @@ app.controller("CepsNewController", ["CadastroUrl", "$scope", "$http", "$locatio
     $scope.tipo_logradouros = data;
   });
 
+  $scope.cep = {};
+
   $scope.atualizaBairros = function() {
-    var query = $.param({ query: { muni_id: $scope.cep.muni_id} })
+    $scope.cep.bairro = "";
+    $scope.cep.muni_id = $scope.cep.municipio.id;
+
+    var query = $.param({ query: { muni_id: $scope.cep.municipio.id} })
     $http.get(CadastroUrl() + "/bairros?" + query).success(function(data) {
-      $scope.bairros = data;
+      $scope.bairros = data.bairros;
     });
   }
 

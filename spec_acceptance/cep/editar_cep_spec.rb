@@ -11,7 +11,7 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     fill_in "cep_codigo",           with: "66050383"
     select "ÚNICO",                 from: "cep_tipo_id"
-    select "BELEM - PA",            from: "cep_municipio_id"
+    select_from_autocomplete("bel", "BELEM | PARA", "cep_municipio_id")
     select "UMARIZAL",              from: "cep_bairro"
     select "RUA",                   from: "cep_tipo_logradouro"
     fill_in "cep_logradouro",       with: "OLIVEIRA-BELO"

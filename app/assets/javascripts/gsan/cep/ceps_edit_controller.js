@@ -1,6 +1,6 @@
 var app = angular.module("gsan");
 
-app.controller("CepsEditController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", function(CadastroUrl, $scope, $http, $location, Flash, $route) {
+app.controller("CepsEditController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", "$filter", function(CadastroUrl, $scope, $http, $location, Flash, $route, $filter) {
   var id = $route.current.params.id;
   $http.get(CadastroUrl() + "/cep_tipos").success(function(data) {
     $scope.cepTipos = data;
@@ -16,14 +16,17 @@ app.controller("CepsEditController", ["CadastroUrl", "$scope", "$http", "$locati
 
   $http.get(CadastroUrl() + "/ceps/"+ id +"/edit").success(function(data) {
     $scope.bairros = data.bairros;
-    $scope.cep = data.cep;
+    $scope.cep     = data.cep;
+    $scope.cep.municipio = { nome: $scope.cep.municipio, uf: { descricao: $scope.cep.uf } }
   });
 
   $scope.atualizaBairros = function() {
-    var query = $.param({ query: { muni_id: $scope.cep.muni_id} })
+    $scope.cep.bairro = "";
+    $scope.cep.muni_id = $scope.cep.municipio.id;
+
+    var query = $.param({ query: { muni_id: $scope.cep.municipio.id} })
     $http.get(CadastroUrl() + "/bairros?" + query).success(function(data) {
-      $scope.bairros = data;
-      $scope.cep.bairro = "";
+      $scope.bairros = data.bairros;
     });
   }
 

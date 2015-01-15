@@ -25,11 +25,20 @@
   </div>
 
   <div class="form-group">
-    <label for="cep_municipio_id">Município <span class="required">*</span></label>
-    <select id="cep_municipio_id" ng-model="cep.muni_id" class="form-control" ng-change="atualizaBairros()" required>
-      <option value="">Selecione um município</option>
-      <option ng-repeat="municipio in municipios" value="{{municipio.id}}">{{municipio.nome}} - {{municipio.uf.sigla}}</option>
-    </select>
+    <label for="municipios" class="control-label">Município <span class="required">*</span></label>
+    <ui-select ng-model="cep.municipio"
+             theme="bootstrap"
+             ng-disabled="disabled"
+             reset-search-input="false"
+             title="Escolha um município"
+             ng-disabled="false"
+             on-select="atualizaBairros()"
+             id="cep_municipio_id">
+      <ui-select-match placeholder="Digite o nome de um município">{{cep.municipio.nome}} | {{cep.municipio.uf.descricao}}</ui-select-match>
+      <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
+        {{municipio.nome}} | {{municipio.uf.descricao}}
+      </ui-select-choices>
+    </ui-select>
   </div>
 
   <div class="form-group">

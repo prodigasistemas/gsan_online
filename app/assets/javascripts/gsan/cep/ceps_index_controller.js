@@ -7,7 +7,7 @@ app.controller("CepsIndexController", ["Flash", "$scope", "$http", "CadastroUrl"
   $http.get(CadastroUrl() + "/cep_tipos").success(function(data) {
     $scope.cepTipos = data;
   });
-  
+
   $http.get(CadastroUrl() + "/municipios").success(function(data) {
     $scope.municipios = data;
   });
@@ -27,7 +27,7 @@ app.controller("CepsIndexController", ["Flash", "$scope", "$http", "CadastroUrl"
       }
     }
     return true;
-  }
+  };
 
   $scope.pagina = function(soma) {
     if ($scope.page.current_page + soma > $scope.page.total_pages ||
@@ -37,13 +37,13 @@ app.controller("CepsIndexController", ["Flash", "$scope", "$http", "CadastroUrl"
     $scope.queryCache.page = $scope.page.current_page + soma;
 
     submeterPesquisa();
-  }
+  };
 
   $scope.pesquisar = function() {
     var copiedQuery = jQuery.extend({},$scope.query);
     $scope.queryCache = { query: copiedQuery };
     submeterPesquisa();
-  }
+  };
 
   var submeterPesquisa = function() {
     var query = $.param($scope.queryCache);
@@ -56,5 +56,5 @@ app.controller("CepsIndexController", ["Flash", "$scope", "$http", "CadastroUrl"
     }).error(function() {
       $scope.loading = false;
     });
-  }
+  };
 }]);

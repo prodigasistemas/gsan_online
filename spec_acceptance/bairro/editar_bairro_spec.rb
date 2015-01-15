@@ -5,7 +5,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     visit root_path
 
     click_link "Bairros"
-    fill_in "bairro_codigo", with: "66"
+    fill_in "bairro_codigo", with: "77"
     click_button "Pesquisar"
 
     find(".bairro:last-child").click_link "Editar"
