@@ -1,21 +1,16 @@
 var app = angular.module("gsan");
 
-app.controller("BairrosEditController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", function(CadastroUrl, $scope, $http, $location, Flash, $route) {
-  $http.get(CadastroUrl() + "/bairros/" + $route.current.params.id).success(function(data) {
-    $scope.bairro = data;
-  });
-
-  $http.get(CadastroUrl() + "/municipios").success(function(data) {
-    $scope.municipios = data.municipios;
-  });
+app.controller("BairrosEditController", ["Bairro", "Municipio", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", function(Bairro, Municipio, CadastroUrl, $scope, $http, $location, Flash, $route) {
+  $scope.bairro = Bairro.get({id: $route.current.params.id});
+  $scope.municipios = Municipio.query();
 
   $scope.submeter = function() {
-    $http.put(CadastroUrl() + "/bairros/" + $scope.bairro.id, { bairro: $scope.bairro })
-    .success(function(data) {
+    var bairro = new Bairro({bairro: $scope.bairro});
+    bairro.$save(function() {
       Flash.setMessage("Bairro editado com sucesso");
       $location.url("/bairros");
-    }).error(function(data, code) {
-      $scope.formErrors = data;
+    }, function(response) {
+      $scope.formErrors = response.data.errors;
     });
   }
 }]);

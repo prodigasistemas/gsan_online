@@ -7,7 +7,7 @@ RAILS_ENV=test rails s -p 3002 -d
 cd ../gsan_online
 
 if [ "$1" = "" ]; then
-  rspec spec_acceptance $1
+  rspec spec_acceptance
 else
   rspec $@
 fi
