@@ -1,11 +1,21 @@
 <div class="panel panel-default panel-filter">
-  <form ng-submit="pesquisar()" class="form-inline">
+  <form ng-submit="pesquisar()" class="form-inline filter">
     <div class="panel-body">
       <div class="form-group">
-        <select id="bairro_municipio_id" ng-model="query.municipio_id" class="form-control">
-          <option value="">MUNICÍPIO</option>
-          <option ng-repeat="municipio in municipios" value="{{municipio.id}}">{{municipio.nome}} - {{municipio.uf.sigla}}</option>
-        </select>
+        <ui-select ng-model="municipioSelecionado"
+                 theme="bootstrap"
+                 ng-disabled="disabled"
+                 reset-search-input="false"
+                 title="Escolha um município"
+                 ng-disabled="false"
+                 on-select="atualizarMunicipio($item, $model)"
+                 id="bairro_municipio_id">
+          <ui-select-match placeholder="Município">{{municipioSelecionado.nome}} | {{municipioSelecionado.uf.descricao}}</ui-select-match>
+          <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
+            {{municipio.nome}} | {{municipio.uf.descricao}}
+          </ui-select-choices>
+        </ui-select>
+        {{municipioSelecionado}}
       </div>
 
       <div class="form-group">
@@ -27,7 +37,7 @@
         <span ng-show="loading"><%= image_tag "spinner.gif" %></span>
       </div>
 
-      <div class="pull-right">Total de resultados: {{page.total}}</div>
+      <div class="pull-right" ng-show="bairros.length">Total de resultados: {{page.total}}</div>
     </div>
   </form>
 </div>

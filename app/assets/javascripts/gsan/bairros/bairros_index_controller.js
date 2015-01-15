@@ -5,6 +5,7 @@ app.controller("BairrosIndexController", ["Municipio", "Flash", "$scope", "$http
   $scope.query = {};
 
   $scope.municipios = Municipio.query();
+  $scope.municipioSelecionado = "";
 
   $scope.queryVazia = function() {
     for(var input in $scope.query) {
@@ -30,6 +31,17 @@ app.controller("BairrosIndexController", ["Municipio", "Flash", "$scope", "$http
     $scope.queryCache = { query: copiedQuery };
     submeterPesquisa();
   }
+
+  $scope.atualizarMunicipio = function($item, $model) {
+    $scope.query.municipio_id = $item.id;
+  }
+
+  $scope.$watch("municipioSelecionado", function(newValue, oldValue) {
+    if (newValue) {
+      $scope.query.municipio_id = a.id;
+      $scope.$digest();
+    }
+  })
 
   var submeterPesquisa = function() {
     var query = $.param($scope.queryCache);

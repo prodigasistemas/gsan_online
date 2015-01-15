@@ -12,3 +12,11 @@ textarea.ng-dirty.ng-invalid {
   margin-top: 10px;
   margin-left: 14px
 }
+
+form.filter .ui-select-container  {
+  width: 174px;
+}
+form.filter .ui-select-container button {
+  width: 100%;
+  text-align: left;
+}

@@ -17,10 +17,10 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     expect(page).to have_content "Bairro criado com sucesso"
 
-    select "BELEM - PA",                from: "bairro_municipio_id"
+    select_from_autocomplete("bel", "BELEM | PARA", "bairro_municipio_id")
     fill_in "bairro_codigo",            with: "1010"
     fill_in "bairro_nome",              with: "JURUNAS"
-    fill_in "bairro_codigo_prefeitura", with: "212"    
+    fill_in "bairro_codigo_prefeitura", with: "212"
     click_button "Pesquisar"
 
     expect(page).to have_content "BELEM"
