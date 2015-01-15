@@ -13,6 +13,10 @@ textarea.ng-dirty.ng-invalid {
   margin-left: 14px
 }
 
+.table-scroll{
+  overflow: auto;
+  height: 300px;
+}
 form.filter .ui-select-container  {
   width: 174px;
 }

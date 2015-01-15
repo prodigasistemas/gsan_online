@@ -50,16 +50,14 @@
              ng-disabled="false"
              on-select="atualizaBairros()">
       <ui-select-match placeholder="Digite o nome de um município">{{logradouro.municipio.nome}}</ui-select-match>
-      <ui-select-choices repeat="municipio in municipios"
-               refresh="pesquisarMunicipio($select.search)"
-               refresh-delay="0">
+      <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
         {{municipio.nome}} | {{municipio.uf.descricao}}
       </ui-select-choices>
     </ui-select>
   </div>
 
   <div class="panel panel-default">
-    <div class="panel-heading">Bairros</div>
+    <div class="panel-heading">Adicionar bairros</div>
     <div class="panel-body">
       <div class="form-group">
         <label for="bairros">Bairro</label>
@@ -68,16 +66,55 @@
       </div>
 
       <div class="panel panel-default">
-        <div class="panel-heading">Bairros selecionados</div>
+        <div class="panel-heading clearfix">
+          <div class="pull-left">Bairros selecionados</div>
+          <div class="pull-right">total: {{logradouro.bairros.length}}</div>
+        </div>
 
-        <table class="table table-hover">
-          <tbody>
-            <tr ng-repeat="bairro in logradouro.bairros">
-              <td>{{bairro.nome}}</td>
-              <td width="5"><a href="" ng-click="removeBairro(bairro)" class="btn btn-warning">X</a></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-scroll">
+          <table class="table table-hover">
+            <tbody>
+              <tr ng-repeat="bairro in logradouro.bairros">
+                <td>{{bairro.nome}}</td>
+                <td width="5"><a href="" ng-click="removeBairro(bairro)" class="btn btn-warning">X</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Adicionar CEP(s)</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <div class="input-group col-md-3">
+          <input type="text" id="codigo_cep" class="form-control" ng-model="cep.pesquisa" placeholder="Pesquisar CEP" />
+          <span class="input-group-btn">
+            <button class="btn btn-info" type="button" ng-click="adicionarCEP()">Go!</button>
+          </span>
+        </div>
+        <span class="help-block" style="color: #AA4C4C">{{cep.resultado}}</span>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">CEPs selecionados</div>
+
+        <div class="table-scroll">
+          <table class="table table-hover">
+            <tbody>
+              <tr ng-repeat="cep in logradouro.ceps">
+                <td>{{cep.codigo}}</td>
+                <td>{{cep.uf}}</td>
+                <td>{{cep.municipio}}</td>
+                <td>{{cep.bairro}}</td>
+                <td>{{cep.tipo_logradouro}} {{cep.logradouro}}</td>
+                <td width="5"><a href="" ng-click="removerCEP(cep)" class="btn btn-warning">X</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

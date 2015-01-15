@@ -1,9 +1,10 @@
 var app = angular.module("gsan");
 
-app.controller("LogradourosNewController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", function(CadastroUrl, $scope, $http, $location, Flash) {
+app.controller("LogradourosNewController", ["CadastroUrl", "$scope", "$http", "$location", "Flash", "$filter", function(CadastroUrl, $scope, $http, $location, Flash, $filter) {
   $scope.logradouro = {};
   $scope.bairro = {};
   $scope.logradouro.bairros = [];
+  $scope.logradouro.ceps = [];
 
   $scope.atualizaBairros = function() {
     var query = $.param({ query: { muni_id: $scope.logradouro.municipio.id} })
@@ -11,6 +12,10 @@ app.controller("LogradourosNewController", ["CadastroUrl", "$scope", "$http", "$
       $scope.bairros = data;
     });
   }
+
+  $http.get(CadastroUrl() + "/municipios").success(function(data) {
+    $scope.municipios = data.municipios;
+  });
 
   $scope.adicionaBairro = function(){
     $scope.logradouro.bairros.push($scope.bairro);
@@ -21,17 +26,22 @@ app.controller("LogradourosNewController", ["CadastroUrl", "$scope", "$http", "$
     $scope.logradouro.bairros.splice(index, 1);
   }
 
-  $scope.pesquisarMunicipio = function(search){
-    if(search && search !== "" && search.length >= 3){
-      var query = $.param({ query: { nome: search} });
+  $scope.adicionarCEP = function(){
+    var query = $.param({ query: { codigo: $scope.cep.pesquisa } })
+    $http.get(CadastroUrl() + "/ceps/search?" + query).success(function(data) {
+      if(!data.cep){
+        $scope.cep.resultado = "CEP não encontrado";
+        return;
+      }
 
-      $http.get(CadastroUrl() + "/municipios?" + query).success(function(data) {
-        $scope.municipios = data.municipios;
-      });
-    }
-    else{
-      $scope.municipios = [];
-      $scope.logradouro.municipio = null;
-    }
+      $scope.logradouro.ceps.push(data.cep);
+      $scope.cep.pesquisa = "";
+      $scope.cep.resultado = "";
+    });
+  }
+
+  $scope.removerCEP = function(cep){
+    var index = $scope.logradouro.ceps.indexOf(cep);
+    $scope.logradouro.ceps.splice(index, 1);
   }
 }]);
