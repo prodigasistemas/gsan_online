@@ -31,6 +31,7 @@ app.controller("LogradourosNewController", ["CadastroUrl", "$scope", "$http", "$
     var query = $.param({ query: { muni_id: $scope.logradouro.municipio.id} })
     $http.get(CadastroUrl() + "/bairros?" + query).success(function(data) {
       $scope.bairros = data;
+      console.log($scope.bairros)
     });
   }
 

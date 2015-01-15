@@ -13,6 +13,6 @@ describe "Como cadastrista", type: :feature, js: true do
     fill_in "nome_logradouro", with: "JOSE MALCHER"
     fill_in "nome_popular_logradouro", with: "SAO GERONIMO"
     select_from_autocomplete("bel", "BELEM | PARA", "municipios")
-    # select "UMARIZAL", from: "bairros"
+    select "UMARIZAL", from: "bairros"
   end
 end

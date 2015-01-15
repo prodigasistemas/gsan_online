@@ -56,7 +56,7 @@
     <div class="panel-body">
       <div class="form-group">
         <label for="bairros">Bairro</label>
-        <select id="Bairros" ng-model="bairro" class="form-control" ng-disabled="!bairros.length" ng-change="adicionaBairro()" ng-options="bairro.nome for bairro in bairros">
+        <select id="bairros" ng-model="bairro" class="form-control" ng-disabled="!bairros.length" ng-change="adicionaBairro()" ng-options="bairro.nome for bairro in bairros" ng-required="bairros.length">
         </select>
       </div>
 
