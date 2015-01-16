@@ -1,10 +1,12 @@
 var app = angular.module("gsan");
 
-app.controller("LogradourosIndexController", ["Municipio", "Flash", "$scope", "$http", "CadastroUrl", function(Municipio, Flash, $scope, $http, CadastroUrl) {
+app.controller("LogradourosIndexController", ["Municipio", "TituloLogradouro", "TipoLogradouro", "Flash", "$scope", "$http", "CadastroUrl", function(Municipio, TituloLogradouro, TipoLogradouro, Flash, $scope, $http, CadastroUrl) {
   $scope.flash = Flash;
   $scope.query = {};
 
   $scope.municipios = Municipio.query();
+  $scope.titulo_logradouros = TituloLogradouro.query();
+  $scope.tipo_logradouros = TipoLogradouro.query();
   $scope.municipioSelecionado = "";
 
   $scope.queryVazia = function() {

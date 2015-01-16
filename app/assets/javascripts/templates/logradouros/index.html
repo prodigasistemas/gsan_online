@@ -30,7 +30,8 @@
           <th>Município</th>
           <th>Código do Logradouro</th>
           <th>Nome do Logradouro</th>
-          <th>Titulo de Logradouro</th>
+          <th>Título do Logradouro</th>
+          <th>Tipo do Logradouro</th>
           <th>Ativo</th>
         </tr>
       </thead>
@@ -39,7 +40,8 @@
           <td>{{logradouro.municipio.nome}}</td>
           <td>{{logradouro.id}}</td>
           <td>{{logradouro.nome}}</td>
-          <td></td>
+          <td>{{logradouro.titulo_logradouro.descricao}}</td>
+          <td>{{logradouro.tipo_logradouro.descricao}}</td>
           <td class="logradouro_ativo"><span yes-no="logradouro.ativo"></span></td>
           <td><a class="btn btn-info" ng-href="/logradouros/{{logradouro.id}}/editar">Editar</a></td>
         </tr>

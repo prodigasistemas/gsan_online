@@ -21,6 +21,20 @@
       <div class="form-group">
         <input id="logradouro_nome" ng-model="query.nome" type="text" class="form-control" placeholder="Nome">
       </div>
+
+      <div class="form-group">
+        <select id="logradouro_titulo_logradouro_id" ng-model="query.titulo_logradouro_id" class="form-control">
+          <option value="">Título do Logradouro</option>
+          <option ng-repeat="titulo_logradouro in titulo_logradouros" value="{{titulo_logradouro.id}}">{{titulo_logradouro.descricao}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select id="logradouro_tipo_logradouro_id" ng-model="query.tipo_logradouro_id" class="form-control">
+          <option value="">Tipo do Logradouro</option>
+          <option ng-repeat="tipo_logradouro in tipo_logradouros" value="{{tipo_logradouro.id}}">{{tipo_logradouro.descricao}}</option>
+        </select>
+      </div>
     </div>
 
     <div class="panel-footer clearfix">
