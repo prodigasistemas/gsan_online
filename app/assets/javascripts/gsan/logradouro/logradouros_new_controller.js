@@ -1,7 +1,7 @@
 var app = angular.module("gsan");
 
 app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "TituloLogradouro", "Municipio", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$filter", function(Logradouro, TipoLogradouro, TituloLogradouro, Municipio, CadastroUrl, $scope, $http, $location, Flash, $filter) {
-  $scope.logradouro = {};
+  $scope.logradouro = { ativo: 2 };
   $scope.bairro = {};
   $scope.logradouro.bairros = [];
   $scope.logradouro.ceps = [];
@@ -11,6 +11,7 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
   $scope.titulo_logradouros = TituloLogradouro.query();
 
   $scope.adicionaBairro = function(){
+    if (bairroSelecionado()) { return; }
     $scope.logradouro.bairros.push($scope.bairro);
   };
 
@@ -20,8 +21,9 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
   };
 
   $scope.atualizaBairros = function() {
-    var query = $.param({ query: { muni_id: $scope.logradouro.municipio.id} });
+    $scope.logradouro.municipio_id = $scope.logradouro.municipio.id;
 
+    var query = $.param({ query: { muni_id: $scope.logradouro.municipio.id} });
     $http.get(CadastroUrl() + "/bairros?" + query).success(function(data) {
       $scope.bairros = data.bairros;
     });
@@ -63,9 +65,19 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
 
   var cepSelecionado = function() {
     $scope.logadouro = $scope.logradouro || [];
-    var cepDuplicado = $scope.logadouro.ceps.length && $filter('filter')($scope.logadouro.ceps,{codigo: $scope.cep.pesquisa}).length;
+    var cepDuplicado = $scope.logadouro.ceps.length && $filter('filter')($scope.logadouro.ceps, {codigo: $scope.cep.pesquisa}).length;
     if (cepDuplicado) {
       $scope.cep.resultado = "CEP já selecionado";
+      return true;
+    }
+  };
+
+  var bairroSelecionado = function() {
+    $scope.logadouro = $scope.logradouro || [];
+
+    var cepDuplicado = $scope.logadouro.bairros.length && $filter('filter')($scope.logadouro.bairros, {id: $scope.bairro.id}).length;
+    if (cepDuplicado) {
+      $scope.bairro.resultado = "Bairro já selecionado";
       return true;
     }
   };
