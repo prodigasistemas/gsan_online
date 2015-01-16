@@ -21,6 +21,7 @@ describe "Como cadastrista", type: :feature, js: true do
     testar_bairros
     testar_ceps
 
+    select "CALADIM", from: "bairros"
     select "CONQUISTA", from: "bairros"
 
     within "#pesquisa_cep" do
@@ -45,6 +46,12 @@ describe "Como cadastrista", type: :feature, js: true do
     expect(page).to have_content "ANTONIO BARRETO"
     #expect(page).to have_content "BARRETAO"
     expect(page).to have_css ".logradouro_ativo", text: ""
+
+    find(".logradouro:last-child").click_link "Editar"
+
+    expect(page).to have_css ".bairro", text: "CALADIM", count: 1
+    expect(page).to have_css ".bairro", text: "CONQUISTA", count: 1
+    expect(page).to have_css "#cep_66050380", count: 1
   end
 
   def testar_ceps

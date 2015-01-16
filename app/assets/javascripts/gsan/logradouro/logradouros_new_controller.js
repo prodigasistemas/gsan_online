@@ -53,6 +53,11 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
   };
 
   $scope.submeter = function() {
+    if ($("#codigo_cep:focus").length) {
+      $scope.adicionarCEP();
+      return;
+    };
+
     construirParametrosParaCeps();
     construirParametrosParaBairros();
 
@@ -90,18 +95,20 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
   };
 
   var construirParametrosParaCeps = function() {
+    if (!$scope.logradouro.logradouro_ceps) { return; }
     $scope.logradouro.logradouro_ceps_attributes = {};
 
-    $.each($scope.logradouro.ceps, function(index, cep) {
-      $scope.logradouro.logradouro_ceps_attributes[index] = { cep_id: cep.id, ativo: true }
+    $.each($scope.logradouro.logradouro_ceps, function(index, logradouro_cep) {
+      $scope.logradouro.logradouro_ceps_attributes[index] = { cep_id: logradouro_cep.cep.id, ativo: true }
     });
   };
 
   var construirParametrosParaBairros = function() {
+    if (!$scope.logradouro.logradouro_bairros) { return; }
     $scope.logradouro.logradouro_bairros_attributes = {};
 
-    $.each($scope.logradouro.bairros, function(index, bairro) {
-      $scope.logradouro.logradouro_bairros_attributes[index] = { bairro_id: bairro.bairro }
+    $.each($scope.logradouro.logradouro_bairros, function(index, logradouro_bairro) {
+      $scope.logradouro.logradouro_bairros_attributes[index] = { bairro_id: logradouro_bairro.bairro.id }
     });
   };
 }]);

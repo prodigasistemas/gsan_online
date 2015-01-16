@@ -24,6 +24,7 @@ app.controller("LogradourosEditController", ["Logradouro", "TipoLogradouro", "Ti
   $scope.adicionaBairro = function(){
     if (bairroSelecionado()) { return; }
     $scope.logradouro.logradouro_bairros.push({bairro: $scope.bairro.selecionado});
+    $scope.bairro.resultado = "";
   };
 
   $scope.removeBairro = function(logradouroBairro){
@@ -61,6 +62,11 @@ app.controller("LogradourosEditController", ["Logradouro", "TipoLogradouro", "Ti
   };
 
   $scope.submeter = function() {
+    if ($("#codigo_cep:focus").length) {
+      $scope.adicionarCEP();
+      return;
+    };
+
     construirParametrosParaLogradouroCeps();
     construirParametrosParaBairros();
 
@@ -116,7 +122,7 @@ app.controller("LogradourosEditController", ["Logradouro", "TipoLogradouro", "Ti
     $scope.logradouro.logradouro_bairros_attributes = {};
 
     $.each($scope.logradouro.logradouro_bairros, function(index, logradouro_bairro) {
-      $scope.logradouro.logradouro_bairros_attributes[index] = { id: logradouro_bairro.id, bairro_id: logradouro_bairro.bairro_id }
+      $scope.logradouro.logradouro_bairros_attributes[index] = { id: logradouro_bairro.id, bairro_id: logradouro_bairro.bairro.id }
       if (logradouro_bairro._destroy) {
         $scope.logradouro.logradouro_bairros_attributes[index]._destroy = 1;
       }
