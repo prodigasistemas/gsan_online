@@ -17,10 +17,21 @@ textarea.ng-dirty.ng-invalid {
   overflow: auto;
   height: 300px;
 }
+
 form.filter .ui-select-container  {
   width: 174px;
 }
+
 form.filter .ui-select-container button {
   width: 100%;
   text-align: left;
+}
+
+form table.destroyable_list tr.destroyed {
+  background: #aaa;
+  color: white;
+}
+
+form table td.actions {
+  text-align: right;
 }

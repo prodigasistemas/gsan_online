@@ -5,7 +5,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     visit root_path
 
     click_link "CEPs"
-    fill_in "cep_codigo", with: "66050380"
+    fill_in "cep_codigo", with: "66666666"
     click_button "Pesquisar"
     find('tr.cep:last-child').click_link("Editar")
 

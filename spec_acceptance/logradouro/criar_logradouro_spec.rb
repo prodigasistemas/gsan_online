@@ -82,9 +82,11 @@ describe "Como cadastrista", type: :feature, js: true do
       within ".bairro:first-child" do
         click_link "X"
       end
+      expect(page).to have_css ".bairro", text: "UMARIZAL", count: 0
 
       within ".bairro:first-child" do
         click_link "X"
       end
+      expect(page).to have_css ".bairro", text: "PEDREIRA", count: 0
   end
 end

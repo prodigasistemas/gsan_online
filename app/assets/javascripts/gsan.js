@@ -47,6 +47,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'logradouros/new.html',
         controller: 'LogradourosNewController'
       }).
+      when('/logradouros/:id/editar', {
+        templateUrl: 'logradouros/edit.html',
+        controller: 'LogradourosEditController'
+      }).
       otherwise({
         redirectTo: '/ceps'
       });

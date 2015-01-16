@@ -1,11 +1,11 @@
 var app = angular.module("gsan");
 
-app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "TituloLogradouro", "Municipio", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$filter", function(Logradouro, TipoLogradouro, TituloLogradouro, Municipio, CadastroUrl, $scope, $http, $location, Flash, $filter) {
-  $scope.logradouro = { ativo: 2 };
+app.controller("LogradourosEditController", ["Logradouro", "TipoLogradouro", "TituloLogradouro", "Municipio", "CadastroUrl", "$scope", "$http", "$location", "$filter", "$route", "Flash", function(Logradouro, TipoLogradouro, TituloLogradouro, Municipio, CadastroUrl, $scope, $http, $location, $filter, $route, Flash) {
+  $scope.logradouro = Logradouro.get({id: $route.current.params.id}, function(data) {
+   $scope.atualizaBairros();
+  });
   $scope.bairro = {};
   $scope.cep = {};
-  $scope.logradouro.bairros = [];
-  $scope.logradouro.ceps = [];
 
   $scope.municipios = Municipio.query();
   $scope.tipo_logradouros = TipoLogradouro.query();
@@ -14,7 +14,7 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
   $scope.atualizaBairros = function() {
     $scope.logradouro.municipio_id = $scope.logradouro.municipio.id;
 
-    var query = $.param({ query: { muni_id: $scope.logradouro.municipio.id}, paginado: false });
+    var query = $.param({ query: { muni_id: $scope.logradouro.municipio.id }, paginado: false });
     $http.get(CadastroUrl() + "/bairros?" + query).success(function(data) {
       $scope.bairros = data.bairros;
       $scope.bairro = {}
@@ -27,8 +27,12 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
   };
 
   $scope.removeBairro = function(logradouroBairro){
-    var index = $scope.logradouro.logradouro_bairros.indexOf(logradouroBairro);
-    $scope.logradouro.logradouro_bairros.splice(index, 1);
+    if (logradouroBairro.id) {
+      logradouroBairro._destroy = 1;
+    } else {
+      var index = $scope.logradouro.logradouro_bairros.indexOf(logradouroBairro);
+      $scope.logradouro.logradouro_bairros.splice(index, 1);
+    }
   };
 
   $scope.adicionarCEP = function(){
@@ -48,17 +52,21 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
   };
 
   $scope.removerCEP = function(logradouroCep){
-    var index = $scope.logradouro.logradouro_ceps.indexOf(logradouroCep);
-    $scope.logradouro.logradouro_ceps.splice(index, 1);
+    if (logradouroCep.id) {
+      logradouroCep._destroy = 1;
+    } else {
+      var index = $scope.logradouro.logradouro_ceps.indexOf(logradouroCep);
+      $scope.logradouro.logradouro_ceps.splice(index, 1);
+    }
   };
 
   $scope.submeter = function() {
-    construirParametrosParaCeps();
+    construirParametrosParaLogradouroCeps();
     construirParametrosParaBairros();
 
-    var logradouro = new Logradouro({logradouro: $scope.logradouro});
-    logradouro.$save(function() {
-      Flash.setMessage("Logradouro criado com sucesso");
+    var logradouro = new Logradouro({id: $scope.logradouro.id, logradouro: $scope.logradouro});
+    logradouro.$update(function() {
+      Flash.setMessage("Logradouro editado com sucesso");
       $location.url("/logradouros");
     }, function(response) {
       $scope.formErrors = response.data.errors;
@@ -89,19 +97,29 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
     }
   };
 
-  var construirParametrosParaCeps = function() {
+  var construirParametrosParaLogradouroCeps = function() {
     $scope.logradouro.logradouro_ceps_attributes = {};
 
-    $.each($scope.logradouro.ceps, function(index, cep) {
-      $scope.logradouro.logradouro_ceps_attributes[index] = { cep_id: cep.id, ativo: true }
+    $.each($scope.logradouro.logradouro_ceps, function(index, logradouro_cep) {
+      $scope.logradouro.logradouro_ceps_attributes[index] = { id: logradouro_cep.id, cep_id: logradouro_cep.cep.id }
+      if (!logradouro_cep.id) {
+        $scope.logradouro.logradouro_ceps_attributes[index].ativo = 1;
+      }
+
+      if (logradouro_cep._destroy) {
+        $scope.logradouro.logradouro_ceps_attributes[index]._destroy = 1;
+      }
     });
   };
 
   var construirParametrosParaBairros = function() {
     $scope.logradouro.logradouro_bairros_attributes = {};
 
-    $.each($scope.logradouro.bairros, function(index, bairro) {
-      $scope.logradouro.logradouro_bairros_attributes[index] = { bairro_id: bairro.bairro }
+    $.each($scope.logradouro.logradouro_bairros, function(index, logradouro_bairro) {
+      $scope.logradouro.logradouro_bairros_attributes[index] = { id: logradouro_bairro.id, bairro_id: logradouro_bairro.bairro_id }
+      if (logradouro_bairro._destroy) {
+        $scope.logradouro.logradouro_bairros_attributes[index]._destroy = 1;
+      }
     });
   };
 }]);

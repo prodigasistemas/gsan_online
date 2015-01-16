@@ -12,15 +12,15 @@
     <label for="logradouro_tipo_id">Tipo do logradouro <span class="required">*</span></label>
     <select id="logradouro_tipo_id" ng-model="logradouro.logradouro_tipo_id" class="form-control" required>
       <option value="">Selecione um tipo de logradouro</option>
-      <option ng-repeat="tipo in tipo_logradouros" value="{{tipo.id}}">{{tipo.descricao}}</option>
+      <option ng-repeat="tipo in tipo_logradouros" value="{{tipo.id}}" ng-selected="logradouro.logradouro_tipo_id == tipo.id">{{tipo.descricao}}</option>
     </select>
   </div>
 
   <div class="form-group">
     <label for="titulo_logradouro_id">Título do logradouro</label>
     <select id="titulo_logradouro_id" ng-model="logradouro.titulo_logradouro_id" class="form-control">
-      <option value="">Selecione um tipo de logradouro</option>
-      <option ng-repeat="titulo in titulo_logradouros" value="{{titulo.id}}">{{titulo.descricao}}</option>
+      <option value="">Selecione um título de logradouro</option>
+      <option ng-repeat="titulo in titulo_logradouros" value="{{titulo.id}}" ng-selected="logradouro.titulo_logradouro_id == titulo.id">{{titulo.descricao}}</option>
     </select>
   </div>
 
@@ -45,7 +45,7 @@
              requiredg
              on-select="atualizaBairros()"
              id="municipios">
-      <ui-select-match placeholder="Digite o nome de um município">{{logradouro.municipio.nome}}</ui-select-match>
+      <ui-select-match placeholder="Digite o nome de um município">{{logradouro.municipio.nome}} | {{logradouro.municipio.uf.descricao}}</ui-select-match>
       <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
         {{municipio.nome}} | {{municipio.uf.descricao}}
       </ui-select-choices>
@@ -65,15 +65,18 @@
       <div class="panel panel-default">
         <div class="panel-heading clearfix">
           <div class="pull-left">Bairros selecionados</div>
-          <div class="pull-right">total: {{logradouro.bairros.length}}</div>
+          <div class="pull-right">total: {{logradouro.logradouro_bairros.length}}</div>
         </div>
 
         <div class="table-scroll">
-          <table class="table table-hover">
+          <table class="table table-hover destroyable_list">
             <tbody>
-              <tr id="bairro_{{bairro.id}}" class="bairro" ng-repeat="bairro in logradouro.bairros">
-                <td>{{bairro.nome}}</td>
-                <td width="5"><a href="" ng-click="removeBairro(bairro)" class="btn btn-warning">X</a></td>
+              <tr id="bairro_{{bairro.id}}" data-logradouro-bairro-nome="{{logradouro_bairro.bairro.nome}}" ng-class="{bairro: true, destroyed: logradouro_bairro._destroy}" ng-repeat="logradouro_bairro in logradouro.logradouro_bairros">
+                <td>{{logradouro_bairro.bairro.nome}}</td>
+                <td width="5" class="actions">
+                  <a href="" ng-show="logradouro_bairro._destroy" ng-click="logradouro_bairro._destroy = undefined" class="btn btn-warning">Cancelar</a>
+                  <a href="" ng-hide="logradouro_bairro._destroy" ng-click="removeBairro(logradouro_bairro)" class="btn btn-warning">X</a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -99,7 +102,7 @@
         <div class="panel-heading">CEPs selecionados</div>
 
         <div class="table-scroll">
-          <table class="table table-hover">
+          <table class="table table-hover destroyable_list">
             <thead>
               <th>Código</th>
               <th>UF</th>
@@ -109,13 +112,16 @@
               <th></th>
             </thead>
             <tbody>
-              <tr id="cep_{{cep.codigo}}" ng-repeat="cep in logradouro.ceps">
-                <td>{{cep.codigo}}</td>
-                <td>{{cep.uf}}</td>
-                <td>{{cep.municipio}}</td>
-                <td>{{cep.bairro}}</td>
-                <td>{{cep.tipo_logradouro}} {{cep.logradouro}}</td>
-                <td width="5"><a href="" ng-click="removerCEP(cep)" class="btn btn-warning">X</a></td>
+              <tr id="cep_{{logradouro_cep.cep.codigo}}" ng-class="{destroyed: logradouro_cep._destroy}" ng-repeat="logradouro_cep in logradouro.logradouro_ceps">
+                <td>{{logradouro_cep.cep.codigo}}</td>
+                <td>{{logradouro_cep.cep.uf}}</td>
+                <td>{{logradouro_cep.cep.municipio}}</td>
+                <td>{{logradouro_cep.cep.bairro}}</td>
+                <td>{{logradouro_cep.cep.tipo_logradouro}} {{logradouro_cep.cep.logradouro}}</td>
+                <td width="5" class="actions">
+                  <a href="" ng-show="logradouro_cep._destroy" ng-click="logradouro_cep._destroy = undefined" class="btn btn-warning">Cancelar</a>
+                  <a href="" ng-hide="logradouro_cep._destroy" ng-click="removerCEP(logradouro_cep)" class="btn btn-warning">X</a>
+                </td>
               </tr>
             </tbody>
           </table>
