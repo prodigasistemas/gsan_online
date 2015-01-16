@@ -29,7 +29,18 @@ describe "Como cadastrista", type: :feature, js: true do
     click_button "Salvar Logradouro"
     expect(page).to have_content "Logradouro criado com sucesso"
 
-    # Pesquise-me!
+    validar
+  end
+
+  def validar
+    fill_in "logradouro_nome", with: "jose"
+    select_from_autocomplete("bel", "BELEM | PA", "bairro_municipio_id")
+
+    click_button "Pesquisar"
+
+    expect(page).to have_content "JOSE MALCHER"
+    expect(page).to have_content "BELEM"
+    expect(page).to have_css ".logradouro_ativo", text: "Sim"
   end
 
   def testar_ceps
@@ -61,8 +72,11 @@ describe "Como cadastrista", type: :feature, js: true do
 
   def testar_bairros
       select "UMARIZAL", from: "bairros"
+      expect(page).to have_css ".bairro", text: "UMARIZAL", count: 1
       select "PEDREIRA", from: "bairros"
+      expect(page).to have_css ".bairro", text: "PEDREIRA", count: 1
       select "UMARIZAL", from: "bairros"
+      expect(page).to have_css ".bairro", text: "UMARIZAL", count: 1
       expect(page).to have_content "Bairro já selecionado"
 
       within ".bairro:first-child" do

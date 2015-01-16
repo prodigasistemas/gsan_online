@@ -17,8 +17,8 @@
   </div>
 
   <div class="form-group">
-    <label for="titulo_logradouro_id">Título do logradouro <span class="required">*</span></label>
-    <select id="titulo_logradouro_id" ng-model="logradouro.titulo_logradouro_id" class="form-control" required>
+    <label for="titulo_logradouro_id">Título do logradouro</label>
+    <select id="titulo_logradouro_id" ng-model="logradouro.titulo_logradouro_id" class="form-control">
       <option value="">Selecione um tipo de logradouro</option>
       <option ng-repeat="titulo in titulo_logradouros" value="{{titulo.id}}">{{titulo.descricao}}</option>
     </select>
@@ -42,7 +42,7 @@
              reset-search-input="false"
              title="Choose an address"
              ng-disabled="false"
-             required
+             requiredg
              on-select="atualizaBairros()"
              id="municipios">
       <ui-select-match placeholder="Digite o nome de um município">{{logradouro.municipio.nome}}</ui-select-match>
@@ -57,7 +57,7 @@
     <div class="panel-body">
       <div class="form-group">
         <label for="bairros">Bairro</label>
-        <select id="bairros" ng-model="bairro" class="form-control" ng-disabled="!bairros.length" ng-change="adicionaBairro()" ng-options="bairro.nome for bairro in bairros" ng-required="bairros.length">
+        <select id="bairros" ng-model="bairro.selecionado" class="form-control" ng-disabled="!bairros.length" ng-change="adicionaBairro()" ng-options="bairro.nome for bairro in bairros">
         </select>
         <span class="help-block" style="color: #AA4C4C">{{bairro.resultado}}</span>
       </div>
@@ -89,7 +89,7 @@
         <div class="input-group col-md-3">
           <input type="text" id="codigo_cep" class="form-control" ng-model="cep.pesquisa" placeholder="Pesquisar CEP" />
           <span class="input-group-btn">
-            <button class="btn btn-info" type="button" ng-click="adicionarCEP()">Adicionar</button>
+            <button class="btn btn-info" type="button" ng-click="adicionarCEP()" ng-disabled="!cep.pesquisa">Adicionar</button>
           </span>
         </div>
         <span class="help-block" style="color: #AA4C4C">{{cep.resultado}}</span>
