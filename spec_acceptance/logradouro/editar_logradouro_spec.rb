@@ -44,17 +44,18 @@ describe "Como cadastrista", type: :feature, js: true do
     click_button "Pesquisar"
 
     expect(page).to have_content "ANTONIO BARRETO"
-    #expect(page).to have_content "BARRETAO"
     expect(page).to have_css ".logradouro_ativo", text: ""
 
     find(".logradouro:last-child").click_link "Editar"
 
-    expect(page).to have_css ".bairro", text: "CALADIM", count: 1
+    expect(page).to have_css ".bairro", text: "CALADIM", count: 0
     expect(page).to have_css ".bairro", text: "CONQUISTA", count: 1
     expect(page).to have_css "#cep_66050380", count: 1
   end
 
   def testar_ceps
+    expect(page).to have_css "#cep_77777777", count: 1
+
     within "#pesquisa_cep" do
       fill_in "codigo_cep", with: "12341234"
       click_button "Adicionar"
@@ -63,30 +64,29 @@ describe "Como cadastrista", type: :feature, js: true do
     expect(page).to have_css "#cep_12341234", count:  0
 
     within "#pesquisa_cep" do
-      fill_in "codigo_cep", with: "66050380"
-      click_button "Adicionar"
-    end
-
-    expect(page).to have_css "#cep_66050380", count: 1
-
-    within "#pesquisa_cep" do
-      fill_in "codigo_cep", with: "66050380"
+      fill_in "codigo_cep", with: "77777777"
       click_button "Adicionar"
       expect(page).to have_content "CEP já selecionado"
     end
-    expect(page).to have_css "#cep_66050380", count: 1
 
-    within "#cep_66050380" do
+    within "#cep_77777777" do
+      click_link "X"
+      click_link "Cancelar"
       click_link "X"
     end
-    expect(page).to have_css "#cep_66050380", count: 0
+    expect(page).to have_css "#cep_77777777", count: 1
   end
 
   def testar_bairros
+      expect(page).to have_css ".bairro", text: "CALADIM", count: 1
+
       select "CONQUISTA", from: "bairros"
       expect(page).to have_css ".bairro", text: "CONQUISTA", count: 1
+
       select "CALADIM", from: "bairros"
       expect(page).to have_css ".bairro", text: "CALADIM", count: 1
+      expect(page).to have_content "Bairro já selecionado"
+
       select "CONQUISTA", from: "bairros"
       expect(page).to have_css ".bairro", text: "CONQUISTA", count: 1
       expect(page).to have_content "Bairro já selecionado"
@@ -98,7 +98,9 @@ describe "Como cadastrista", type: :feature, js: true do
 
       within ".bairro[data-logradouro-bairro-nome='CALADIM']" do
         click_link "X"
+        click_link "Cancelar"
+        click_link "X"
       end
-      expect(page).to have_css ".bairro", text: "CALADIM", count: 0
+      expect(page).to have_css ".bairro", text: "CALADIM", count: 1
   end
 end
