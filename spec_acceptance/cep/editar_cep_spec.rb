@@ -22,9 +22,9 @@ describe "Como um cadastrista", type: :feature, js: true do
     expect(page).to have_content "CEP atualizado com sucesso"
 
     fill_in "cep_codigo",           with: "66050383"
-    fill_in "cep_municipio",        with: "bel"
-    fill_in "cep_bairro",           with: "umar"
-    fill_in "cep_logradouro",       with: "oliv"
+    fill_in "filtro_municipio",        with: "bel"
+    fill_in "filtro_bairro",           with: "umar"
+    fill_in "filtro_logradouro",       with: "oliv"
     select "RUA",                   from: "cep_tipo_logradouro"
     select "ÚNICO",                 from: "cep_tipo_id"
     select "PA",                    from: "cep_uf"
