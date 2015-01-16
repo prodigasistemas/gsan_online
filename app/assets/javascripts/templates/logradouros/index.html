@@ -1,2 +1,49 @@
+<div class="alert alert-success" ng-show="flash.getMessage()">{{flash.getMessage()}}</div>
 
-<a href="/logradouros/novo">Criar Logradouro</a>
+<header class="with_actions">
+  <h1>Logradouros</h1>
+
+  <nav class="actions">
+    <a href="/logradouros/novo" class="btn btn-primary">Criar Logradouro</a>
+  </nav>
+</header>
+
+<div ng-include="'logradouros/filter.html'"></div>
+
+<div ng-show="logradouros.length">
+  <nav>
+    <ul class="pagination">
+      <li ng-class="{disabled: page.first_page}">
+        <a href ng-click="pagina(-1)">Anterior</a>
+      </li>
+      <li><span>Página {{page.current_page}} de {{page.total_pages}}</span></li>
+      <li ng-class="{disabled: page.last_page}">
+        <a href ng-click="pagina(1)">Próximo</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="panel panel-default">
+    <div class="panel-heading">Logradouros</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Município</th>
+          <th>Código do Logradouro</th>
+          <th>Nome do Logradouro</th>
+          <th>Titulo de Logradouro</th>
+          <th>Ativo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="logradouro_{{logradouro.id}}" class="logradouro" ng-repeat="logradouro in logradouros">
+          <td>{{logradouro.municipio.nome}}</td>
+          <td>{{logradouro.id}}</td>
+          <td>{{logradouro.nome}}</td>
+          <td></td>
+          <td class="logradouro_ativo"><span yes-no="logradouro.ativo"></span></td>
+          <td><a class="btn btn-info" ng-href="/logradouros/{{logradouro.id}}/editar">Editar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

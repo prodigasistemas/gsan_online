@@ -1,0 +1,35 @@
+<div class="panel panel-default panel-filter">
+  <form ng-submit="pesquisar()" class="form-inline filter">
+    <div class="panel-body">
+      <div class="form-group">
+        <ui-select ng-model="municipioSelecionado"
+                 theme="bootstrap"
+                 ng-disabled="disabled"
+                 reset-search-input="false"
+                 title="Escolha um município"
+                 ng-disabled="false"
+                 on-select="atualizarMunicipio($item, $model)"
+                 id="bairro_municipio_id">
+          <ui-select-match placeholder="Município">{{municipioSelecionado.nome}} | {{municipioSelecionado.uf.descricao}}</ui-select-match>
+          <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
+            {{municipio.nome}} | {{municipio.uf.descricao}}
+          </ui-select-choices>
+        </ui-select>
+        {{municipioSelecionado}}
+      </div>
+
+      <div class="form-group">
+        <input id="logradouro_nome" ng-model="query.nome" type="text" class="form-control" placeholder="Nome">
+      </div>
+    </div>
+
+    <div class="panel-footer clearfix">
+      <div class="pull-left">
+        <button class="btn btn-primary" ng-disabled="queryVazia() || loading">Pesquisar</button>
+        <span ng-show="loading"><%= image_tag "spinner.gif" %></span>
+      </div>
+
+      <div class="pull-right" ng-show="logradouros.length">Total de resultados: {{page.total}}</div>
+    </div>
+  </form>
+</div>
