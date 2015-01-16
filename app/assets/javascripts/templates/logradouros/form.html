@@ -1,11 +1,4 @@
-<div class="alert alert-danger" ng-show="formErrors">
-  <button ng-click="formErrors = undefined" class="close" aria-label="Close" type="button">
-    <span aria-hidden="true">×</span>
-  </button>
-  <ul>
-    <li ng-repeat="erro in formErrors.errors">{{erro}}</li>
-  </ul>
-</div>
+<div ng-include="'shared/form_errors.html'"></div>
 
 <form name="form" ng-submit="submeter()">
   <div class="form-group">
@@ -42,7 +35,7 @@
              reset-search-input="false"
              title="Choose an address"
              ng-disabled="false"
-             requiredg
+             required
              on-select="atualizaBairros()"
              id="municipios">
       <ui-select-match placeholder="Digite o nome de um município">{{logradouro.municipio.nome}} | {{logradouro.municipio.uf.descricao}}</ui-select-match>

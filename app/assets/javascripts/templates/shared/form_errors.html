@@ -1,0 +1,8 @@
+<div class="alert alert-danger" ng-show="formErrors">
+  <button ng-click="formErrors = undefined" class="close" aria-label="Close" type="button">
+    <span aria-hidden="true">×</span>
+  </button>
+  <ul>
+    <li ng-repeat="erro in formErrors">{{erro}}</li>
+  </ul>
+</div>
