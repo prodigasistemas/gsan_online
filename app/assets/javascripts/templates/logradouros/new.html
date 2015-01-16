@@ -7,7 +7,7 @@
   </ul>
 </div>
 
-<form class="">
+<form ng-submit="submeter()">
   <div class="form-group">
     <label for="tipo_logradouro">Tipo do logradouro <span class="required">*</span></label>
     <select id="tipo_logradouro" ng-model="logradouro.tipo_logradouro" class="form-control" required>
@@ -87,7 +87,7 @@
         <div class="input-group col-md-3">
           <input type="text" id="codigo_cep" class="form-control" ng-model="cep.pesquisa" placeholder="Pesquisar CEP" />
           <span class="input-group-btn">
-            <button class="btn btn-info" type="button" ng-click="adicionarCEP()">Go!</button>
+            <button class="btn btn-info" type="button" ng-click="adicionarCEP()">Adicionar</button>
           </span>
         </div>
         <span class="help-block" style="color: #AA4C4C">{{cep.resultado}}</span>
@@ -98,8 +98,16 @@
 
         <div class="table-scroll">
           <table class="table table-hover">
+            <thead>
+              <th>Código</th>
+              <th>UF</th>
+              <th>Município</th>
+              <th>Bairro</th>
+              <th>Logradouro</th>
+              <th></th>
+            </thead>
             <tbody>
-              <tr ng-repeat="cep in logradouro.ceps">
+              <tr id="cel_{{cep.codigo}}" ng-repeat="cep in logradouro.ceps">
                 <td>{{cep.codigo}}</td>
                 <td>{{cep.uf}}</td>
                 <td>{{cep.municipio}}</td>
