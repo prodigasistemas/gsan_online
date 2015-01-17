@@ -14,7 +14,8 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
   $scope.atualizaBairros = function() {
     $scope.logradouro.municipio_id = $scope.logradouro.municipio.id;
 
-    var query = $.param({ query: { muni_id: $scope.logradouro.municipio.id}, paginado: false });
+    var query = $.param({ query: { municipio_id: $scope.logradouro.municipio.id}, paginado: false });
+
     $http.get(CadastroUrl() + "/bairros?" + query).success(function(data) {
       $scope.bairros = data.bairros;
       $scope.bairro = {}

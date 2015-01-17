@@ -1,14 +1,15 @@
 #!/bin/bash
 
 cd ../gsan_cadastro
-rm log/test.log
-rm log/development.log
+[ -e "log/test.log" ] && rm log/test.log
+[ -e "log/development.log" ] && rm log/development.log
+
 RAILS_ENV=test rake db:seed
 RAILS_ENV=test rails s -p 3002 -d
 
 cd ../gsan_online
-rm log/test.log
-rm log/development.log
+[ -e "log/test.log" ] && rm log/test.log
+[ -e "log/development.log" ] && rm log/development.log
 
 if [ "$1" = "" ]; then
   rspec spec_acceptance

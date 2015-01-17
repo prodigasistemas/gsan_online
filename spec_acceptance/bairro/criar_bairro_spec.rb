@@ -1,12 +1,14 @@
 require "rails_helper"
 
 describe "Como um cadastrista", type: :feature, js: true do
-  it "eu posso cadastrar um bairro" do
+  before do
     visit root_path
 
     click_link "Bairros"
     click_link "Criar Bairro"
+  end
 
+  it "eu posso cadastrar um bairro não existente" do
     select "BELEM - PA",                 from: "bairro_municipio_id"
     fill_in "bairro_codigo",             with: "1010"
     fill_in "bairro_nome",               with: "JURUNAS"
