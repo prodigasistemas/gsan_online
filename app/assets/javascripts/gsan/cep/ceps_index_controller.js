@@ -18,26 +18,15 @@ app.controller("CepsIndexController", ["Cep", "CepTipo", "Municipio", "TipoLogra
     return true;
   };
 
-  $scope.pagina = function(soma) {
-    if ($scope.page.current_page + soma > $scope.page.total_pages ||
-        $scope.page.current_page + soma < 1) {
-      return
-    }
-    $scope.queryCache.page = $scope.page.current_page + soma;
-
-    submeterPesquisa();
-  };
-
   $scope.pesquisar = function() {
     var copiedQuery = jQuery.extend({},$scope.query);
     $scope.queryCache = { query: copiedQuery, page: 1 };
-    submeterPesquisa();
+    $scope.submeterPesquisa();
   };
 
-  var submeterPesquisa = function() {
+  $scope.submeterPesquisa = function() {
     var query = $.param($scope.queryCache);
     $scope.loading = true;
-
     $http.get(CadastroUrl() + "/ceps?" + query)
     .success(function(data) {
       $scope.ceps = data.ceps;

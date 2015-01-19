@@ -11,17 +11,8 @@
 <div ng-include="'ceps/filter.html'"></div>
 
 <div ng-show="ceps.length">
-  <nav>
-    <ul class="pagination">
-      <li ng-class="{disabled: page.first_page}">
-        <a href ng-click="pagina(-1)">Anterior</a>
-      </li>
-      <li><span>Página {{page.current_page}} de {{page.total_pages}}</span></li>
-      <li ng-class="{disabled: page.last_page}">
-        <a href ng-click="pagina(1)">Próximo</a>
-      </li>
-    </ul>
-  </nav>
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
   <div class="panel panel-default">
     <div class="panel-heading">CEPs</div>
     <table class="table table-striped">

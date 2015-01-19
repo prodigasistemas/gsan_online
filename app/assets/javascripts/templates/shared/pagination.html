@@ -1,0 +1,11 @@
+<nav>
+  <ul class="pagination">
+    <li ng-class="{disabled: page.first_page}">
+      <a href ng-click="pagina(-1)">Anterior</a>
+    </li>
+    <li><span>Página {{page.current_page}} de {{page.total_pages}}</span></li>
+    <li ng-class="{disabled: page.last_page}">
+      <a href ng-click="pagina(1)">Próximo</a>
+    </li>
+  </ul>
+</nav>

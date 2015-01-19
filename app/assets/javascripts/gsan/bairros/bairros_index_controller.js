@@ -16,20 +16,10 @@ app.controller("BairrosIndexController", ["Municipio", "Flash", "$scope", "$http
     return true;
   }
 
-  $scope.pagina = function(soma) {
-    if ($scope.page.current_page + soma < $scope.page.total_pages ||
-      $scope.page.current_page + soma < 1) {
-      return
-    }
-    $scope.queryCache.page = $scope.page.current_page + soma;
-
-    submeterPesquisa();
-  }
-
   $scope.pesquisar = function() {
     var copiedQuery = jQuery.extend({}, $scope.query);
     $scope.queryCache = { query: copiedQuery };
-    submeterPesquisa();
+    $scope.submeterPesquisa();
   }
 
   $scope.atualizarMunicipio = function($item, $model) {
@@ -43,7 +33,7 @@ app.controller("BairrosIndexController", ["Municipio", "Flash", "$scope", "$http
     }
   })
 
-  var submeterPesquisa = function() {
+  $scope.submeterPesquisa = function() {
     var query = $.param($scope.queryCache);
     $scope.loading = true;
     $http.get(CadastroUrl() + "/bairros?" + query)
