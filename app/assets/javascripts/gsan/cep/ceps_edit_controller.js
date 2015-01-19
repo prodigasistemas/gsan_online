@@ -15,7 +15,7 @@ app.controller("CepsEditController", ["Cep", "CepTipo", "Municipio", "TipoLograd
     $scope.cep.bairro = "";
     $scope.cep.muni_id = $scope.cep.municipio.id;
 
-    var query = $.param({ query: { municipio_id: $scope.cep.municipio.id} })
+    var query = $.param({ query: { municipio_id: $scope.cep.municipio.id}, paginado: false })
     $http.get(CadastroUrl() + "/bairros?" + query).success(function(data) {
       $scope.bairros = data.bairros;
     });

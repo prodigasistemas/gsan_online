@@ -6,7 +6,7 @@ app.controller("MunicipiosNewController", ["Municipio", "UnidadeFederacao", "Mic
   $scope.micro_regioes = MicroRegiao.query();
   $scope.regioes_desenvolvimento = RegiaoDesenvolvimento.query();
 
-  $scope.municipio = {ativo: 2};
+  $scope.municipio = {ativo: 1};
 
   $scope.submeter = function() {
     var municipio = new Municipio({municipio: $scope.municipio});

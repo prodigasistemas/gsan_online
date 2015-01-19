@@ -1,7 +1,7 @@
 var app = angular.module("gsan");
 
 app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "TituloLogradouro", "Municipio", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$filter", function(Logradouro, TipoLogradouro, TituloLogradouro, Municipio, CadastroUrl, $scope, $http, $location, Flash, $filter) {
-  $scope.logradouro = { ativo: 2 };
+  $scope.logradouro = { ativo: 1 };
   $scope.bairro = {};
   $scope.cep = {};
   $scope.logradouro.bairros = [];
@@ -15,7 +15,6 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
     $scope.logradouro.municipio_id = $scope.logradouro.municipio.id;
 
     var query = $.param({ query: { municipio_id: $scope.logradouro.municipio.id}, paginado: false });
-
     $http.get(CadastroUrl() + "/bairros?" + query).success(function(data) {
       $scope.bairros = data.bairros;
       $scope.bairro = {}
