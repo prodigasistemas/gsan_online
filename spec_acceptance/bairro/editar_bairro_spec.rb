@@ -10,7 +10,6 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     find(".bairro:last-child").click_link "Editar"
 
-    select "BELEM - PA",                from: "bairro_municipio_id"
     fill_in "bairro_codigo",            with: "12345"
     fill_in "bairro_nome",              with: "TAPANA"
     fill_in "bairro_codigo_prefeitura", with: "121"

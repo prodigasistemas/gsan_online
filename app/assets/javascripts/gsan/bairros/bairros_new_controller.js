@@ -5,6 +5,10 @@ app.controller("BairrosNewController", ["Bairro", "Municipio", "CadastroUrl", "$
 
   $scope.municipios = Municipio.query();
 
+  $scope.atualizaMunicipioId = function() {
+    $scope.bairro.municipio_id = $scope.bairro.municipio.id;
+  };
+
   $scope.submeter = function() {
     var bairro = new Bairro({bairro: $scope.bairro});
     bairro.$save(function() {

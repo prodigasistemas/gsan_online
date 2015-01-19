@@ -19,11 +19,10 @@ textarea.ng-dirty.ng-invalid {
 }
 
 form.filter .ui-select-container  {
-  width: 174px;
+  min-width: 300px;
 }
 
 form.filter .ui-select-container button {
-  width: 100%;
   text-align: left;
 }
 

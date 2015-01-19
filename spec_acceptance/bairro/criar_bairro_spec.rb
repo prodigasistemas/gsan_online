@@ -9,7 +9,7 @@ describe "Como um cadastrista", type: :feature, js: true do
   end
 
   it "eu posso cadastrar um bairro não existente" do
-    select "BELEM - PA",                 from: "bairro_municipio_id"
+    select_from_autocomplete("bel", "BELEM | PARA", "municipios")
     fill_in "bairro_codigo",             with: "1010"
     fill_in "bairro_nome",               with: "JURUNAS"
     fill_in "bairro_codigo_prefeitura",  with: "212"

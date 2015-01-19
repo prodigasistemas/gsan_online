@@ -2,11 +2,21 @@
 
 <form ng-submit="submeter()" name="form" novalidate>
   <div class="form-group">
-    <label for="bairro_municipio_id">Município <span class="required">*</span></label>
-    <select id="bairro_municipio_id" ng-model="bairro.municipio_id" class="form-control" required>
-      <option value="">Selecione o Município</option>
-      <option ng-repeat="municipio in municipios" value="{{municipio.id}}" ng-selected="bairro.municipio_id === municipio.id">{{municipio.nome}} - {{municipio.uf.sigla}}</option>
-    </select>
+    <label for="minicipios" class="control-label">Município <span class="required">*</span></label>
+    <ui-select ng-model="bairro.municipio"
+             theme="bootstrap"
+             ng-disabled="disabled"
+             reset-search-input="false"
+             title="Selecione um Município"
+             ng-disabled="false"
+             required
+             on-select="atualizaMunicipioId()"
+             id="municipios">
+      <ui-select-match placeholder="Digite o nome de um município">{{bairro.municipio.nome}} | {{bairro.municipio.uf.descricao}}</ui-select-match>
+      <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
+        {{municipio.nome}} | {{municipio.uf.descricao}}
+      </ui-select-choices>
+    </ui-select>
   </div>
 
   <div class="form-group">

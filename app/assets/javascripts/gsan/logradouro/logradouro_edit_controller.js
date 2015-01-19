@@ -2,7 +2,7 @@ var app = angular.module("gsan");
 
 app.controller("LogradourosEditController", ["Logradouro", "TipoLogradouro", "TituloLogradouro", "Municipio", "CadastroUrl", "$scope", "$http", "$location", "$filter", "$route", "Flash", function(Logradouro, TipoLogradouro, TituloLogradouro, Municipio, CadastroUrl, $scope, $http, $location, $filter, $route, Flash) {
   $scope.logradouro = Logradouro.get({id: $route.current.params.id}, function(data) {
-   $scope.atualizaBairros();
+    $scope.atualizaBairros();
   });
   $scope.bairro = {};
   $scope.cep = {};
