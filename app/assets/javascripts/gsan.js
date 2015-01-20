@@ -54,6 +54,20 @@ app.config(['$routeProvider', '$locationProvider',
       when('/distrito_operacionais', {
         templateUrl: 'distrito_operacionais/index.html',
         controller: 'DistritoOperacionaisIndexController'
+      when('/clientes', {
+        templateUrl: 'clientes/index.html',
+        controller: 'ClientesIndexController',
+        label: 'Clientes'
+      }).
+      when('/clientes/novo', {
+        templateUrl: 'clientes/new.html',
+        controller: 'ClientesNewController',
+        label: 'Novo'
+      }).
+      when('/clientes/:id/editar', {
+        templateUrl: 'clientes/edit.html',
+        controller: 'ClientesEditController',
+        label: 'Editar'
       }).
       when('/micro_regioes', {
         templateUrl: 'micro_regioes/index.html',

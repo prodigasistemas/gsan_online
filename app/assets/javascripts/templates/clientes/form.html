@@ -1,0 +1,40 @@
+<div ng-include="'shared/form_errors.html'"></div>
+
+<form ng-submit="submeter()" name="form" novalidate>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Nome e tipo</h3>
+    </div>
+    <div class="panel-body">
+      <div ng-include="'clientes/form_nome.html'"></div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Pessoa</h3>
+    </div>
+    <div class="panel-body">
+      <div ng-include="'clientes/form_pessoa_fisica.html'"></div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Endereços</h3>
+    </div>
+    <div class="panel-body">
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Telefones</h3>
+    </div>
+    <div class="panel-body">
+    </div>
+  </div>
+
+  <input type="submit" value="Salvar Cliente" class="btn btn-primary" ng-disabled="form.$invalid">
+</form>

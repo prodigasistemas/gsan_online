@@ -1,0 +1,25 @@
+<div class="panel panel-default panel-filter">
+  <form ng-submit="pesquisar()" class="form-inline filter">
+    <div class="panel-body">
+      <div class="form-group">
+        <input id="cliente_nome" ng-model="query.nome" type="text" class="form-control" placeholder="Nome">
+      </div>
+      <div class="form-group">
+        <input id="cliente_cpf" ng-model="query.cpf" type="text" class="form-control" placeholder="CPF">
+      </div>
+      <div class="form-group">
+        <input id="cliente_cnpj" ng-model="query.cnpj" type="text" class="form-control" placeholder="CNPJ">
+      </div>
+
+    </div>
+
+    <div class="panel-footer clearfix">
+      <div class="pull-left">
+        <button class="btn btn-primary" ng-disabled="queryVazia() || loading">Pesquisar</button>
+        <span ng-show="loading"><%= image_tag "spinner.gif" %></span>
+      </div>
+
+      <div class="pull-right" ng-show="clientes.length">Total de resultados: {{page.total}}</div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,39 @@
+<div ng-include="'shared/breadcrumbs.html'"></div>
+<div class="alert alert-success" ng-show="flash.getMessage()">{{flash.getMessage()}}</div>
+
+<header class="with-actions">
+  <h1>Clientes</h1>
+
+  <nav class="actions">
+    <a href="/clientes/novo" class="btn btn-primary">Criar cliente</a>
+  </nav>
+</header>
+
+<div ng-include="'clientes/filter.html'"></div>
+
+<div ng-show="clientes.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Clientes</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>CNPJ</th>
+          <th>CPF</th>
+          <th>Ativo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="cliente_{{cliente.id}}" class="cliente" ng-repeat="cliente in clientes">
+          <td>{{cliente.nome}}</td>
+          <td>{{cliente.cnpj}}</td>
+          <td>{{cliente.cpf}}</td>
+          <td class="logradouro_ativo"><span yes-no="cliente.ativo"></span></td>
+          <td><!-- <a class="btn btn-info" ng-href="/clientes/{{cliente.id}}/editar">Editar</a> --></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
