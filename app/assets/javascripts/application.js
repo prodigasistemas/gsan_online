@@ -12,8 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require lib/angular.min
-//= require_tree ./lib
+//= require vendor
 //= require angular-rails-templates
 //= require_tree ./templates
 //= require gsan

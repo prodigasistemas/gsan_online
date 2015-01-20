@@ -10,10 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require font-awesome
- *= require lib/bootstrap.min
- *= requrie lib/bootstrap-theme
- *= require lib/select
+ *= require vendor
  *= require header
  *= require dashboard
  *= require form
