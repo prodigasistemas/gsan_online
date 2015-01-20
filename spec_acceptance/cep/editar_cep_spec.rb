@@ -7,7 +7,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     click_link "CEPs"
     fill_in "cep_codigo", with: "66666666"
     click_button "Pesquisar"
-    find('tr.cep:last-child').click_link("Editar")
+    find('tr.cep:last-child a').click
 
     fill_in "cep_codigo",           with: "66050383"
     select "ÚNICO",                 from: "cep_tipo_id"
