@@ -1,10 +1,11 @@
 var app = angular.module("gsan");
 
-app.controller("BairrosEditController", ["Bairro", "Municipio", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", function(Bairro, Municipio, CadastroUrl, $scope, $http, $location, Flash, $route) {
+app.controller("BairrosEditController", ["Bairro", "Municipio", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", "breadcrumbs", function(Bairro, Municipio, CadastroUrl, $scope, $http, $location, Flash, $route, breadcrumbs) {
   $scope.bairro = Bairro.get({id: $route.current.params.id}, function(data) {
     $scope.atualizaMunicipioId();
   });
   $scope.municipios = Municipio.query();
+  $scope.breadcrumbs = breadcrumbs;
 
   $scope.atualizaMunicipioId = function() {
     $scope.bairro.municipio_id = $scope.bairro.municipio.id;

@@ -1,24 +1,43 @@
-#main_header {
-  border-bottom: 1px solid #CCD6EB;
-  margin-bottom: 20px;
+#main-header {
+  background: #1659BF;
+  padding: 20px 0 20px 0;
 }
 
-#main_header  h1 {
+#main-header  h1 {
   display: inline;
   vertical-align: middle;
-  color: #777777;
-  font-size: 18px;
+  color: #fff;
+  font-size: 16px;
 }
 
-#logo {
-  width: 75px;
+#main-header .nav-user{
+  margin: 10px 0 0 0;
+  text-align: center;
 }
 
-header.with_actions h1 {
+#main-header .nav-user li a.nav-user-main{
+  color: #fff;
+}
+
+#main-header .nav-user li a:hover, .nav-user li a:focus{
+  background: transparent;
+}
+
+#main-header .nav-user .open > a, .nav-user .open > a:hover, .nav-user .open > a:focus {
+    background-color: transparent;
+    border-color: #337ab7;
+}
+
+header.with-actions h1 {
   display: inline-block;
 }
 
-header.with_actions nav {
+header.with-actions nav {
   float: right;
   margin-top: 20px;
+}
+
+.header-user-settings{
+  border-left: 1px solid #1F457A;
+  height: 60px;
 }

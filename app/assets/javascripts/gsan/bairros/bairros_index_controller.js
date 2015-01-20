@@ -1,11 +1,12 @@
 var app = angular.module("gsan");
 
-app.controller("BairrosIndexController", ["Municipio", "Flash", "$scope", "$http", "CadastroUrl", function(Municipio, Flash, $scope, $http, CadastroUrl) {
+app.controller("BairrosIndexController", ["Municipio", "Flash", "$scope", "$http", "CadastroUrl", "breadcrumbs", function(Municipio, Flash, $scope, $http, CadastroUrl, breadcrumbs) {
   $scope.flash = Flash;
   $scope.query = {};
 
   $scope.municipios = Municipio.query();
   $scope.municipioSelecionado = "";
+  $scope.breadcrumbs = breadcrumbs;
 
   $scope.queryVazia = function() {
     for(var input in $scope.query) {

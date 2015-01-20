@@ -1,9 +1,9 @@
 var app = angular.module("gsan");
 
-app.controller("CepsIndexController", ["Cep", "CepTipo", "Municipio", "TipoLogradouro", "UnidadeFederacao", "Flash", "$scope", "$http", "CadastroUrl", function(Cep, CepTipo, Municipio, TipoLogradouro, UnidadeFederacao, Flash, $scope, $http, CadastroUrl) {
+app.controller("CepsIndexController", ["Cep", "CepTipo", "Municipio", "TipoLogradouro", "UnidadeFederacao", "Flash", "$scope", "$http", "CadastroUrl", "breadcrumbs", function(Cep, CepTipo, Municipio, TipoLogradouro, UnidadeFederacao, Flash, $scope, $http, CadastroUrl, breadcrumbs) {
   $scope.flash = Flash;
   $scope.query = {};
-
+  $scope.breadcrumbs = breadcrumbs;
   $scope.cepTipos = CepTipo.query();
   $scope.municipios = Municipio.query();
   $scope.tipo_logradouros = TipoLogradouro.query();

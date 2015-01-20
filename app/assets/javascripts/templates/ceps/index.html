@@ -1,6 +1,8 @@
+<div ng-include="'shared/breadcrumbs.html'"></div>
+
 <div class="alert alert-success" ng-show="flash.getMessage()">{{flash.getMessage()}}</div>
 
-<header class="with_actions">
+<header class="with-actions">
   <h1>CEPs</h1>
 
   <nav class="actions">
@@ -26,7 +28,7 @@
           <th>Logradouro</th>
           <th>Bairro</th>
           <th>Ativo</th>
-          <th></th>
+          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
@@ -39,7 +41,7 @@
           <td>{{cep.logradouro}}</td>
           <td>{{cep.bairro}}</td>
           <td class="cep_ativo"><span yes-no="cep.ativo"></span></td>
-          <td><a class="btn btn-info" ng-href="/ceps/{{cep.id}}/editar">Editar</a></td>
+          <td><a class="btn btn-info" ng-href="/ceps/{{cep.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
         </tr>
       </tbody>
     </table>

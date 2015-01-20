@@ -66,6 +66,8 @@ GEM
     erubis (2.7.0)
     execjs (2.2.2)
     ffi (1.9.6)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -193,6 +195,7 @@ DEPENDENCIES
   byebug
   capybara
   chromedriver-helper
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   pg
