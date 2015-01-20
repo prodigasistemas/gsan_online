@@ -4,7 +4,7 @@ cd ../gsan_cadastro
 [ -e "log/test.log" ] && rm log/test.log
 [ -e "log/development.log" ] && rm log/development.log
 
-RAILS_ENV=test rake db:seed
+RAILS_ENV=test ACCEPTANCE_TEST=1 rake db:seed
 RAILS_ENV=test rails s -p 3002 -d
 
 cd ../gsan_online
