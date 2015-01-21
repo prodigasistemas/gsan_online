@@ -41,9 +41,8 @@ header.with-actions h1 {
   display: inline-block;
 }
 
-header.with-actions nav {
-  float: right;
-  margin-top: 20px;
+.main .actions {
+  margin: 0 0 20px 0;
 }
 
 .header-user-settings{

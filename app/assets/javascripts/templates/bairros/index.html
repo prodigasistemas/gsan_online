@@ -1,12 +1,10 @@
 <div class="alert alert-success" ng-show="flash.getMessage()">{{flash.getMessage()}}</div>
 
-<header class="with-actions">
-	<h1>Bairros</h1>
+<page-header titulo="Bairros"></page-header>
 
-  <nav class="actions">
-    <a href="/bairros/novo" class="btn btn-primary">Criar Bairro</a>
-  </nav>
-</header>
+<div class="actions clearfix">
+  <a href="/bairros/novo" class="btn btn-primary pull-right">Criar Bairro</a>
+</div>
 
 <div ng-include="'bairros/filter.html'"></div>
 

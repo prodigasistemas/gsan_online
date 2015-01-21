@@ -1,12 +1,10 @@
 <div class="alert alert-success" ng-show="flash.getMessage()">{{flash.getMessage()}}</div>
 
-<header class="with-actions">
-  <h1>CEPs</h1>
+<page-header titulo="CEPs"></page-header>
 
-  <nav class="actions">
-    <a href="/ceps/novo" class="btn btn-primary">Criar CEP</a>
-  </nav>
-</header>
+<div class="actions clearfix">
+  <a href="/ceps/novo" class="btn btn-primary pull-right">Criar CEP</a>
+</div>
 
 <div ng-include="'ceps/filter.html'"></div>
 

@@ -35,7 +35,6 @@ body{
   }
 }
 
-/* Sidebar navigation */
 .nav-sidebar {
   margin-right: -21px; /* 20px padding + 1px border */
   margin-bottom: 20px;
@@ -52,24 +51,22 @@ body{
   background-color: #428bca;
 }
 
-
-/*
- * Main content
- */
-
 .main {
-  padding: 20px;
   background: #fff;
   min-height: 800px;
 }
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-}
 .main .page-header {
-  margin-top: 0;
+  border: 1px solid #DDDDDD;
+  background: #F5F5F5;
+  padding: 0 0 10px 10px;
+}
+
+.main .page-header a{
+  display: block;
+  padding: 22px;
+  margin-top: 5px;
+  font-size: 14px;
+  border-right: 1px solid #DDDDDD;
 }
 
 .placeholders {
