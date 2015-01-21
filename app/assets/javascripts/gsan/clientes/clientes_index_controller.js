@@ -1,9 +1,8 @@
 var app = angular.module("gsan");
 
-app.controller("ClientesIndexController", ["Flash", "$scope", "$http", "CadastroUrl", "breadcrumbs", function(Flash, $scope, $http, CadastroUrl, breadcrumbs) {
+app.controller("ClientesIndexController", ["Flash", "$scope", "$http", "CadastroUrl", function(Flash, $scope, $http, CadastroUrl) {
   $scope.flash = Flash;
   $scope.query = {};
-  $scope.breadcrumbs = breadcrumbs;
 
   $scope.queryVazia = function() {
     for(var input in $scope.query) {

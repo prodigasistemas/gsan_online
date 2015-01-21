@@ -1,0 +1,63 @@
+<a href ng-hide="pesquisarNovoResponsavelSuperior" ng-click="mostrarPesquisaNovoResponsavelSuperior()" class="btn btn-default form-control">
+  <span ng-show="cliente.responsavelSuperior" id="responsavel_superior_selecionado">{{cliente.responsavelSuperior.nome}}</span>
+  <span ng-hide="cliente.responsavelSuperior">Selecionar cliente responsável superior</span>
+</a>
+
+<div class="panel panel-default" ng-show="pesquisarNovoResponsavelSuperior">
+  <div class="panel-heading">
+    <h3 class="panel-title">Pesquisar</h3>
+  </div>
+  <div class="panel-body">
+    <div id="pesquisa_cliente_responsavel">
+      <div class="form-group">
+        <label for="cliente_responsavel_superior_cnpj" class="control-label col-sm-3">CNPJ</label>
+        <div class="col-sm-9">
+          <input id="cliente_responsavel_superior_cnpj" ng-model="$parent.cliente_responsavel_superior.cnpj" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cliente_responsavel_superior_nome" class="control-label col-sm-3">Nome</label>
+        <div class="col-sm-9">
+          <input id="cliente_responsavel_superior_nome" ng-model="$parent.cliente_responsavel_superior.nome" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cliente_responsavel_superior_esfera_poder_id" class="control-label col-sm-3">Esfera de poder</label>
+        <div class="col-sm-9">
+          <select id="cliente_responsavel_superior_esfera_poder_id" ng-model="$parent.cliente_responsavel_superior.esfera_poder_id" class="form-control">
+            <option value="">Selecione uma esfera de poder...</option>
+            <option ng-repeat="esfera in esferasPoder" value="{{tipo.id}}">{{esfera.descricao}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+          <a href class="btn btn-info" ng-click="pesquisarClienteResponsavel()" ng-disabled="loadingClientesResponsaveis">Pesquisar responsável superior</a>
+          <span ng-show="loadingClientesResponsaveis"><%= image_tag "spinner.gif" %></span>
+        </div>
+      </div>
+    </div>
+    <div id="clientes_responsaveis" ng-show="responsaveisSuperiores.length">
+      <pagination page="clienteResponsabelPage" query-cache="clienteResponsavelQueryCache" submeter-pesquisa="submeterPesquisaClienteResponsavel" />
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="responsavelSuperior in responsaveisSuperiores">
+            <td>{{responsavelSuperior.nome}}</td>
+            <td>{{responsavelSuperior.cnpj}}</td>
+            <td><a href ng-click="selecionarResponsavelSuperior(responsavelSuperior)">Selecionar</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
