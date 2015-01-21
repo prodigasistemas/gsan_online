@@ -1,11 +1,10 @@
 var app = angular.module("gsan");
 
-app.controller("MunicipiosNewController", ["Municipio", "UnidadeFederacao", "MicroRegiao", "RegiaoDesenvolvimento", "CadastroUrl", "$scope", "$http", "$location", "Flash", "breadcrumbs", function(Municipio, UnidadeFederacao, MicroRegiao, RegiaoDesenvolvimento, CadastroUrl, $scope, $http, $location, Flash, breadcrumbs) {
+app.controller("MunicipiosNewController", ["Municipio", "UnidadeFederacao", "MicroRegiao", "RegiaoDesenvolvimento", "CadastroUrl", "$scope", "$http", "$location", "Flash", function(Municipio, UnidadeFederacao, MicroRegiao, RegiaoDesenvolvimento, CadastroUrl, $scope, $http, $location, Flash) {
   $scope.municipio = {};
   $scope.unidade_federacoes = UnidadeFederacao.query();
   $scope.micro_regioes = MicroRegiao.query();
   $scope.regioes_desenvolvimento = RegiaoDesenvolvimento.query();
-  $scope.breadcrumbs = breadcrumbs;
   $scope.municipio = {ativo: 1};
 
   $scope.submeter = function() {

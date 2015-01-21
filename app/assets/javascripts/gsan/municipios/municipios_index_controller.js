@@ -1,14 +1,13 @@
 var app = angular.module("gsan");
 
-app.controller("MunicipiosIndexController", ["UnidadeFederacao", "MicroRegiao", "RegiaoDesenvolvimento", "Flash", "$scope", "$http", "CadastroUrl", "breadcrumbs", function(UnidadeFederacao, MicroRegiao, RegiaoDesenvolvimento, Flash, $scope, $http, CadastroUrl, breadcrumbs) {
+app.controller("MunicipiosIndexController", ["UnidadeFederacao", "MicroRegiao", "RegiaoDesenvolvimento", "Flash", "$scope", "$http", "CadastroUrl", function(UnidadeFederacao, MicroRegiao, RegiaoDesenvolvimento, Flash, $scope, $http, CadastroUrl) {
   $scope.flash = Flash;
   $scope.query = {};
 
   $scope.unidade_federacoes = UnidadeFederacao.query();
   $scope.micro_regioes = MicroRegiao.query();
   $scope.regioes_desenvolvimento = RegiaoDesenvolvimento.query();
-  $scope.breadcrumbs = breadcrumbs;
-
+  
   $scope.queryVazia = function() {
     for (var input in $scope.query) {
       if ($scope.query[input] !== "" && $scope.query[input] !== undefined) {
