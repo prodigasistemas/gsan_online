@@ -1,43 +1,60 @@
 <div ng-include="'shared/form_errors.html'"></div>
 
-<form ng-submit="submeter()" name="form" novalidate>
-  <div class="form-group">
-    <label for="minicipios" class="control-label">Município <span class="required">*</span></label>
-    <ui-select ng-model="bairro.municipio"
-             theme="bootstrap"
-             ng-disabled="disabled"
-             reset-search-input="false"
-             title="Selecione um Município"
-             ng-disabled="false"
-             required
-             on-select="atualizaMunicipioId()"
-             id="municipios">
-      <ui-select-match placeholder="Digite o nome de um município">{{bairro.municipio.nome}} | {{bairro.municipio.uf.descricao}}</ui-select-match>
-      <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
-        {{municipio.nome}} | {{municipio.uf.descricao}}
-      </ui-select-choices>
-    </ui-select>
-  </div>
+<form ng-submit="submeter()" class="form-horizontal" name="form" novalidate>
+  <div class="panel panel-default">
+    <div class="panel-heading">Dados do bairro</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="minicipios" class="control-label col-md-3">Município <span class="required">*</span></label>
+        <div class="col-md-4">
+          <ui-select ng-model="bairro.municipio"
+                   theme="bootstrap"
+                   ng-disabled="disabled"
+                   reset-search-input="false"
+                   title="Selecione um Município"
+                   ng-disabled="false"
+                   required
+                   on-select="atualizaMunicipioId()"
+                   id="municipios">
+            <ui-select-match placeholder="Digite o nome de um município">{{bairro.municipio.nome}} | {{bairro.municipio.uf.descricao}}</ui-select-match>
+            <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
+              {{municipio.nome}} | {{municipio.uf.descricao}}
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="bairro_codigo">Código <span class="required">*</span></label>
-    <input id="bairro_codigo" ng-model="bairro.codigo" class="form-control" required>
-  </div>
+      <div class="form-group">
+        <label for="bairro_codigo" class="control-label col-md-3">Código <span class="required">*</span></label>
+        <div class="col-md-3">
+          <input id="bairro_codigo" ng-model="bairro.codigo" class="form-control" required>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="bairro_nome">Nome <span class="required">*</span></label>
-    <input id="bairro_nome" ng-model="bairro.nome" class="form-control" required>
-  </div>
+      <div class="form-group">
+        <label for="bairro_nome" class="control-label col-md-3">Nome <span class="required">*</span></label>
+        <div class="col-md-6">
+          <input id="bairro_nome" ng-model="bairro.nome" class="form-control" required>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="bairro_codigo_prefeitura">Código na Prefeitura</label>
-    <input id="bairro_codigo_prefeitura" ng-model="bairro.codigo_prefeitura" class="form-control">
-  </div>
+      <div class="form-group">
+        <label for="bairro_codigo_prefeitura" class="control-label col-md-3">Código na Prefeitura</label>
+        <div class="col-md-3">
+          <input id="bairro_codigo_prefeitura" ng-model="bairro.codigo_prefeitura" class="form-control">
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="bairro_ativo">
-    <input id="bairro_ativo" type="checkbox" ng-model="bairro.ativo" ng-true-value="1" ng-false-value="2"> Ativo</label>
-  </div>
+      <div class="form-group">
+        <label for="bairro_ativo" class="control-label col-md-3">Ativo</label>
+        <div class="col-md3">
+          <input id="bairro_ativo" type="checkbox" ng-model="bairro.ativo" ng-true-value="1" ng-false-value="2">
+        </div>
+      </div>
 
-  <input type="submit" value="Salvar Bairro" class="btn btn-primary" ng-disabled="form.$invalid">
+    </div>
+    <div class="panel-footer">
+      <input type="submit" value="Salvar Bairro" class="btn btn-primary" ng-disabled="form.$invalid">
+    </div>
+  </div>
 </form>

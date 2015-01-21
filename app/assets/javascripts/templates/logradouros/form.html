@@ -1,134 +1,153 @@
 <div ng-include="'shared/form_errors.html'"></div>
 
-<form name="form" ng-submit="submeter()">
-  <div class="form-group">
-    <label for="logradouro_tipo_id">Tipo do logradouro <span class="required">*</span></label>
-    <select id="logradouro_tipo_id" ng-model="logradouro.logradouro_tipo_id" class="form-control" required>
-      <option value="">Selecione um tipo de logradouro</option>
-      <option ng-repeat="tipo in tipo_logradouros" value="{{tipo.id}}" ng-selected="logradouro.logradouro_tipo_id == tipo.id">{{tipo.descricao}}</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="titulo_logradouro_id">Título do logradouro</label>
-    <select id="titulo_logradouro_id" ng-model="logradouro.titulo_logradouro_id" class="form-control">
-      <option value="">Selecione um título de logradouro</option>
-      <option ng-repeat="titulo in titulo_logradouros" value="{{titulo.id}}" ng-selected="logradouro.titulo_logradouro_id == titulo.id">{{titulo.descricao}}</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="nome_logradouro" class="control-label">Nome do Logradouro <span class="required">*</span></label>
-    <input id="logradouro_nome" ng-model="logradouro.nome" type="text" class="form-control" placeholder="Nome do logradouro" required>
-  </div>
-
-  <div class="form-group">
-    <label for="nome_popular_logradouro" class="control-label">Nome Popular</label>
-    <input id="logradouro_nome_popular" ng-model="logradouro.nome_popular" type="text" class="form-control" placeholder="Nome popular">
-  </div>
-
-  <div class="form-group">
-    <label for="minicipios" class="control-label">Município <span class="required">*</span></label>
-    <ui-select ng-model="logradouro.municipio"
-             theme="bootstrap"
-             ng-disabled="disabled"
-             reset-search-input="false"
-             title="Selecione um Município"
-             ng-disabled="false"
-             required
-             on-select="atualizaBairros()"
-             id="municipios">
-      <ui-select-match placeholder="Digite o nome de um município">{{logradouro.municipio.nome}} | {{logradouro.municipio.uf.descricao}}</ui-select-match>
-      <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
-        {{municipio.nome}} | {{municipio.uf.descricao}}
-      </ui-select-choices>
-    </ui-select>
-  </div>
-
+<form name="form" class="form-horizontal" ng-submit="submeter()">
   <div class="panel panel-default">
-    <div class="panel-heading">Adicionar bairros</div>
+    <div class="panel-heading">Dados do logradouro</div>
     <div class="panel-body">
       <div class="form-group">
-        <label for="bairros">Bairro</label>
-        <select id="bairros" ng-model="bairro.selecionado" class="form-control" ng-disabled="!bairros.length" ng-change="adicionaBairro()" ng-options="bairro.nome for bairro in bairros">
-        </select>
-        <span class="help-block" style="color: #AA4C4C">{{bairro.resultado}}</span>
+        <label for="logradouro_tipo_id" class="control-label col-md-3">Tipo do logradouro <span class="required">*</span></label>
+        <div class="col-md-4">
+          <select id="logradouro_tipo_id" ng-model="logradouro.logradouro_tipo_id" class="form-control" required>
+            <option value="">Selecione um tipo de logradouro</option>
+            <option ng-repeat="tipo in tipo_logradouros" value="{{tipo.id}}" ng-selected="logradouro.logradouro_tipo_id == tipo.id">{{tipo.descricao}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="titulo_logradouro_id" class="control-label col-md-3">Título do logradouro</label>
+        <div class="col-md-4">
+          <select id="titulo_logradouro_id" ng-model="logradouro.titulo_logradouro_id" class="form-control">
+            <option value="">Selecione um título de logradouro</option>
+            <option ng-repeat="titulo in titulo_logradouros" value="{{titulo.id}}" ng-selected="logradouro.titulo_logradouro_id == titulo.id">{{titulo.descricao}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="nome_logradouro" class="control-label col-md-3">Nome do Logradouro <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input id="logradouro_nome" ng-model="logradouro.nome" type="text" class="form-control" placeholder="Nome do logradouro" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="nome_popular_logradouro" class="control-label col-md-3">Nome Popular</label>
+        <div class="col-md-9">
+          <input id="logradouro_nome_popular" ng-model="logradouro.nome_popular" type="text" class="form-control" placeholder="Nome popular">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="minicipios" class="control-label col-md-3">Município <span class="required">*</span></label>
+        <div class="col-md-4">
+          <ui-select ng-model="logradouro.municipio"
+                   theme="bootstrap"
+                   ng-disabled="disabled"
+                   reset-search-input="false"
+                   title="Selecione um Município"
+                   ng-disabled="false"
+                   required
+                   on-select="atualizaBairros()"
+                   id="municipios">
+            <ui-select-match placeholder="Digite o nome de um município">{{logradouro.municipio.nome}} | {{logradouro.municipio.uf.descricao}}</ui-select-match>
+            <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
+              {{municipio.nome}} | {{municipio.uf.descricao}}
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="logradouro_ativo" class="control-label col-md-3"> Ativo</label>
+        <div class="col-md-3">
+          <input id="logradouro_ativo" type="checkbox" ng-model="logradouro.ativo" ng-true-value="1" ng-false-value="2">
+        </div>
       </div>
 
       <div class="panel panel-default">
-        <div class="panel-heading clearfix">
-          <div class="pull-left">Bairros selecionados</div>
-          <div class="pull-right">total: {{logradouro.logradouro_bairros.length}}</div>
-        </div>
+        <div class="panel-heading">Adicionar bairros</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="bairros" class="control-label col-md-1">Bairro</label>
+            <div class="col-md-4">
+              <select id="bairros" ng-model="bairro.selecionado" class="form-control" ng-disabled="!bairros.length" ng-change="adicionaBairro()" ng-options="bairro.nome for bairro in bairros">
+              </select>
+            </div>
+            <span class="help-block" style="color: #AA4C4C">{{bairro.resultado}}</span>
+          </div>
 
-        <div class="table-scroll">
-          <table class="table table-hover destroyable_list">
-            <tbody>
-              <tr id="bairro_{{bairro.id}}" data-logradouro-bairro-nome="{{logradouro_bairro.bairro.nome}}" ng-class="{bairro: true, destroyed: logradouro_bairro._destroy}" ng-repeat="logradouro_bairro in logradouro.logradouro_bairros">
-                <td>{{logradouro_bairro.bairro.nome}}</td>
-                <td width="5" class="actions">
-                  <a href="" ng-show="logradouro_bairro._destroy" ng-click="logradouro_bairro._destroy = undefined" class="btn btn-warning">Cancelar</a>
-                  <a href="" ng-hide="logradouro_bairro._destroy" ng-click="removeBairro(logradouro_bairro)" class="btn btn-warning">X</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+              <div class="pull-left">Bairros selecionados</div>
+              <div class="pull-right">total: {{logradouro.logradouro_bairros.length}}</div>
+            </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">Adicionar CEP(s)</div>
-    <div class="panel-body">
-      <div id="pesquisa_cep" class="form-group">
-        <div class="input-group col-md-3">
-          <input type="text" id="codigo_cep" class="form-control" ng-model="cep.pesquisa" placeholder="Pesquisar CEP" />{{a}}
-          <span class="input-group-btn">
-            <button class="btn btn-info" type="button" ng-click="adicionarCEP()" ng-disabled="!cep.pesquisa">Adicionar</button>
-          </span>
+            <div class="table-scroll">
+              <table class="table table-hover destroyable_list">
+                <tbody>
+                  <tr id="bairro_{{bairro.id}}" data-logradouro-bairro-nome="{{logradouro_bairro.bairro.nome}}" ng-class="{bairro: true, destroyed: logradouro_bairro._destroy}" ng-repeat="logradouro_bairro in logradouro.logradouro_bairros">
+                    <td>{{logradouro_bairro.bairro.nome}}</td>
+                    <td width="5" class="actions">
+                      <a href="" ng-show="logradouro_bairro._destroy" ng-click="logradouro_bairro._destroy = undefined" class="btn btn-warning">Cancelar</a>
+                      <a href="" ng-hide="logradouro_bairro._destroy" ng-click="removeBairro(logradouro_bairro)" class="btn btn-warning">X</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <span class="help-block" style="color: #AA4C4C">{{cep.resultado}}</span>
       </div>
 
       <div class="panel panel-default">
-        <div class="panel-heading">CEPs selecionados</div>
+        <div class="panel-heading">Adicionar CEP(s)</div>
+        <div class="panel-body">
+          <div id="pesquisa_cep" class="form-group">
+            <label class="control-label col-md-1">CEP</label>
+            <div class="input-group col-md-3">
+              <input type="text" id="codigo_cep" class="form-control" ng-model="cep.pesquisa" placeholder="Pesquisar CEP" />{{a}}
+              <span class="input-group-btn">
+                <button class="btn btn-info" type="button" ng-click="adicionarCEP()" ng-disabled="!cep.pesquisa">Adicionar</button>
+              </span>
+            </div>
+            <span class="help-block" style="color: #AA4C4C">{{cep.resultado}}</span>
+          </div>
 
-        <div class="table-scroll">
-          <table class="table table-hover destroyable_list">
-            <thead>
-              <th>Código</th>
-              <th>UF</th>
-              <th>Município</th>
-              <th>Bairro</th>
-              <th>Logradouro</th>
-              <th></th>
-            </thead>
-            <tbody>
-              <tr id="cep_{{logradouro_cep.cep.codigo}}" ng-class="{destroyed: logradouro_cep._destroy}" ng-repeat="logradouro_cep in logradouro.logradouro_ceps">
-                <td>{{logradouro_cep.cep.codigo}}</td>
-                <td>{{logradouro_cep.cep.uf}}</td>
-                <td>{{logradouro_cep.cep.municipio}}</td>
-                <td>{{logradouro_cep.cep.bairro}}</td>
-                <td>{{logradouro_cep.cep.tipo_logradouro}} {{logradouro_cep.cep.logradouro}}</td>
-                <td width="5" class="actions">
-                  <a href="" ng-show="logradouro_cep._destroy" ng-click="logradouro_cep._destroy = undefined" class="btn btn-warning">Cancelar</a>
-                  <a href="" ng-hide="logradouro_cep._destroy" ng-click="removerCEP(logradouro_cep)" class="btn btn-warning">X</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="panel panel-default">
+            <div class="panel-heading">CEPs selecionados</div>
+
+            <div class="table-scroll">
+              <table class="table table-hover destroyable_list">
+                <thead>
+                  <th>Código</th>
+                  <th>UF</th>
+                  <th>Município</th>
+                  <th>Bairro</th>
+                  <th>Logradouro</th>
+                  <th></th>
+                </thead>
+                <tbody>
+                  <tr id="cep_{{logradouro_cep.cep.codigo}}" ng-class="{destroyed: logradouro_cep._destroy}" ng-repeat="logradouro_cep in logradouro.logradouro_ceps">
+                    <td>{{logradouro_cep.cep.codigo}}</td>
+                    <td>{{logradouro_cep.cep.uf}}</td>
+                    <td>{{logradouro_cep.cep.municipio}}</td>
+                    <td>{{logradouro_cep.cep.bairro}}</td>
+                    <td>{{logradouro_cep.cep.tipo_logradouro}} {{logradouro_cep.cep.logradouro}}</td>
+                    <td width="5" class="actions">
+                      <a href="" ng-show="logradouro_cep._destroy" ng-click="logradouro_cep._destroy = undefined" class="btn btn-warning">Cancelar</a>
+                      <a href="" ng-hide="logradouro_cep._destroy" ng-click="removerCEP(logradouro_cep)" class="btn btn-warning">X</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="form-group">
-    <label for="logradouro_ativo">
-    <input id="logradouro_ativo" type="checkbox" ng-model="logradouro.ativo" ng-true-value="1" ng-false-value="2"> Ativo</label>
-  </div>
-
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Salvar Logradouro</button>
+    <div class="panel-footer">
+      <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Salvar Logradouro</button>
+    </div>
   </div>
 </form>

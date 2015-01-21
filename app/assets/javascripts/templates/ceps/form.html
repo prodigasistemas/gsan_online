@@ -1,62 +1,82 @@
 <div ng-include="'shared/form_errors.html'"></div>
 
-<form ng-submit="submeter()" name="form" novalidate>
-  <div class="form-group">
-    <label for="cep_codigo">Código <span class="required">*</span></label>
-    <i>(CEP deve conter 8 dígitos)</i>
-    <input id="cep_codigo" ng-model="cep.codigo" class="form-control" required ng-pattern="/^[0-9]{8}$/">
-  </div>
+<form ng-submit="submeter()" class="form-horizontal" name="form" novalidate>
+  <div class="panel panel-default">
+    <div class="panel-heading">Dados do CEP</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="cep_codigo" class="control-label col-md-3">Código <span class="required">*</span></label>
+        <div class="col-md-3">
+          <input id="cep_codigo" ng-model="cep.codigo" class="form-control" required ng-pattern="/^[0-9]{8}$/">
+          <span class="help-block">(CEP deve conter 8 dígitos)</span>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="cep_tipo_id">Tipo de CEP <span class="required">*</span></label>
-    <select id="cep_tipo_id" ng-model="cep.tipo_id" class="form-control" required>
-      <option value="">Selecione um tipo</option>
-      <option ng-repeat="tipo in cepTipos" value="{{tipo.id}}">{{tipo.descricao}}</option>
-    </select>
-  </div>
+      <div class="form-group">
+        <label for="cep_tipo_id" class="control-label col-md-3">Tipo de CEP <span class="required">*</span></label>
+        <div class="col-md-4">
+          <select id="cep_tipo_id" ng-model="cep.tipo_id" class="form-control" required>
+            <option value="">Selecione um tipo</option>
+            <option ng-repeat="tipo in cepTipos" value="{{tipo.id}}">{{tipo.descricao}}</option>
+          </select>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="municipios" class="control-label">Município <span class="required">*</span></label>
-    <ui-select ng-model="cep.municipio"
-             theme="bootstrap"
-             ng-disabled="disabled"
-             reset-search-input="false"
-             title="Escolha um município"
-             ng-disabled="false"
-             on-select="atualizaBairros()"
-             id="cep_municipio_id">
-      <ui-select-match placeholder="Digite o nome de um município">{{cep.municipio.nome}} | {{cep.municipio.uf.descricao}}</ui-select-match>
-      <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
-        {{municipio.nome}} | {{municipio.uf.descricao}}
-      </ui-select-choices>
-    </ui-select>
-  </div>
+      <div class="form-group">
+        <label for="municipios" class="control-label col-md-3">Município <span class="required">*</span></label>
+        <div class="col-md-4">
+          <ui-select ng-model="cep.municipio"
+                   theme="bootstrap"
+                   ng-disabled="disabled"
+                   reset-search-input="false"
+                   title="Escolha um município"
+                   ng-disabled="false"
+                   on-select="atualizaBairros()"
+                   id="cep_municipio_id">
+            <ui-select-match placeholder="Digite o nome de um município">{{cep.municipio.nome}} | {{cep.municipio.uf.descricao}}</ui-select-match>
+            <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
+              {{municipio.nome}} | {{municipio.uf.descricao}}
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="cep_bairro">Bairro <span class="required">*</span></label>
-    <select id="cep_bairro" ng-model="cep.bairro" class="form-control" ng-disabled="!bairros.length" ng-required="bairros.length">
-      <option value="">Selecione um bairro</option>
-      <option ng-repeat="bairro in bairros">{{bairro.nome}}</option>
-    </select>
-  </div>
+      <div class="form-group">
+        <label for="cep_bairro" class="control-label col-md-3">Bairro <span class="required">*</span></label>
+        <div class="col-md-4">
+          <select id="cep_bairro" ng-model="cep.bairro" class="form-control" ng-disabled="!bairros.length" ng-required="bairros.length">
+            <option value="">Selecione um bairro</option>
+            <option ng-repeat="bairro in bairros">{{bairro.nome}}</option>
+          </select>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="cep_tipo_logradouro">Tipo do logradouro <span class="required">*</span></label>
-    <select id="cep_tipo_logradouro" ng-model="cep.tipo_logradouro" class="form-control" required>
-      <option value="">Selecione um tipo de logradouro</option>
-      <option ng-repeat="tipo in tipo_logradouros">{{tipo.descricao}}</option>
-    </select>
-  </div>
+      <div class="form-group">
+        <label for="cep_tipo_logradouro" class="control-label col-md-3">Tipo do logradouro <span class="required">*</span></label>
+        <div class="col-md-4">
+          <select id="cep_tipo_logradouro" ng-model="cep.tipo_logradouro" class="form-control" required>
+            <option value="">Selecione um tipo de logradouro</option>
+            <option ng-repeat="tipo in tipo_logradouros">{{tipo.descricao}}</option>
+          </select>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="cep_logradouro">Logradouro <span class="required">*</span></label>
-    <input id="cep_logradouro" ng-model="cep.logradouro" class="form-control" required>
-  </div>
+      <div class="form-group">
+        <label for="cep_logradouro" class="control-label col-md-3">Logradouro <span class="required">*</span></label>
+        <div class="col-md-9">
+          <input id="cep_logradouro" ng-model="cep.logradouro" class="form-control" required>
+        </div>
+      </div>
 
-  <div class="form-group">
-    <label for="cep_ativo">
-    <input id="cep_ativo" type="checkbox" ng-model="cep.ativo" ng-true-value="1" ng-false-value="2"> Ativo</label>
+      <div class="form-group">
+        <label for="cep_ativo" class="control-label col-md-3"> Ativo</label>
+        <div class="col-md-3">
+          <input id="cep_ativo" type="checkbox" ng-model="cep.ativo" ng-true-value="1" ng-false-value="2">
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <input type="submit" value="Salvar CEP" class="btn btn-primary" ng-disabled="form.$invalid">
+    </div>
   </div>
-
-  <input type="submit" value="Salvar CEP" class="btn btn-primary" ng-disabled="form.$invalid">
 </form>

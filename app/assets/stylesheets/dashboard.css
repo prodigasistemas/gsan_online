@@ -1,7 +1,10 @@
-
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en");
 body{
-  background: #F9F9F9; 
-  color: #726F6F;
+  /*background: #F9F9F9; 
+  color: #4F4F4F;*/
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #676a6c;
+  overflow-x: hidden;
 }
 
 .sub-header {
