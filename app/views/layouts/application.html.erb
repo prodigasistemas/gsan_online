@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>GSAN Online</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-  <base href="/">
-</head>
-<body ng-app="gsan" data-cadastro-url="<%= CADASTRO_URL %>">
-  <%= render "shared/header" %>
+  <head>
+    <title>GSAN Online</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <base href="/">
+  </head>
+  <body ng-app="gsan" data-cadastro-url="<%= CADASTRO_URL %>">
+    <%= render "shared/header" %>
     <div class="row-fluid">
       <div class="col-md-2 sidebar">
         <%= render "shared/nav" %>
@@ -17,5 +17,9 @@
         <div ng-view></div>
       </div>
     </div>
-</body>
+    <footer>
+      <div class="pull-left"><h2>GSAN - Online</h2></div>
+      <div class="pull-right"><%= image_tag "cidades.png" %></div>
+    </footer>
+  </body>
 </html>
