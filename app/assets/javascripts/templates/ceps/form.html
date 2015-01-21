@@ -7,7 +7,7 @@
       <div class="form-group">
         <label for="cep_codigo" class="control-label col-md-3">Código <span class="required">*</span></label>
         <div class="col-md-3">
-          <input id="cep_codigo" ng-model="cep.codigo" class="form-control" required ng-pattern="/^[0-9]{8}$/">
+          <input id="cep_codigo" ng-model="cep.codigo" class="form-control" required ceprange ng-pattern="/^[0-9]{8}$/">
           <span class="help-block">(CEP deve conter 8 dígitos)</span>
         </div>
       </div>

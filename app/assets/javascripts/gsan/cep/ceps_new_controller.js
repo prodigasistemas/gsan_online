@@ -19,11 +19,21 @@ app.controller("CepsNewController", ["Cep", "CepTipo", "Municipio", "TipoLogrado
 
   $scope.submeter = function() {
     var cep = new Cep({cep: $scope.cep});
+
     cep.$save(function() {
       Flash.setMessage("CEP criado com sucesso");
       $location.url("/ceps");
     }, function(response) {
       $scope.formErrors = response.data.errors;
     });
+  }
+
+  var isCepValido = function(cepInicial, cepFinal){
+    var cepInicial = $scope.cep.municipio.cep_inicial;
+    var cepFinal = $scope.cep.municipio.cep_final;
+    var cep = $scope.cep;
+
+    if(cep >= cepFinal && cep <= cepInicial) return true;
+    return false;
   }
 }]);
