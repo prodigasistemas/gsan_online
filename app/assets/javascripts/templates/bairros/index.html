@@ -24,6 +24,7 @@
           <th>Nome do Bairro</th>
           <th>Código na Prefeitura</th>
           <th>Ativo</th>
+          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
@@ -33,7 +34,7 @@
           <td>{{bairro.nome}}</td>
           <td>{{bairro.codigo_prefeitura}}</td>
           <td class="bairro_ativo"><span yes-no="bairro.ativo"></span></td>
-          <td><a class="btn btn-info" ng-href="/bairros/{{bairro.id}}/editar">Editar</a></td>
+          <td><a class="btn btn-info" ng-href="/bairros/{{bairro.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
         </tr>
       </tbody>
     </table>

@@ -25,6 +25,7 @@
           <th>Título do Logradouro</th>
           <th>Tipo do Logradouro</th>
           <th>Ativo</th>
+          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
@@ -35,7 +36,7 @@
           <td>{{logradouro.titulo_logradouro.descricao}}</td>
           <td>{{logradouro.tipo_logradouro.descricao}}</td>
           <td class="logradouro_ativo"><span yes-no="logradouro.ativo"></span></td>
-          <td><a class="btn btn-info" ng-href="/logradouros/{{logradouro.id}}/editar">Editar</a></td>
+          <td><a class="btn btn-info" ng-href="/logradouros/{{logradouro.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
         </tr>
       </tbody>
     </table>

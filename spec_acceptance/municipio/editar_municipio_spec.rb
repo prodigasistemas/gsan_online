@@ -7,7 +7,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     click_link "Municípios"
     fill_in "municipio_codigo_ibge", with: "123456"
     click_button "Pesquisar"
-    find(".municipio:last-child").click_link "Editar"
+    find(".municipio:last-child a").click
 
     fill_in "municipio_codigo_ibge", with: "221"
     fill_in "municipio_nome",        with: "MOJU"

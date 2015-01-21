@@ -8,7 +8,7 @@ describe "Como cadastrista", type: :feature, js: true do
     fill_in "logradouro_nome", with: "cear"
     click_button "Pesquisar"
 
-    find(".logradouro:last-child").click_link "Editar"
+    find(".logradouro:last-child a").click
 
     select "AV", from: "logradouro_tipo_id"
     select "ALM", from: "titulo_logradouro_id"
@@ -46,7 +46,7 @@ describe "Como cadastrista", type: :feature, js: true do
     expect(page).to have_content "ANTONIO BARRETO"
     expect(page).to have_css ".logradouro_ativo", text: ""
 
-    find(".logradouro:last-child").click_link "Editar"
+    find(".logradouro:last-child a").click
 
     expect(page).to have_css ".bairro", text: "CALADIM", count: 0
     expect(page).to have_css ".bairro", text: "CONQUISTA", count: 1

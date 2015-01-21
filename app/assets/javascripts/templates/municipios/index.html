@@ -28,7 +28,7 @@
           <th>CEP inicial</th>
           <th>CEP final</th>
           <th>Ativo</th>
-          <th></th>
+          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
@@ -42,7 +42,7 @@
           <td>{{municipio.cep_inicial}}</td>
           <td>{{municipio.cep_final}}</td>
           <td class="municipio_ativo"><span yes-no="municipio.ativo"></span></td>
-          <td><a class="btn btn-info" ng-href="/municipios/{{municipio.id}}/editar">Editar</a></td>
+          <td><a class="btn btn-info" ng-href="/municipios/{{municipio.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
         </tr>
       </tbody>
     </table>

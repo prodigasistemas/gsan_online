@@ -43,7 +43,7 @@ describe "Como cadastrista", type: :feature, js: true do
     expect(page).to have_content "BELEM"
     expect(page).to have_css ".logradouro_ativo", text: "Sim"
 
-    find(".logradouro:last-child").click_link "Editar"
+    find(".logradouro:last-child a").click
 
     expect(page).to have_css ".bairro", text: "PEDREIRA", count: 1
     expect(page).to have_css ".bairro", text: "UMARIZAL", count: 1

@@ -8,7 +8,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     fill_in "bairro_codigo", with: "77"
     click_button "Pesquisar"
 
-    find(".bairro:last-child").click_link "Editar"
+    find(".bairro:last-child a").click
 
     fill_in "bairro_codigo",            with: "12345"
     fill_in "bairro_nome",              with: "TAPANA"
