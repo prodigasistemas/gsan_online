@@ -1,6 +1,6 @@
 #main-header {
-  background: #1659BF;
-  padding: 20px 0 20px 0;
+  background: #286090;
+  padding: 2px 0 2px 0;
 }
 
 #main-header  h1 {
@@ -13,6 +13,15 @@
 #main-header .nav-user{
   margin: 10px 0 0 0;
   text-align: center;
+}
+
+#main-header .logo{
+  margin: 5px 0 0 0;
+}
+
+#main-header .logo img{
+  width: 50px;
+  height: 50px;
 }
 
 #main-header .nav-user li a.nav-user-main{
