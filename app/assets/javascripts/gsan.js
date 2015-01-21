@@ -63,6 +63,10 @@ app.config(['$routeProvider', '$locationProvider',
         controller: 'LogradourosEditController',
         label: 'Editar'
       }).
+      when('/distrito_operacionais', {
+        templateUrl: 'distrito_operacionais/index.html',
+        controller: 'DistritoOperacionaisIndexController'
+      }).
       otherwise({
         redirectTo: '/ceps'
       });

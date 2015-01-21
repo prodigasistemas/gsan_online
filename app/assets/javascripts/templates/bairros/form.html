@@ -51,10 +51,48 @@
           <input id="bairro_ativo" type="checkbox" ng-model="bairro.ativo" ng-true-value="1" ng-false-value="2">
         </div>
       </div>
+    </div>
+  </div>
 
+  <div class="panel panel-default">
+    <div class="panel-heading">Adicionar áreas</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="bairro_area_nome">Nome da Área</label>
+        <input id="bairro_area_nome" ng-model="bairro_area.nome" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="distrito_operacionais">Distrito Operacional</label>
+        <select id="distrito_operacionais" ng-model="distrito_operacional.selecionado" class="form-control" ng-disabled="!distrito_operacionais.length" ng-change="adicionaArea()" ng-options="distrito_operacional.descricao for distrito_operacional in distrito_operacionais">
+        </select>
+        <span class="help-block" style="color: #AA4C4C">{{distrito_operacional.resultado}}</span>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+          <div class="pull-left">Areas selecionadas</div>
+          <div class="pull-right">total: {{bairro.bairro_areas.length}}</div>
+        </div>
+
+        <div class="table-scroll">
+          <table class="table table-hover destroyable_list">
+            <tbody>
+              <tr id="distrito_operacional_{{distrito_operacional.id}}" data-bairro-distrito-operacional-descricao="{{bairro.distrito_operacional.descricao}}" ng-class="{distrito_operacional: true, destroyed: bairro_distrito_operacional._destroy}" ng-repeat="bairro_distrito_operacional in bairro.bairro_areas">
+                <td>{{bairro.distrito_operacional.descricao}}</td>
+                <td width="5" class="actions">
+                  <a href="" ng-show="bairro_distrito_operacional._destroy" ng-click="bairro_distrito_operacional._destroy = undefined" class="btn btn-warning">Cancelar</a>
+                  <a href="" ng-hide="bairro_distrito_operacional._destroy" ng-click="removeArea(bairro_distrito_operacional)" class="btn btn-warning">X</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-    <div class="panel-footer">
-      <input type="submit" value="Salvar Bairro" class="btn btn-primary" ng-disabled="form.$invalid">
-    </div>
+  </div>
+
+  <div class="panel-footer">
+    <input type="submit" value="Salvar Bairro" class="btn btn-primary" ng-disabled="form.$invalid">
   </div>
 </form>
