@@ -1,6 +1,6 @@
 var app = angular.module("gsan");
 
-app.controller("BairrosNewController", ["Bairro", "Municipio", "DistritoOperacional", "CadastroUrl", "$scope", "$http", "$location", "Flash", function(Bairro, Municipio, DistritoOperacional, CadastroUrl, $scope, $http, $location, Flash) {
+app.controller("BairrosNewController", ["Bairro", "Municipio", "DistritoOperacional", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$filter", function(Bairro, Municipio, DistritoOperacional, CadastroUrl, $scope, $http, $location, Flash, $filter) {
   $scope.bairro = {ativo: 1};
   $scope.bairro_area = {};
   $scope.distrito_operacional = {};
@@ -13,8 +13,7 @@ app.controller("BairrosNewController", ["Bairro", "Municipio", "DistritoOperacio
   };
 
   $scope.adicionaArea = function() {
-    //if (areaSelecionada()) { return; }
-    $scope.bairro.bairro_areas = $scope.bairro.bairro_areas || [];
+    if (areaSelecionada()) { return; }
 
     $scope.bairro.bairro_areas.push({
       nome: $scope.bairro_area.nome,
@@ -24,6 +23,19 @@ app.controller("BairrosNewController", ["Bairro", "Municipio", "DistritoOperacio
 
     $scope.bairro_area.nome = "";
     angular.element('#bairro_area_nome').focus();
+  };
+
+  var areaSelecionada = function() {
+    $scope.bairro = $scope.bairro || [];
+    $scope.bairro.bairro_areas = $scope.bairro.bairro_areas || [];
+
+    var areas = $scope.bairro.bairro_areas.map(function(bairroArea) { return bairroArea.nome; });
+    var areaDuplicada = $scope.bairro.bairro_areas.length && $filter('filter')(areas, $scope.bairro_area.nome).length;
+
+    if (areaDuplicada) {
+      $scope.bairro_area.resultado = "Área já adicionada";
+      return true;
+    }
   };
 
   $scope.removeArea = function(bairroArea) {

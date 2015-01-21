@@ -78,22 +78,22 @@ describe "Como cadastrista", type: :feature, js: true do
   end
 
   def testar_bairros
-      select "UMARIZAL", from: "bairros"
-      expect(page).to have_css ".bairro", text: "UMARIZAL", count: 1
-      select "PEDREIRA", from: "bairros"
-      expect(page).to have_css ".bairro", text: "PEDREIRA", count: 1
-      select "UMARIZAL", from: "bairros"
-      expect(page).to have_css ".bairro", text: "UMARIZAL", count: 1
-      expect(page).to have_content "Bairro já selecionado"
+    select "UMARIZAL", from: "bairros"
+    expect(page).to have_css ".bairro", text: "UMARIZAL", count: 1
+    select "PEDREIRA", from: "bairros"
+    expect(page).to have_css ".bairro", text: "PEDREIRA", count: 1
+    select "UMARIZAL", from: "bairros"
+    expect(page).to have_css ".bairro", text: "UMARIZAL", count: 1
+    expect(page).to have_content "Bairro já selecionado"
 
-      within ".bairro:first-child" do
-        click_link "X"
-      end
-      expect(page).to have_css ".bairro", text: "UMARIZAL", count: 0
+    within ".bairro:first-child" do
+      click_link "X"
+    end
+    expect(page).to have_css ".bairro", text: "UMARIZAL", count: 0
 
-      within ".bairro:first-child" do
-        click_link "X"
-      end
-      expect(page).to have_css ".bairro", text: "PEDREIRA", count: 0
+    within ".bairro:first-child" do
+      click_link "X"
+    end
+    expect(page).to have_css ".bairro", text: "PEDREIRA", count: 0
   end
 end
