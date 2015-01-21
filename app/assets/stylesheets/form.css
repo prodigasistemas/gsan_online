@@ -22,7 +22,7 @@ form.filter .ui-select-container  {
   min-width: 300px;
 }
 
-form.filter .ui-select-container button {
+.ui-select-container button {
   text-align: left;
 }
 
