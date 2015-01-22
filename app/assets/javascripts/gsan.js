@@ -54,6 +54,7 @@ app.config(['$routeProvider', '$locationProvider',
       when('/distrito_operacionais', {
         templateUrl: 'distrito_operacionais/index.html',
         controller: 'DistritoOperacionaisIndexController'
+      }).
       when('/clientes', {
         templateUrl: 'clientes/index.html',
         controller: 'ClientesIndexController'
