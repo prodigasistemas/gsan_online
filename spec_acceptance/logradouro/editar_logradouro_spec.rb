@@ -78,29 +78,29 @@ describe "Como cadastrista", type: :feature, js: true do
   end
 
   def testar_bairros
-      expect(page).to have_css ".bairro", text: "CALADIM", count: 1
+    expect(page).to have_css ".bairro", text: "CALADIM", count: 1
 
-      select "CONQUISTA", from: "bairros"
-      expect(page).to have_css ".bairro", text: "CONQUISTA", count: 1
+    select "CONQUISTA", from: "bairros"
+    expect(page).to have_css ".bairro", text: "CONQUISTA", count: 1
 
-      select "CALADIM", from: "bairros"
-      expect(page).to have_css ".bairro", text: "CALADIM", count: 1
-      expect(page).to have_content "Bairro já selecionado"
+    select "CALADIM", from: "bairros"
+    expect(page).to have_css ".bairro", text: "CALADIM", count: 1
+    expect(page).to have_content "Bairro já selecionado"
 
-      select "CONQUISTA", from: "bairros"
-      expect(page).to have_css ".bairro", text: "CONQUISTA", count: 1
-      expect(page).to have_content "Bairro já selecionado"
+    select "CONQUISTA", from: "bairros"
+    expect(page).to have_css ".bairro", text: "CONQUISTA", count: 1
+    expect(page).to have_content "Bairro já selecionado"
 
-      within ".bairro[data-logradouro-bairro-nome='CONQUISTA']" do
-        click_link "X"
-      end
-      expect(page).to have_css ".bairro", text: "CONQUISTA", count: 0
+    within ".bairro[data-logradouro-bairro-nome='CONQUISTA']" do
+      click_link "X"
+    end
+    expect(page).to have_css ".bairro", text: "CONQUISTA", count: 0
 
-      within ".bairro[data-logradouro-bairro-nome='CALADIM']" do
-        click_link "X"
-        click_link "Cancelar"
-        click_link "X"
-      end
-      expect(page).to have_css ".bairro", text: "CALADIM", count: 1
+    within ".bairro[data-logradouro-bairro-nome='CALADIM']" do
+      click_link "X"
+      click_link "Cancelar"
+      click_link "X"
+    end
+    expect(page).to have_css ".bairro", text: "CALADIM", count: 1
   end
 end

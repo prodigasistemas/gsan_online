@@ -1,7 +1,6 @@
 #!/bin/bash
-PID_FILE=/tmp/gsan_test_cadastro.pid
-
 cd ../gsan_cadastro
+PID_FILE="$(pwd)/tmp/pids/test.pid"
 rake log:clear
 
 RAILS_ENV=test ACCEPTANCE_TEST=1 rake db:seed
@@ -16,8 +15,7 @@ else
   rspec $@
 fi
 
-cd ../gsan_cadastro
-
 if [ -e "$PID_FILE" ]; then
-  kill -9 $(cat $PID_FILE);
+  PID=$(cat "$PID_FILE")
+  kill -9 $PID && rm "$PID_FILE"
 fi

@@ -39,30 +39,30 @@ describe "Como um cadastrista", type: :feature, js: true do
   end
 
   def testar_areas
-    fill_in "bairro_area_nome",              with: "novo"
+    fill_in "bairro_area_nome",              with: "NOVA AREA"
     select "DISTRITO GERAL", from: "distrito_operacionais"
     click_button "Adicionar"
-    expect(page).to have_css ".bairro_area", text: "DISTRITO GERAL", count: 1
+    expect(page).to have_css ".bairro_area", text: "NOVA AREA", count: 1
     
-    fill_in "bairro_area_nome",              with: "mais um"
+    fill_in "bairro_area_nome",              with: "MAIS UMA AREA"
     select "DISTRITO 1", from: "distrito_operacionais"
     click_button "Adicionar"
-    expect(page).to have_css ".bairro_area", text: "DISTRITO 1", count: 1
+    expect(page).to have_css ".bairro_area", text: "MAIS UMA AREA", count: 1
 
-    fill_in "bairro_area_nome",              with: "novo"
+    fill_in "bairro_area_nome",              with: "NOVA AREA"
     select "DISTRITO 1", from: "distrito_operacionais"
     click_button "Adicionar"
-    expect(page).to have_css ".bairro_area", text: "DISTRITO 1", count: 1
+    expect(page).to have_css ".bairro_area", text: "NOVA AREA", count: 1
     expect(page).to have_content "Área já adicionada"
 
     within ".bairro_area:first-child" do
       click_link "X"
     end
-    expect(page).to have_css ".bairro_area", text: "DISTRITO GERAL", count: 0
+    expect(page).to have_css ".bairro_area", text: "NOVA AREA", count: 0
 
     within ".bairro_area:first-child" do
       click_link "X"
     end
-    expect(page).to have_css ".bairro_area", text: "DISTRITO 1", count: 0
+    expect(page).to have_css ".bairro_area", text: "MAIS UMA AREA", count: 0
   end
 end

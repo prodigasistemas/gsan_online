@@ -82,7 +82,7 @@
             <div class="table-scroll">
               <table class="table table-hover destroyable_list">
                 <tbody>
-                  <tr id="distrito_operacional_{{distrito_operacional.id}}" data-bairro-distrito-operacional-descricao="{{bairro.distrito_operacional.descricao}}" ng-class="{bairro_area: true, destroyed: bairro_bairro_area._destroy}" ng-repeat="bairro_bairro_area in bairro.bairro_areas">
+                  <tr data-bairro-area-nome="{{bairro_bairro_area.nome}}" ng-class="{bairro_area: true, destroyed: bairro_bairro_area._destroy}" ng-repeat="bairro_bairro_area in bairro.bairro_areas">
                     <td>{{bairro_bairro_area.nome}}</td>
                     <td>{{bairro_bairro_area.distrito_operacional_descricao}}</td>
                     <td width="5" class="actions">
