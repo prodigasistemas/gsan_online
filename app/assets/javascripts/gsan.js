@@ -5,63 +5,51 @@ app.config(['$routeProvider', '$locationProvider',
     $routeProvider.
       when('/ceps', {
         templateUrl: 'ceps/index.html',
-        controller: 'CepsIndexController',
-        label: 'CEPs'
+        controller: 'CepsIndexController'
       }).
       when('/ceps/novo', {
         templateUrl: 'ceps/new.html',
-        controller: 'CepsNewController',
-        label: 'Novo'
+        controller: 'CepsNewController'
       }).
       when('/ceps/:id/editar', {
         templateUrl: 'ceps/edit.html',
-        controller: 'CepsEditController',
-        label: 'Editar'
+        controller: 'CepsEditController'
       }).
       when('/municipios', {
         templateUrl: 'municipios/index.html',
-        controller: 'MunicipiosIndexController',
-        label: 'Municípios'
+        controller: 'MunicipiosIndexController'
       }).
       when('/municipios/novo', {
         templateUrl: 'municipios/new.html',
-        controller: 'MunicipiosNewController',
-        label: 'Novo'
+        controller: 'MunicipiosNewController'
       }).
       when('/municipios/:id/editar', {
         templateUrl: 'municipios/edit.html',
-        controller: 'MunicipiosEditController',
-        label: 'Editar'
+        controller: 'MunicipiosEditController'
       }).
       when('/bairros', {
         templateUrl: 'bairros/index.html',
-        controller: 'BairrosIndexController',
-        label: 'Bairros'
+        controller: 'BairrosIndexController'
       }).
       when('/bairros/novo', {
         templateUrl: 'bairros/new.html',
-        controller: 'BairrosNewController',
-        label: 'Novo'
+        controller: 'BairrosNewController'
       }).
       when('/bairros/:id/editar', {
         templateUrl: 'bairros/edit.html',
-        controller: 'BairrosEditController',
-        label: 'Editar'
+        controller: 'BairrosEditController'
       }).
       when('/logradouros', {
         templateUrl: 'logradouros/index.html',
-        controller: 'LogradourosIndexController',
-        label: 'Logradouro'
+        controller: 'LogradourosIndexController'
       }).
       when('/logradouros/novo', {
         templateUrl: 'logradouros/new.html',
-        controller: 'LogradourosNewController',
-        label: 'Novo'
+        controller: 'LogradourosNewController'
       }).
       when('/logradouros/:id/editar', {
         templateUrl: 'logradouros/edit.html',
-        controller: 'LogradourosEditController',
-        label: 'Editar'
+        controller: 'LogradourosEditController'
       }).
       when('/distrito_operacionais', {
         templateUrl: 'distrito_operacionais/index.html',
