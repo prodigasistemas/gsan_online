@@ -1,11 +1,11 @@
 #!/bin/bash
-PID_FILE=tmp/pids/test.pid
+PID_FILE=/tmp/gsan_test_cadastro.pid
 
 cd ../gsan_cadastro
 rake log:clear
 
 RAILS_ENV=test ACCEPTANCE_TEST=1 rake db:seed
-RAILS_ENV=test rails s -p 3002 -d -P "$PID_FILE"
+RAILS_ENV=test rails s -p 3002 -d -P $PID_FILE
 
 cd ../gsan_online
 rake log:clear
@@ -16,6 +16,8 @@ else
   rspec $@
 fi
 
+cd ../gsan_cadastro
+
 if [ -e "$PID_FILE" ]; then
-  kill -9 $(cat "$PID_FILE")
+  kill -9 $(cat $PID_FILE);
 fi
