@@ -1,15 +1,14 @@
 #!/bin/bash
+PID_FILE=tmp/pids/test.pid
 
 cd ../gsan_cadastro
-[ -e "log/test.log" ] && rm log/test.log
-[ -e "log/development.log" ] && rm log/development.log
+rake log:clear
 
 RAILS_ENV=test ACCEPTANCE_TEST=1 rake db:seed
-RAILS_ENV=test rails s -p 3002 -d
+RAILS_ENV=test rails s -p 3002 -d -P "$PID_FILE"
 
 cd ../gsan_online
-[ -e "log/test.log" ] && rm log/test.log
-[ -e "log/development.log" ] && rm log/development.log
+rake log:clear
 
 if [ "$1" = "" ]; then
   rspec spec_acceptance
@@ -17,4 +16,6 @@ else
   rspec $@
 fi
 
-ps aux | grep "ruby bin/rails s -p 3002" | sed "/grep/d" | awk '{print $2}' | xargs kill
+if [ -e "$PID_FILE" ]; then
+  kill -9 $(cat "$PID_FILE")
+fi
