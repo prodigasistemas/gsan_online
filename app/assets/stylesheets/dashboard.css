@@ -84,19 +84,11 @@ body{
   border-radius: 50%;
 }
 
-<<<<<<< HEAD
 .data-table tbody tr td{
-=======
-.table tbody tr td {
->>>>>>> WIP cadastrista pode criar clientes
   padding: 20px 5px 20px 5px;
   text-align: center;
 }
 
-<<<<<<< HEAD
 .data-table thead tr th{
-=======
-.table thead tr th {
->>>>>>> WIP cadastrista pode criar clientes
   text-align: center;
 }
