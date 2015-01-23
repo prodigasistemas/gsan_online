@@ -1,7 +1,6 @@
 var app = angular.module("gsan");
 
 app.controller("MicroRegioesEditController", ["MicroRegiao", "Regiao", "Flash", "$scope", "$http", "CadastroUrl", "$location", "$route", function(MicroRegiao, Regiao, Flash, $scope, $http, CadastroUrl, $location, $route) {
-  $scope.flash = Flash;
   $scope.regioes = Regiao.query();
   $scope.microRegiao = MicroRegiao.get({id: $route.current.params.id});
 

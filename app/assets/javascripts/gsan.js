@@ -79,6 +79,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'regioes/edit.html',
         controller: 'RegioesEditController'
       }).
+      when('/regioes_desenvolvimento', {
+        templateUrl: 'regioes_desenvolvimento/index.html',
+        controller: 'RegioesDesenvolvimentoIndexController'
+      }).
       when('/regioes_desenvolvimento/novo', {
         templateUrl: 'regioes_desenvolvimento/new.html',
         controller: 'RegioesDesenvolvimentoNewController'

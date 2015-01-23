@@ -5,7 +5,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     visit root_path
 
     click_link "Regiões de Desenvolvimento"
-    fill_in "regiao_desenvolvimento_nome", with: "METROPOLITANA"
+    fill_in "regiao_desenvolvimento_nome", with: "SUDESTE PARAENSE"
     click_button "Pesquisar"
     find(".regiao_desenvolvimento:last-child a").click
 

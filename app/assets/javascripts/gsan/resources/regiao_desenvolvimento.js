@@ -5,7 +5,7 @@ app.factory("RegiaoDesenvolvimento", ["$resource", "CadastroUrl", function($reso
     {
       'query': {
           method: 'GET',
-          transformResponse: function (data) {return angular.fromJson(data).regioesDesenvolvimento},
+          transformResponse: function (data) {return angular.fromJson(data).regioes_desenvolvimento},
           isArray: true
       },
       'update': { method:'PUT', isArray: false }

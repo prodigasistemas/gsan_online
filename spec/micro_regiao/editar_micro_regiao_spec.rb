@@ -17,7 +17,7 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     expect(page).to have_content "Micro Região atualizada com sucesso"
 
-    fill_in "micro_regiao_nome", with: "MARAJO"
+    fill_in "micro_regiao_nome", with: "TAPAJOS"
     
     expect(page).to have_content "NORDESTE"
   end
