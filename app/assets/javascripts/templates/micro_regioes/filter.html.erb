@@ -1,0 +1,24 @@
+<div class="panel panel-default panel-filter">
+  <form ng-submit="pesquisar()" class="form-inline">
+    <div class="panel-body">
+      <div class="form-group">
+        <input id="micro_regiao_nome" ng-model="query.nome" type="text" class="form-control" placeholder="Nome">
+      </div>
+
+      <div class="form-group">
+        <select id="micro_regiao_regiao" ng-model="query.regiao_id" class="form-control">
+          <option value="">Selecione a região</option>
+          <option ng-repeat="regiao in regioes" ng-value="{{regiao.id}}">{{regiao.nome}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="panel-footer clearfix">
+      <div class="pull-left">
+        <button class="btn btn-primary" ng-disabled="queryVazia() || loading">Pesquisar</button>
+        <span ng-show="loading"><%= image_tag "spinner.gif" %></span>
+      </div>
+
+      <div class="pull-right" ng-show="microRegioes.length">Total de resultados: {{page.total}}</div>
+    </div>
+  </form>
+</div>
