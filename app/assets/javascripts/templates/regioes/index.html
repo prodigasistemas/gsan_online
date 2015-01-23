@@ -1,0 +1,33 @@
+<div class="alert alert-success" ng-show="flash.getMessage()">{{flash.getMessage()}}</div>
+
+<page-header titulo="Regiões"></page-header>
+
+<div class="actions clearfix">
+  <a href="/regioes/novo" class="btn btn-primary pull-right">Criar Região</a>
+</div>
+
+<div ng-include="'regioes/filter.html'"></div>
+
+<div ng-show="regioes.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Regiões</div>
+    <table class="table table-striped data-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Ativo</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="regiao_{{regiao.id}}" class="regiao" ng-repeat="regiao in regioes">
+          <td>{{regiao.nome}}</td>
+          <td class="regiao_ativo"><span yes-no="regiao.ativo"></span></td>
+          <td><a class="btn btn-info" ng-href="/regioes/{{regiao.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -67,6 +67,18 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'micro_regioes/edit.html',
         controller: 'MicroRegioesEditController'
       }).
+      when('/regioes', {
+        templateUrl: 'regioes/index.html',
+        controller: 'RegioesIndexController'
+      }).
+      when('/regioes/novo', {
+        templateUrl: 'regioes/new.html',
+        controller: 'RegioesNewController'
+      }).
+      when('/regioes/:id/editar', {
+        templateUrl: 'regioes/edit.html',
+        controller: 'RegioesEditController'
+      }).
       otherwise({
         redirectTo: '/ceps'
       });
