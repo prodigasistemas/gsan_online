@@ -56,7 +56,7 @@ describe "Como cadastrista", type: :feature, js: true do
 
     adicionar_cliente_endereco(cidade: "BELEM | PARA",
                                 logradouro_nome: "DEODORO", logradouro_nome_popular: "GENERALISSIMO DEODORO",
-                                tipo: "COMERCIAL", bairro: "UMARIZAL", cep: "66666666",
+                                tipo: "COMERCIAL", bairro: "UMARIZAL", cep: "55050720",
                                 referencia: "NUMERO", numero: "4321", complemento: "VILA 25",
                                 perimetro_inicial_nome: "OLIVEIRA BELO", perimetro_inicial_nome_popular: "OLIVEIRA-BELO",
                                 perimetro_final_nome: "DIOGO MOIA", perimetro_final_nome_popular: "")
@@ -104,7 +104,7 @@ describe "Como cadastrista", type: :feature, js: true do
 
     within "#enderecos" do
       expect(page).to have_css ".endereco", text: "OLIVEIRA BELO - APTO 55555 - 1234 - UMARIZAL - BELEM | PARA - 66050380 - ENTRE QUATORZE DE MARCO E DEODORO"
-      expect(page).to have_css ".endereco", text: "DEODORO - VILA 25 - 4321 - UMARIZAL - BELEM | PARA - 66666666 - ENTRE OLIVEIRA BELO E DIOGO MOIA"
+      expect(page).to have_css ".endereco", text: "DEODORO - VILA 25 - 4321 - UMARIZAL - BELEM | PARA - 55050720 - ENTRE OLIVEIRA BELO E DIOGO MOIA"
     end
   end
 end
