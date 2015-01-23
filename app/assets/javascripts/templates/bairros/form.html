@@ -56,18 +56,22 @@
         <div class="panel-heading">Adicionar áreas</div>
         <div class="panel-body">
           <div class="form-group">
-            <label for="bairro_area_nome">Nome da Área</label>
-            <input id="bairro_area_nome" ng-model="bairro_area.nome" class="form-control">
+            <label for="bairro_area_nome" class="control-label col-md-3">Nome da Área</label>
+            <div class="col-md-5">
+              <input id="bairro_area_nome" ng-model="bairro_area.nome" class="form-control">
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="distrito_operacionais">Distrito Operacional</label>
-            <select id="distrito_operacionais" ng-model="distrito_operacional.selecionado" class="form-control" ng-options="distrito_operacional.descricao for distrito_operacional in distrito_operacionais">
-            </select>
+            <label for="distrito_operacionais" class="control-label col-md-3">Distrito Operacional</label>
+            <div class="col-md-5">
+              <select id="distrito_operacionais" ng-model="distrito_operacional.selecionado" class="form-control" ng-options="distrito_operacional.descricao for distrito_operacional in distrito_operacionais">
+              </select>
+            </div>
           </div>
 
           <div class="form-group">
-            <div class="col-md-2">
+            <div class="col-md-2 col-md-offset-3">
               <button class="btn btn-info" type="button" ng-click="adicionaArea()" ng-disabled="!bairro_area.nome || !distrito_operacional.selecionado">Adicionar</button>
             </div>
             <span class="help-block" style="color: #AA4C4C">{{bairro_area.resultado}}</span>
