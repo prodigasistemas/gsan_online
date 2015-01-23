@@ -3,7 +3,9 @@ var app = angular.module("gsan");
 app.controller("MunicipiosEditController", ["Municipio", "UnidadeFederacao", "MicroRegiao", "RegiaoDesenvolvimento", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", function(Municipio, UnidadeFederacao, MicroRegiao, RegiaoDesenvolvimento, CadastroUrl, $scope, $http, $location, Flash, $route) {
   $scope.municipio = Municipio.get({id: $route.current.params.id});
   $scope.unidade_federacoes = UnidadeFederacao.query();
-  $scope.micro_regioes = MicroRegiao.query();
+  $http.get(CadastroUrl() + "/micro_regioes").success(function(data) {
+    $scope.micro_regioes = data.micro_regioes;
+  });
   $scope.regioes_desenvolvimento = RegiaoDesenvolvimento.query();
   
   $scope.submeter = function() {

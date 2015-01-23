@@ -5,7 +5,11 @@ app.controller("MunicipiosIndexController", ["UnidadeFederacao", "MicroRegiao", 
   $scope.query = {};
 
   $scope.unidade_federacoes = UnidadeFederacao.query();
-  $scope.micro_regioes = MicroRegiao.query();
+
+  $http.get(CadastroUrl() + "/micro_regioes").success(function(data) {
+    $scope.micro_regioes = data.micro_regioes;
+  });
+
   $scope.regioes_desenvolvimento = RegiaoDesenvolvimento.query();
   
   $scope.queryVazia = function() {
