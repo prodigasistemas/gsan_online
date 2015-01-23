@@ -10,7 +10,7 @@ cd ../gsan_online
 rake log:clear
 
 if [ "$1" = "" ]; then
-  rspec spec_acceptance
+  rspec spec
 else
   rspec $@
 fi
