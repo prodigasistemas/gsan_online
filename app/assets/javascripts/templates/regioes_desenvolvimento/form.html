@@ -1,0 +1,26 @@
+<div ng-include="'shared/form_errors.html'"></div>
+
+<form ng-submit="submeter()" class="form-horizontal" name="form" novalidate>
+  <div class="panel panel-default">
+    <div class="panel-heading">Dados da Região de Desenvolvimento</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="regiao_desenvolvimento_nome" class="control-label col-md-3">Nome <span class="required">*</span></label>
+        <div class="col-md-6">
+          <input id="regiao_desenvolvimento_nome" type="text" ng-model="regiaoDesenvolvimento.nome" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="regiao_desenvolvimento_ativo" class="control-label col-md-3">Ativo</label>
+        <div class="col-md-3">
+          <input id="regiao_desenvolvimento_ativo" type="checkbox" ng-model="regiaoDesenvolvimento.ativo" ng-true-value="1" ng-false-value="2">
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-footer">
+      <input type="submit" value="Salvar Região de Desenvolvimento" class="btn btn-primary" ng-disabled="form.$invalid">
+    </div>
+  </div>
+</form>

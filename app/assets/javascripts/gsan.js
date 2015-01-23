@@ -79,6 +79,14 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'regioes/edit.html',
         controller: 'RegioesEditController'
       }).
+      when('/regioes_desenvolvimento/novo', {
+        templateUrl: 'regioes_desenvolvimento/new.html',
+        controller: 'RegioesDesenvolvimentoNewController'
+      }).
+      when('/regioes_desenvolvimento/:id/editar', {
+        templateUrl: 'regioes_desenvolvimento/edit.html',
+        controller: 'RegioesDesenvolvimentoEditController'
+      }).
       otherwise({
         redirectTo: '/ceps'
       });
