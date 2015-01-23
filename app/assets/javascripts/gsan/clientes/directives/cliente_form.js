@@ -99,12 +99,12 @@ app.directive('clienteForm', function() {
         $.each(enderecos, function(index, endereco) {
           if (!endereco._destroy) {
             endereco.logradouro_id        = endereco.logradouro         ?  endereco.logradouro.id         : undefined
-            endereco.endereco_tipo_id     = endereco.endereco_tipo      ?  endereco.endereco_tipo.id      : undefined
-            endereco.logradouro_bairro_id = endereco.logradouro_bairro  ?  endereco.logradouro_bairro.id  : undefined
-            endereco.logradouro_cep_id    = endereco.logradouro_cep     ?  endereco.logradouro_cep.id     : undefined
             endereco.referencia_id        = endereco.referencia         ?  endereco.referencia.id         : undefined
-            endereco.perimetro_inicial_id = endereco.perimetro_inicial  ?  endereco.perimetro_inicial.id  : undefined
+            endereco.endereco_tipo_id     = endereco.endereco_tipo      ?  endereco.endereco_tipo.id      : undefined
+            endereco.logradouro_cep_id    = endereco.logradouro_cep     ?  endereco.logradouro_cep.id     : undefined
             endereco.perimetro_final_id   = endereco.perimetro_final    ?  endereco.perimetro_final.id    : undefined
+            endereco.perimetro_inicial_id = endereco.perimetro_inicial  ?  endereco.perimetro_inicial.id  : undefined
+            endereco.logradouro_bairro_id = endereco.logradouro_bairro  ?  endereco.logradouro_bairro.id  : undefined
           }
           $scope.cliente.enderecos_attributes.push(endereco)
         });
