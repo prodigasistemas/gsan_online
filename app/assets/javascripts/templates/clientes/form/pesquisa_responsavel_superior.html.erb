@@ -8,7 +8,7 @@
     <h3 class="panel-title">Pesquisar</h3>
   </div>
   <div class="panel-body">
-    <div id="pesquisa_cliente_responsavel">
+    <div ng-form name="responsavelSuperiorForm" id="pesquisa_cliente_responsavel">
       <div class="form-group">
         <label for="cliente_responsavel_superior_cnpj" class="control-label col-sm-3">CNPJ</label>
         <div class="col-sm-9">
@@ -35,7 +35,7 @@
 
       <div class="form-group">
         <div class="col-sm-9 col-sm-offset-3">
-          <a href class="btn btn-info" ng-click="pesquisarClienteResponsavel()" ng-disabled="loadingClientesResponsaveis">Pesquisar responsável superior</a>
+          <a href class="btn btn-info" ng-click="pesquisarClienteResponsavel()" ng-disabled="loadingClientesResponsaveis || responsavelSuperiorForm.$pristine">Pesquisar responsável superior</a>
           <span ng-show="loadingClientesResponsaveis"><%= image_tag "spinner.gif" %></span> ou
           <a href ng-click="mostrarPesquisaNovoResponsavelSuperior(false)">Cancelar</a>
         </div>

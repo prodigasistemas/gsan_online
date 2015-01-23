@@ -1,4 +1,4 @@
-<table id="enderecos" class="table" ng-show="cliente.enderecos.length">
+<table id="enderecos" class="table table-hover table-striped destroyable_list" ng-show="cliente.enderecos.length">
   <thead>
     <tr>
       <th>Endereco</th>
@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="endereco" ng-repeat="endereco in cliente.enderecos">
+    <tr ng-class="{endereco: true, destroyed: endereco._destroy}" ng-repeat="endereco in cliente.enderecos">
       <td>
         <span ng-show="endereco.logradouro">
           {{endereco.logradouro.tipo_logradouro.descricao}}
@@ -57,7 +57,14 @@
       <td>
         {{endereco.endereco_tipo.descricao}}
       </td>
-      <td><a class="btn btn-warning remove" ng-click="removerEndereco(endereco)"><i class="fa fa-close"></i></a></td>
+      <td>
+        <a href ng-show="endereco._destroy" ng-click="endereco._destroy = undefined" class="btn btn-warning">
+          Cancelar
+        </a>
+        <a href ng-hide="endereco._destroy" class="btn btn-warning remove" ng-click="removerEndereco(endereco)">
+          <i class="fa fa-close"></i>
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>
