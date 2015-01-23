@@ -1,4 +1,4 @@
-<a href ng-hide="pesquisarNovoResponsavelSuperior" ng-click="mostrarPesquisaNovoResponsavelSuperior()" class="btn btn-default form-control">
+<a href ng-hide="pesquisarNovoResponsavelSuperior" ng-click="mostrarPesquisaNovoResponsavelSuperior(true)" class="btn btn-default form-control">
   <span ng-show="cliente.responsavelSuperior" id="responsavel_superior_selecionado">{{cliente.responsavelSuperior.nome}}</span>
   <span ng-hide="cliente.responsavelSuperior">Selecionar cliente responsável superior</span>
 </a>
@@ -36,7 +36,8 @@
       <div class="form-group">
         <div class="col-sm-9 col-sm-offset-3">
           <a href class="btn btn-info" ng-click="pesquisarClienteResponsavel()" ng-disabled="loadingClientesResponsaveis">Pesquisar responsável superior</a>
-          <span ng-show="loadingClientesResponsaveis"><%= image_tag "spinner.gif" %></span>
+          <span ng-show="loadingClientesResponsaveis"><%= image_tag "spinner.gif" %></span> ou
+          <a href ng-click="mostrarPesquisaNovoResponsavelSuperior(false)">Cancelar</a>
         </div>
       </div>
     </div>

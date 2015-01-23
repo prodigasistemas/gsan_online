@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div class="panel panel-default" ng-show="pessoaTipo == 1">
+  <div class="panel panel-default" ng-show="cliente.pessoa_tipo == 1">
     <div class="panel-heading">
       <h3 class="panel-title">Pessoa Física</h3>
     </div>
@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="panel panel-default" ng-show="pessoaTipo == 2">
+  <div class="panel panel-default" ng-show="cliente.pessoa_tipo == 2">
     <div class="panel-heading">
       <h3 class="panel-title">Pessoa Jurídica</h3>
     </div>
@@ -34,6 +34,7 @@
       <h3 class="panel-title">Endereços</h3>
     </div>
     <div class="panel-body">
+      <div ng-include="'clientes/form/form_enderecos.html'"></div>
     </div>
   </div>
 

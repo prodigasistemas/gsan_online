@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cd ../gsan_cadastro
 PID_FILE="$(pwd)/tmp/pids/test.pid"
 rake log:clear

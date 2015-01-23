@@ -1,0 +1,155 @@
+<table id="enderecos" class="table" ng-show="cliente.enderecos.length">
+  <thead>
+    <tr>
+      <th>Endereco</th>
+      <th>Correspondência</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="endereco" ng-repeat="endereco in cliente.enderecos">
+      <td>
+        <span ng-show="endereco.logradouro">
+          {{endereco.logradouro.tipo_logradouro.descricao}}
+          {{endereco.logradouro.titulo_logradouro.descricao}}
+          {{endereco.logradouro.nome}}
+        </span>
+
+        <span ng-show="endereco.complemento">
+          <span ng-show="endereco.logradouro">-</span>
+          {{endereco.complemento}}
+        </span>
+
+        <span>
+          - {{endereco.referencia.descricao}} {{endereco.numero}}
+        </span>
+
+        <span>
+          - {{endereco.logradouro_bairro.bairro.nome}}
+        </span>
+
+        <span ng-show="endereco.logradouro">
+          -
+          {{endereco.logradouro.municipio.nome}} |
+          {{endereco.logradouro.municipio.uf.descricao}}
+        </span>
+
+        <span>
+          - {{endereco.logradouro_cep.cep.codigo}}
+        </span>
+
+        <span ng-show="endereco.perimetro_inicial || endereco.perimetro_final">
+          -
+          <span ng-show="endereco.perimetro_inicial">
+            <span ng-show="endereco.perimetro_final">ENTRE</span>
+            {{endereco.perimetro_inicial.tipo_logradouro.descricao}}
+            {{endereco.perimetro_inicial.titulo_logradouro.descricao}}
+            {{endereco.perimetro_inicial.nome}}
+          </span>
+          <span ng-show="endereco.perimetro_final">
+            <span ng-show="endereco.perimetro_inicial">E</span>
+            {{endereco.perimetro_final.tipo_logradouro.descricao}}
+            {{endereco.perimetro_final.titulo_logradouro.descricao}}
+            {{endereco.perimetro_final.nome}}
+          </span>
+        </span>
+      </td>
+      <td>
+        {{endereco.endereco_tipo.descricao}}
+      </td>
+      <td><a class="btn btn-warning remove" ng-click="removerEndereco(endereco)"><i class="fa fa-close"></i></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<a href ng-hide="adicionandoNovoEndereco" ng-click="mostrarAdicionarNovoEndereco(true)" class="btn btn-info">Adicionar novo endereço</a>
+
+<section ng-form name="enderecoForm" id="endereco_form" ng-show="adicionandoNovoEndereco">
+  <div class="form-group">
+    <label class="control-label col-sm-3">Logradouro <span class="required">*</span></label>
+    <div class="col-sm-8" id="cliente_endereco_logradouro">
+      <select-logradouro logradouro-selecionado="endereco.logradouro" />
+    </div>
+  </div>
+
+  <section ng-show="endereco.logradouro">
+    <div class="form-group">
+      <label class="control-label col-sm-3">Cidade</label>
+      <div class="col-sm-8">
+        <span class="form-control" disabled>{{endereco.logradouro.municipio.nome}} | {{endereco.logradouro.municipio.uf.descricao}}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cliente_endereco_tipo" class="control-label col-sm-3">Tipo de endereço <span class="required">*</span></label>
+      <div class="col-sm-8">
+        <select id="cliente_endereco_tipo" ng-model="endereco.endereco_tipo" class="form-control" ng-required="adicionandoNovoEndereco" ng-options="tipo.descricao for tipo in enderecoTipos">
+          <option value="">Selecione o tipo de endereço...</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label id="cliente_endereco_bairro" class="control-label col-sm-3">Bairro <span class="required">*</span></label>
+      <div class="col-sm-8">
+        <select id="cliente_endereco_bairro" ng-model="endereco.logradouro_bairro" class="form-control" ng-disabled="!endereco.logradouro.logradouro_bairros.length" ng-required="adicionandoNovoEndereco && endereco.logradouro.logradouro_bairros.length" ng-options="logradouroBairro.bairro.nome for logradouroBairro in endereco.logradouro.logradouro_bairros">
+          <option value="">Selecione o bairro...</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label id="cliente_endereco_cep" class="control-label col-sm-3">CEP <span class="required">*</span></label>
+      <div class="col-sm-8">
+        <select id="cliente_endereco_cep" ng-model="endereco.logradouro_cep" class="form-control" ng-disabled="!endereco.logradouro.logradouro_ceps.length" ng-required="adicionandoNovoEndereco && endereco.logradouro.logradouro_ceps.length" ng-options="logradouro_cep.cep.codigo for logradouro_cep in endereco.logradouro.logradouro_ceps">
+          <option value="">Selecione o cep...</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label id="cliente_endereco_referencia" class="control-label col-sm-3">Referência <span class="required">*</span></label>
+      <div class="col-sm-8">
+        <select id="cliente_endereco_referencia" ng-model="endereco.referencia" class="form-control" ng-required="adicionandoNovoEndereco" ng-options="referencia.descricao for referencia in endereco_referencias">
+          <option value="">Selecione a referência...</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cliente_endereco_numero" class="control-label col-md-3">Número <span class="required">*</span></label>
+      <div class="col-md-3">
+        <input id="cliente_endereco_numero" ng-model="endereco.numero" class="form-control" ng-required="adicionandoNovoEndereco" maxlength="5">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cliente_endereco_complemento" class="control-label col-md-3">Complemento</label>
+      <div class="col-md-8">
+        <input id="cliente_endereco_complemento" ng-model="endereco.complemento" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="endereco_perimetro_inicial" class="control-label col-md-3">Perímetro inicial</label>
+      <div class="col-md-8" id="cliente_endereco_perimetro_inicial">
+        <select-logradouro logradouro-selecionado="endereco.perimetro_inicial" municipios="municipios" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="endereco_perimetro_inicial" class="control-label col-md-3">Perímetro final</label>
+      <div class="col-md-8" id="cliente_endereco_perimetro_final">
+        <select-logradouro logradouro-selecionado="endereco.perimetro_final" municipios="municipios" />
+      </div>
+    </div>
+  </section>
+
+  <div class="form-group">
+    <div class="col-sm-9 col-sm-offset-3">
+      <a href ng-disabled="enderecoForm.$invalid" class="btn btn-info" ng-click="adicionarEndereco()">Adicionar endereço</a> ou
+      <a href ng-click="mostrarAdicionarNovoEndereco(false)">Cancelar</a>
+    </div>
+  </div>
+</section>
+

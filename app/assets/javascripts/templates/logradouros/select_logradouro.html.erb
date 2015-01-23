@@ -1,0 +1,77 @@
+<div ng-hide="pesquisandoLogradouro" class="row">
+  <div class="col-xs-10 col-sm-11">
+    <a href ng-click="mostrarPesquisandoLogradouro(true)" class="btn btn-default form-control">
+      <span ng-show="logradouroSelecionado" id="logradouro_selecionado">{{logradouroSelecionado.tipo_logradouro.descricao}} {{logradouroSelecionado.titulo_logradouro.descricao}} {{logradouroSelecionado.nome}}</span>
+      <span ng-hide="logradouroSelecionado">Selecionar logradouro</span>
+    </a>
+  </div>
+  <a href class="btn btn-warning" ng-click="apagarLogradouro()"><i class="fa fa-close"></i></a>
+</div>
+
+<div id="pesquisa_logradouro" class="panel panel-default" ng-show="pesquisandoLogradouro">
+  <div class="panel-heading">
+    <h3 class="panel-title">Pesquisar logradouro</h3>
+  </div>
+  <div class="panel-body" ng-form name="pesquisaLogadouro">
+    <div class="form-group">
+      <label class="control-label col-md-3">Município <span class="required">*</span></label>
+      <div class="col-md-9">
+        <ui-select  ng-model="pesquisaLogradouroMunicipio"
+                    ng-required="pesquisandoLogradouro"
+                    theme="bootstrap"
+                    reset-search-input="false"
+                    title="Selecione um Município"
+                    on-select="pesquisaLogradouro.municipio_id = pesquisaLogradouroMunicipio.id"
+                    id="pesquisa_logradouro_municipios">
+          <ui-select-match placeholder="Digite o nome de um município">{{pesquisaLogradouroMunicipio.nome}} | {{pesquisaLogradouroMunicipio.uf.sigla}}</ui-select-match>
+          <ui-select-choices repeat="municipio in municipios | filter:{nome: $select.search}">
+            {{municipio.nome}} | {{municipio.uf.descricao}}
+          </ui-select-choices>
+        </ui-select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pesquisa_logradouro_nome" class="control-label col-sm-3">Nome</label>
+      <div class="col-sm-9">
+        <input id="pesquisa_logradouro_nome" ng-model="pesquisaLogradouro.nome" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pesquisa_logradouro_nome_popular" class="control-label col-sm-3">Nome popular</label>
+      <div class="col-sm-9">
+        <input id="pesquisa_logradouro_nome_popular" ng-model="pesquisaLogradouro.nome_popular" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <a href ng-disabled="pesquisaLogadouro.$invalid" class="btn btn-info" ng-click="pesquisarLogradouro()" ng-disabled="loadingLogradouro">Pesquisar logradouro</a>
+        <span ng-show="loadingLogradouro"><%= image_tag "spinner.gif" %></span> ou
+        <a href ng-click="mostrarPesquisandoLogradouro(false)">Cancelar</a>
+      </div>
+    </div>
+
+    <div id="logradouros" ng-show="logradouros.length">
+      <pagination page="logradourosPage" query-cache="logradouroQueryCache" submeter-pesquisa="submeterPesquisaLogradouro" />
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Tipo/Título</th>
+            <th>Nome</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-logradouro-nome="{{logradouro.nome}}" ng-repeat="logradouro in logradouros">
+            <td>{{logradouro.tipo_logradouro.descricao}} {{logradouro.titulo_logradouro.descricao}}</td>
+            <td>{{logradouro.nome}}</td>
+            <td><a href ng-click="selecionarLogradouro(logradouro)">Selecionar</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

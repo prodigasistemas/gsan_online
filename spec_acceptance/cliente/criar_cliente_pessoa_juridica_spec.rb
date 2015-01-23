@@ -47,6 +47,9 @@ describe "Como cadastrista", type: :feature, js: true do
 
   def seleciona_responsavel_superior
     click_link "Selecionar cliente responsável superior"
+    click_link "Cancelar"
+    click_link "Selecionar cliente responsável superior"
+
     fill_in "cliente_responsavel_superior_cnpj", with: "37217098000143"
     fill_in "cliente_responsavel_superior_nome", with: "LABOR"
     select "MUNICIPAL", from: "cliente_responsavel_superior_esfera_poder_id"

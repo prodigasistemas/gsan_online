@@ -1,16 +1,16 @@
 <div class="form-group row">
   <div class="btn-group col-sm-8 col-sm-offset-3">
-    <a href class="btn btn-primary" ng-click="$parent.pessoaTipo = 1" ng-class="{ 'active' : $parent.pessoaTipo == 1 }">Pessoa Física</a>
-    <a href class="btn btn-primary" ng-click="$parent.pessoaTipo = 2" ng-class="{ 'active' : $parent.pessoaTipo == 2 }">Pessoa Jurídica</a>
+    <a href class="btn btn-primary" ng-click="cliente.pessoa_tipo = 1" ng-class="{ 'active' : cliente.pessoa_tipo == 1 }">Pessoa Física</a>
+    <a href class="btn btn-primary" ng-click="cliente.pessoa_tipo = 2" ng-class="{ 'active' : cliente.pessoa_tipo == 2 }">Pessoa Jurídica</a>
   </div>
 </div>
 
 <div class="form-group">
   <label for="cliente_tipo_id" class="control-label col-sm-3">Tipo do cliente <span class="required">*</span></label>
   <div class="col-sm-8">
-    <select id="cliente_tipo_id" ng-model="cliente.cliente_tipo_id" class="form-control" ng-readonly="!clienteTipos.length || !pessoaTipo" required>
+    <select id="cliente_tipo_id" ng-model="cliente.cliente_tipo_id" class="form-control" ng-readonly="!clienteTipos.length || !cliente.pessoa_tipo" required>
       <option value="">Selecione um tipo de cliente...</option>
-      <option ng-repeat="tipo in clienteTipos | filter:{pessoa_fisica_juridica: pessoaTipo}" value="{{tipo.id}}" ng-selected="cliente.cliente_tipo_id == tipo.id">{{tipo.descricao}}</option>
+      <option ng-repeat="tipo in clienteTipos | filter:{pessoa_fisica_juridica: cliente.pessoa_tipo}" value="{{tipo.id}}" ng-selected="cliente.cliente_tipo_id == tipo.id">{{tipo.descricao}}</option>
     </select>
   </div>
 </div>
