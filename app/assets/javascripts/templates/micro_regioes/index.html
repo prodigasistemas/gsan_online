@@ -3,7 +3,7 @@
 <page-header titulo="Micro Regiões"></page-header>
 
 <div class="actions clearfix">
-  <a href="/microregioes/novo" class="btn btn-primary pull-right">Criar Micro Região</a>
+  <a href="/micro_regioes/novo" class="btn btn-primary pull-right">Criar Micro Região</a>
 </div>
 
 <div ng-include="'micro_regioes/filter.html'"></div>
@@ -27,7 +27,7 @@
           <td>{{microRegiao.nome}}</td>
           <td>{{microRegiao.regiao.nome}}</td>
           <td class="micro_regiao_ativo"><span yes-no="microRegiao.ativo"></span></td>
-          <td><a class="btn btn-info" ng-href="/micro-regioes/{{microRegiao.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+          <td><a class="btn btn-info" ng-href="/micro_regioes/{{microRegiao.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
         </tr>
       </tbody>
     </table>

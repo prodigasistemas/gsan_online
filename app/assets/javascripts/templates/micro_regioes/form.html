@@ -12,11 +12,11 @@
       </div>
 
       <div class="form-group">
-        <label for="micro_regiao_regiao" class="control-label col-md-3">Região <span class="required">*</span></label>
+        <label for="micro_regiao_regiao_id" class="control-label col-md-3">Região <span class="required">*</span></label>
         <div class="col-md-4">
-          <select id="micro_regiao_regiao" ng-model="microRegiao.regiao_id" class="form-control" required>
+          <select id="micro_regiao_regiao_id" ng-model="microRegiao.regiao_id" class="form-control" required>
             <option value="">Selecione a região</option>
-            <option ng-repeat="regiao in regioes" ng-value="{{regiao.id}}" ng-selected="microRegiao.regiao.id === regiao.id">{{regiao.nome}}</option>
+            <option ng-repeat="regiao in regioes" value="{{regiao.id}}" ng-selected="microRegiao.regiao.id === regiao.id">{{regiao.nome}}</option>
           </select>
         </div>
       </div>

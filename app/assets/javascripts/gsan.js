@@ -55,13 +55,17 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'distrito_operacionais/index.html',
         controller: 'DistritoOperacionaisIndexController'
       }).
-      when('/microregioes', {
+      when('/micro_regioes', {
         templateUrl: 'micro_regioes/index.html',
         controller: 'MicroRegioesIndexController'
       }).
-      when('/microregioes/novo', {
+      when('/micro_regioes/novo', {
         templateUrl: 'micro_regioes/new.html',
         controller: 'MicroRegioesNewController'
+      }).
+      when('/micro_regioes/:id/editar', {
+        templateUrl: 'micro_regioes/edit.html',
+        controller: 'MicroRegioesEditController'
       }).
       otherwise({
         redirectTo: '/ceps'
