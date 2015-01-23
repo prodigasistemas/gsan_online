@@ -10,7 +10,7 @@ app.controller("MicroRegioesNewController", ["MicroRegiao", "Regiao", "Flash", "
 
     microRegiao.$save(function() {
       Flash.setMessage("Micro Região criada com sucesso");
-      $location.url("/microregioes");
+      $location.url("/micro_regioes");
     }, 
     function(response) {
       $scope.formErrors = response.data.errors;
