@@ -7,10 +7,10 @@ app.controller("MunicipiosEditController", ["Municipio", "UnidadeFederacao", "Mi
     $scope.micro_regioes = data.micro_regioes;
   });
   $scope.regioes_desenvolvimento = RegiaoDesenvolvimento.query();
-  
+
   $scope.submeter = function() {
-    var municipio = new Municipio({municipio: $scope.municipio});
-    municipio.$save(function() {
+    var municipio = new Municipio({id: $scope.municipio.id, municipio: $scope.municipio});
+    municipio.$update(function() {
       Flash.setMessage("Município editado com sucesso");
       $location.url("/municipios");
     }, function(response) {
