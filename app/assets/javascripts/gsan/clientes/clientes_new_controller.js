@@ -5,14 +5,12 @@ app.controller("ClientesNewController", ["EnderecoTipo", "EnderecoReferencia", "
 
   $scope.cliente = { ativo: 1, gera_fatura_antecipada: 2, permite_negativacao: 2, enderecos: [] };
 
-  $scope.submeter = function() {
+  $scope.submeter = function(errorCallback) {
     var cliente = new Cliente({cliente: $scope.cliente});
     cliente.$save(function() {
       Flash.setMessage("Cliente criado com sucesso");
       $location.url("/clientes");
-    }, function(response) {
-      $scope.formErrors = response.data.errors;
-    });
+    }, errorCallback);
   }
 }]);
 

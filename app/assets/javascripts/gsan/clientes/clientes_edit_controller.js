@@ -5,13 +5,11 @@ app.controller("ClientesEditController", ["$route", "EnderecoTipo", "EnderecoRef
 
   $scope.cliente = Cliente.get({id: $route.current.params.id});
 
-  $scope.submeter = function() {
+  $scope.submeter = function(errorCallback) {
     var cliente = new Cliente({id: $scope.cliente.id, cliente: $scope.cliente});
     cliente.$update(function() {
       Flash.setMessage("Cliente editado com sucesso");
       $location.url("/clientes");
-    }, function(response) {
-      $scope.formErrors = response.data.errors;
-    });
+    }, errorCallback);
   }
 }]);
