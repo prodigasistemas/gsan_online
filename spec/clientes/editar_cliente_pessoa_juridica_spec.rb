@@ -61,6 +61,11 @@ describe "Como cadastrista", type: :feature, js: true do
     adicionar_oliveira_belo
     expect(page).to have_css ".endereco", count: 2
     remover_ultimo_endereco
+
+    expect(page).to_not have_css ".endereco.destroyed"
+    remover_ultimo_endereco
+    expect(page).to have_css ".endereco.destroyed", count: 1
+
     expect(page).to have_css ".endereco", count: 1
     adicionar_oliveira_belo
     expect(page).to have_css ".endereco", count: 2
@@ -72,8 +77,8 @@ describe "Como cadastrista", type: :feature, js: true do
                                 perimetro_inicial_nome: "OLIVEIRA BELO", perimetro_inicial_nome_popular: "OLIVEIRA-BELO",
                                 perimetro_final_nome: "DIOGO MOIA", perimetro_final_nome_popular: "")
 
-    raise "testar remocao de endereco presente"
-    expect(page).to have_css "#enderecos tbody tr", count: 3
+    expect(page).to have_css ".endereco.destroyed", count: 1
+    expect(page).to have_css ".endereco", count: 3
   end
 
   def preencher_pessoa_fisica
@@ -116,7 +121,7 @@ describe "Como cadastrista", type: :feature, js: true do
     expect(find_field('cliente_nome_mae').value).to eql "REGINA ALMEIDA"
 
     within "#enderecos" do
-      expect(page).to have_css ".endereco", text: "OLIVEIRA BELO - APTO 55555 - 1234 - UMARIZAL - BELEM | PARA - 66050380 - ENTRE QUATORZE DE MARCO E DEODORO"
+      expect(page).to have_css ".endereco", count: 2
       expect(page).to have_css ".endereco", text: "OLIVEIRA BELO - APTO 55555 - 1234 - UMARIZAL - BELEM | PARA - 66050380 - ENTRE QUATORZE DE MARCO E DEODORO"
       expect(page).to have_css ".endereco", text: "DEODORO - VILA 25 - 4321 - UMARIZAL - BELEM | PARA - 55050720 - ENTRE OLIVEIRA BELO E DIOGO MOIA"
     end

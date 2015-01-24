@@ -4,7 +4,7 @@ cd ../gsan_cadastro
 PID_FILE="$(pwd)/tmp/pids/test.pid"
 rake log:clear
 
-RAILS_ENV=test ACCEPTANCE_TEST=1 rake db:seed
+RAILS_ENV=test rake db:seed
 RAILS_ENV=test rails s -p 3002 -d -P $PID_FILE
 
 cd ../gsan_online
