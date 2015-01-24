@@ -97,8 +97,8 @@ describe "Como cadastrista", type: :feature, js: true do
 
     expect(find_field('cliente_cpf').value).to eql "94239288168"
     expect(find_field('cliente_rg').value).to eql "41238216"
-    expect(find_field('cliente_nascimento').value).to eql "1988-01-10"
-    expect(find_field('cliente_data_emissao_rg').value).to eql "1999-01-15"
+    expect(find_field('cliente_nascimento').value).to eql "1999-01-15"
+    expect(find_field('cliente_data_emissao_rg').value).to eql "1988-01-10"
     expect(page).to have_css "#cliente_orgao_emissor_rg_id option[selected]", text: "CREA"
     expect(page).to have_css "#cliente_profissao button", text: "PROGRAMADOR"
     expect(find_field('cliente_nome_mae').value).to eql "Rosa Cristina Bastos"

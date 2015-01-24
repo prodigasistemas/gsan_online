@@ -1,7 +1,7 @@
 <div class="form-group">
   <label for="cliente_cpf" class="control-label col-sm-3">CPF <span class="required">*</span></label>
   <div class="col-sm-8">
-    <input id="cliente_cpf" ng-model="cliente.cpf" class="form-control" ng-required="$parent.pessoaTipo == 1" ng-pattern="/^[0-9]{11}$/">
+    <input id="cliente_cpf" ng-model="cliente.cpf" class="form-control" ng-required="cliente.pessoa_tipo == 1" ng-pattern="/^[0-9]{11}$/">
   </div>
 </div>
 
@@ -70,7 +70,7 @@
 <div class="form-group">
   <label for="cliente_pessoa_sexo_id" class="control-label col-sm-3">Sexo <span class="required">*</span></label>
   <div class="col-sm-8">
-    <select id="cliente_pessoa_sexo_id" ng-model="cliente.pessoa_sexo_id" class="form-control" ng-required="$parent.pessoaTipo == 1">
+    <select id="cliente_pessoa_sexo_id" ng-model="cliente.pessoa_sexo_id" class="form-control" ng-required="cliente.pessoa_tipo == 1">
       <option value="">Selecione um sexo</option>
       <option ng-repeat="sexo in pessoaSexos" value="{{sexo.id}}" ng-selected="cliente.pessoa_sexo_id == sexo.id">{{sexo.descricao}}</option>
     </select>

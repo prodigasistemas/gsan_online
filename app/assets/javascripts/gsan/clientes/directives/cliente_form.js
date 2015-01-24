@@ -69,10 +69,15 @@ app.directive('clienteForm', function() {
         });
       };
 
-      $scope.selecionarResponsavelSuperior = function(responsavelSuperior) {
+      $scope.apagarResponsavelSuperior = function() {
+        $scope.cliente.cliente_responsavel_superior = null;
+        $scope.cliente.cliente_responsavel_superior_id = "";
+      }
+
+      $scope.selecionarResponsavelSuperior = function(clienteResponsavelSuperior) {
         $scope.responsaveisSuperiores = [];
-        $scope.cliente.responsavelSuperior = responsavelSuperior;
-        $scope.cliente.responsavel_superior_id = responsavelSuperior.id;
+        $scope.cliente.cliente_responsavel_superior = clienteResponsavelSuperior;
+        $scope.cliente.cliente_responsavel_superior_id = clienteResponsavelSuperior.id;
         $scope.pesquisarNovoResponsavelSuperior = false;
       };
 

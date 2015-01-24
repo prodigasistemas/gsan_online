@@ -1,7 +1,12 @@
-<a href ng-hide="pesquisarNovoResponsavelSuperior" ng-click="mostrarPesquisaNovoResponsavelSuperior(true)" class="btn btn-default form-control">
-  <span ng-show="cliente.responsavelSuperior" id="responsavel_superior_selecionado">{{cliente.responsavelSuperior.nome}}</span>
-  <span ng-hide="cliente.responsavelSuperior">Selecionar cliente responsável superior</span>
-</a>
+<div id="cliente_responsavel_superior_selecionado" ng-hide="pesquisarNovoResponsavelSuperior" class="row">
+  <div class="col-xs-10 col-sm-11">
+    <a href ng-click="mostrarPesquisaNovoResponsavelSuperior(true)" class="btn btn-default form-control">
+      <span ng-show="cliente.cliente_responsavel_superior" id="responsavel_superior_selecionado">{{cliente.cliente_responsavel_superior.nome}}</span>
+      <span ng-hide="cliente.cliente_responsavel_superior">Selecionar cliente responsável superior</span>
+    </a>
+  </div>
+  <a href class="btn btn-warning apagar_responsavel_superior" ng-click="apagarResponsavelSuperior()"><i class="fa fa-close"></i></a>
+</div>
 
 <div class="panel panel-default" ng-show="pesquisarNovoResponsavelSuperior">
   <div class="panel-heading">
