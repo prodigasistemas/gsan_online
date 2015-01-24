@@ -27,6 +27,11 @@ app.directive('clienteForm', function() {
       $scope.pesquisarNovoResponsavelSuperior = false;
       $scope.adicionandoNovoEndereco = false;
 
+      $scope.setarPessoaTipo = function(tipo) {
+        if ($scope.cliente.pessoa_tipo !== tipo) { $scope.cliente.cliente_tipo_id = undefined; }
+        $scope.cliente.pessoa_tipo = tipo;
+      };
+
       $scope.mostrarPesquisaNovoResponsavelSuperior = function(mostrar) {
         $scope.pesquisarNovoResponsavelSuperior = mostrar;
       };
@@ -94,7 +99,9 @@ app.directive('clienteForm', function() {
 
         gerarAtributosDeEnderecos();
 
-        $scope.submeter();
+        $scope.submeter(function(response) {
+          $scope.formErrors = response.data.errors;
+        });
       }
 
       var gerarAtributosDeEnderecos = function() {
