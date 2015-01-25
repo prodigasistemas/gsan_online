@@ -34,3 +34,8 @@ form table.destroyable_list tr.destroyed {
 form table td.actions {
   text-align: right;
 }
+
+input.hasDatepicker[readonly] {
+  background-color: inherit;
+  cursor: pointer;
+}

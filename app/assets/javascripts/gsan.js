@@ -1,4 +1,4 @@
-var app = angular.module("gsan", ['ngRoute', 'ngResource','templates', 'ui.select', 'ngSanitize', 'ng-breadcrumbs']);
+var app = angular.module("gsan", ['ngRoute', 'ngResource','templates', 'ui.date', 'ui.select', 'ngSanitize', 'ng-breadcrumbs']);
 
 app.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
