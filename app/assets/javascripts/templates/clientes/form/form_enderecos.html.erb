@@ -71,7 +71,7 @@
 
 <a href ng-hide="adicionandoNovoEndereco" ng-click="mostrarAdicionarNovoEndereco(true)" class="btn btn-info">Adicionar novo endereço</a>
 
-<section ng-form name="enderecoForm" id="endereco_form" ng-show="adicionandoNovoEndereco">
+<section ng-form name="$parent.enderecoForm" id="endereco_form" ng-show="adicionandoNovoEndereco">
   <div class="form-group">
     <label class="control-label col-sm-3">Logradouro <span class="required">*</span></label>
     <div class="col-sm-8" id="cliente_endereco_logradouro">
@@ -154,7 +154,7 @@
 
   <div class="form-group">
     <div class="col-sm-9 col-sm-offset-3">
-      <a href ng-disabled="enderecoForm.$invalid" class="btn btn-info" ng-click="adicionarEndereco()">Adicionar endereço</a> ou
+      <a href ng-disabled="$parent.enderecoForm.$invalid" class="btn btn-info" ng-click="adicionarEndereco()">Adicionar endereço</a> ou
       <a href ng-click="mostrarAdicionarNovoEndereco(false)">Cancelar</a>
     </div>
   </div>

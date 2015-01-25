@@ -9,7 +9,8 @@ app.directive('selectLogradouro', function() {
     },
     templateUrl: "logradouros/select_logradouro.html",
     controller: ["Municipio", "$scope", "$http", "CadastroUrl", function(Municipio, $scope, $http, CadastroUrl) {
-      $scope.pesquisaLogradouro = {};
+      $scope.pesquisaLogradouro      = {};
+      $scope.pesquisaLogradouroForm  = {}
 
       if (!$scope.municipios) {
         $scope.municipios = Municipio.query();

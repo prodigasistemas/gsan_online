@@ -22,10 +22,11 @@ app.directive('clienteForm', function() {
       $scope.endereco_referencias = EnderecoReferencia.query();
       $scope.enderecoTipos        = EnderecoTipo.query();
 
-      $scope.cliente_responsavel_superior = {};
-      $scope.endereco = {};
+      $scope.endereco                         = {};
+      $scope.enderecoForm                     = {};
+      $scope.adicionandoNovoEndereco          = false;
+      $scope.cliente_responsavel_superior     = {};
       $scope.pesquisarNovoResponsavelSuperior = false;
-      $scope.adicionandoNovoEndereco = false;
 
       $scope.setarPessoaTipo = function(tipo) {
         if ($scope.cliente.pessoa_tipo !== tipo) { $scope.cliente.cliente_tipo_id = undefined; }
@@ -38,12 +39,16 @@ app.directive('clienteForm', function() {
 
       $scope.mostrarAdicionarNovoEndereco = function(mostrar) {
         $scope.adicionandoNovoEndereco = mostrar;
+
+        if (!mostrar) {
+          $scope.endereco = {};
+          $scope.enderecoForm.$setPristine();
+        }
       };
 
       $scope.adicionarEndereco = function() {
         $scope.cliente.enderecos.push($scope.endereco);
         $scope.mostrarAdicionarNovoEndereco(false);
-        $scope.endereco = {};
       };
 
       $scope.removerEndereco = function(endereco) {
