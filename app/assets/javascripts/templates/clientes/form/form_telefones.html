@@ -1,0 +1,76 @@
+<table id="telefones" class="table table-hover table-striped destroyable_list" ng-show="cliente.telefones.length">
+  <thead>
+    <tr>
+      <th>Número</th>
+      <th>Padrão</th>
+      <th>Ramal</th>
+      <th>Contato</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="telefone_{{telefone.ddd}}_{{telefone.numero}}" ng-class="{telefone: true, destroyed: telefone._destroy}" ng-repeat="telefone in cliente.telefones">
+      <td>({{telefone.ddd}}) {{telefone.numero}}</td>
+      <td>{{telefone.fone_tipo.descricao}}</td>
+      <td>{{telefone.ramal}}</td>
+      <td>{{telefone.nome_contato}}</td>
+      <td class="actions">
+        <a href ng-show="telefone._destroy" ng-click="telefone._destroy = undefined" class="btn btn-warning">
+          Cancelar
+        </a>
+        <a href ng-hide="telefone._destroy" class="btn btn-warning remove" ng-click="removerTelefone(telefone)">
+          <i class="fa fa-close"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a href ng-hide="adicionandoNovoTelefone" ng-click="mostrarAdicionarNovoTelefone(true)" class="btn btn-info">Adicionar novo telefone</a>
+
+<section ng-form name="telefoneForm" id="telefone_form" ng-show="adicionandoNovoTelefone">
+  <div class="form-group">
+    <label for="cliente_telefone_tipo" class="control-label col-sm-3">Tipo <span class="required">*</span></label>
+    <div class="col-sm-8" id="cliente_telefone_tipo">
+      <select id="cliente_telefone_tipo" ng-model="telefone.fone_tipo" class="form-control" ng-required="adicionandoNovoTelefone" ng-options="tipo.descricao for tipo in foneTipos">
+        <option value="">Selecione o tipo de telefone...</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-3">DDD <span class="required">*</span></label>
+    <div class="col-sm-8" id="cliente_telefone_ddd">
+      <input type="number" id="cliente_telefone_ddd" ng-model="telefone.ddd" class="form-control" ng-required="adicionandoNovoTeleofne" max="99" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-3">Número <span class="required">*</span></label>
+    <div class="col-sm-8" id="cliente_telefone_numero">
+      <input type="number" id="cliente_telefone_numero" ng-model="telefone.numero" class="form-control" ng-required="adicionandoNovoTeleofne" max="999999999"required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-3">Ramal</label>
+    <div class="col-sm-8" id="cliente_telefone_ramal">
+      <input id="cliente_telefone_ramal" ng-model="telefone.ramal" class="form-control" ng-required="adicionandoNovoTeleofne">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-3">Nome do contato</label>
+    <div class="col-sm-8" id="cliente_telefone_nome_contato">
+      <input id="cliente_telefone_nome_contato" ng-model="telefone.nome_contato" class="form-control" ng-required="adicionandoNovoTeleofne">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-9 col-sm-offset-3">
+      <a href ng-disabled="telefoneForm.$invalid" class="btn btn-info" ng-click="adicionarTelefone()">Adicionar telefone</a> ou
+      <a href ng-click="mostrarAdicionarNovoTelefone(false)">Cancelar</a>
+    </div>
+  </div>
+</section>
+

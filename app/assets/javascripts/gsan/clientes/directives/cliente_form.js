@@ -97,7 +97,13 @@ app.directive('clienteForm', function() {
           return;
         };
 
+        if ($("#telefone_form input:focus").length) {
+          // como adicionar telefone daqui?
+          return;
+        };
+
         gerarAtributosDeEnderecos();
+        gerarAtributosDeTelefones();
 
         $scope.submeter(function(response) {
           $scope.formErrors = response.data.errors;
@@ -119,6 +125,15 @@ app.directive('clienteForm', function() {
             endereco.logradouro_bairro_id = endereco.logradouro_bairro  ?  endereco.logradouro_bairro.id  : undefined
           }
           $scope.cliente.enderecos_attributes.push(endereco)
+        });
+      };
+
+      var gerarAtributosDeTelefones = function() {
+        $scope.cliente.telefones_attributes = [];
+
+        var telefones = $scope.cliente.telefones;
+        $.each(telefones, function(index, telefone) {
+          $scope.cliente.telefones_attributes.push(telefone);
         });
       };
     }]

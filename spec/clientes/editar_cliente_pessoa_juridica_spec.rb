@@ -35,6 +35,7 @@ describe "Como cadastrista", type: :feature, js: true do
 
     preencher_pessoa_fisica
     preencher_enderecos
+    adicionaTelefones
 
     click_button "Salvar Cliente"
 
@@ -125,6 +126,57 @@ describe "Como cadastrista", type: :feature, js: true do
       expect(page).to have_css ".endereco", count: 2
       expect(page).to have_css ".endereco", text: "OLIVEIRA BELO - APTO 55555 - 1234 - UMARIZAL - BELEM | PARA - 66050380 - ENTRE QUATORZE DE MARCO E DEODORO"
       expect(page).to have_css ".endereco", text: "DEODORO - VILA 25 - 4321 - UMARIZAL - BELEM | PARA - 55050720 - ENTRE OLIVEIRA BELO E DIOGO MOIA"
+    end
+
+    valida_telefone_presente!(ddd: 11, numero: 33234565, tipo: "CELULAR", ramal: 44, nome_contato: "TELEFONISTA")
+    valida_telefone_presente!(ddd: 51, numero: 777555,   tipo: "RESIDENCIAL", ramal: 111, nome_contato: "MAMAE")
+    expect(page).to have_no_css "#telefone_21_11133344"
+  end
+
+  def adicionaTelefones
+    click_link "Adicionar novo telefone"
+    within "#telefone_form" do
+      click_link "Cancelar"
+    end
+
+    adicionar_telefone ddd: 91, numero: 89917171, tipo: "CELULAR", ramal: "000", nome_contato: "O PROPRIO"
+    expect(page).to have_css ".telefone", count: 3
+
+    within "#telefone_91_89917171" do
+     find(".remove").click
+    end
+    expect(page).to have_no_css "#telefone_91_89917171"
+
+    expect(page).to have_css ".telefone",           count: 2
+    within "#telefone_21_11133344" do
+      find("a.remove").click
+    end
+    expect(page).to have_css ".telefone",           count: 2
+    expect(page).to have_css ".telefone.destroyed", count: 1
+
+    adicionar_telefone ddd: 51, numero: 777555, tipo: "RESIDENCIAL", ramal: "111", nome_contato: "MAMAE"
+    expect(page).to have_css ".telefone",           count: 3
+    expect(page).to have_css ".telefone.destroyed", count: 1
+  end
+
+  def adicionar_telefone(ddd: nil, numero: nil, tipo: nil, ramal: nil, nome_contato: nil)
+    click_link "Adicionar novo telefone"
+
+    select tipo, from: "cliente_telefone_tipo"
+    fill_in "cliente_telefone_ddd", with: ddd
+    fill_in "cliente_telefone_numero", with: numero
+    fill_in "cliente_telefone_ramal", with: ramal
+    fill_in "cliente_telefone_nome_contato", with: nome_contato
+    click_link "Adicionar telefone"
+    valida_telefone_presente! ddd: ddd, numero: numero, tipo: tipo, ramal: ramal, nome_contato: nome_contato
+  end
+
+  def valida_telefone_presente!(ddd: nil, numero: nil, tipo: nil, ramal: nil, nome_contato: nil)
+    within "#telefone_#{ddd}_#{numero}" do
+     expect(page).to have_content "(#{ddd}) #{numero}"
+     expect(page).to have_content "#{tipo}"
+     expect(page).to have_content "#{ramal}"            if ramal
+     expect(page).to have_content "#{nome_contato}"     if nome_contato
     end
   end
 end

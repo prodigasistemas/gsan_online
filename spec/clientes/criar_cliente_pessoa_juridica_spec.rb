@@ -26,6 +26,7 @@ describe "Como cadastrista", type: :feature, js: true do
     select_from_autocomplete("acoug", "ACOUGUE", "cliente_ramo_atividade")
 
     seleciona_responsavel_superior
+    adicionaTelefones
 
     click_button "Salvar Cliente"
 
@@ -53,6 +54,8 @@ describe "Como cadastrista", type: :feature, js: true do
     expect(find_field('cliente_cnpj').value).to eql "28112406000185"
     expect(page).to have_css "#cliente_ramo_atividade button", text: "ACOUGUE"
     expect(page).to have_css "#cliente_responsavel_superior_selecionado", text: "LABORATORIO ALFAZEMA"
+
+    valida_telefone_presente!
   end
 
   def seleciona_responsavel_superior
@@ -76,5 +79,40 @@ describe "Como cadastrista", type: :feature, js: true do
     click_link "Pesquisar responsável superior"
     click_link "Selecionar"
     expect(page).to have_css "span#responsavel_superior_selecionado", text: "LABORATORIO ALFAZEMA"
+  end
+
+  def adicionaTelefones
+    click_link "Adicionar novo telefone"
+    click_link "Cancelar"
+
+    adicionar_telefone
+
+    within "#telefone_91_89917171" do
+     find(".remove").click
+    end
+    expect(page).to have_no_css "#telefone_91_89917171"
+
+    adicionar_telefone
+  end
+
+  def adicionar_telefone
+    click_link "Adicionar novo telefone"
+
+    select "COMERCIAL", from: "cliente_telefone_tipo"
+    fill_in "cliente_telefone_ddd", with: "91"
+    fill_in "cliente_telefone_numero", with: "89917171"
+    fill_in "cliente_telefone_ramal", with: "123"
+    fill_in "cliente_telefone_nome_contato", with: "TELEFONISTA"
+    click_link "Adicionar telefone"
+    valida_telefone_presente!
+  end
+
+  def valida_telefone_presente!
+    within "#telefone_91_89917171" do
+     expect(page).to have_content "(91) 89917171"
+     expect(page).to have_content "COMERCIAL"
+     expect(page).to have_content "123"
+     expect(page).to have_content "TELEFONISTA"
+    end
   end
 end
