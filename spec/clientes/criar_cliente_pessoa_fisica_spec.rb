@@ -105,8 +105,13 @@ describe "Como cadastrista", type: :feature, js: true do
     expect(find_field('cliente_nome_mae').value).to eql "Rosa Cristina Bastos"
 
     within "#enderecos" do
-      expect(page).to have_css ".endereco", text: "OLIVEIRA BELO - APTO 55555 - 1234 - UMARIZAL - BELEM | PARA - 66050380 - ENTRE QUATORZE DE MARCO E DEODORO"
-      expect(page).to have_css ".endereco", text: "DEODORO - VILA 25 - 4321 - UMARIZAL - BELEM | PARA - 55050720 - ENTRE OLIVEIRA BELO E DIOGO MOIA"
+      expect(page).to have_css ".endereco[data-nome='OLIVEIRA BELO']", text: "OLIVEIRA BELO - APTO 55555 - 1234 - UMARIZAL - BELEM | PARA - 66050380 - ENTRE QUATORZE DE MARCO E DEODORO"
+      expect(page).to have_css ".endereco[data-nome='OLIVEIRA BELO']", text: "RESIDENCIAL"
+      assert_radio_checked(".endereco[data-nome='OLIVEIRA BELO']")
+
+      expect(page).to have_css ".endereco[data-nome='DEODORO']", text: "DEODORO - VILA 25 - 4321 - UMARIZAL - BELEM | PARA - 55050720 - ENTRE OLIVEIRA BELO E DIOGO MOIA"
+      expect(page).to have_css ".endereco[data-nome='DEODORO']", text: "COMERCIAL"
+      assert_radio_not_checked(".endereco[data-nome='DEODORO']")
     end
   end
 end

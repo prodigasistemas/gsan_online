@@ -54,3 +54,13 @@ def adicionar_cliente_endereco(params)
     expect(page).to have_content params[:perimetro_final_nome]
   end
 end
+
+
+def assert_radio_checked(parent_selector)
+  expect(page).to have_css "#{parent_selector} input[checked]"
+end
+
+
+def assert_radio_not_checked(parent_selector)
+  expect(find("#{parent_selector} input[type='radio']")[:checked]).to be_nil
+end

@@ -77,6 +77,7 @@ describe "Como cadastrista", type: :feature, js: true do
                                 referencia: "NUMERO", numero: "4321", complemento: "VILA 25",
                                 perimetro_inicial_nome: "OLIVEIRA BELO", perimetro_inicial_nome_popular: "OLIVEIRA-BELO",
                                 perimetro_final_nome: "DIOGO MOIA", perimetro_final_nome_popular: "")
+    find(".endereco[data-nome='DEODORO'] input[type='radio']").click
 
     expect(page).to have_css ".endereco.destroyed", count: 1
     expect(page).to have_css ".endereco", count: 3
@@ -125,7 +126,9 @@ describe "Como cadastrista", type: :feature, js: true do
     within "#enderecos" do
       expect(page).to have_css ".endereco", count: 2
       expect(page).to have_css ".endereco", text: "OLIVEIRA BELO - APTO 55555 - 1234 - UMARIZAL - BELEM | PARA - 66050380 - ENTRE QUATORZE DE MARCO E DEODORO"
+      assert_radio_not_checked(".endereco[data-nome='OLIVEIRA BELO']")
       expect(page).to have_css ".endereco", text: "DEODORO - VILA 25 - 4321 - UMARIZAL - BELEM | PARA - 55050720 - ENTRE OLIVEIRA BELO E DIOGO MOIA"
+      assert_radio_checked(".endereco[data-nome='DEODORO']")
     end
 
     valida_telefone_presente!(ddd: 11, numero: 33234565, tipo: "CELULAR", ramal: 44, nome_contato: "TELEFONISTA")

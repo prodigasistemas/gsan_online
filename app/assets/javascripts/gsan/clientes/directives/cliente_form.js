@@ -37,6 +37,13 @@ app.directive('clienteForm', function() {
         $scope.pesquisarNovoResponsavelSuperior = mostrar;
       };
 
+      $scope.selecionaEnderecoDeCorrespondencia = function(enderecoDeCorrespondencia) {
+        $.each($scope.cliente.enderecos, function(index, endereco) {
+          endereco.correspondencia = 2;
+        });
+        enderecoDeCorrespondencia.correspondencia = 1
+      };
+
       $scope.mostrarAdicionarNovoEndereco = function(mostrar) {
         $scope.adicionandoNovoEndereco = mostrar;
 
@@ -47,6 +54,9 @@ app.directive('clienteForm', function() {
       };
 
       $scope.adicionarEndereco = function() {
+        if ($scope.cliente.enderecos.length === 0) {
+          $scope.endereco.correspondencia = 1;
+        }
         $scope.cliente.enderecos.push($scope.endereco);
         $scope.mostrarAdicionarNovoEndereco(false);
       };

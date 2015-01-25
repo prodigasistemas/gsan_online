@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-class="{endereco: true, destroyed: endereco._destroy}" ng-repeat="endereco in cliente.enderecos">
+    <tr data-nome="{{endereco.logradouro.nome}}" ng-class="{endereco: true, destroyed: endereco._destroy}" ng-repeat="endereco in cliente.enderecos">
       <td>
         <span ng-show="endereco.logradouro">
           {{endereco.logradouro.tipo_logradouro.descricao}}
@@ -55,6 +55,7 @@
         </span>
       </td>
       <td>
+        <input type="radio" name="cliente_endereco_correspondencia" ng-checked="endereco.correspondencia == 1" ng-click="selecionaEnderecoDeCorrespondencia(endereco)">
         {{endereco.endereco_tipo.descricao}}
       </td>
       <td>
