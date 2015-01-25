@@ -71,6 +71,7 @@ app.directive('clienteForm', function() {
 
       $scope.pesquisarClienteResponsavel = function() {
         var copiedQuery = jQuery.extend({}, $scope.cliente_responsavel_superior);
+        copiedQuery.pessoa_tipo = 2;
         $scope.clienteResponsavelQueryCache = { query: copiedQuery };
         $scope.submeterPesquisaClienteResponsavel();
       };
