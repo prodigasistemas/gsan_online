@@ -55,7 +55,7 @@ describe "Como cadastrista", type: :feature, js: true do
     expect(page).to have_css "#cliente_ramo_atividade button", text: "ACOUGUE"
     expect(page).to have_css "#cliente_responsavel_superior_selecionado", text: "LABORATORIO ALFAZEMA"
 
-    valida_telefone_presente!
+    valida_telefone_presente!(ddd: 91, numero: 89917171, tipo: "COMERCIAL", ramal: "123", nome_contato: "TELEFONISTA", padrao: true)
   end
 
   def seleciona_responsavel_superior
@@ -85,34 +85,37 @@ describe "Como cadastrista", type: :feature, js: true do
     click_link "Adicionar novo telefone"
     click_link "Cancelar"
 
-    adicionar_telefone
+    adicionar_telefone ddd: 91, numero: 89917171, tipo: "COMERCIAL", ramal: "123", nome_contato: "TELEFONISTA", padrao: true
 
     within "#telefone_91_89917171" do
      find(".remove").click
     end
     expect(page).to have_no_css "#telefone_91_89917171"
 
-    adicionar_telefone
+    adicionar_telefone ddd: 91, numero: 89917171, tipo: "COMERCIAL", ramal: "123", nome_contato: "TELEFONISTA", padrao: true
   end
 
-  def adicionar_telefone
+  def adicionar_telefone(ddd: nil, numero: nil, tipo: nil, ramal: nil, nome_contato: nil, padrao: nil)
     click_link "Adicionar novo telefone"
 
-    select "COMERCIAL", from: "cliente_telefone_tipo"
-    fill_in "cliente_telefone_ddd", with: "91"
-    fill_in "cliente_telefone_numero", with: "89917171"
-    fill_in "cliente_telefone_ramal", with: "123"
-    fill_in "cliente_telefone_nome_contato", with: "TELEFONISTA"
+    select tipo, from: "cliente_telefone_tipo"
+    fill_in "cliente_telefone_ddd", with: ddd
+    fill_in "cliente_telefone_numero", with: numero
+    fill_in "cliente_telefone_ramal", with: ramal
+    fill_in "cliente_telefone_nome_contato", with: nome_contato
     click_link "Adicionar telefone"
-    valida_telefone_presente!
+    valida_telefone_presente! ddd: ddd, numero: numero, tipo: tipo, ramal: ramal, nome_contato: nome_contato, padrao: padrao
   end
 
-  def valida_telefone_presente!
-    within "#telefone_91_89917171" do
-     expect(page).to have_content "(91) 89917171"
-     expect(page).to have_content "COMERCIAL"
-     expect(page).to have_content "123"
-     expect(page).to have_content "TELEFONISTA"
+  def valida_telefone_presente!(ddd: nil, numero: nil, tipo: nil, ramal: nil, nome_contato: nil, padrao: nil)
+    within "#telefone_#{ddd}_#{numero}" do
+     expect(page).to have_content "(#{ddd}) #{numero}"
+     expect(page).to have_content "#{tipo}"
+     expect(page).to have_content "#{ramal}"            if ramal
+     expect(page).to have_content "#{nome_contato}"     if nome_contato
     end
+
+    assert_radio_checked("#telefone_#{ddd}_#{numero}")     if padrao == true
+    assert_radio_not_checked("#telefone_#{ddd}_#{numero}") if padrao == false
   end
 end

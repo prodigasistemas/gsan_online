@@ -27,8 +27,15 @@ app.directive('clienteTelefoneForm', function() {
         }
       };
 
+      $scope.selecionaTelefonePadrao = function(telefonePadrao) {
+        $.each($scope.cliente.telefones, function(index, telefone) {
+          telefone.padrao = 2;
+        });
+        telefonePadrao.padrao = 1
+      };
+
       $scope.adicionarTelefone = function() {
-        adicionarRelacionamentos($scope.telefone);
+        adicionarAtributos($scope.telefone);
         $scope.cliente.telefones.push($scope.telefone);
 
         $scope.mostrarAdicionarNovoTelefone(false);
@@ -36,8 +43,9 @@ app.directive('clienteTelefoneForm', function() {
         $scope.telefoneForm.$setPristine();
       };
 
-      var adicionarRelacionamentos = function(telefone) {
+      var adicionarAtributos = function(telefone) {
         $scope.telefone.fone_tipo_id = telefone.fone_tipo ? telefone.fone_tipo.id : undefined;
+        $scope.telefone.padrao = $scope.cliente.telefones.length === 0 ? 1 : 2;
       };
     }]
   };

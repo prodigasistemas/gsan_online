@@ -11,7 +11,10 @@
   <tbody>
     <tr id="telefone_{{telefone.ddd}}_{{telefone.numero}}" ng-class="{telefone: true, destroyed: telefone._destroy}" ng-repeat="telefone in cliente.telefones">
       <td>({{telefone.ddd}}) {{telefone.numero}}</td>
-      <td>{{telefone.fone_tipo.descricao}}</td>
+      <td>
+        <input type="radio" name="cliente_telefone_padrao" ng-checked="telefone.padrao == 1" ng-click="selecionaTelefonePadrao(telefone)">
+        {{telefone.fone_tipo.descricao}} - {{telefone.padrao}}
+      </td>
       <td>{{telefone.ramal}}</td>
       <td>{{telefone.nome_contato}}</td>
       <td class="actions">

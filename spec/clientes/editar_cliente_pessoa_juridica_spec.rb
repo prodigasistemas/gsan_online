@@ -131,8 +131,8 @@ describe "Como cadastrista", type: :feature, js: true do
       assert_radio_checked(".endereco[data-nome='DEODORO']")
     end
 
-    valida_telefone_presente!(ddd: 11, numero: 33234565, tipo: "CELULAR", ramal: 44, nome_contato: "TELEFONISTA")
-    valida_telefone_presente!(ddd: 51, numero: 777555,   tipo: "RESIDENCIAL", ramal: 111, nome_contato: "MAMAE")
+    valida_telefone_presente!(ddd: 11, numero: 33234565, tipo: "CELULAR", ramal: 44, nome_contato: "TELEFONISTA", padrao: false)
+    valida_telefone_presente!(ddd: 51, numero: 777555,   tipo: "RESIDENCIAL", ramal: 111, nome_contato: "MAMAE", padrao: true)
     expect(page).to have_no_css "#telefone_21_11133344"
   end
 
@@ -142,7 +142,7 @@ describe "Como cadastrista", type: :feature, js: true do
       click_link "Cancelar"
     end
 
-    adicionar_telefone ddd: 91, numero: 89917171, tipo: "CELULAR", ramal: "000", nome_contato: "O PROPRIO"
+    adicionar_telefone ddd: 91, numero: 89917171, tipo: "CELULAR", ramal: "000", nome_contato: "O PROPRIO", padrao: false
     expect(page).to have_css ".telefone", count: 3
 
     within "#telefone_91_89917171" do
@@ -157,12 +157,15 @@ describe "Como cadastrista", type: :feature, js: true do
     expect(page).to have_css ".telefone",           count: 2
     expect(page).to have_css ".telefone.destroyed", count: 1
 
-    adicionar_telefone ddd: 51, numero: 777555, tipo: "RESIDENCIAL", ramal: "111", nome_contato: "MAMAE"
+    adicionar_telefone ddd: 51, numero: 777555, tipo: "RESIDENCIAL", ramal: "111", nome_contato: "MAMAE", padrao: false
+    within "#telefone_51_777555" do
+      find("input[type='radio']").click
+    end
     expect(page).to have_css ".telefone",           count: 3
     expect(page).to have_css ".telefone.destroyed", count: 1
   end
 
-  def adicionar_telefone(ddd: nil, numero: nil, tipo: nil, ramal: nil, nome_contato: nil)
+  def adicionar_telefone(ddd: nil, numero: nil, tipo: nil, ramal: nil, nome_contato: nil, padrao: nil)
     click_link "Adicionar novo telefone"
 
     select tipo, from: "cliente_telefone_tipo"
@@ -171,15 +174,18 @@ describe "Como cadastrista", type: :feature, js: true do
     fill_in "cliente_telefone_ramal", with: ramal
     fill_in "cliente_telefone_nome_contato", with: nome_contato
     click_link "Adicionar telefone"
-    valida_telefone_presente! ddd: ddd, numero: numero, tipo: tipo, ramal: ramal, nome_contato: nome_contato
+    valida_telefone_presente! ddd: ddd, numero: numero, tipo: tipo, ramal: ramal, nome_contato: nome_contato, padrao: padrao
   end
 
-  def valida_telefone_presente!(ddd: nil, numero: nil, tipo: nil, ramal: nil, nome_contato: nil)
+  def valida_telefone_presente!(ddd: nil, numero: nil, tipo: nil, ramal: nil, nome_contato: nil, padrao: nil)
     within "#telefone_#{ddd}_#{numero}" do
      expect(page).to have_content "(#{ddd}) #{numero}"
      expect(page).to have_content "#{tipo}"
      expect(page).to have_content "#{ramal}"            if ramal
      expect(page).to have_content "#{nome_contato}"     if nome_contato
     end
+
+    assert_radio_checked("#telefone_#{ddd}_#{numero}")     if padrao == true
+    assert_radio_not_checked("#telefone_#{ddd}_#{numero}") if padrao == false
   end
 end

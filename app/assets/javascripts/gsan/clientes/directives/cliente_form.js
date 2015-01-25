@@ -54,9 +54,8 @@ app.directive('clienteForm', function() {
       };
 
       $scope.adicionarEndereco = function() {
-        if ($scope.cliente.enderecos.length === 0) {
-          $scope.endereco.correspondencia = 1;
-        }
+        $scope.endereco.correspondencia = $scope.cliente.enderecos.length === 0 ? 1 : 2;
+
         $scope.cliente.enderecos.push($scope.endereco);
         $scope.mostrarAdicionarNovoEndereco(false);
       };
