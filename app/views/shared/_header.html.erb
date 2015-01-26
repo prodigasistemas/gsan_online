@@ -12,7 +12,7 @@
                        on-select="navigarPara(item.id)">
       <ui-select-match placeholder="Ache o que você procura">{{item.modulo}} / {{item.grupo}} / {{item.title}}</ui-select-match>
       <ui-select-choices repeat="item in items | filter:$select.search">
-        {{item.modulo}} / {{item.grupo}} / {{item.title}}
+        <small>{{item.modulo}} / {{item.grupo}} /</small> <b>{{item.title}}</b>
       </ui-select-choices>
     </ui-select>
   </form>

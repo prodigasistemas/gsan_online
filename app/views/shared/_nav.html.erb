@@ -1,15 +1,10 @@
 <nav ng-controller="NavController">
-  <div class="sidebar-nav">
-    <div class="navbar navbar-default" role="navigation">
-      <div class="navbar-collapse collapse sidebar-navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li ng-repeat="item in grupos" class="item"
-              ng-class="{'active': item.id == states.activeItem}">
-
-              <a href="/{{item.id}}">{{item.title}}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <div class="list-group">
+    <a  href="/{{item.id}}"
+        ng-repeat="item in grupos"
+        class="list-group-item"
+        ng-class="{'active': item.id == states.activeItem}">
+      {{item.title}}
+    </a>
   </div>
 </nav>

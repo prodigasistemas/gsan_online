@@ -8,9 +8,9 @@
     <base href="/">
   </head>
   <body ng-app="gsan" data-cadastro-url="<%= CADASTRO_URL %>">
-    <div id="wrapper">
-      <%= render "shared/header" %>
+    <%= render "shared/header" %>
 
+    <div id="wrapper">
       <div class="row" ng-controller="MainContentController">
         <div ng-class="sidebarClasses">
           <%= render "shared/nav" %>

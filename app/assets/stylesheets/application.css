@@ -12,9 +12,6 @@
  *
  *= require jquery-ui
  *= require vendor
- *= require header
- *= require dashboard
- *= require form
- *= require home_modules
+ *= require_tree .
  *= require_self
  */
