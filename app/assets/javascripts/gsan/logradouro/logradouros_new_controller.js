@@ -6,7 +6,7 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
   $scope.cep = {};
   $scope.logradouro.bairros = [];
   $scope.logradouro.ceps = [];
-  
+
   $scope.municipios = Municipio.query();
   $scope.tipo_logradouros = TipoLogradouro.query();
   $scope.titulo_logradouros = TituloLogradouro.query();
@@ -24,6 +24,8 @@ app.controller("LogradourosNewController", ["Logradouro", "TipoLogradouro", "Tit
   $scope.adicionaBairro = function(){
     if (bairroSelecionado()) { return; }
     $scope.logradouro.logradouro_bairros.push({bairro: $scope.bairro.selecionado});
+    $scope.bairro.resultado = "";
+    $scope.bairro.selecionado = {};
   };
 
   $scope.removeBairro = function(logradouroBairro){

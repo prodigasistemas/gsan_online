@@ -25,6 +25,7 @@ app.controller("LogradourosEditController", ["Logradouro", "TipoLogradouro", "Ti
     if (bairroSelecionado()) { return; }
     $scope.logradouro.logradouro_bairros.push({bairro: $scope.bairro.selecionado});
     $scope.bairro.resultado = "";
+    $scope.bairro.selecionado = {};
   };
 
   $scope.removeBairro = function(logradouroBairro){
