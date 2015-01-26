@@ -4,14 +4,14 @@ app.controller("NavController", ["$rootScope", "$scope", "$location", function($
   $scope.states = {};
 
   $scope.items = [
-    { id: 'ceps',                     title: 'CEPs' },
-    { id: 'municipios',               title: 'Municípios' },
-    { id: 'bairros',                  title: 'Bairros' },
-    { id: 'logradouros',              title: 'Logradouros' },
-    { id: 'micro_regioes',            title: 'Micro Regiões' },
-    { id: 'regioes',                  title: 'Regiões' },
-    { id: 'regioes_desenvolvimento',  title: 'Regiões de Desenvolvimento' },
-    { id: 'clientes',                 title: 'Clientes' }
+    { modulo: "Cadastro", grupo: "Endereços", id: 'ceps',                     title: 'CEPs' },
+    { modulo: "Cadastro", grupo: "Endereços", id: 'municipios',               title: 'Municípios' },
+    { modulo: "Cadastro", grupo: "Endereços", id: 'bairros',                  title: 'Bairros' },
+    { modulo: "Cadastro", grupo: "Endereços", id: 'logradouros',              title: 'Logradouros' },
+    { modulo: "Cadastro", grupo: "Endereços", id: 'micro_regioes',            title: 'Micro Regiões' },
+    { modulo: "Cadastro", grupo: "Endereços", id: 'regioes',                  title: 'Regiões' },
+    { modulo: "Cadastro", grupo: "Endereços", id: 'regioes_desenvolvimento',  title: 'Regiões de Desenvolvimento' },
+    { modulo: "Cadastro", grupo: "Clientes",  id: 'clientes',                 title: 'Clientes' }
   ];
 
   $scope.grupos = [

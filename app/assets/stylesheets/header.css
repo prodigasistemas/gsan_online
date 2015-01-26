@@ -10,18 +10,20 @@
   font-size: 16px;
 }
 
-#main-header .logo {
+#main-header #logo,
+#main-header #logo img {
   display: inline-block;
+  width: auto;
+  height: 40px;
 }
 
 #main-header form {
   display: inline-block;
-  width: 320px;
+  width: 300px;
 }
 
-#main-header .logo img {
+#main-header form .ui-select-bootstrap > .ui-select-choices {
   width: auto;
-  height: 40px;
 }
 
 header.with-actions h1 {
