@@ -8,22 +8,24 @@
     <base href="/">
   </head>
   <body ng-app="gsan" data-cadastro-url="<%= CADASTRO_URL %>">
-    <%= render "shared/header" %>
+    <div id="wrapper">
+      <%= render "shared/header" %>
 
-    <div class="row">
-      <div class="col-sm-3 col-md-2 sidebar">
-        <%= render "shared/nav" %>
+      <div class="row" ng-controller="MainContentController">
+        <div ng-class="sidebarClasses">
+          <%= render "shared/nav" %>
+        </div>
+        <div ng-class="mainContentClasses">
+          <div ng-view></div>
+        </div>
       </div>
-      <div class="col-sm-9 col-md-10 main">
-        <div ng-view></div>
-      </div>
+
+      <footer>
+        <div class="infos">
+          <div class="pull-left"><h2>GSAN - Online</h2></div>
+          <div class="pull-right"><%= image_tag "cidades.png" %></div>
+        </div>
+      </footer>
     </div>
-
-    <footer>
-      <div class="infos">
-        <div class="pull-left"><h2>GSAN - Online</h2></div>
-        <div class="pull-right"><%= image_tag "cidades.png" %></div>
-      </div>
-    </footer>
   </body>
 </html>

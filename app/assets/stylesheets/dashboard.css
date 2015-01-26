@@ -11,6 +11,11 @@ body{
   background: white;
 }
 
+#wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
 .sub-header {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
@@ -60,14 +65,22 @@ body{
 }
 
 .main {
-  min-height: 800px;
   padding-left: 15px;
   padding-right: 30px;
+  margin-bottom: 60px;
+  padding-bottom: 60px;
 }
+
+.main.full {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .main .page-header {
   border: 1px solid #DDDDDD;
   background: #F5F5F5;
   padding: 0 0 10px 10px;
+  position: relative;
 }
 
 .main .page-header a{
@@ -78,10 +91,19 @@ body{
   border-right: 1px solid #DDDDDD;
 }
 
+.main .page-header img.page-header-right{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+}
+
 footer {
   background-color: #286090;
   height: 65px;
   width: 100%;
+  position: absolute;
+  bottom: 0px;
 }
 
 footer .infos h2 {
