@@ -22,7 +22,7 @@ section#modulos article .panel:hover {
 
 section#modulos article .panel div {
   display: table-cell;
-  height: 240px;
+  height: 200px;
   vertical-align: middle;
   text-align: center;
 }
