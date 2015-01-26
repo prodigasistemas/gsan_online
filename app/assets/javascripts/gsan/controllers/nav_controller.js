@@ -2,7 +2,7 @@ var app = angular.module("gsan");
 
 app.controller("NavController", ["$rootScope", "$scope", "$location", function($rootScope, $scope, $location) {
   $scope.states = {};
-  $scope.states.activeItem = 'ceps';
+
   $scope.items = [
     { id: 'ceps',                     title: 'CEPs' },
     { id: 'municipios',               title: 'Municípios' },
@@ -14,6 +14,12 @@ app.controller("NavController", ["$rootScope", "$scope", "$location", function($
     { id: 'clientes',                 title: 'Clientes' }
   ];
 
+  $scope.grupos = [
+    { id: 'painel',                   title: "Todos" },
+    { id: 'painel?filtro=enderecos',  title: "Endereços" },
+    { id: 'painel?filtro=clientes',   title: "Clientes" }
+  ]
+
   $rootScope.$on("$routeChangeSuccess", function() {
     $scope.changeTab();
   });
@@ -21,9 +27,12 @@ app.controller("NavController", ["$rootScope", "$scope", "$location", function($
   $scope.changeTab = function() {
     $scope.currentPage = $location.url();
     $scope.states.activeItem = $location.url().substring(1, $location.url().length);
-    $scope.ceps = $location.url().match(/ceps/) ? true : false;
-    $scope.municipios = $location.url().match(/municipios/) ? true : false;
-  }
+  };
+
+  $scope.navigarPara = function(pagina) {
+    $scope.item = {};
+    $location.url(pagina);
+  };
 
   $scope.changeTab();
 }]);

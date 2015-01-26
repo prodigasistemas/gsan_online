@@ -1,31 +1,23 @@
 <header id="main-header">
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="col-md-4">
-        <div class="logo">
-          <%= image_tag "logo.png", id: "logo" %>
-          <h1>GSAN - Online</h1>
-        </div>
-      </div>
-      <div class="col-md-6"></div>
-      <div class="col-md-2 header-user-settings">
-        <ul class="nav nav-user">
-          <li class="dropdown">
-            <a href="#" class="nav-user-main" data-toggle="dropdown" role="button" aria-expanded="false">
-              <i class="fa fa-user"></i>
-              minha conta
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#"><i class="fa fa-power-off"></i>sair</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+  <div class="row">
+    <div class="logo col-sm-6">
+      <%= image_tag "logo.png", id: "logo" %>
+
+      <form ng-controller="NavController">
+        <ui-select ng-model="item"
+                           theme="bootstrap"
+                           ng-disabled="disabled"
+                           reset-search-input="false"
+                           title="Ache o que você procura"
+                           ng-disabled="false"
+                           required
+                           on-select="navigarPara(item.id)">
+          <ui-select-match placeholder="Ache o que você procura">{{item.title}}</ui-select-match>
+          <ui-select-choices repeat="item in items | filter:$select.search">
+            {{item.title}}
+          </ui-select-choices>
+        </ui-select>
+      </form>
     </div>
   </div>
 </header>

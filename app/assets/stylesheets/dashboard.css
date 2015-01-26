@@ -26,10 +26,9 @@ body{
 
 @media (min-width: 768px) {
   .sidebar {
-    z-index: 1000;
     display: block;
-    margin: 20px 0 0 15px;
-    padding: 20px;
+    margin-top: 40px;
+    padding-left: 30px;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: white;
@@ -61,8 +60,9 @@ body{
 }
 
 .main {
-  background: #fff;
   min-height: 800px;
+  padding-left: 15px;
+  padding-right: 30px;
 }
 .main .page-header {
   border: 1px solid #DDDDDD;

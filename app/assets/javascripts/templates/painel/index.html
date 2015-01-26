@@ -1,0 +1,15 @@
+<page-header titulo="Painel"></page-header>
+
+<form>
+  <input id="filtro_painel" ng-model="filtro" class="form-control" placeholder="Pesquisar">
+</form>
+
+<nav>
+  <section ng-repeat="grupo in grupos" ng-show="(grupo.items | filter:filtro).length > 0">
+    <h1>{{grupo.titulo}}</h1>
+    <article ng-repeat="item in grupo.items | filter:filtro | orderBy: 'titulo'">
+      <a ng-href="{{item.url}}" ng-show="item.url">{{item.titulo}}</a>
+      <span ng-hide="item.url">{{item.titulo}}</span>
+    </article>
+  </section>
+</nav>
