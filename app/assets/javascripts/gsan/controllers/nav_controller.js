@@ -4,10 +4,14 @@ app.controller("NavController", ["$rootScope", "$scope", "$location", function($
   $scope.states = {};
   $scope.states.activeItem = 'ceps';
   $scope.items = [
-    { id: 'ceps',         title: 'CEPs' },
-    { id: 'municipios',   title: 'Municípios' },
-    { id: 'bairros',      title: 'Bairros' },
-    { id: 'logradouros',  title: 'Logradouros' }
+    { id: 'ceps',                     title: 'CEPs' },
+    { id: 'municipios',               title: 'Municípios' },
+    { id: 'bairros',                  title: 'Bairros' },
+    { id: 'logradouros',              title: 'Logradouros' },
+    { id: 'micro_regioes',            title: 'Micro Regiões' },
+    { id: 'regioes',                  title: 'Regiões' },
+    { id: 'regioes_desenvolvimento',  title: 'Regiões de Desenvolvimento' },
+    { id: 'clientes',                 title: 'Clientes' }
   ];
 
   $rootScope.$on("$routeChangeSuccess", function() {
