@@ -7,8 +7,8 @@ app.controller("PainelController", ["$route", "$scope", "$location", function($r
     { url: '/cadastro/painel', icone: "plus", titulo: "Cadastro" },
     { url: '',                 icone: "money", titulo: "Financeiro" },
     { url: '',                 icone: "dollar", titulo: "Cobrança" },
-    { url: '',                 icone: "cc-visa", titulo: "Micro Medição" },
-    { url: '',                 icone: "leanpub", titulo: "Faturamento" }
+    { url: '',                 icone: "line-chart", titulo: "Micro Medição" },
+    { url: '',                 icone: "credit-card", titulo: "Faturamento" }
   ];
 
   $scope.grupos = [{
