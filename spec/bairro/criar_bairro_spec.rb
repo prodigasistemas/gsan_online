@@ -4,7 +4,9 @@ describe "Como um cadastrista", type: :feature, js: true do
   before do
     visit root_path
 
-    click_link "Bairros"
+    find("h1", :text => "Cadastro").click
+    find("h5", :text => "Bairros").click
+
     click_link "Criar Bairro"
   end
 

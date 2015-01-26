@@ -4,7 +4,8 @@ describe "Como cadastrista", type: :feature, js: true do
   it "eu posso editar um cliente Pessoa Jurídica" do
     visit root_path
 
-    click_link "Clientes"
+    find("h1", :text => "Cadastro").click
+    find("h5", :text => "Clientes").click
 
     fill_in "cliente_cnpj", with: "11111111111111"
     click_button "Pesquisar"

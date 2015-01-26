@@ -4,7 +4,8 @@ describe "Como um cadastrista", type: :feature, js: true do
   it "eu posso editar um CEP" do
     visit root_path
 
-    click_link "CEPs"
+    find("h1", :text => "Cadastro").click
+    find("h5", :text => "CEPs").click
     fill_in "cep_codigo", with: "66666666"
     click_button "Pesquisar"
     find('tr.cep:last-child a').click

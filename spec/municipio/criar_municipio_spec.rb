@@ -4,7 +4,9 @@ describe "Como um cadastrista", type: :feature, js: true do
   it "eu posso cadastrar municípios" do
     visit root_path
 
-    click_link "Municípios"
+    find("h1", :text => "Cadastro").click
+    find("h5", :text => "Municípios").click
+
     click_link "Criar Município"
 
     fill_in "municipio_codigo_ibge", with: "22"

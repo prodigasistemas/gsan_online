@@ -4,7 +4,9 @@ describe "Como cadastrista", type: :feature, js: true do
   it "eu posso cadastrar um logradouro" do
     visit root_path
 
-    click_link "Logradouros"
+    find("h1", :text => "Cadastro").click
+    find("h5", :text => /^Logradouros$/).click
+
     click_link "Criar Logradouro"
 
     select "RUA", from: "logradouro_tipo_id"

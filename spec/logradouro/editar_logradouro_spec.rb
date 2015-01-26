@@ -4,7 +4,9 @@ describe "Como cadastrista", type: :feature, js: true do
   it "eu posso editar um logradouro" do
     visit root_path
 
-    click_link "Logradouros"
+    find("h1", :text => "Cadastro").click
+    find("h5", :text => /^Logradouros$/).click
+
     fill_in "logradouro_nome", with: "cear"
     click_button "Pesquisar"
 

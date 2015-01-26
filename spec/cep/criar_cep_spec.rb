@@ -4,7 +4,9 @@ describe "Como um cadastrista", type: :feature, js: true do
   it "eu posso cadastrar CEPs" do
     visit root_path
 
-    click_link "CEPs"
+    find("h1", :text => "Cadastro").click
+
+    find("h5", :text => "CEPs").click
     click_link "Criar CEP"
 
     fill_in "cep_codigo",           with: "66050381"
