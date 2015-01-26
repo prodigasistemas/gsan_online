@@ -1,4 +1,4 @@
-<div ng-include="'shared/form_errors.html'"></div>
+<form-errors form-errors="$parent.formErrors"></form-errors>
 
 <form ng-submit="submeter()" class="form-horizontal" name="form" novalidate>
   <div class="panel panel-default">
@@ -33,8 +33,7 @@
       </div>
 
       <div class="form-group">
-        <label for="municipio_cep_final" 
-        <label for="municipio_cep_inicial" class="control-label col-md-3">CEP Final</label>
+        <label for="municipio_cep_final" class="control-label col-md-3">CEP Final</label>
         <div class="col-md-3">
           <input id="municipio_cep_final" ng-model="municipio.cep_final" class="form-control">
         </div>

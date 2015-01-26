@@ -1,0 +1,81 @@
+<div class="form-group row">
+  <div class="btn-group col-sm-8 col-sm-offset-3">
+    <a href class="btn btn-primary" ng-click="setarPessoaTipo(1)" ng-class="{ 'active' : cliente.pessoa_tipo == 1 }">Pessoa Física</a>
+    <a href class="btn btn-primary" ng-click="setarPessoaTipo(2)" ng-class="{ 'active' : cliente.pessoa_tipo == 2 }">Pessoa Jurídica</a>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cliente_tipo_id" class="control-label col-sm-3">Tipo do cliente <span class="required">*</span></label>
+  <div class="col-sm-8">
+    <select id="cliente_tipo_id" ng-model="cliente.cliente_tipo_id" class="form-control" ng-readonly="!clienteTipos.length || !cliente.pessoa_tipo" required>
+      <option value="">Selecione um tipo de cliente...</option>
+      <option ng-repeat="tipo in clienteTipos | filter:{pessoa_fisica_juridica: cliente.pessoa_tipo}" value="{{tipo.id}}" ng-selected="cliente.cliente_tipo_id == tipo.id">{{tipo.descricao}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cliente_nome" class="control-label col-sm-3">Nome <span class="required">*</span></label>
+  <div class="col-sm-8">
+    <input id="cliente_nome" ng-model="cliente.nome" class="form-control" required>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cliente_nome_abreviado" class="control-label col-sm-3">Nome abreviado</label>
+  <div class="col-sm-8">
+    <input id="cliente_nome_abreviado" ng-model="cliente.nome_abreviado" class="form-control">
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cliente_email" class="control-label col-sm-3">Email</label>
+  <div class="col-sm-8">
+    <input id="cliente_email" ng-model="cliente.email" class="form-control">
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cliente_vencimento" class="control-label col-sm-3">Vencimento</label>
+  <div class="col-sm-8">
+    <input id="cliente_vencimento" ng-model="cliente.vencimento" class="form-control" disabled>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3">Vencimento para o mês seguinte</label>
+  <div class="col-sm-8">
+    <div id="cliente_vencimento_mes_seguinte" class="btn-group">
+      <a href class="btn btn-primary" ng-click="cliente.vencimento_mes_seguinte = 1" ng-class="{ 'active' : cliente.vencimento_mes_seguinte == 1 }" ng-disabled="cliente.id == undefined">Sim</a>
+      <a href class="btn btn-primary" ng-click="cliente.vencimento_mes_seguinte = 2" ng-class="{ 'active' : cliente.vencimento_mes_seguinte == 2 }" ng-disabled="cliente.id == undefined">Não</a>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3">Permite geração de fatura antecipada <span class="required">*</span></label>
+  <div class="col-sm-8">
+    <div id="cliente_gera_fatura_antecipada" class="btn-group">
+      <a href class="btn btn-primary" ng-click="cliente.gera_fatura_antecipada = 1" ng-class="{ 'active' : cliente.gera_fatura_antecipada == 1 }"> Sim</a>
+      <a href class="btn btn-primary" ng-click="cliente.gera_fatura_antecipada = 2" ng-class="{ 'active' : cliente.gera_fatura_antecipada == 2 }"> Não</a>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3">Cliente bloqueado para negativação</label>
+  <div id="cliente_permite_negativacao" class="col-sm-8">
+    <div class="btn-group">
+      <a href class="btn btn-primary" ng-click="cliente.permite_negativacao = 1" ng-class="{ 'active' : cliente.permite_negativacao == 1 }">Sim</a>
+      <a href class="btn btn-primary" ng-click="cliente.permite_negativacao = 2" ng-class="{ 'active' : cliente.permite_negativacao == 2 }">Não</a>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cliente_ativo" class="control-label col-md-3"> Ativo</label>
+  <div class="col-md-3">
+    <input id="cliente_ativo" type="checkbox" ng-model="cliente.ativo" ng-true-value="1" ng-false-value="2">
+  </div>
+</div>

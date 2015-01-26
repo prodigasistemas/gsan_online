@@ -1,0 +1,85 @@
+<div class="form-group">
+  <label for="cliente_cpf" class="control-label col-sm-3">CPF <span class="required">*</span></label>
+  <div class="col-sm-8">
+    <input id="cliente_cpf" ng-model="cliente.cpf" class="form-control" ng-required="cliente.pessoa_tipo == 1" ng-pattern="/^[0-9]{11}$/">
+  </div>
+</div>
+
+<hr>
+
+<div class="form-group">
+  <label for="cliente_rg" class="control-label col-sm-3">RG</label>
+  <div class="col-sm-8">
+    <input id="cliente_rg" ng-model="cliente.rg" class="form-control">
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cliente_data_emissao_rg" class="control-label col-sm-3">Data de emissão</label>
+  <div class="col-sm-8">
+    <input ui-date readonly id="cliente_data_emissao_rg" ng-model="cliente.data_emissao_rg" class="form-control">
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cliente_orgao_emissor_rg_id" class="control-label col-sm-3">Órgão expedidor</label>
+  <div class="col-sm-8">
+    <select id="cliente_orgao_emissor_rg_id" ng-model="cliente.orgao_emissor_rg_id" class="form-control">
+      <option value="">Selecione um órgão expedidor...</option>
+      <option ng-repeat="orgao in orgaosExpedidoresRg" value="{{orgao.id}}" ng-selected="cliente.orgao_emissor_rg_id == orgao.id">{{orgao.descricao}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cliente_orgao_emissor_uf_id" class="control-label col-sm-3">Estado</label>
+  <div class="col-sm-8">
+    <select id="cliente_orgao_emissor_uf_id" ng-model="cliente.orgao_emissor_uf_id" class="form-control">
+      <option value="">Selecione o Estado do órgão de expedição...</option>
+      <option ng-repeat="uf in unidadeFederacoes" value="{{orgao.id}}" ng-selected="cliente.orgao_emissor_uf_id == uf.id">{{uf.descricao}} | {{uf.sigla}}</option>
+    </select>
+  </div>
+</div>
+
+<hr>
+
+<div class="form-group">
+  <label for="cliente_nascimento" class="control-label col-sm-3">Data de nascimento</label>
+  <div class="col-sm-8">
+    <input ui-date readonly id="cliente_nascimento" ng-model="cliente.nascimento" class="form-control">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-3">Profissão</label>
+  <div class="col-sm-8">
+    <ui-select ng-model="cliente.profissao"
+             theme="bootstrap"
+             reset-search-input="false"
+             title="Escolha um município"
+             ng-selected="cliente.profissao_id = cliente.profissao.id"
+             id="cliente_profissao">
+      <ui-select-match placeholder="Selecione uma profissão...">{{cliente.profissao.descricao}}</ui-select-match>
+      <ui-select-choices repeat="profissao in profissoes | filter:{descricao: $select.search}">
+        {{profissao.descricao}}
+      </ui-select-choices>
+    </ui-select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cliente_pessoa_sexo_id" class="control-label col-sm-3">Sexo <span class="required">*</span></label>
+  <div class="col-sm-8">
+    <select id="cliente_pessoa_sexo_id" ng-model="cliente.pessoa_sexo_id" class="form-control" ng-required="cliente.pessoa_tipo == 1">
+      <option value="">Selecione um sexo</option>
+      <option ng-repeat="sexo in pessoaSexos" value="{{sexo.id}}" ng-selected="cliente.pessoa_sexo_id == sexo.id">{{sexo.descricao}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="cliente_nome_mae" class="control-label col-sm-3">Nome da mae</label>
+  <div class="col-sm-8">
+    <input id="cliente_nome_mae" ng-model="cliente.nome_mae" class="form-control">
+  </div>
+</div>

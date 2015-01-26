@@ -2,7 +2,7 @@ var app = angular.module("gsan");
 
 app.directive('yesNo', function() {
   return {
-    template: '{{ yesNo ? "Sim" : "" }}',
+    template: '{{ yesNo === 1 ? "Sim" : "" }}',
     scope: {
         yesNo: '='
     }
