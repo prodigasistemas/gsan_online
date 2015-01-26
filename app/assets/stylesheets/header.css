@@ -1,9 +1,12 @@
 #main-header {
   background: #337ab7;
   padding: 5px 30px 5px 30px;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
 }
 
-#main-header  h1 {
+#main-header h1 {
   display: inline;
   vertical-align: middle;
   color: #fff;
@@ -19,7 +22,7 @@
 
 #main-header form {
   display: inline-block;
-  width: 300px;
+  width: 270px;
 }
 
 #main-header form .ui-select-bootstrap > .ui-select-choices {

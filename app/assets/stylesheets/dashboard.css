@@ -12,6 +12,7 @@ body{
 }
 
 #wrapper {
+  padding-top: 50px;
   min-height: 100%;
   position: relative;
   padding-right: 30px;
