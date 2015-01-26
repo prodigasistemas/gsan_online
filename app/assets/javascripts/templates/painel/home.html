@@ -1,0 +1,12 @@
+<page-header titulo="Bem Vindo ao GSAN Online"></page-header>
+
+<section id="modulos" class="row">
+  <article class="col-sm-4" ng-repeat="modulo in modulos">
+    <div class="panel panel-default" ng-class="{disabled: !modulo.url}" ng-click="navigarPara(modulo.url)">
+      <div>
+        <h1><i class="fa fa-{{modulo.icone}}"></i></h1>
+        <h1>{{modulo.titulo}}</h1>
+      </div>
+    </div>
+  </article>
+</section>

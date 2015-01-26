@@ -3,6 +3,14 @@ var app = angular.module("gsan");
 app.controller("PainelController", ["$route", "$scope", "$location", function($route, $scope, $location) {
   $scope.filtro = $route.current.params.filtro || '';
 
+  $scope.modulos = [
+    { url: '/cadastro/painel', icone: "plus", titulo: "Cadastro" },
+    { url: '',                 icone: "money", titulo: "Financeiro" },
+    { url: '',                 icone: "dollar", titulo: "Cobrança" },
+    { url: '',                 icone: "cc-visa", titulo: "Micro Medição" },
+    { url: '',                 icone: "leanpub", titulo: "Faturamento" }
+  ];
+
   $scope.grupos = [{
       titulo: "Endereços",
       items: [
@@ -31,5 +39,10 @@ app.controller("PainelController", ["$route", "$scope", "$location", function($r
         { grupo: "clientes", url: '',                          titulo: 'Tipos de Endereço' }
       ]
     }
-  ]
+  ];
+
+  $scope.navigarPara = function(pagina) {
+    $location.url(pagina);
+  };
+
 }]);

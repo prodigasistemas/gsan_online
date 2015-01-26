@@ -3,7 +3,11 @@ var app = angular.module("gsan", ['ngRoute', 'ngResource','templates', 'ui.date'
 app.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
     $routeProvider.
-      when('/painel', {
+      when('/', {
+        templateUrl: 'painel/home.html',
+        controller: 'PainelController'
+      }).
+      when('/cadastro/painel', {
         templateUrl: 'painel/index.html',
         controller: 'PainelController'
       }).
@@ -108,7 +112,7 @@ app.config(['$routeProvider', '$locationProvider',
         controller: 'RegioesDesenvolvimentoEditController'
       }).
       otherwise({
-        redirectTo: '/painel'
+        redirectTo: '/'
       });
 
     $locationProvider.html5Mode(true);

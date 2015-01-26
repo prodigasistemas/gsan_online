@@ -18,7 +18,7 @@ app.controller("NavController", ["$rootScope", "$scope", "$location", function($
     { id: 'painel',                   title: "Todos" },
     { id: 'painel?filtro=enderecos',  title: "Endereços" },
     { id: 'painel?filtro=clientes',   title: "Clientes" }
-  ]
+  ];
 
   $rootScope.$on("$routeChangeSuccess", function() {
     $scope.changeTab();
