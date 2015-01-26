@@ -1,12 +1,15 @@
 <nav ng-controller="NavController">
-  <ul class="nav nav-sidebar">
-    <li><a href="/ceps">CEPs</a></li>
-    <li><a href="/municipios">Municípios</a></li>
-    <li><a href="/bairros">Bairros</a></li>
-    <li><a href="/logradouros">Logradouros</a></li>
-    <li><a href="/micro_regioes">Micro Regiões</a></li>
-    <li><a href="/regioes">Regiões</a></li>
-    <li><a href="/regioes_desenvolvimento">Regiões de Desenvolvimento</a></li>
-    <li><a href="/clientes">Clientes</a></li>
-  </ul>
+  <div class="sidebar-nav">
+    <div class="navbar navbar-default" role="navigation">
+      <div class="navbar-collapse collapse sidebar-navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li ng-repeat="item in items" class="item"
+              ng-class="{'active': item.id == states.activeItem}">
+
+              <a href="/{{item.id}}">{{item.title}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </nav>

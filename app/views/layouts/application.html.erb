@@ -9,17 +9,21 @@
   </head>
   <body ng-app="gsan" data-cadastro-url="<%= CADASTRO_URL %>">
     <%= render "shared/header" %>
-    <div class="row-fluid">
+    <div class="row">
       <div class="col-md-2 sidebar">
         <%= render "shared/nav" %>
       </div>
-      <div class="col-md-10 main">
-        <div ng-view></div>
+      <div class="col-md-9 main">
+        <div class="container-fluid">
+          <div ng-view></div>
+        </div>
       </div>
     </div>
     <footer>
-      <div class="pull-left"><h2>GSAN - Online</h2></div>
-      <div class="pull-right"><%= image_tag "cidades.png" %></div>
+      <div class="infos">
+        <div class="pull-left"><h2>GSAN - Online</h2></div>
+        <div class="pull-right"><%= image_tag "cidades.png" %></div>
+      </div>
     </footer>
   </body>
 </html>
