@@ -5,11 +5,15 @@
 </form>
 
 <nav>
-  <section ng-repeat="grupo in grupos" ng-show="(grupo.items | filter:filtro).length > 0">
-    <h1>{{grupo.titulo}}</h1>
-    <article ng-repeat="item in grupo.items | filter:filtro | orderBy: 'titulo'">
-      <a ng-href="{{item.url}}" ng-show="item.url">{{item.titulo}}</a>
-      <span ng-hide="item.url">{{item.titulo}}</span>
+  <section id="modulos" class="row" ng-repeat="grupo in grupos" ng-show="(grupo.items | filter:filtro).length > 0">
+    <h1 class="col-xs-12">{{grupo.titulo}}</h1>
+    <article class="col-md-2 col-sm-3 col-xs-6 small" ng-repeat="item in grupo.items | filter:filtro | orderBy: 'titulo'">
+      <div class="panel panel-default" ng-class="{disabled: !item.url}" ng-click="navigarPara(item.url)">
+        <div>
+          <h4><i class="fa fa-{{item.icone}}"></i></h4>
+          <h5>{{item.titulo}}</h5>
+        </div>
+      </div>
     </article>
   </section>
 </nav>
