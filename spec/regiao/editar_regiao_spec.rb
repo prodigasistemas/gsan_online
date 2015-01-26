@@ -4,8 +4,8 @@ describe "Como um cadastrista", type: :feature, js: true do
   it "eu posso editar regiões" do
     visit root_path
 
-    find("h1", :text => "Cadastro").click
-    find("h5", :text => /^Regiões$/).click
+    click_modulo("Cadastro")
+    click_sub_modulo(/^Regiões$/)
     
     fill_in "regiao_nome", with: "REGIAO VELHA"
     click_button "Pesquisar"

@@ -6,6 +6,14 @@ def select_from_autocomplete(term, select, id)
   end
 end
 
+def click_modulo(nome)
+  find("h2", :text => nome).click
+end
+
+def click_sub_modulo(nome)
+  find("h5", :text => nome).click
+end
+
 def seleciona_logradouro(cidade: nil, nome: nil, nome_popular: nil)
   click_link "Selecionar logradouro"
 

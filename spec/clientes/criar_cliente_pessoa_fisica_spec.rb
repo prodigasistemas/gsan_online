@@ -4,8 +4,8 @@ describe "Como cadastrista", type: :feature, js: true do
   it "eu posso cadastrar um cliente Pessoa Física" do
     visit root_path
     
-    find("h1", :text => "Cadastro").click
-    find("h5", :text => "Clientes").click
+    click_modulo("Cadastro")
+    click_sub_modulo("Clientes")
 
     click_link "Criar Cliente"
     click_link "Pessoa Física"

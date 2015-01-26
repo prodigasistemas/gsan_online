@@ -4,8 +4,8 @@ describe "Como um cadastrista", type: :feature, js: true do
   it "eu posso editar um bairro" do
     visit root_path
 
-    find("h1", :text => "Cadastro").click
-    find("h5", :text => "Bairros").click
+    click_modulo("Cadastro")
+    click_sub_modulo("Bairros")
 
     fill_in "bairro_codigo", with: "999"
     click_button "Pesquisar"

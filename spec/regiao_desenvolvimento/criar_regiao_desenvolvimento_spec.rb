@@ -4,8 +4,8 @@ describe "Como um cadastrista", type: :feature, js: true do
   it "eu posso cadastrar regiões de desenvolvimento" do
     visit root_path
 
-    find("h1", :text => "Cadastro").click
-    find("h5", :text => "Regiões de Desenvolvimento").click
+    click_modulo("Cadastro")
+    click_sub_modulo("Regiões de Desenvolvimento")
 
     click_link "Criar Região de Desenvolvimento"
 

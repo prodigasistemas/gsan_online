@@ -4,8 +4,8 @@ describe "Como um cadastrista", type: :feature, js: true do
   it "eu posso editar micro regiões" do
     visit root_path
 
-    find("h1", :text => "Cadastro").click
-    find("h5", :text => "Micro Regiões").click
+    click_modulo("Cadastro")
+    click_sub_modulo("Micro Regiões")
     
     fill_in "micro_regiao_nome", with: "BELEM"
     click_button "Pesquisar"

@@ -4,8 +4,8 @@ describe "Como um cadastrista", type: :feature, js: true do
   it "eu posso cadastrar municípios" do
     visit root_path
 
-    find("h1", :text => "Cadastro").click
-    find("h5", :text => "Municípios").click
+    click_modulo("Cadastro")
+    click_sub_modulo("Municípios")
 
     click_link "Criar Município"
 
