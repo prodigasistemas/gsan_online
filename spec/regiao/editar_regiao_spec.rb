@@ -5,8 +5,8 @@ describe "Como um cadastrista", type: :feature, js: true do
     visit root_path
 
     click_modulo("Cadastro")
-    click_sub_modulo(/^Regiões$/)
-    
+    click_sub_modulo("Regiões")
+
     fill_in "regiao_nome", with: "REGIAO VELHA"
     click_button "Pesquisar"
     find(".regiao:last-child a").click
@@ -21,7 +21,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     fill_in "regiao_nome", with: "MINHA"
 
     click_button "Pesquisar"
-    
+
     expect(page).to have_content "MINHA REGIAO"
   end
 end

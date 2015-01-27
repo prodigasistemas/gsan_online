@@ -3,7 +3,7 @@ require "rails_helper"
 describe "Como cadastrista", type: :feature, js: true do
   it "eu posso cadastrar um cliente Pessoa Física" do
     visit root_path
-    
+
     click_modulo("Cadastro")
     click_sub_modulo("Clientes")
 

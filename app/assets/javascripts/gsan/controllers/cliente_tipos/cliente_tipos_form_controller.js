@@ -2,7 +2,7 @@ var app = angular.module("gsan");
 
 app.controller("ClienteTiposFormController", ["EsferaPoder", "ClienteTipo", "$scope", "$route", "Flash", "$location", function(EsferaPoder, ClienteTipo, $scope, $route, Flash, $location) {
   $scope.esferasPoder    = EsferaPoder.query();
-  $scope.pessoaTipos     = [{descricao: "Pessoa Física", id: 1}, {descricao: "Pessoa Jurídica", id: 2}];
+  $scope.pessoaTipos     = [{descricao: "PESSOA FISICA", id: 1}, {descricao: "PESSOA JURIDICA", id: 2}];
 
   var id;
   if (id = $route.current.params.id) {

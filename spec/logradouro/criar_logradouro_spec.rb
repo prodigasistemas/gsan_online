@@ -5,7 +5,7 @@ describe "Como cadastrista", type: :feature, js: true do
     visit root_path
 
     click_modulo("Cadastro")
-    click_sub_modulo(/^Logradouros$/)
+    click_sub_modulo("Logradouros")
 
     click_link "Criar Logradouro"
 

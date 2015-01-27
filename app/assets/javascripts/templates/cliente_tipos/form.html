@@ -14,7 +14,7 @@
       <div class="form-group">
         <label for="cliente_tipo_pessoa_tipo" class="control-label col-md-3">Tipo <span class="required">*</span></label>
         <div class="col-md-8">
-          <select id="cliente_tipo_pessoa_tipo" ng-model="cliente_tipo.pessoa_fisica_juridica" class="form-control" ng-change="cliente_tipo.esfera_poder_id = undefined" required>
+          <select id="cliente_tipo_pessoa_tipo" ng-model="cliente_tipo.pessoa_fisica_juridica" class="form-control" required>
             <option value="">Selecione o tipo...</option>
             <option ng-repeat="tipo in pessoaTipos" value="{{tipo.id}}">{{tipo.descricao}}</option>
           </select>
@@ -22,9 +22,9 @@
       </div>
 
       <div class="form-group">
-        <label for="cliente_tipo_esfera_poder_id" class="control-label col-md-3">Esfera de Poder <span class="required" ng-show="cliente_tipo.pessoa_fisica_juridica == 2">*</span></label>
+        <label for="cliente_tipo_esfera_poder_id" class="control-label col-md-3">Esfera de Poder <span class="required">*</span></label>
         <div class="col-md-8">
-          <select id="cliente_tipo_esfera_poder_id" ng-model="cliente_tipo.esfera_poder_id" class="form-control" ng-required="cliente_tipo.pessoa_fisica_juridica == 2">
+          <select id="cliente_tipo_esfera_poder_id" ng-model="cliente_tipo.esfera_poder_id" class="form-control" required>
             <option value="">Selecione a esfera de poder...</option>
             <option ng-repeat="esfera in esferasPoder" value="{{esfera.id}}">{{esfera.descricao}}</option>
           </select>
@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="panel-footer">
-      <input type="submit" value="Salvar CEP" class="btn btn-primary" ng-disabled="form.$invalid">
+      <input type="submit" value="Salvar Tipo de Cliente" class="btn btn-primary" ng-disabled="form.$invalid">
     </div>
   </div>
 </form>

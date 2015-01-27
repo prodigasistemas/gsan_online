@@ -6,7 +6,7 @@ describe "Como cadastrista", type: :feature, js: true do
 
     click_modulo("Cadastro")
     click_sub_modulo("Clientes")
-    
+
     click_link "Criar Cliente"
     click_link "Pessoa Jurídica"
 

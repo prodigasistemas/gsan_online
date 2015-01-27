@@ -4,7 +4,7 @@ app.controller("ClienteTiposIndexController", ["EsferaPoder", "ClienteTipo", "$s
   $scope.query = {};
 
   $scope.esferasPoder    = EsferaPoder.query();
-  $scope.pessoaTipos     = [{descricao: "Pessoa Física", id: 1}, {descricao: "Pessoa Jurídica", id: 2}];
+  $scope.pessoaTipos     = [{descricao: "PESSOA FISICA", id: 1}, {descricao: "PESSOA JURIDICA", id: 2}];
 
   $scope.queryVazia = function() {
     for(var input in $scope.query) {
