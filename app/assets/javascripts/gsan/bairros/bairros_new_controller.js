@@ -21,7 +21,8 @@ app.controller("BairrosNewController", ["Bairro", "Municipio", "DistritoOperacio
       distrito_operacional_descricao: $scope.distrito_operacional.selecionado.descricao
     });
 
-    $scope.bairro_area.nome = "";
+    $scope.bairro_area = {};
+    $scope.distrito_operacional = {};
     angular.element('#bairro_area_nome').focus();
   };
 

@@ -22,6 +22,7 @@ app.controller("LogradourosEditController", ["Logradouro", "TipoLogradouro", "Ti
   };
 
   $scope.adicionaBairro = function(){
+    if (!$scope.bairro.selecionado) { return; }
     if (bairroSelecionado()) { return; }
     $scope.logradouro.logradouro_bairros.push({bairro: $scope.bairro.selecionado});
     $scope.bairro.resultado = "";

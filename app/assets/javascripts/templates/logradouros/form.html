@@ -72,6 +72,7 @@
             <label for="bairros" class="control-label col-md-1">Bairro</label>
             <div class="col-md-4">
               <select id="bairros" ng-model="bairro.selecionado" class="form-control" ng-disabled="!bairros.length" ng-change="adicionaBairro()" ng-options="bairro.nome for bairro in bairros">
+                <option value="">Selecione um bairro...</option>
               </select>
             </div>
             <span class="help-block" style="color: #AA4C4C">{{bairro.resultado}}</span>
