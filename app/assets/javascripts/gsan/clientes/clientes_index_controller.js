@@ -1,33 +1,14 @@
 var app = angular.module("gsan");
 
-app.controller("ClientesIndexController", ["Flash", "$scope", "$http", "CadastroUrl", function(Flash, $scope, $http, CadastroUrl) {
-  $scope.flash = Flash;
-  $scope.query = {};
-
-  $scope.queryVazia = function() {
-    for(var input in $scope.query) {
-      if ($scope.query[input] !== "" && $scope.query[input] !== undefined) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  $scope.pesquisar = function() {
-    var copiedQuery = jQuery.extend({}, $scope.query);
-    $scope.queryCache = { query: copiedQuery };
-    $scope.submeterPesquisa();
-  }
-
-  $scope.submeterPesquisa = function() {
-    var query = $.param($scope.queryCache);
+app.controller("ClientesIndexController", ["$scope", "Cliente", function($scope, Cliente) {
+  $scope.submeterPesquisa = function(query) {
     $scope.loading = true;
-    $http.get(CadastroUrl() + "/clientes?" + query)
-    .success(function(data) {
+
+    Cliente.search(query, function(data) {
       $scope.clientes = data.clientes;
       $scope.page = data.page;
       $scope.loading = false;
-    }).error(function() {
+    }, function() {
       $scope.loading = false;
     });
   }
