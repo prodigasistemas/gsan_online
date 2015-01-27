@@ -16,7 +16,7 @@ app.directive('pagination', function() {
           return;
         }
         $scope.queryCache.page = $scope.page.current_page + soma;
-        $scope.submeterPesquisa();
+        $scope.submeterPesquisa($scope.queryCache);
       }
     }
   };

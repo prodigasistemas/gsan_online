@@ -8,14 +8,14 @@
       <div class="form-group">
         <select id="cliente_tipo_pessoa_tipo" ng-model="query.pessoa_fisica_juridica" class="form-control">
           <option value="">Tipo</option>
-          <option ng-repeat="tipo in pessoaTipos" value="{{tipo.id}}">{{tipo.descricao}}</option>
+          <option ng-repeat="tipo in filterOptions.pessoaTipos" value="{{tipo.id}}">{{tipo.descricao}}</option>
         </select>
       </div>
 
       <div class="form-group">
         <select id="cliente_tipo_esfera_poder_id" ng-model="query.esfera_poder_id" class="form-control">
           <option value="">Esfera de poder</option>
-          <option ng-repeat="esfera in esferasPoder" value="{{esfera.id}}">{{esfera.descricao}}</option>
+          <option ng-repeat="esfera in filterOptions.esferasPoder" value="{{esfera.id}}">{{esfera.descricao}}</option>
         </select>
       </div>
     </div>
@@ -26,7 +26,7 @@
         <span ng-show="loading"><%= image_tag "spinner.gif" %></span>
       </div>
 
-      <div class="pull-right" ng-show="page.total">Total de resultados: {{page.total}}</div>
+      <div class="pull-right" ng-show="page">Total de resultados: {{page.total}}</div>
     </div>
   </form>
 </div>

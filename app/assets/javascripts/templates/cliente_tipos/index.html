@@ -4,7 +4,7 @@
   <a href="/cliente_tipos/novo" class="btn btn-primary pull-right">Criar Tipo de Cliente</a>
 </div>
 
-<div ng-include="'cliente_tipos/filter.html'"></div>
+<filter-resource src="'cliente_tipos/filter.html'" filter-options="filterOptions" submeter-pesquisa="submeterPesquisa" query-cache="queryCache" page="page"></filter-resource>
 
 <div ng-show="clienteTipos.length">
   <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
