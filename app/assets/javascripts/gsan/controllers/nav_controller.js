@@ -16,7 +16,7 @@ app.controller("NavController", ["$rootScope", "$scope", "$location", function($
   ];
 
   $scope.grupos = [
-    { id: 'cadastro/painel',                   title: "Todos" },
+    { id: 'cadastro/painel',                   title: "Painel de Cadastro" },
     { id: 'cadastro/painel?filtro=enderecos',  title: "Endereços" },
     { id: 'cadastro/painel?filtro=clientes',   title: "Clientes" }
   ];
