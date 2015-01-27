@@ -38,3 +38,15 @@ body{
 .data-table thead tr th{
   text-align: center;
 }
+
+#app-loader{
+  text-align: center;
+  z-index: 99999;
+  position: absolute;
+  margin-left: 40%;
+  margin-top: 5px;
+}
+
+span.app-loader{
+  float: right;
+}

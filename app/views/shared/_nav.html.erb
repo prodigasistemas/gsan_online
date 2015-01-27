@@ -5,6 +5,7 @@
         class="list-group-item"
         ng-class="{'active': item.id == states.activeItem}">
       {{item.title}}
+      <span class="app-loader" ng-show="{{grupos.slice(0,1)[0]['title'] === item.title}}" loader><%= image_tag "ajax-loader.gif" %></span>
     </a>
   </div>
 </nav>
