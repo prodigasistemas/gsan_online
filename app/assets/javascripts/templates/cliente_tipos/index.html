@@ -1,0 +1,35 @@
+<page-header titulo="Tipos de Clientes"></page-header>
+
+<div class="actions clearfix">
+  <a href="/cliente_tipos/novo" class="btn btn-primary pull-right">Criar Tipo de Cliente</a>
+</div>
+
+<div ng-include="'cliente_tipos/filter.html'"></div>
+
+<div ng-show="clienteTipos.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Tipos de clientes</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Tipo</th>
+          <th>Esfera de Poder</th>
+          <th>Ativo</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="tipo_{{tipo.id}}" class="tipo" ng-repeat="tipo in clienteTipos">
+          <td>{{tipo.descricao}}</td>
+          <td>{{tipo.pessoa_tipo}}</td>
+          <td>{{tipo.esfera_poder.descricao}}</td>
+          <td class="cliente_tipo_ativo"><span yes-no="tipo.ativo"></span></td>
+          <td><a class="btn btn-info" ng-href="/cliente_tipos/{{tipo.id}}/editar">Editar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -29,14 +29,14 @@ app.controller("PainelController", ["$route", "$scope", "$location", function($r
     },{
       titulo: "Clientes",
       items: [
-        { grupo: "clientes", icone: 'fa fa-users',        url: '/clientes', titulo: 'Clientes' },
-        { grupo: "clientes", icone: 'fa fa-map-marker',   url: '',          titulo: 'Tipos de clientes' },
-        { grupo: "clientes", icone: 'fa fa-circle',       url: '',          titulo: 'Esferas de poder' },
-        { grupo: "clientes", icone: 'fa fa-street-view',  url: '',          titulo: 'Endereço de Referência' },
-        { grupo: "clientes", icone: 'fa fa-circle',       url: '',          titulo: 'Ramos de Atividades' },
-        { grupo: "clientes", icone: 'fa fa-university',   url: '',          titulo: 'Órgão Expedidor de RG' },
-        { grupo: "clientes", icone: 'fa fa-gavel',        url: '',          titulo: 'Profissões' },
-        { grupo: "clientes", icone: 'fa fa-archive',      url: '',          titulo: 'Tipos de Endereço' }
+        { grupo: "clientes", icone: 'fa fa-users',        url: '/clientes',       titulo: 'Clientes' },
+        { grupo: "clientes", icone: 'fa fa-map-marker',   url: '/cliente_tipos',  titulo: 'Tipos de Clientes' },
+        { grupo: "clientes", icone: 'fa fa-circle',       url: '',                titulo: 'Esferas de poder' },
+        { grupo: "clientes", icone: 'fa fa-street-view',  url: '',                titulo: 'Endereço de Referência' },
+        { grupo: "clientes", icone: 'fa fa-circle',       url: '',                titulo: 'Ramos de Atividades' },
+        { grupo: "clientes", icone: 'fa fa-university',   url: '',                titulo: 'Órgão Expedidor de RG' },
+        { grupo: "clientes", icone: 'fa fa-gavel',        url: '',                titulo: 'Profissões' },
+        { grupo: "clientes", icone: 'fa fa-archive',      url: '',                titulo: 'Tipos de Endereço' }
       ]
     }
   ];

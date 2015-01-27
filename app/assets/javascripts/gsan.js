@@ -111,6 +111,18 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'regioes_desenvolvimento/edit.html',
         controller: 'RegioesDesenvolvimentoEditController'
       }).
+      when('/cliente_tipos', {
+        templateUrl: 'cliente_tipos/index.html',
+        controller: 'ClienteTiposIndexController'
+      }).
+      when('/cliente_tipos/novo', {
+        templateUrl: 'cliente_tipos/new.html',
+        controller: 'ClienteTiposFormController'
+      }).
+      when('/cliente_tipos/:id/editar', {
+        templateUrl: 'cliente_tipos/edit.html',
+        controller: 'ClienteTiposFormController'
+      }).
       otherwise({
         redirectTo: '/'
       });
