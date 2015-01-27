@@ -15,7 +15,9 @@
         <div ng-class="sidebarClasses">
           <%= render "shared/nav" %>
         </div>
+
         <div ng-class="mainContentClasses">
+          <div flash:messages></div>
           <div ng-view></div>
         </div>
       </div>

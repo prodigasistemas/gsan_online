@@ -24,7 +24,7 @@ app.controller("CepsEditController", ["Cep", "CepTipo", "Municipio", "TipoLograd
   $scope.submeter = function() {
     var cep = new Cep({id: $scope.cep.id, cep: $scope.cep});
     cep.$update(function() {
-      Flash.setMessage("CEP atualizado com sucesso");
+      Flash.setMessage("success", "CEP atualizado com sucesso");
       $location.url("/ceps");
     }, function(response) {
       $scope.formErrors = response.data.errors;
