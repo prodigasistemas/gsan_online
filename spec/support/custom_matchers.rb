@@ -11,7 +11,7 @@ def click_modulo(nome)
 end
 
 def click_sub_modulo(nome)
-  find("h5", :text => nome).click
+  find("h5", :text => /^#{nome}$/).click
 end
 
 def seleciona_logradouro(cidade: nil, nome: nil, nome_popular: nil)
