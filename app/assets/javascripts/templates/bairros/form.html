@@ -65,7 +65,7 @@
           <div class="form-group">
             <label for="distrito_operacionais" class="control-label col-md-3">Distrito Operacional</label>
             <div class="col-md-5">
-              <select id="distrito_operacionais" ng-model="distrito_operacional.selecionado" class="form-control" ng-options="distrito_operacional.descricao for distrito_operacional in distrito_operacionais">
+              <select id="distrito_operacionais" ng-model="bairro_area.distrito_operacional" class="form-control" ng-options="distrito_operacional.descricao for distrito_operacional in distrito_operacionais">
                 <option value="">Selecione um distrito operacional...</option>
               </select>
             </div>
@@ -73,7 +73,7 @@
 
           <div class="form-group">
             <div class="col-md-2 col-md-offset-3">
-              <button class="btn btn-info" type="button" ng-click="adicionaArea()" ng-disabled="!bairro_area.nome || !distrito_operacional.selecionado">Adicionar</button>
+              <button class="btn btn-info" type="button" ng-click="adicionaArea()" ng-disabled="!bairro_area.nome">Adicionar</button>
             </div>
             <span class="help-block" style="color: #AA4C4C">{{bairro_area.resultado}}</span>
           </div>
@@ -89,7 +89,7 @@
                 <tbody>
                   <tr data-bairro-area-nome="{{bairro_bairro_area.nome}}" ng-class="{bairro_area: true, destroyed: bairro_bairro_area._destroy}" ng-repeat="bairro_bairro_area in bairro.bairro_areas">
                     <td>{{bairro_bairro_area.nome}}</td>
-                    <td>{{bairro_bairro_area.distrito_operacional_descricao}}</td>
+                    <td>{{bairro_bairro_area.distrito_operacional.descricao}}</td>
                     <td width="5" class="actions">
                       <a href="" ng-show="bairro_bairro_area._destroy" ng-click="bairro_bairro_area._destroy = undefined" class="btn btn-warning">Cancelar</a>
                       <a href="" ng-hide="bairro_bairro_area._destroy" ng-click="removeArea(bairro_bairro_area)" class="btn btn-warning">X</a>

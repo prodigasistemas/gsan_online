@@ -3,7 +3,6 @@ var app = angular.module("gsan");
 app.controller("BairrosNewController", ["Bairro", "Municipio", "DistritoOperacional", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$filter", function(Bairro, Municipio, DistritoOperacional, CadastroUrl, $scope, $http, $location, Flash, $filter) {
   $scope.bairro = {ativo: 1};
   $scope.bairro_area = {};
-  $scope.distrito_operacional = {};
 
   $scope.municipios = Municipio.query();
   $scope.distrito_operacionais = DistritoOperacional.query();
@@ -15,14 +14,12 @@ app.controller("BairrosNewController", ["Bairro", "Municipio", "DistritoOperacio
   $scope.adicionaArea = function() {
     if (areaSelecionada()) { return; }
 
-    $scope.bairro.bairro_areas.push({
-      nome: $scope.bairro_area.nome,
-      distrito_operacional_id: $scope.distrito_operacional.selecionado.id,
-      distrito_operacional_descricao: $scope.distrito_operacional.selecionado.descricao
-    });
+    if ($scope.bairro_area.distrito_operacional)
+      $scope.bairro_area.distrito_operacional_id = $scope.bairro_area.distrito_operacional.id;
+    
+    $scope.bairro.bairro_areas.push($scope.bairro_area);
 
     $scope.bairro_area = {};
-    $scope.distrito_operacional = {};
     angular.element('#bairro_area_nome').focus();
   };
 

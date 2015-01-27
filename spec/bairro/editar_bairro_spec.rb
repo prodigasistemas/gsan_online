@@ -44,7 +44,6 @@ describe "Como um cadastrista", type: :feature, js: true do
     expect(page).to have_css ".bairro_area", text: "NOVA AREA", count: 1
 
     fill_in "bairro_area_nome",              with: "OUTRA AREA"
-    select "DISTRITO GERAL", from: "distrito_operacionais"
     click_button "Adicionar"
     expect(page).to have_css ".bairro_area", text: "OUTRA AREA", count: 1
 
