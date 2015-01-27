@@ -10,7 +10,26 @@
       <div class="form-group">
         <input id="cliente_cnpj" ng-model="query.cnpj" type="text" class="form-control" placeholder="CNPJ">
       </div>
-
+      <div class="form-group">
+        <select id="cliente_pessoa_fisica_juridica" ng-model="query.pessoa_tipo" class="form-control">
+          <option value="">Tipo</option>
+          <option value="1">PESSOA FISICA</option>
+          <option value="2">PESSOA JURIDICA</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <ui-select ng-model="clienteTipo"
+                 theme="bootstrap"
+                 reset-search-input="false"
+                 title="Tipo de cliente"
+                 ng-selected="query.cliente_tipo_id = clienteTipo.id"
+                 id="cliente_tipo_id">
+          <ui-select-match placeholder="Tipo de cliente">{{clienteTipo.descricao}}</ui-select-match>
+          <ui-select-choices repeat="tipo in filterOptions.clienteTipos | filter:$select.search">
+            {{tipo.descricao}}
+          </ui-select-choices>
+        </ui-select>
+      </div>
     </div>
 
     <div class="panel-footer clearfix">

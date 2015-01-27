@@ -40,6 +40,8 @@ describe "Como cadastrista", type: :feature, js: true do
   def validar
     fill_in "cliente_nome", with: "marcos"
     fill_in "cliente_cnpj", with: "28112406000185"
+    select "PESSOA JURIDICA", from: "cliente_pessoa_fisica_juridica"
+    select_from_autocomplete("assoc", "ASSOCIACOES", "cliente_tipo_id")
 
     click_button "Pesquisar"
 

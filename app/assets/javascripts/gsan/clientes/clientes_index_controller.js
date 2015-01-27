@@ -1,6 +1,9 @@
 var app = angular.module("gsan");
 
-app.controller("ClientesIndexController", ["$scope", "Cliente", function($scope, Cliente) {
+app.controller("ClientesIndexController", ["$scope", "Cliente", "ClienteTipo", function($scope, Cliente, ClienteTipo) {
+  $scope.filterOptions = {}
+  $scope.filterOptions.clienteTipos = ClienteTipo.query();
+
   $scope.submeterPesquisa = function(query) {
     $scope.loading = true;
 

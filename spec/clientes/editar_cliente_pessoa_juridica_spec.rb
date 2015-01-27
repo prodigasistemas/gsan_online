@@ -103,6 +103,8 @@ describe "Como cadastrista", type: :feature, js: true do
 
     fill_in "cliente_nome", with: "NOVO NOME"
     fill_in "cliente_cpf", with: "94239288111"
+    select "PESSOA FISICA", from: "cliente_pessoa_fisica_juridica"
+    select_from_autocomplete("resid", "RESIDENCIAL", "cliente_tipo_id")
 
     click_button "Pesquisar"
 
