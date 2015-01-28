@@ -25,9 +25,9 @@ describe "Como um cadastrista", type: :feature, js: true do
     click_button "Pesquisar"
 
     within ".profissao" do
-        expect(page).to have_content "DESTRUIDOR DE SOFTWARE"
-        expect(page).to have_content "1234567"
-        expect(page).to have_css ".profissao_ativo", text: "ativo"
+      expect(page).to have_content "DESTRUIDOR DE SOFTWARE"
+      expect(page).to have_content "1234567"
+      expect(page).to have_css ".profissao_ativo", text: "ativo"
     end
   end
 end

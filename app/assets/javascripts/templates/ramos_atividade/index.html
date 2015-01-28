@@ -1,0 +1,33 @@
+<page-header titulo="Ramos de Atividades"></page-header>
+
+<div class="actions clearfix">
+  <a href="/ramos_atividade/novo" class="btn btn-primary pull-right">Criar Ramo de Atividade</a>
+</div>
+
+<filter-resource src="'ramos_atividade/filter.html'" submeter-pesquisa="submeterPesquisa" query-cache="queryCache" page="page"></filter-resource>
+
+<div ng-show="ramosAtividade.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Ramos de atividades</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Descrição</th>
+          <th>Ativo</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="ramo_atividade_{{ramoAtividade.id}}" class="ramo_atividade" ng-repeat="ramoAtividade in ramosAtividade">
+          <td>{{ramoAtividade.codigo}}</td>
+          <td>{{ramoAtividade.descricao}}</td>
+          <td class="ramo_atividade_ativo"><span yes-no="ramoAtividade.ativo"></span></td>
+          <td><a class="btn btn-info" ng-href="/ramos_atividade/{{ramoAtividade.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

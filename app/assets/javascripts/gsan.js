@@ -159,6 +159,18 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'profissoes/edit.html',
         controller: 'ProfissoesFormController'
       }).
+      when('/ramos_atividade', {
+        templateUrl: 'ramos_atividade/index.html',
+        controller: 'RamosAtividadeIndexController'
+      }).
+      when('/ramos_atividade/novo', {
+        templateUrl: 'ramos_atividade/new.html',
+        controller: 'RamosAtividadeFormController'
+      }).
+      when('/ramos_atividade/:id/editar', {
+        templateUrl: 'ramos_atividade/edit.html',
+        controller: 'RamosAtividadeFormController'
+      }).
       otherwise({
         redirectTo: '/'
       });

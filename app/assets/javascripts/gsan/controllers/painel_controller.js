@@ -29,14 +29,14 @@ app.controller("PainelController", ["$route", "$scope", "$location", function($r
     },{
       titulo: "Clientes",
       items: [
-        { grupo: "clientes", icone: 'fa fa-users',        url: '/clientes',       titulo: 'Clientes' },
-        { grupo: "clientes", icone: 'fa fa-map-marker',   url: '/cliente_tipos',  titulo: 'Tipos de Clientes' },
-        { grupo: "clientes", icone: 'fa fa-circle',       url: '/esferas_poder',  titulo: 'Esferas de Poder' },
-        { grupo: "clientes", icone: 'fa fa-street-view',  url: '',                titulo: 'Endereço de Referência' },
-        { grupo: "clientes", icone: 'fa fa-circle',       url: '',                titulo: 'Ramos de Atividades' },
-        { grupo: "clientes", icone: 'fa fa-university',   url: '',                titulo: 'Órgão Expedidor de RG' },
-        { grupo: "clientes", icone: 'fa fa-gavel',        url: '/profissoes',     titulo: 'Profissões' },
-        { grupo: "clientes", icone: 'fa fa-archive',      url: '',                titulo: 'Tipos de Endereço' }
+        { grupo: "clientes", icone: 'fa fa-users',        url: '/clientes',        titulo: 'Clientes' },
+        { grupo: "clientes", icone: 'fa fa-map-marker',   url: '/cliente_tipos',   titulo: 'Tipos de Clientes' },
+        { grupo: "clientes", icone: 'fa fa-circle',       url: '/esferas_poder',   titulo: 'Esferas de Poder' },
+        { grupo: "clientes", icone: 'fa fa-street-view',  url: '',                 titulo: 'Endereço de Referência' },
+        { grupo: "clientes", icone: 'fa fa-circle',       url: '/ramos_atividade', titulo: 'Ramos de Atividade' },
+        { grupo: "clientes", icone: 'fa fa-university',   url: '',                 titulo: 'Órgão Expedidor de RG' },
+        { grupo: "clientes", icone: 'fa fa-gavel',        url: '/profissoes',      titulo: 'Profissões' },
+        { grupo: "clientes", icone: 'fa fa-archive',      url: '',                 titulo: 'Tipos de Endereço' }
       ]
     }
   ];

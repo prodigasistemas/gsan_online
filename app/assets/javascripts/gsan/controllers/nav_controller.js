@@ -15,7 +15,8 @@ app.controller("NavController", ["$rootScope", "$scope", "$location", function($
     { modulo: "Cadastro", grupo: "Clientes",  id: 'clientes',                 title: 'Clientes' },
     { modulo: "Cadastro", grupo: "Clientes",  id: 'cliente_tipos',            title: 'Tipos de Clientes' },
     { modulo: "Cadastro", grupo: "Clientes",  id: 'esferas_poder',            title: 'Esferas de Poder' },
-    { modulo: "Cadastro", grupo: "Clientes",  id: 'profissoes',               title: 'Profissões' }
+    { modulo: "Cadastro", grupo: "Clientes",  id: 'profissoes',               title: 'Profissões' },
+    { modulo: "Cadastro", grupo: "Clientes",  id: 'ramos_atividade',          title: 'Ramos de Atividade' }
 
 
   ];
