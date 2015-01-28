@@ -10,7 +10,7 @@
     <article class="col-md-2 col-sm-3 col-xs-6 small" ng-repeat="item in grupo.items | filter:filtro | orderBy: 'titulo'">
       <div class="panel panel-default" ng-class="{disabled: !item.url}" ng-click="navigarPara(item.url)">
         <div>
-          <h4><i class="fa fa-{{item.icone}}"></i></h4>
+          <h3><i class="fa fa-{{item.icone}}"></i></h3>
           <h5>{{item.titulo}}</h5>
         </div>
       </div>

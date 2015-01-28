@@ -171,6 +171,18 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'ramos_atividade/edit.html',
         controller: 'RamosAtividadeFormController'
       }).
+      when('/endereco_tipos', {
+        templateUrl: 'endereco_tipos/index.html',
+        controller: 'EnderecoTiposIndexController'
+      }).
+      when('/endereco_tipos/novo', {
+        templateUrl: 'endereco_tipos/new.html',
+        controller: 'EnderecoTiposFormController'
+      }).
+      when('/endereco_tipos/:id/editar', {
+        templateUrl: 'endereco_tipos/edit.html',
+        controller: 'EnderecoTiposFormController'
+      }).
       otherwise({
         redirectTo: '/'
       });

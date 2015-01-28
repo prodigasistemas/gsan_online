@@ -1,0 +1,31 @@
+<page-header titulo="Tipos de Endereço"></page-header>
+
+<div class="actions clearfix">
+  <a href="/endereco_tipos/novo" class="btn btn-primary pull-right">Criar Tipo de Endereço</a>
+</div>
+
+<filter-resource src="'endereco_tipos/filter.html'" submeter-pesquisa="submeterPesquisa" query-cache="queryCache" page="page"></filter-resource>
+
+<div ng-show="enderecoTipos.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Tipos de Endereço</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Ativo</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="endereco_tipo_{{enderecoTipo.id}}" class="endereco_tipo" ng-repeat="enderecoTipo in enderecoTipos">
+          <td>{{enderecoTipo.descricao}}</td>
+          <td class="endereco_tipo_ativo"><span yes-no="enderecoTipo.ativo"></span></td>
+          <td><a class="btn btn-info" ng-href="/endereco_tipos/{{enderecoTipo.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

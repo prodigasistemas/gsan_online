@@ -36,7 +36,7 @@ app.controller("PainelController", ["$route", "$scope", "$location", function($r
         { grupo: "clientes", icone: 'fa fa-circle',       url: '/ramos_atividade', titulo: 'Ramos de Atividade' },
         { grupo: "clientes", icone: 'fa fa-university',   url: '',                 titulo: 'Órgão Expedidor de RG' },
         { grupo: "clientes", icone: 'fa fa-gavel',        url: '/profissoes',      titulo: 'Profissões' },
-        { grupo: "clientes", icone: 'fa fa-archive',      url: '',                 titulo: 'Tipos de Endereço' }
+        { grupo: "clientes", icone: 'fa fa-archive',      url: '/endereco_tipos',  titulo: 'Tipos de Endereço' }
       ]
     }
   ];
