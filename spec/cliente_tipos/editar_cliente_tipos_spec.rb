@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Como um cadastrista", type: :feature, js: true do
-  it "eu posso cadastrar tipos de clientes" do
+  it "eu posso editar tipos de clientes" do
     visit root_path
 
     click_modulo("Cadastro")
@@ -31,7 +31,7 @@ describe "Como um cadastrista", type: :feature, js: true do
         expect(page).to have_content "MINISTERIO FEDERAL"
         expect(page).to have_content "PESSOA FISICA"
         expect(page).to have_content "FEDERAL"
-        expect(page).to have_css ".cliente_tipo_ativo", text: "inativo"
+        expect(page).to have_css ".cliente_tipo_ativo", text: ""
     end
   end
 end
