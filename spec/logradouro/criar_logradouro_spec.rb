@@ -43,7 +43,7 @@ describe "Como cadastrista", type: :feature, js: true do
 
     expect(page).to have_content "JOSE MALCHER"
     expect(page).to have_content "BELEM"
-    expect(page).to have_css ".logradouro_ativo", text: "Sim"
+    expect(page).to have_css ".logradouro_ativo", text: "ativo"
 
     find(".logradouro:last-child a").click
 

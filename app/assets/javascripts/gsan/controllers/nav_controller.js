@@ -10,9 +10,13 @@ app.controller("NavController", ["$rootScope", "$scope", "$location", function($
     { modulo: "Cadastro", grupo: "Endereços", id: 'logradouros',              title: 'Logradouros' },
     { modulo: "Cadastro", grupo: "Endereços", id: 'micro_regioes',            title: 'Micro Regiões' },
     { modulo: "Cadastro", grupo: "Endereços", id: 'regioes',                  title: 'Regiões' },
+    { modulo: "Cadastro", grupo: "Endereços", id: 'cep_tipos',                title: 'Tipos de CEP' },
     { modulo: "Cadastro", grupo: "Endereços", id: 'regioes_desenvolvimento',  title: 'Regiões de Desenvolvimento' },
     { modulo: "Cadastro", grupo: "Clientes",  id: 'clientes',                 title: 'Clientes' },
-    { modulo: "Cadastro", grupo: "Clientes",  id: 'cliente_tipos',            title: 'Tipos de Clientes' }
+    { modulo: "Cadastro", grupo: "Clientes",  id: 'cliente_tipos',            title: 'Tipos de Clientes' },
+    { modulo: "Cadastro", grupo: "Clientes",  id: 'esferas_poder',            title: 'Esferas de Poder' }
+
+
   ];
 
   $scope.grupos = [

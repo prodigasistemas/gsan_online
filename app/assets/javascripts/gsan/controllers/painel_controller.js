@@ -22,16 +22,16 @@ app.controller("PainelController", ["$route", "$scope", "$location", function($r
         { grupo: "enderecos", icone: 'fa fa-sun-o',           url: '/regioes',                  titulo: 'Regiões' },
         { grupo: "enderecos", icone: 'fa fa-sun-o',           url: '/regioes_desenvolvimento',  titulo: 'Regiões de Desenvolvimento' },
         { grupo: "enderecos", icone: 'fa fa-university',      url: '',                          titulo: 'Unidade de Federação' },
-        { grupo: "enderecos", icone: 'fa fa-envelope-square', url: '/cep_tipos',                          titulo: 'Tipos de CEP' },
-        { grupo: "enderecos", icone: 'fa fa-cube',            url: '',                          titulo: 'Títulos de Logradouros' },
-        { grupo: "enderecos", icone: 'fa fa-asterisk',        url: '',                          titulo: 'Tipos de logradouros' }
+        { grupo: "enderecos", icone: 'fa fa-envelope-square', url: '/cep_tipos',                titulo: 'Tipos de CEP' },
+        { grupo: "enderecos", icone: 'fa fa-cube',            url: '',                          titulo: 'Títulos de Logradouro' },
+        { grupo: "enderecos", icone: 'fa fa-asterisk',        url: '',                          titulo: 'Tipos de Logradouro' }
       ]
     },{
       titulo: "Clientes",
       items: [
         { grupo: "clientes", icone: 'fa fa-users',        url: '/clientes',       titulo: 'Clientes' },
         { grupo: "clientes", icone: 'fa fa-map-marker',   url: '/cliente_tipos',  titulo: 'Tipos de Clientes' },
-        { grupo: "clientes", icone: 'fa fa-circle',       url: '',                titulo: 'Esferas de poder' },
+        { grupo: "clientes", icone: 'fa fa-circle',       url: '/esferas_poder',  titulo: 'Esferas de Poder' },
         { grupo: "clientes", icone: 'fa fa-street-view',  url: '',                titulo: 'Endereço de Referência' },
         { grupo: "clientes", icone: 'fa fa-circle',       url: '',                titulo: 'Ramos de Atividades' },
         { grupo: "clientes", icone: 'fa fa-university',   url: '',                titulo: 'Órgão Expedidor de RG' },
@@ -42,7 +42,9 @@ app.controller("PainelController", ["$route", "$scope", "$location", function($r
   ];
 
   $scope.navigarPara = function(pagina) {
-    $location.url(pagina);
+    if (pagina) {
+      $location.url(pagina);
+    }
   };
 
 }]);

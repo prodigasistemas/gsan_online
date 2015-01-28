@@ -6,7 +6,7 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     click_modulo("Cadastro")
     click_sub_modulo("CEPs")
-    
+
     fill_in "cep_codigo", with: "66666666"
     click_button "Pesquisar"
     find('tr.cep:last-child a').click
@@ -38,6 +38,6 @@ describe "Como um cadastrista", type: :feature, js: true do
     expect(page).to have_content "UMARIZAL"
     expect(page).to have_content "RUA"
     expect(page).to have_content "OLIVEIRA-BELO"
-    expect(page).to have_css ".cep_ativo", text: ""
+    expect(page).to have_css ".cep_ativo", text: "inativo"
   end
 end

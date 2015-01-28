@@ -135,6 +135,18 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'cep_tipos/edit.html',
         controller: 'CepTiposFormController'
       }).
+      when('/esferas_poder', {
+        templateUrl: 'esferas_poder/index.html',
+        controller: 'EsferasPoderIndexController'
+      }).
+      when('/esferas_poder/novo', {
+        templateUrl: 'esferas_poder/new.html',
+        controller: 'EsferasPoderFormController'
+      }).
+      when('/esferas_poder/:id/editar', {
+        templateUrl: 'esferas_poder/edit.html',
+        controller: 'EsferasPoderFormController'
+      }).
       otherwise({
         redirectTo: '/'
       });

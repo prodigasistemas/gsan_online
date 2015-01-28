@@ -31,7 +31,7 @@ describe "Como um cadastrista", type: :feature, js: true do
         expect(page).to have_content "MINISTERIO FEDERAL"
         expect(page).to have_content "PESSOA FISICA"
         expect(page).to have_content "FEDERAL"
-        expect(page).to have_css ".cliente_tipo_ativo", text: ""
+        expect(page).to have_css ".cliente_tipo_ativo", text: "inativo"
     end
   end
 end

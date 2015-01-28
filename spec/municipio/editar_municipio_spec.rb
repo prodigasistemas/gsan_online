@@ -6,7 +6,7 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     click_modulo("Cadastro")
     click_sub_modulo("Municípios")
-    
+
     fill_in "municipio_codigo_ibge", with: "123456"
     click_button "Pesquisar"
     find(".municipio:last-child a").click
@@ -43,6 +43,6 @@ describe "Como um cadastrista", type: :feature, js: true do
     expect(page).to have_content "OBIDOS"
     expect(page).to have_content "METROPOLITANA"
     expect(page).to have_content "AC"
-    expect(page).to have_css ".municipio_ativo", text: ""
+    expect(page).to have_css ".municipio_ativo", text: "inativo"
   end
 end

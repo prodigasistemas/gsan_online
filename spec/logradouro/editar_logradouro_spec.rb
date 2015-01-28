@@ -46,7 +46,7 @@ describe "Como cadastrista", type: :feature, js: true do
     click_button "Pesquisar"
 
     expect(page).to have_content "ANTONIO BARRETO"
-    expect(page).to have_css ".logradouro_ativo", text: ""
+    expect(page).to have_css ".logradouro_ativo", text: "inativo"
 
     find(".logradouro:last-child a").click
 

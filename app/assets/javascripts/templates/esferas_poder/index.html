@@ -1,0 +1,41 @@
+<page-header titulo="Esferas de Poder"></page-header>
+
+<div class="actions clearfix">
+  <a href="/esferas_poder/novo" class="btn btn-primary pull-right">Criar Esfera de Poder</a>
+</div>
+
+<filter-resource src="'esferas_poder/filter.html'" submeter-pesquisa="submeterPesquisa" query-cache="queryCache" page="page"></filter-resource>
+
+<div ng-show="esferasPoder.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Esferas de Poder</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Pode gerar certidão negativa para imovel</th>
+          <th>Pode gerar certidão negativa para cliente</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="esfera_poder_{{esfera.id}}" class="esfera_poder" ng-repeat="esfera in esferasPoder">
+          <td>{{esfera.descricao}}</td>
+          <td class="esfera_poder_permite_gerar_certidao_negativa_imovel">
+            <span yes-no="esfera.permite_gerar_certidao_negativa_imovel" no-label="'Não'" yes-label="'Sim'"></span>
+          </td>
+          <td class="esfera_poder_permite_gerar_certidao_negativa_cliente">
+            <span yes-no="esfera.permite_gerar_certidao_negativa_cliente" no-label="'Não'" yes-label="'Sim'"></span>
+          </td>
+          <td class="esfera_poder_ativo">
+            <span yes-no="esfera.ativo"></span>
+          </td>
+          <td><a class="btn btn-info" ng-href="/esferas_poder/{{esfera.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

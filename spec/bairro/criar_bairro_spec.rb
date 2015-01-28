@@ -37,14 +37,14 @@ describe "Como um cadastrista", type: :feature, js: true do
     expect(page).to have_content "1010"
     expect(page).to have_content "JURUNAS"
     expect(page).to have_content "212"
-    expect(page).to have_css ".bairro_ativo", text: "Sim"
+    expect(page).to have_css ".bairro_ativo", text: "ativo"
   end
 
   def testar_areas
     fill_in "bairro_area_nome",              with: "NOVA AREA"
     click_button "Adicionar"
     expect(page).to have_css ".bairro_area", text: "NOVA AREA", count: 1
-    
+
     fill_in "bairro_area_nome",              with: "MAIS UMA AREA"
     select "DISTRITO 1", from: "distrito_operacionais"
     click_button "Adicionar"

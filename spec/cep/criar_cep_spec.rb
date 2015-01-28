@@ -37,6 +37,6 @@ describe "Como um cadastrista", type: :feature, js: true do
     expect(page).to have_content "RUA"
     expect(page).to have_content "PA"
     expect(page).to have_content "OLIVEIRA-BELO"
-    expect(page).to have_css ".cep_ativo", text: "Sim"
+    expect(page).to have_css ".cep_ativo", text: "ativo"
   end
 end

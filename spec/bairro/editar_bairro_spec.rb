@@ -37,7 +37,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     expect(page).to have_content "12345"
     expect(page).to have_content "CREMACAO"
     expect(page).to have_content "121"
-    expect(page).to have_css ".bairro_ativo", text: ""
+    expect(page).to have_css ".bairro_ativo", text: "inativo"
   end
 
   def testar_areas
