@@ -1,0 +1,31 @@
+<page-header titulo="Tipos de CEPs"></page-header>
+
+<div class="actions clearfix">
+  <a href="/cep_tipos/novo" class="btn btn-primary pull-right">Criar Tipo de CEP</a>
+</div>
+
+<filter-resource src="'cep_tipos/filter.html'" filter-options="filterOptions" submeter-pesquisa="submeterPesquisa" query-cache="queryCache" page="page"></filter-resource>
+
+<div ng-show="cepTipos.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Tipos de clientes</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Ativo</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="cep_tipo_{{tipo.id}}" class="cep_tipo" ng-repeat="tipo in cepTipos">
+          <td>{{tipo.descricao}}</td>
+          <td class="cep_tipo_ativo"><span yes-no="tipo.ativo"></span></td>
+          <td><a class="btn btn-info" ng-href="/cep_tipos/{{tipo.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
