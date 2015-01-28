@@ -35,7 +35,7 @@ app.controller("PainelController", ["$route", "$scope", "$location", function($r
         { grupo: "clientes", icone: 'fa fa-street-view',  url: '',                titulo: 'Endereço de Referência' },
         { grupo: "clientes", icone: 'fa fa-circle',       url: '',                titulo: 'Ramos de Atividades' },
         { grupo: "clientes", icone: 'fa fa-university',   url: '',                titulo: 'Órgão Expedidor de RG' },
-        { grupo: "clientes", icone: 'fa fa-gavel',        url: '',                titulo: 'Profissões' },
+        { grupo: "clientes", icone: 'fa fa-gavel',        url: '/profissoes',     titulo: 'Profissões' },
         { grupo: "clientes", icone: 'fa fa-archive',      url: '',                titulo: 'Tipos de Endereço' }
       ]
     }

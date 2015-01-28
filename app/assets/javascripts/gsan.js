@@ -147,6 +147,18 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'esferas_poder/edit.html',
         controller: 'EsferasPoderFormController'
       }).
+      when('/profissoes', {
+        templateUrl: 'profissoes/index.html',
+        controller: 'ProfissoesIndexController'
+      }).
+      when('/profissoes/novo', {
+        templateUrl: 'profissoes/new.html',
+        controller: 'ProfissoesFormController'
+      }).
+      when('/profissoes/:id/editar', {
+        templateUrl: 'profissoes/edit.html',
+        controller: 'ProfissoesFormController'
+      }).
       otherwise({
         redirectTo: '/'
       });

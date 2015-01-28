@@ -1,10 +1,10 @@
 var app = angular.module("gsan");
 
-app.controller("EsferasPoderIndexController", ["EsferaPoder", "$scope", function(EsferaPoder, $scope) {
+app.controller("ProfissoesIndexController", ["Profissao", "$scope", function(Profissao, $scope) {
   $scope.submeterPesquisa = function(query) {
     $scope.loading = true;
-    EsferaPoder.search(query, function(data) {
-      $scope.esferasPoder = data.esferas_poder;
+    Profissao.search(query, function(data) {
+      $scope.profissoes = data.profissoes;
       $scope.page = data.page;
       $scope.loading = false;
     }, function() {

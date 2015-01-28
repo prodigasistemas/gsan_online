@@ -1,0 +1,33 @@
+<page-header titulo="Profissões"></page-header>
+
+<div class="actions clearfix">
+  <a href="/profissoes/novo" class="btn btn-primary pull-right">Criar Profissão</a>
+</div>
+
+<filter-resource src="'profissoes/filter.html'" submeter-pesquisa="submeterPesquisa" query-cache="queryCache" page="page"></filter-resource>
+
+<div ng-show="profissoes.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Profissões</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Descrição</th>
+          <th>Ativo</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="profissao_{{profissao.id}}" class="profissao" ng-repeat="profissao in profissoes">
+          <td>{{profissao.codigo}}</td>
+          <td>{{profissao.descricao}}</td>
+          <td class="profissao_ativo"><span yes-no="profissao.ativo"></span></td>
+          <td><a class="btn btn-info" ng-href="/profissoes/{{profissao.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
