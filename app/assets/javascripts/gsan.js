@@ -131,6 +131,10 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'cep_tipos/new.html',
         controller: 'CepTiposFormController'
       }).
+      when('/cep_tipos/:id/editar', {
+        templateUrl: 'cep_tipos/edit.html',
+        controller: 'CepTiposFormController'
+      }).
       otherwise({
         redirectTo: '/'
       });
