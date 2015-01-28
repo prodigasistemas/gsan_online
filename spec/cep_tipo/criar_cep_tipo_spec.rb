@@ -21,7 +21,7 @@ describe "Como um cadastrista", type: :feature, js: true do
 
     within ".cep_tipo" do
       expect(page).to have_content "UM TIPO QUALQUER"
-      expect(page).to have_css ".cep_tipo_ativo", text: "Sim"
+      expect(page).to have_css ".cep_tipo_ativo", text: "ativo"
     end
   end
 end

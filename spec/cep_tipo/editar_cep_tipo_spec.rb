@@ -23,8 +23,8 @@ describe "Como um cadastrista", type: :feature, js: true do
     click_button "Pesquisar"
 
     within ".cep_tipo" do
-        expect(page).to have_content "OUTRO TIPO DE CEP"
-        expect(page).to have_css ".cep_tipo_ativo", text: ""
+      expect(page).to have_content "OUTRO TIPO DE CEP"
+      expect(page).to have_css ".cep_tipo_ativo", text: "inativo"
     end
   end
 end
