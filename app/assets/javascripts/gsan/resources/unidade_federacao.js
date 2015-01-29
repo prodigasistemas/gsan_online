@@ -1,7 +1,7 @@
 var app = angular.module("gsan");
 
-app.factory("UnidadeFederacao", ["$resource", "CadastroUrl", function($resource, CadastroUrl) {
-  var uf = $resource(CadastroUrl() + "/unidade_federacoes/:ufId", { ufId: "@id" },
+app.factory("UnidadeFederacao", ["$resource", "CadastroUrl", "$http", function($resource, CadastroUrl, $http) {
+  var uf = $resource(CadastroUrl() + "/unidade_federacoes/:id", { id: "@id" },
     {
       'query': {
           method: 'GET',
@@ -10,6 +10,16 @@ app.factory("UnidadeFederacao", ["$resource", "CadastroUrl", function($resource,
       },
       'update': { method:'PUT', isArray: false }
     });
+
+  uf.search = function(query, successCallback, errorCallback) {
+    var paramQuery = query ? "?" + $.param(query) : "";
+    $http.get(CadastroUrl() + "/unidade_federacoes" + paramQuery)
+    .success(function(data) {
+      if (successCallback) { successCallback(data); }
+    }).error(function(data) {
+      if (errorCallback)   { errorCallback(data); }
+    });
+  }
 
   return uf;
 }]);

@@ -1,0 +1,25 @@
+<form-errors form-errors="$parent.formErrors"></form-errors>
+
+<form ng-submit="submeter()" class="form-horizontal" name="form" novalidate>
+  <div class="panel panel-default">
+    <div class="panel-heading">Dados</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="unidade_federacao_descricao" class="control-label col-md-3">Descrição <span class="required">*</span></label>
+        <div class="col-md-8">
+          <input id="unidade_federacao_descricao" ng-model="unidadeFederacao.descricao" type="text" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="unidade_federacao_sigla" class="control-label col-md-3">Sigla <span class="required">*</span></label>
+        <div class="col-md-1">
+          <input id="unidade_federacao_sigla" ng-model="unidadeFederacao.sigla" type="text" class="form-control" required>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <input type="submit" value="Salvar Unidade da Federação" class="btn btn-primary" ng-disabled="form.$invalid">
+    </div>
+  </div>
+</form>

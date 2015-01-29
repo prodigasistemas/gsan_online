@@ -21,7 +21,7 @@ app.controller("PainelController", ["$route", "$scope", "$location", function($r
         { grupo: "enderecos", icone: 'fa fa-tree',            url: '/micro_regioes',            titulo: 'Micro Regiões' },
         { grupo: "enderecos", icone: 'fa fa-photo',           url: '/regioes',                  titulo: 'Regiões' },
         { grupo: "enderecos", icone: 'fa fa-sun-o',           url: '/regioes_desenvolvimento',  titulo: 'Regiões de Desenvolvimento' },
-        { grupo: "enderecos", icone: 'fa fa-university',      url: '',                          titulo: 'Unidade de Federação' },
+        { grupo: "enderecos", icone: 'fa fa-university',      url: '/unidade_federacoes',       titulo: 'Unidades da Federação' },
         { grupo: "enderecos", icone: 'fa fa-envelope-square', url: '/cep_tipos',                titulo: 'Tipos de CEP' },
         { grupo: "enderecos", icone: 'fa fa-text-height',     url: '',                          titulo: 'Títulos de Logradouro' },
         { grupo: "enderecos", icone: 'fa fa-cubes',           url: '',                          titulo: 'Tipos de Logradouro' }

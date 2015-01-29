@@ -1,0 +1,31 @@
+<page-header titulo="Unidades da Federação"></page-header>
+
+<div class="actions clearfix">
+  <a href="/unidade_federacoes/novo" class="btn btn-primary pull-right">Criar Unidade da Federação</a>
+</div>
+
+<filter-resource src="'unidade_federacoes/filter.html'" filter-options="filterOptions" submeter-pesquisa="submeterPesquisa" query-cache="queryCache" page="page"></filter-resource>
+
+<div ng-show="unidadeFederacoes.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Unidades da Federação</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Sigla</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="unidade_federacao_{{uf.id}}" class="unidade_federacao" ng-repeat="uf in unidadeFederacoes">
+          <td>{{uf.descricao}}</td>
+          <td>{{uf.sigla}}</td>
+          <td width="10"><a class="btn btn-info" ng-href="/unidade_federacoes/{{uf.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

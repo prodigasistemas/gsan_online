@@ -207,6 +207,18 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'orgaos_expedidores_rg/edit.html',
         controller: 'OrgaosExpedidoresRgFormController'
       }).
+      when('/unidade_federacoes/', {
+        templateUrl: 'unidade_federacoes/index.html',
+        controller: 'UnidadeFederacoesIndexController'
+      }).
+      when('/unidade_federacoes/novo', {
+        templateUrl: 'unidade_federacoes/new.html',
+        controller: 'UnidadeFederacoesFormController'
+      }).
+      when('/unidade_federacoes/:id/editar', {
+        templateUrl: 'unidade_federacoes/edit.html',
+        controller: 'UnidadeFederacoesFormController'
+      }).
       otherwise({
         redirectTo: '/'
       });

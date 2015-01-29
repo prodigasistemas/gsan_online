@@ -1,0 +1,22 @@
+<div class="panel panel-default panel-filter">
+  <form ng-submit="pesquisar()" class="form-inline filter">
+    <div class="panel-body">
+      <div class="form-group">
+        <input id="unidade_federacao_descricao" ng-model="query.descricao" type="text" class="form-control" placeholder="Descrição">
+      </div>
+
+      <div class="form-group">
+        <input id="unidade_federacao_sigla" ng-model="query.sigla" type="text" class="form-control" placeholder="Sigla">
+      </div>
+    </div>
+
+    <div class="panel-footer clearfix">
+      <div class="pull-left">
+        <button class="btn btn-primary" ng-disabled="queryVazia() || loading">Pesquisar</button>
+        <span ng-show="loading"><%= image_tag "spinner.gif" %></span>
+      </div>
+
+      <div class="pull-right" ng-show="page">Total de resultados: {{page.total}}</div>
+    </div>
+  </form>
+</div>
