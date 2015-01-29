@@ -1,7 +1,6 @@
 var app = angular.module("gsan");
 
-app.controller("BairrosIndexController", ["Municipio", "Flash", "$scope", "$http", "CadastroUrl", function(Municipio, Flash, $scope, $http, CadastroUrl) {
-  $scope.flash = Flash;
+app.controller("BairrosIndexController", ["Municipio", "$scope", "$http", "CadastroUrl", function(Municipio, $scope, $http, CadastroUrl) {
   $scope.query = {};
 
   $scope.municipios = Municipio.query();

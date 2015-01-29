@@ -1,7 +1,6 @@
 var app = angular.module("gsan");
 
 app.controller("RegioesEditController", ["Regiao", "Flash", "$scope", "$http", "CadastroUrl", "$location", "$route", function(Regiao, Flash, $scope, $http, CadastroUrl, $location, $route) {
-  $scope.flash = Flash;
   $scope.regiao = Regiao.get({id: $route.current.params.id});
 
   $scope.submeter = function() {

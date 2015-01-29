@@ -1,7 +1,6 @@
 var app = angular.module("gsan");
 
-app.controller("RegioesDesenvolvimentoIndexController", ["RegiaoDesenvolvimento", "Flash", "$scope", "$http", "CadastroUrl", function(RegiaoDesenvolvimento, Flash, $scope, $http, CadastroUrl) {
-  $scope.flash = Flash;
+app.controller("RegioesDesenvolvimentoIndexController", ["RegiaoDesenvolvimento", "$scope", "$http", "CadastroUrl", function(RegiaoDesenvolvimento, $scope, $http, CadastroUrl) {
   $scope.query = {};
 
   $scope.queryVazia = function() {

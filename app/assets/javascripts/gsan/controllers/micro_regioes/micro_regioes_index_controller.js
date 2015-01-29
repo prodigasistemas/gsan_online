@@ -1,7 +1,6 @@
 var app = angular.module("gsan");
 
-app.controller("MicroRegioesIndexController", ["Regiao", "MicroRegiao", "Flash", "$scope", "$http", "CadastroUrl", function(Regiao, MicroRegiao, Flash, $scope, $http, CadastroUrl) {
-  $scope.flash = Flash;
+app.controller("MicroRegioesIndexController", ["Regiao", "MicroRegiao", "$scope", "$http", "CadastroUrl", function(Regiao, MicroRegiao, $scope, $http, CadastroUrl) {
   $scope.regioes = Regiao.query();
   $scope.query = {};
 
