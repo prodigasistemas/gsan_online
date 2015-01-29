@@ -183,6 +183,18 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'endereco_tipos/edit.html',
         controller: 'EnderecoTiposFormController'
       }).
+      when('/enderecos_referencia', {
+        templateUrl: 'enderecos_referencia/index.html',
+        controller: 'EnderecosReferenciaIndexController'
+      }).
+      when('/enderecos_referencia/novo', {
+        templateUrl: 'enderecos_referencia/new.html',
+        controller: 'EnderecosReferenciaFormController'
+      }).
+      when('/enderecos_referencia/:id/editar', {
+        templateUrl: 'enderecos_referencia/edit.html',
+        controller: 'EnderecosReferenciaFormController'
+      }).
       otherwise({
         redirectTo: '/'
       });

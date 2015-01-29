@@ -1,0 +1,33 @@
+<page-header titulo="Endereços de Referência"></page-header>
+
+<div class="actions clearfix">
+  <a href="/enderecos_referencia/novo" class="btn btn-primary pull-right">Criar Endereço de Referência</a>
+</div>
+
+<filter-resource src="'enderecos_referencia/filter.html'" submeter-pesquisa="submeterPesquisa" query-cache="queryCache" page="page"></filter-resource>
+
+<div ng-show="enderecosReferencia.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Endereços de Referência</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Descrição Abreviada</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="endereco_referencia_{{enderecoReferencia.id}}" class="endereco_referencia" ng-repeat="enderecoReferencia in enderecosReferencia">
+          <td>{{enderecoReferencia.descricao}}</td>
+          <td>{{enderecoReferencia.descricao_abreviada}}</td>
+          <td class="endereco_referencia_ativo"><span yes-no="enderecoReferencia.ativo"></span></td>
+          <td><a class="btn btn-info" ng-href="/enderecos_referencia/{{enderecoReferencia.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
