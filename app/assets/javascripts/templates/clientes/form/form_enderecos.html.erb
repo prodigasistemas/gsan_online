@@ -10,8 +10,8 @@
     <tr data-nome="{{endereco.logradouro.nome}}" ng-class="{endereco: true, destroyed: endereco._destroy}" ng-repeat="endereco in cliente.enderecos">
       <td>
         <span ng-show="endereco.logradouro">
-          {{endereco.logradouro.tipo_logradouro.descricao}}
-          {{endereco.logradouro.titulo_logradouro.descricao}}
+          {{endereco.logradouro.logradouro_tipo.descricao}}
+          {{endereco.logradouro.logradouro_titulo.descricao}}
           {{endereco.logradouro.nome}}
         </span>
 
@@ -42,14 +42,14 @@
           -
           <span ng-show="endereco.perimetro_inicial">
             <span ng-show="endereco.perimetro_final">ENTRE</span>
-            {{endereco.perimetro_inicial.tipo_logradouro.descricao}}
-            {{endereco.perimetro_inicial.titulo_logradouro.descricao}}
+            {{endereco.perimetro_inicial.logradouro_tipo.descricao}}
+            {{endereco.perimetro_inicial.logradouro_titulo.descricao}}
             {{endereco.perimetro_inicial.nome}}
           </span>
           <span ng-show="endereco.perimetro_final">
             <span ng-show="endereco.perimetro_inicial">E</span>
-            {{endereco.perimetro_final.tipo_logradouro.descricao}}
-            {{endereco.perimetro_final.titulo_logradouro.descricao}}
+            {{endereco.perimetro_final.logradouro_tipo.descricao}}
+            {{endereco.perimetro_final.logradouro_titulo.descricao}}
             {{endereco.perimetro_final.nome}}
           </span>
         </span>

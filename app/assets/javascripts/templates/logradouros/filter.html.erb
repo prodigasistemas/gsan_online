@@ -23,16 +23,16 @@
       </div>
 
       <div class="form-group">
-        <select id="logradouro_titulo_logradouro_id" ng-model="query.titulo_logradouro_id" class="form-control">
+        <select id="logradouro_logradouro_titulo_id" ng-model="query.logradouro_titulo_id" class="form-control">
           <option value="">Título do Logradouro</option>
-          <option ng-repeat="titulo_logradouro in titulo_logradouros" value="{{titulo_logradouro.id}}">{{titulo_logradouro.descricao}}</option>
+          <option ng-repeat="logradouro_titulo in logradouro_titulos" value="{{logradouro_titulo.id}}">{{logradouro_titulo.descricao}}</option>
         </select>
       </div>
 
       <div class="form-group">
-        <select id="logradouro_tipo_logradouro_id" ng-model="query.tipo_logradouro_id" class="form-control">
+        <select id="logradouro_logradouro_tipo_id" ng-model="query.logradouro_tipo_id" class="form-control">
           <option value="">Tipo do Logradouro</option>
-          <option ng-repeat="tipo_logradouro in tipo_logradouros" value="{{tipo_logradouro.id}}">{{tipo_logradouro.descricao}}</option>
+          <option ng-repeat="logradouro_tipo in logradouro_tipos" value="{{logradouro_tipo.id}}">{{logradouro_tipo.descricao}}</option>
         </select>
       </div>
     </div>

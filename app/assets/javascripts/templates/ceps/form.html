@@ -52,11 +52,11 @@
       </div>
 
       <div class="form-group">
-        <label for="cep_tipo_logradouro" class="control-label col-md-3">Tipo do logradouro <span class="required">*</span></label>
+        <label for="cep_logradouro_tipo" class="control-label col-md-3">Tipo do logradouro <span class="required">*</span></label>
         <div class="col-md-4">
-          <select id="cep_tipo_logradouro" ng-model="cep.tipo_logradouro" class="form-control" required>
+          <select id="cep_logradouro_tipo" ng-model="cep.logradouro_tipo" class="form-control" required>
             <option value="">Selecione um tipo de logradouro</option>
-            <option ng-repeat="tipo in tipo_logradouros">{{tipo.descricao}}</option>
+            <option ng-repeat="tipo in logradouro_tipos">{{tipo.descricao}}</option>
           </select>
         </div>
       </div>

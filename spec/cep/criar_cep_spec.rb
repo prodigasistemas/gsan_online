@@ -13,7 +13,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     select "ÚNICO",                 from: "cep_tipo_id"
     select_from_autocomplete("bel", "BELEM | PARA", "cep_municipio_id")
     select "UMARIZAL",              from: "cep_bairro"
-    select "RUA",                   from: "cep_tipo_logradouro"
+    select "RUA",                   from: "cep_logradouro_tipo"
     fill_in "cep_logradouro",       with: "OLIVEIRA-BELO"
     check "cep_ativo"
 
@@ -25,7 +25,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     fill_in "filtro_municipio",        with: "bel"
     fill_in "filtro_bairro",           with: "umar"
     fill_in "filtro_logradouro",       with: "oliv"
-    select "RUA",                   from: "cep_tipo_logradouro"
+    select "RUA",                   from: "cep_logradouro_tipo"
     select "ÚNICO",                 from: "cep_tipo_id"
     select "PA",                    from: "cep_uf"
     click_button "Pesquisar"

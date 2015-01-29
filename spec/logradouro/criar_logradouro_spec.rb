@@ -10,7 +10,7 @@ describe "Como cadastrista", type: :feature, js: true do
     click_link "Criar Logradouro"
 
     select "RUA", from: "logradouro_tipo_id"
-    select "GOV", from: "titulo_logradouro_id"
+    select "GOV", from: "logradouro_titulo_id"
     fill_in "logradouro_nome",          with: "JOSE MALCHER"
     fill_in "logradouro_nome_popular",  with: "SAO GERONIMO"
     select_from_autocomplete("bel", "BELEM | PARA", "municipios")

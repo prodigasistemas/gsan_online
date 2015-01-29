@@ -1,9 +1,9 @@
 var app = angular.module("gsan");
 
-app.controller("CepsEditController", ["Cep", "CepTipo", "Municipio", "TipoLogradouro", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", function(Cep, CepTipo, Municipio, TipoLogradouro, CadastroUrl, $scope, $http, $location, Flash, $route) {
+app.controller("CepsEditController", ["Cep", "CepTipo", "Municipio", "LogradouroTipo", "CadastroUrl", "$scope", "$http", "$location", "Flash", "$route", function(Cep, CepTipo, Municipio, LogradouroTipo, CadastroUrl, $scope, $http, $location, Flash, $route) {
   $scope.cepTipos = CepTipo.query();
   $scope.municipios = Municipio.query();
-  $scope.tipo_logradouros = TipoLogradouro.query();
+  $scope.logradouro_tipos = LogradouroTipo.query();
 
   $http.get(CadastroUrl() + "/ceps/"+ $route.current.params.id +"/edit").success(function(data) {
     $scope.bairros = data.bairros;

@@ -1,7 +1,7 @@
 <div ng-hide="pesquisandoLogradouro" class="row">
   <div class="col-xs-10 col-sm-11">
     <a href ng-click="mostrarPesquisandoLogradouro(true)" class="btn btn-default form-control">
-      <span ng-show="logradouroSelecionado" id="logradouro_selecionado">{{logradouroSelecionado.tipo_logradouro.descricao}} {{logradouroSelecionado.titulo_logradouro.descricao}} {{logradouroSelecionado.nome}}</span>
+      <span ng-show="logradouroSelecionado" id="logradouro_selecionado">{{logradouroSelecionado.logradouro_tipo.descricao}} {{logradouroSelecionado.logradouro_titulo.descricao}} {{logradouroSelecionado.nome}}</span>
       <span ng-hide="logradouroSelecionado">Selecionar logradouro</span>
     </a>
   </div>
@@ -65,7 +65,7 @@
         </thead>
         <tbody>
           <tr data-logradouro-nome="{{logradouro.nome}}" ng-repeat="logradouro in logradouros">
-            <td>{{logradouro.tipo_logradouro.descricao}} {{logradouro.titulo_logradouro.descricao}}</td>
+            <td>{{logradouro.logradouro_tipo.descricao}} {{logradouro.logradouro_titulo.descricao}}</td>
             <td>{{logradouro.nome}}</td>
             <td><a href ng-click="selecionarLogradouro(logradouro)">Selecionar</a></td>
           </tr>

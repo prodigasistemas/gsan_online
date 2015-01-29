@@ -219,6 +219,30 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'unidade_federacoes/edit.html',
         controller: 'UnidadeFederacoesFormController'
       }).
+      when('/logradouro_tipos', {
+        templateUrl: 'logradouro_tipos/index.html',
+        controller: 'LogradouroTiposIndexController'
+      }).
+      when('/logradouro_tipos/novo', {
+        templateUrl: 'logradouro_tipos/new.html',
+        controller: 'LogradouroTiposFormController'
+      }).
+      when('/logradouro_tipos/:id/editar', {
+        templateUrl: 'logradouro_tipos/edit.html',
+        controller: 'LogradouroTiposFormController'
+      }).
+      when('/logradouro_titulos', {
+        templateUrl: 'logradouro_titulos/index.html',
+        controller: 'LogradouroTitulosIndexController'
+      }).
+      when('/logradouro_titulos/novo', {
+        templateUrl: 'logradouro_titulos/new.html',
+        controller: 'LogradouroTitulosFormController'
+      }).
+      when('/logradouro_titulos/:id/editar', {
+        templateUrl: 'logradouro_titulos/edit.html',
+        controller: 'LogradouroTitulosFormController'
+      }).
       otherwise({
         redirectTo: '/'
       });

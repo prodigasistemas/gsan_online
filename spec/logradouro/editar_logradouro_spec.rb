@@ -13,7 +13,7 @@ describe "Como cadastrista", type: :feature, js: true do
     find(".logradouro:last-child a").click
 
     select "AV", from: "logradouro_tipo_id"
-    select "ALM", from: "titulo_logradouro_id"
+    select "ALM", from: "logradouro_titulo_id"
     fill_in "logradouro_nome",          with: "ANTONIO BARRETO"
     fill_in "logradouro_nome_popular",  with: "BARRETAO"
     select_from_autocomplete("rio", "RIO BRANCO | ACRE", "municipios")

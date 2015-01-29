@@ -1,0 +1,35 @@
+<page-header titulo="Títulos de Logradouro"></page-header>
+
+<div class="actions clearfix">
+  <a href="/logradouro_titulos/novo" class="btn btn-primary pull-right">Criar Título de Logradouro</a>
+</div>
+
+<filter-resource src="'logradouro_titulos/filter.html'" submeter-pesquisa="submeterPesquisa" query-cache="queryCache" page="page"></filter-resource>
+
+<div ng-show="logradouroTitulos.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Títulos de Logradouro</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Descrição Abreviada</th>
+          <th>Descrição Completa</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="logradouro_titulo_{{logradouroTitulo.id}}" class="logradouro_titulo" ng-repeat="logradouroTitulo in logradouroTitulos">
+          <td>{{logradouroTitulo.descricao}}</td>
+          <td>{{logradouroTitulo.descricao_abreviada}}</td>
+          <td>{{logradouroTitulo.descricao_abreviada_completa}}</td>
+          <td class="logradouro_titulo_ativo"><span yes-no="logradouroTitulo.ativo"></span></td>
+          <td><a class="btn btn-info" ng-href="/logradouro_titulos/{{logradouroTitulo.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

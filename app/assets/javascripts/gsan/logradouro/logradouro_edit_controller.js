@@ -1,6 +1,6 @@
 var app = angular.module("gsan");
 
-app.controller("LogradourosEditController", ["Logradouro", "TipoLogradouro", "TituloLogradouro", "Municipio", "CadastroUrl", "$scope", "$http", "$location", "$filter", "$route", "Flash", function(Logradouro, TipoLogradouro, TituloLogradouro, Municipio, CadastroUrl, $scope, $http, $location, $filter, $route, Flash) {
+app.controller("LogradourosEditController", ["Logradouro", "LogradouroTipo", "LogradouroTitulo", "Municipio", "CadastroUrl", "$scope", "$http", "$location", "$filter", "$route", "Flash", function(Logradouro, LogradouroTipo, LogradouroTitulo, Municipio, CadastroUrl, $scope, $http, $location, $filter, $route, Flash) {
   $scope.logradouro = Logradouro.get({id: $route.current.params.id}, function(data) {
     $scope.atualizaBairros();
   });
@@ -8,8 +8,8 @@ app.controller("LogradourosEditController", ["Logradouro", "TipoLogradouro", "Ti
   $scope.cep = {};
 
   $scope.municipios = Municipio.query();
-  $scope.tipo_logradouros = TipoLogradouro.query();
-  $scope.titulo_logradouros = TituloLogradouro.query();
+  $scope.logradouro_tipos = LogradouroTipo.query();
+  $scope.logradouro_titulos = LogradouroTitulo.query();
 
   $scope.atualizaBairros = function() {
     $scope.logradouro.municipio_id = $scope.logradouro.municipio.id;

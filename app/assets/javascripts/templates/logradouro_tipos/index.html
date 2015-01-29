@@ -1,0 +1,35 @@
+<page-header titulo="Tipos de Logradouro"></page-header>
+
+<div class="actions clearfix">
+  <a href="/logradouro_tipos/novo" class="btn btn-primary pull-right">Criar Tipo de Logradouro</a>
+</div>
+
+<filter-resource src="'logradouro_tipos/filter.html'" submeter-pesquisa="submeterPesquisa" query-cache="queryCache" page="page"></filter-resource>
+
+<div ng-show="logradouroTipos.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Tipos de Logradouro</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Descrição Abreviada</th>
+          <th>Descrição Completa</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="logradouro_tipo_{{logradouroTipo.id}}" class="logradouro_tipo" ng-repeat="logradouroTipo in logradouroTipos">
+          <td>{{logradouroTipo.descricao}}</td>
+          <td>{{logradouroTipo.descricao_abreviada}}</td>
+          <td>{{logradouroTipo.descricao_abreviada_completa}}</td>
+          <td class="logradouro_tipo_ativo"><span yes-no="logradouroTipo.ativo"></span></td>
+          <td><a class="btn btn-info" ng-href="/logradouro_tipos/{{logradouroTipo.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

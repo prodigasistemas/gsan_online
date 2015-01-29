@@ -1,10 +1,10 @@
 var app = angular.module("gsan");
 
-app.controller("CepsNewController", ["Cep", "CepTipo", "Municipio", "TipoLogradouro", "CadastroUrl", "$scope", "$http", "$location", "Flash", function(Cep, CepTipo, Municipio, TipoLogradouro, CadastroUrl, $scope, $http, $location, Flash) {
+app.controller("CepsNewController", ["Cep", "CepTipo", "Municipio", "LogradouroTipo", "CadastroUrl", "$scope", "$http", "$location", "Flash", function(Cep, CepTipo, Municipio, LogradouroTipo, CadastroUrl, $scope, $http, $location, Flash) {
   $scope.cepTipos = CepTipo.query();
   $scope.municipios = Municipio.query();
-  $scope.tipo_logradouros = TipoLogradouro.query();
-  
+  $scope.logradouro_tipos = LogradouroTipo.query();
+
   $scope.cep = {ativo: 1};
 
   $scope.atualizaBairros = function() {

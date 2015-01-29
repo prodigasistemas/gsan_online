@@ -9,17 +9,17 @@
         <div class="col-md-4">
           <select id="logradouro_tipo_id" ng-model="logradouro.logradouro_tipo_id" class="form-control" required>
             <option value="">Selecione um tipo de logradouro</option>
-            <option ng-repeat="tipo in tipo_logradouros" value="{{tipo.id}}" ng-selected="logradouro.logradouro_tipo_id == tipo.id">{{tipo.descricao}}</option>
+            <option ng-repeat="tipo in logradouro_tipos" value="{{tipo.id}}" ng-selected="logradouro.logradouro_tipo_id == tipo.id">{{tipo.descricao}}</option>
           </select>
         </div>
       </div>
 
       <div class="form-group">
-        <label for="titulo_logradouro_id" class="control-label col-md-3">Título do logradouro</label>
+        <label for="logradouro_titulo_id" class="control-label col-md-3">Título do logradouro</label>
         <div class="col-md-4">
-          <select id="titulo_logradouro_id" ng-model="logradouro.titulo_logradouro_id" class="form-control">
+          <select id="logradouro_titulo_id" ng-model="logradouro.logradouro_titulo_id" class="form-control">
             <option value="">Selecione um título de logradouro</option>
-            <option ng-repeat="titulo in titulo_logradouros" value="{{titulo.id}}" ng-selected="logradouro.titulo_logradouro_id == titulo.id">{{titulo.descricao}}</option>
+            <option ng-repeat="titulo in logradouro_titulos" value="{{titulo.id}}" ng-selected="logradouro.logradouro_titulo_id == titulo.id">{{titulo.descricao}}</option>
           </select>
         </div>
       </div>
@@ -134,7 +134,7 @@
                     <td>{{logradouro_cep.cep.uf}}</td>
                     <td>{{logradouro_cep.cep.municipio}}</td>
                     <td>{{logradouro_cep.cep.bairro}}</td>
-                    <td>{{logradouro_cep.cep.tipo_logradouro}} {{logradouro_cep.cep.logradouro}}</td>
+                    <td>{{logradouro_cep.cep.logradouro_tipo}} {{logradouro_cep.cep.logradouro}}</td>
                     <td width="5" class="actions">
                       <a href="" ng-show="logradouro_cep._destroy" ng-click="logradouro_cep._destroy = undefined" class="btn btn-warning">Cancelar</a>
                       <a href="" ng-hide="logradouro_cep._destroy" ng-click="removerCEP(logradouro_cep)" class="btn btn-warning">X</a>

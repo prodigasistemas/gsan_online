@@ -1,10 +1,10 @@
 var app = angular.module("gsan");
 
-app.controller("CepsIndexController", ["Cep", "CepTipo", "Municipio", "TipoLogradouro", "UnidadeFederacao", "$scope", "$http", "CadastroUrl", function(Cep, CepTipo, Municipio, TipoLogradouro, UnidadeFederacao, $scope, $http, CadastroUrl) {
+app.controller("CepsIndexController", ["Cep", "CepTipo", "Municipio", "LogradouroTipo", "UnidadeFederacao", "$scope", "$http", "CadastroUrl", function(Cep, CepTipo, Municipio, LogradouroTipo, UnidadeFederacao, $scope, $http, CadastroUrl) {
   $scope.query = {};
   $scope.cepTipos = CepTipo.query();
   $scope.municipios = Municipio.query();
-  $scope.tipo_logradouros = TipoLogradouro.query();
+  $scope.logradouro_tipos = LogradouroTipo.query();
   $scope.unidade_federacoes = UnidadeFederacao.query();
 
   $scope.queryVazia = function() {
