@@ -1,0 +1,32 @@
+<form-errors form-errors="$parent.formErrors"></form-errors>
+
+<form ng-submit="submeter()" class="form-horizontal" name="form" novalidate>
+  <div class="panel panel-default">
+    <div class="panel-heading">Dados</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="orgao_expedidor_rg_descricao" class="control-label col-md-3">Descrição <span class="required">*</span></label>
+        <div class="col-md-8">
+          <input id="orgao_expedidor_rg_descricao" ng-model="orgao_expedidor_rg.descricao" type="text" class="form-control" maxlength="50" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="orgao_expedidor_rg_descricao_abreviada" class="control-label col-md-3">Descrição abreviada<span class="required">*</span></label>
+        <div class="col-md-8">
+          <input id="orgao_expedidor_rg_descricao_abreviada" ng-model="orgao_expedidor_rg.descricao_abreviada" type="text" class="form-control"  maxlength="6" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="orgao_expedidor_rg_ativo" class="control-label col-md-3">Ativo</label>
+        <div class="col-md-8">
+          <input id="orgao_expedidor_rg_ativo" type="checkbox" ng-model="orgao_expedidor_rg.ativo" ng-true-value="1" ng-false-value="2">
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <input type="submit" value="Salvar Órgão Expedidor de RG" class="btn btn-primary" ng-disabled="form.$invalid">
+    </div>
+  </div>
+</form>

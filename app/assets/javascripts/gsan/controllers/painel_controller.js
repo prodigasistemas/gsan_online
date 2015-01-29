@@ -29,14 +29,14 @@ app.controller("PainelController", ["$route", "$scope", "$location", function($r
     },{
       titulo: "Clientes",
       items: [
-        { grupo: "clientes", icone: 'fa fa-users',          url: '/clientes',             titulo: 'Clientes' },
-        { grupo: "clientes", icone: 'fa fa-cubes',          url: '/cliente_tipos',        titulo: 'Tipos de Clientes' },
-        { grupo: "clientes", icone: 'fa fa-circle',         url: '/esferas_poder',        titulo: 'Esferas de Poder' },
-        { grupo: "clientes", icone: 'fa fa-map-marker' ,    url: '/enderecos_referencia', titulo: 'Endereços de Referência' },
-        { grupo: "clientes", icone: 'fa fa-gavel',          url: '/ramos_atividade',      titulo: 'Ramos de Atividade' },
-        { grupo: "clientes", icone: 'fa fa-university',     url: '',                      titulo: 'Órgão Expedidor de RG' },
-        { grupo: "clientes", icone: 'fa fa-graduation-cap', url: '/profissoes',           titulo: 'Profissões' },
-        { grupo: "clientes", icone: 'fa fa-home',           url: '/endereco_tipos',       titulo: 'Tipos de Endereço' }
+        { grupo: "clientes", icone: 'fa fa-users',          url: '/clientes',               titulo: 'Clientes' },
+        { grupo: "clientes", icone: 'fa fa-cubes',          url: '/cliente_tipos',          titulo: 'Tipos de Clientes' },
+        { grupo: "clientes", icone: 'fa fa-circle',         url: '/esferas_poder',          titulo: 'Esferas de Poder' },
+        { grupo: "clientes", icone: 'fa fa-map-marker' ,    url: '/enderecos_referencia',   titulo: 'Endereços de Referência' },
+        { grupo: "clientes", icone: 'fa fa-gavel',          url: '/ramos_atividade',        titulo: 'Ramos de Atividade' },
+        { grupo: "clientes", icone: 'fa fa-university',     url: '/orgaos_expedidores_rg',  titulo: 'Órgãos Expedidores de RG' },
+        { grupo: "clientes", icone: 'fa fa-graduation-cap', url: '/profissoes',             titulo: 'Profissões' },
+        { grupo: "clientes", icone: 'fa fa-home',           url: '/endereco_tipos',         titulo: 'Tipos de Endereço' }
       ]
     }
   ];

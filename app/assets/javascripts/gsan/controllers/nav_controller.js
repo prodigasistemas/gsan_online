@@ -18,7 +18,8 @@ app.controller("NavController", ["$rootScope", "$scope", "$location", function($
     { modulo: "Cadastro", grupo: "Clientes",  id: 'profissoes',               title: 'Profissões' },
     { modulo: "Cadastro", grupo: "Clientes",  id: 'ramos_atividade',          title: 'Ramos de Atividade' },
     { modulo: "Cadastro", grupo: "Clientes",  id: 'endereco_tipos',           title: 'Tipos de Endereço' },
-    { modulo: "Cadastro", grupo: "Clientes",  id: 'enderecos_referencia',     title: 'Endereços de Referência' }
+    { modulo: "Cadastro", grupo: "Clientes",  id: 'enderecos_referencia',     title: 'Endereços de Referência' },
+    { modulo: "Cadastro", grupo: "Clientes",  id: 'orgaos_expedidores_rg',    title: 'Órgãos Expedidores de RG' }
   ];
 
   $scope.grupos = [

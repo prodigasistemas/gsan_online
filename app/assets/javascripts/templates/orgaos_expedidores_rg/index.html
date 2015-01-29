@@ -1,0 +1,33 @@
+<page-header titulo="Órgãos Expedidores de RG"></page-header>
+
+<div class="actions clearfix">
+  <a href="/orgaos_expedidores_rg/novo" class="btn btn-primary pull-right">Criar Órgão Expedidor de RG</a>
+</div>
+
+<filter-resource src="'orgaos_expedidores_rg/filter.html'" submeter-pesquisa="submeterPesquisa" query-cache="queryCache" page="page"></filter-resource>
+
+<div ng-show="orgaosExpedidoresRg.length">
+  <pagination page="page" query-cache="queryCache" submeter-pesquisa="submeterPesquisa" />
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Órgãos Expedidores de RG</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Descrição Abreviada</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="orgao_expedidor_rg_{{orgaoExpedidorRg.id}}" class="orgao_expedidor_rg" ng-repeat="orgaoExpedidorRg in orgaosExpedidoresRg">
+          <td>{{orgaoExpedidorRg.descricao}}</td>
+          <td>{{orgaoExpedidorRg.descricao_abreviada}}</td>
+          <td class="orgao_expedidor_rg_ativo"><span yes-no="orgaoExpedidorRg.ativo"></span></td>
+          <td><a class="btn btn-info" ng-href="/orgaos_expedidores_rg/{{orgaoExpedidorRg.id}}/editar"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

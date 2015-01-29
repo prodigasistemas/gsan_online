@@ -195,6 +195,18 @@ app.config(['$routeProvider', '$locationProvider',
         templateUrl: 'enderecos_referencia/edit.html',
         controller: 'EnderecosReferenciaFormController'
       }).
+      when('/orgaos_expedidores_rg', {
+        templateUrl: 'orgaos_expedidores_rg/index.html',
+        controller: 'OrgaosExpedidoresRgIndexController'
+      }).
+      when('/orgaos_expedidores_rg/novo', {
+        templateUrl: 'orgaos_expedidores_rg/new.html',
+        controller: 'OrgaosExpedidoresRgFormController'
+      }).
+      when('/orgaos_expedidores_rg/:id/editar', {
+        templateUrl: 'orgaos_expedidores_rg/edit.html',
+        controller: 'OrgaosExpedidoresRgFormController'
+      }).
       otherwise({
         redirectTo: '/'
       });
