@@ -1,7 +1,7 @@
 <div class="form-group">
   <label for="cliente_cnpj" class="control-label col-sm-3">CNPJ <span class="required">*</span></label>
   <div class="col-sm-8">
-    <input id="cliente_cnpj" ng-model="cliente.cnpj" class="form-control" ng-required="cliente.pessoa_tipo == 2" ng-pattern="/^[0-9]{14}$/">
+    <input id="cliente_cnpj" ng-model="cliente.cnpj" class="form-control" ng-required="cliente.pessoa_tipo == 2" ng-pattern="/^[0-9]{14}$/" maxlength="14">
   </div>
 </div>
 
