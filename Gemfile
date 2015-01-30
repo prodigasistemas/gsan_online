@@ -12,6 +12,10 @@ gem 'angular-rails-templates'
 gem "font-awesome-rails"
 gem 'dotenv-rails'
 
+group :production do
+  gem 'unicorn'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
