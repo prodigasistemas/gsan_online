@@ -6,7 +6,12 @@ app.controller("ClienteTiposFormController", ["EsferaPoder", "ClienteTipo", "$sc
 
   var id;
   if (id = $route.current.params.id) {
-    $scope.cliente_tipo = ClienteTipo.get({id: id});
+    $scope.cliente_tipo = ClienteTipo.get({id: id}, function() {}, function(response) {
+      if (response.status === 404) {
+        $scope.objectNotFound = true;
+        Flash.setMessage("danger", "Item não encontrado");
+      }
+    });
   } else {
     $scope.cliente_tipo = new ClienteTipo({ ativo: 1 });
   }

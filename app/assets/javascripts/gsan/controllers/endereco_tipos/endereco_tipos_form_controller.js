@@ -2,7 +2,12 @@ var app = angular.module("gsan");
 
 app.controller("EnderecoTiposFormController", ["EnderecoTipo", "$scope", "$route", "Flash", "$location", function(EnderecoTipo, $scope, $route, Flash, $location) {
   if (id = $route.current.params.id) {
-    $scope.endereco_tipo = EnderecoTipo.get({id: $route.current.params.id});
+    $scope.endereco_tipo = EnderecoTipo.get({id: $route.current.params.id}, function() {}, function(response) {
+      if (response.status === 404) {
+        $scope.objectNotFound = true;
+        Flash.setMessage("danger", "Item não encontrado");
+      }
+    });
   } else {
     $scope.endereco_tipo = new EnderecoTipo({ ativo: 1 });
   }

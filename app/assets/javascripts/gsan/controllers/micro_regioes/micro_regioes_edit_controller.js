@@ -2,7 +2,12 @@ var app = angular.module("gsan");
 
 app.controller("MicroRegioesEditController", ["MicroRegiao", "Regiao", "Flash", "$scope", "$http", "CadastroUrl", "$location", "$route", function(MicroRegiao, Regiao, Flash, $scope, $http, CadastroUrl, $location, $route) {
   $scope.regioes = Regiao.query();
-  $scope.microRegiao = MicroRegiao.get({id: $route.current.params.id});
+  $scope.microRegiao = MicroRegiao.get({id: $route.current.params.id}, function() {}, function(response) {
+    if (response.status === 404) {
+      $scope.objectNotFound = true;
+      Flash.setMessage("danger", "Item não encontrado");
+    }
+  });
 
   $scope.submeter = function() {
     var microRegiao = new MicroRegiao({id: $scope.microRegiao.id, micro_regiao: $scope.microRegiao});

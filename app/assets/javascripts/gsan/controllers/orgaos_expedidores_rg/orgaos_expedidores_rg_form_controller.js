@@ -2,7 +2,12 @@ var app = angular.module("gsan");
 
 app.controller("OrgaosExpedidoresRgFormController", ["OrgaoExpedidorRg", "$scope", "$route", "Flash", "$location", function(OrgaoExpedidorRg, $scope, $route, Flash, $location) {
   if (id = $route.current.params.id) {
-    $scope.orgao_expedidor_rg = OrgaoExpedidorRg.get({id: $route.current.params.id});
+    $scope.orgao_expedidor_rg = OrgaoExpedidorRg.get({id: $route.current.params.id}, function() {}, function(response) {
+      if (response.status === 404) {
+        $scope.objectNotFound = true;
+        Flash.setMessage("danger", "Item não encontrado");
+      }
+    });
   } else {
     $scope.orgao_expedidor_rg = new OrgaoExpedidorRg({ ativo: 1 });
   }

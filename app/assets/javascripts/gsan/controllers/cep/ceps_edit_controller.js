@@ -9,6 +9,11 @@ app.controller("CepsEditController", ["Cep", "CepTipo", "Municipio", "Logradouro
     $scope.bairros = data.bairros;
     $scope.cep     = data.cep;
     $scope.cep.municipio = { nome: $scope.cep.municipio, uf: { descricao: $scope.cep.uf } }
+  }).error(function(data, status) {
+    if (status === 404) {
+      $scope.objectNotFound = true;
+      Flash.setMessage("danger", "Item não encontrado");
+    }
   });
 
   $scope.atualizaBairros = function() {

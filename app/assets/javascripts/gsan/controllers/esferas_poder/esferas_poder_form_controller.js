@@ -2,7 +2,12 @@ var app = angular.module("gsan");
 
 app.controller("EsferasPoderFormController", ["EsferaPoder", "$scope", "$route", "Flash", "$location", function(EsferaPoder, $scope, $route, Flash, $location) {
   if (id = $route.current.params.id) {
-    $scope.esfera_poder = EsferaPoder.get({id: $route.current.params.id});
+    $scope.esfera_poder = EsferaPoder.get({id: $route.current.params.id}, function() {}, function(response) {
+      if (response.status === 404) {
+        $scope.objectNotFound = true;
+        Flash.setMessage("danger", "Item não encontrado");
+      }
+    });
   } else {
     $scope.esfera_poder = new EsferaPoder({ permite_gerar_certidao_negativa_imovel: 2,
                                             permite_gerar_certidao_negativa_cliente: 2,

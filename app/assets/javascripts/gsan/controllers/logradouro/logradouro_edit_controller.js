@@ -3,7 +3,13 @@ var app = angular.module("gsan");
 app.controller("LogradourosEditController", ["Logradouro", "LogradouroTipo", "LogradouroTitulo", "Municipio", "CadastroUrl", "$scope", "$http", "$location", "$filter", "$route", "Flash", function(Logradouro, LogradouroTipo, LogradouroTitulo, Municipio, CadastroUrl, $scope, $http, $location, $filter, $route, Flash) {
   $scope.logradouro = Logradouro.get({id: $route.current.params.id}, function(data) {
     $scope.atualizaBairros();
+  }, function(response) {
+    if (response.status === 404) {
+      $scope.objectNotFound = true;
+      Flash.setMessage("danger", "Item não encontrado");
+    }
   });
+  
   $scope.bairro = {};
   $scope.cep = {};
 

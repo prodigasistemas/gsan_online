@@ -4,7 +4,12 @@ app.controller("CepTiposFormController", ["CepTipo", "$scope", "$route", "Flash"
   var id;
 
   if (id = $route.current.params.id) {
-    $scope.cepTipo = CepTipo.get({id: id});
+    $scope.cepTipo = CepTipo.get({id: id}, function() {}, function(response) {
+      if (response.status === 404) {
+        $scope.objectNotFound = true;
+        Flash.setMessage("danger", "Item não encontrado");
+      }
+    });
   } else {
     $scope.cepTipo = new CepTipo({ ativo: 1 });
   }

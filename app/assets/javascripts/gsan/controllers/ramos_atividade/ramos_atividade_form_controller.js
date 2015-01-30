@@ -2,7 +2,12 @@ var app = angular.module("gsan");
 
 app.controller("RamosAtividadeFormController", ["RamoAtividade", "$scope", "$route", "Flash", "$location", function(RamoAtividade, $scope, $route, Flash, $location) {
   if (id = $route.current.params.id) {
-    $scope.ramo_atividade = RamoAtividade.get({id: $route.current.params.id});
+    $scope.ramo_atividade = RamoAtividade.get({id: $route.current.params.id}, function() {}, function(response) {
+      if (response.status === 404) {
+        $scope.objectNotFound = true;
+        Flash.setMessage("danger", "Item não encontrado");
+      }
+    });
   } else {
     $scope.ramo_atividade = new RamoAtividade({ ativo: 1 });
   }

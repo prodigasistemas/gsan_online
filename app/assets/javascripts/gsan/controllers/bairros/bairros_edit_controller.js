@@ -1,7 +1,12 @@
 var app = angular.module("gsan");
 
 app.controller("BairrosEditController", ["Bairro", "Municipio", "DistritoOperacional", "CadastroUrl", "$scope", "$http", "$location", "$filter", "Flash", "$route", function(Bairro, Municipio, DistritoOperacional, CadastroUrl, $scope, $http, $location, $filter, Flash, $route) {
-  $scope.bairro = Bairro.get({id: $route.current.params.id});
+  $scope.bairro = Bairro.get({id: $route.current.params.id}, function() {}, function(response) {
+    if (response.status === 404) {
+      $scope.objectNotFound = true;
+      Flash.setMessage("danger", "Item não encontrado");
+    }
+  });
   $scope.bairro_area = {};
 
   $scope.municipios = Municipio.query();

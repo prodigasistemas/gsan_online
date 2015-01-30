@@ -2,7 +2,12 @@ var app = angular.module("gsan");
 
 app.controller("EnderecosReferenciaFormController", ["EnderecoReferencia", "$scope", "$route", "Flash", "$location", function(EnderecoReferencia, $scope, $route, Flash, $location) {
   if (id = $route.current.params.id) {
-    $scope.endereco_referencia = EnderecoReferencia.get({id: $route.current.params.id});
+    $scope.endereco_referencia = EnderecoReferencia.get({id: $route.current.params.id}, function() {}, function(response) {
+      if (response.status === 404) {
+        $scope.objectNotFound = true;
+        Flash.setMessage("danger", "Item não encontrado");
+      }
+    });
   } else {
     $scope.endereco_referencia = new EnderecoReferencia({ ativo: 1 });
   }

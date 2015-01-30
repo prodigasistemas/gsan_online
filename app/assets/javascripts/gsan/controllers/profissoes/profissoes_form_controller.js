@@ -2,7 +2,12 @@ var app = angular.module("gsan");
 
 app.controller("ProfissoesFormController", ["Profissao", "$scope", "$route", "Flash", "$location", function(Profissao, $scope, $route, Flash, $location) {
   if (id = $route.current.params.id) {
-    $scope.profissao = Profissao.get({id: $route.current.params.id});
+    $scope.profissao = Profissao.get({id: $route.current.params.id}, function() {}, function(response) {
+      if (response.status === 404) {
+        $scope.objectNotFound = true;
+        Flash.setMessage("danger", "Item não encontrado");
+      }
+    });
   } else {
     $scope.profissao = new Profissao({ ativo: 1 });
   }

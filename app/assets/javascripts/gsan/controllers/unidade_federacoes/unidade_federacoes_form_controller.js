@@ -4,7 +4,12 @@ app.controller("UnidadeFederacoesFormController", ["UnidadeFederacao", "$scope",
   var id;
 
   if (id = $route.current.params.id) {
-    $scope.unidadeFederacao = UnidadeFederacao.get({id: id});
+    $scope.unidadeFederacao = UnidadeFederacao.get({id: id}, function() {}, function(response) {
+      if (response.status === 404) {
+        $scope.objectNotFound = true;
+        Flash.setMessage("danger", "Item não encontrado");
+      }
+    });
   } else {
     $scope.unidadeFederacao = new UnidadeFederacao({ ativo: 1 });
   }
