@@ -77,5 +77,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   # config.active_record.dump_schema_after_migration = false
 
-  CADASTRO_URL = ""
+  CADASTRO_URL = ENV["GSAN_CADASTRO_URL"]
 end

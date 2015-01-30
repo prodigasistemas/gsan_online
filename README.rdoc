@@ -3,13 +3,19 @@
 * Instalar o Ruby convencionalmente
 * Instalar as gems com $ bundle install
 * Configurar a TimeZone no config/application.rb
-* Rodar os teste de browser com $ ./test (gsan_cadastro deve estar instalado e configurado na mesmo pasta do gsan_online)
 
 PRODUCTION
 
-* Alterar o CADASTRO_URL em environments/production.rb para a url do gsan_cadastro
+* Precompilar assets: $ rake assets:precompile
+* Criar um secret com "$ rake secret" e usar como variavel de ambiente SECRET_KEY_BASE
+* Criar uma variavel de ambiente CADASTRO_URL apontando para a url do gsan_cadastro (nao esquecer do http://)
+* Setar variavel de ambiente RAILS_SERVE_STATIC_FILES como true se nao usar nginx ou Apache
 
 DEV
 
 * Rodar o gsan_online no localhost:3000
 * Rodar o gsan_cadastro no localhost:3001
+
+TESTE
+
+* Rodar os teste de browser com $s ./test (gsan_cadastro deve estar instalado e configurado na mesma pasta do gsan_online)
