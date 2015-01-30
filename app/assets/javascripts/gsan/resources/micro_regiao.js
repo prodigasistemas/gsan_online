@@ -1,11 +1,5 @@
 var app = angular.module("gsan");
 
-app.factory("MicroRegiao", ["$resource", "CadastroUrl", function($resource, CadastroUrl) {
-  var microRegiao = $resource(CadastroUrl() + "/micro_regioes/:id", { id: "@id" },
-    {
-      'update': { method:'PUT', isArray: false }
-    }
-  );
-
-  return microRegiao;
+app.factory("MicroRegiao", ["RailsResource", "CadastroUrl", "$http", function(RailsResource, CadastroUrl, $http) {
+  return RailsResource("micro_regioes");
 }]);

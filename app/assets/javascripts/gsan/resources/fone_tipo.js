@@ -1,11 +1,5 @@
 var app = angular.module("gsan");
 
-app.factory("FoneTipo", ["$resource", "CadastroUrl", function($resource, CadastroUrl) {
-  var tipo = $resource(CadastroUrl() + "/fone_tipos/:id", { id: "@id" },
-    {
-      'update': { method:'PUT', isArray: false }
-    }
-  );
-
-  return tipo;
+app.factory("FoneTipo", ["RailsResource", "CadastroUrl", "$http", function(RailsResource, CadastroUrl, $http) {
+  return RailsResource("fone_tipos");
 }]);

@@ -1,16 +1,5 @@
 var app = angular.module("gsan");
 
-app.factory("Regiao", ["$resource", "CadastroUrl", function($resource, CadastroUrl) {
-  var regiao = $resource(CadastroUrl() + "/regioes/:id", { id: "@id" },
-    {
-      'query': {
-        method: 'GET',
-        transformResponse: function (data) {return angular.fromJson(data).regioes},
-        isArray: true
-      },
-      'update': { method:'PUT', isArray: false }
-    }
-  );
-
-  return regiao;
+app.factory("Regiao", ["RailsResource", "CadastroUrl", "$http", function(RailsResource, CadastroUrl, $http) {
+  return RailsResource("regioes");
 }]);
