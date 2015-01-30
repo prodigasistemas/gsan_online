@@ -50,8 +50,13 @@
     .directive('flashMessages', [function() {
       var directive = { restrict: 'EA', replace: true };
       directive.template =
-        '<div id="flash-messages" ng-show="messages">' +
-          '<div ng-repeat="m in messages" class="alert alert-{{m.level}}">{{m.text}}</div>' +
+        '<div id="flash-messages" ng-show="messages.length > 0">' +
+          '<div ng-repeat="m in messages" ng-show="m" class="alert alert-{{m.level}}">' +
+            '<button ng-click="m = undefined" class="close" aria-label="Close" type="button">' +
+              '<span aria-hidden="true">×</span>' +
+            '</button>' +
+            '{{m.text}}' +
+          '</div>' +
         '</div>';
 
       directive.controller = ['$scope', '$rootScope', function($scope, $rootScope) {

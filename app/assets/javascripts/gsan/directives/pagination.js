@@ -9,7 +9,7 @@ app.directive('pagination', function() {
       page: '='
     },
     templateUrl: "shared/pagination.html",
-    controller: function($scope) {
+    controller: ["$scope", function($scope) {
       $scope.pagina = function(soma) {
         if ($scope.page.current_page + soma > $scope.page.total_pages ||
             $scope.page.current_page + soma < 1) {
@@ -18,6 +18,6 @@ app.directive('pagination', function() {
         $scope.queryCache.page = $scope.page.current_page + soma;
         $scope.submeterPesquisa($scope.queryCache);
       }
-    }
+    }]
   };
 });

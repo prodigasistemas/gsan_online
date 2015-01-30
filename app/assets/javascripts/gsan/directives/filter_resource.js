@@ -11,7 +11,7 @@ app.directive('filterResource', function() {
       page: "="
     },
     template: "<div ng-include='src'>a</div>",
-    controller: function($scope) {
+    controller: ["$scope", function($scope) {
       $scope.query = { };
 
       $scope.queryVazia = function() {
@@ -28,6 +28,6 @@ app.directive('filterResource', function() {
         $scope.queryCache = { query: copiedQuery };
         $scope.submeterPesquisa($scope.queryCache);
       };
-    }
+    }]
   };
 });

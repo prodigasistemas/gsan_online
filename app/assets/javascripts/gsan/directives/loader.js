@@ -1,6 +1,6 @@
 var app = angular.module("gsan");
 
-app.directive("loader", function ($rootScope) {
+app.directive("loader", ["$rootScope", function ($rootScope) {
     return function ($scope, element, attrs) {
         $scope.$on("loader_show", function () {
             return element.show();
@@ -9,5 +9,4 @@ app.directive("loader", function ($rootScope) {
             return element.hide();
         });
     };
-}
-)
+}])
