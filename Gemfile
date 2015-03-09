@@ -12,15 +12,16 @@ gem 'angular-rails-templates'
 gem "font-awesome-rails"
 gem 'dotenv-rails'
 
-group :production do
-  gem 'unicorn'
-end
-
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry-rails'
+
+  gem 'capistrano'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler', '~> 1.1.1'
+  gem 'capistrano-rails', '~> 1.1.1'
 end
 
 group :test do
@@ -28,4 +29,8 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'chromedriver-helper'
+end
+
+group :production do
+  gem 'unicorn'
 end
