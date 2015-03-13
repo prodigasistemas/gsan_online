@@ -45,5 +45,22 @@ namespace :deploy do
     end
   end
 
+  desc 'Compile assets'
+  task :compile_assets => [:set_rails_env] do
+    invoke 'deploy:assets:precompile'
+  end
+
+  after 'deploy:updated', 'deploy:compile_assets'
+
+  namespace :assets do
+    task :precompile do
+      on release_roles(fetch(:assets_roles)) do
+        within release_path do
+          execute :rake, "assets:precompile"
+        end
+      end
+    end
+  end
+
   after :deploy, "deploy:restart"
 end
