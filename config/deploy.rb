@@ -45,12 +45,7 @@ namespace :deploy do
     end
   end
 
-  desc 'Compile assets'
-  task :compile_assets => [:set_rails_env] do
-    invoke 'deploy:assets:precompile'
-  end
-
-  after 'deploy:updated', 'deploy:compile_assets'
+  after 'deploy:updated', 'deploy:assets:precompile'
 
   namespace :assets do
     task :precompile do
