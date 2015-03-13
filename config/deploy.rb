@@ -45,7 +45,12 @@ namespace :deploy do
     end
   end
 
-  after 'deploy:updated', 'deploy:assets:precompile'
+  desc 'Compile assets'
+  task :compile_assets do
+    invoke 'deploy:assets:precompile'
+  end
+
+  after 'deploy:updated', 'deploy:compile_assets'
 
   namespace :assets do
     task :precompile do
