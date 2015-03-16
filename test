@@ -1,19 +1,44 @@
 #!/bin/bash
 
-cd ../gsan_cadastro
+if [ "$1" = "--help" ]; then
+  echo "Uso:"
+  echo "--path <caminho do gsan_cadastro>"
+  echo "--files <lista de arquivos a serem testados>"
+  exit
+fi
+
+PATH_ONLINE=$(pwd)
+PATH_CADASTRO="../gsan_cadastro"
+
+while test "$1"
+do
+  if [ "$1" = "--path" ]; then
+    shift
+    [ -n "$1" ] && [ -d "$1" ] && PATH_CADASTRO=$1
+  fi
+
+  if [ "$1" = "--files" ]; then
+    shift
+    FILES=$@
+  fi
+
+  shift
+done
+
+cd $PATH_CADASTRO
 PID_FILE="$(pwd)/tmp/pids/test.pid"
 rake log:clear
 
 RAILS_ENV=test rake db:seed
 RAILS_ENV=test rails s -p 3002 -d -P $PID_FILE
 
-cd ../gsan_online
+cd $PATH_ONLINE
 rake log:clear
 
-if [ "$1" = "" ]; then
-  rspec spec
+if [ -n "$FILES" ]; then
+  rspec $FILES --fail-fast
 else
-  rspec $@
+  rspec spec --fail-fast
 fi
 
 if [ -e "$PID_FILE" ]; then

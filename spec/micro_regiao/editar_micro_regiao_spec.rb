@@ -20,6 +20,7 @@ describe "Como um cadastrista", type: :feature, js: true do
     expect(page).to have_content "Micro Região atualizada com sucesso"
 
     fill_in "micro_regiao_nome", with: "TAPAJOS"
+    click_button "Pesquisar"
     
     expect(page).to have_content "NORDESTE"
   end
