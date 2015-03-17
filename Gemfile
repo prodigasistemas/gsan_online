@@ -30,6 +30,7 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'chromedriver-helper'
+  gem 'headless'
 end
 
 group :production do

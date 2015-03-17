@@ -89,6 +89,7 @@ GEM
       railties (>= 3.2, < 5.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
+    headless (1.0.2)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.2.11)
@@ -238,6 +239,7 @@ DEPENDENCIES
   chromedriver-helper
   dotenv-rails
   font-awesome-rails
+  headless
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails

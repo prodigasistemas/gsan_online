@@ -4,11 +4,13 @@ if [ "$1" = "--help" ]; then
   echo "Uso:"
   echo "--path <caminho do gsan_cadastro>"
   echo "--files <lista de arquivos a serem testados>"
+  echo "--log-clear <limpa todos os logs das aplicações>"
   exit
 fi
 
 PATH_ONLINE=$(pwd)
 PATH_CADASTRO="../gsan_cadastro"
+LOG_CLEAR=0
 
 while test "$1"
 do
@@ -22,23 +24,27 @@ do
     FILES=$@
   fi
 
+  if [ "$1" = "--log-clear" ]; then
+    LOG_CLEAR=1
+  fi
+
   shift
 done
 
 cd $PATH_CADASTRO
 PID_FILE="$(pwd)/tmp/pids/test.pid"
-rake log:clear
+[ "$LOG_CLEAR" == 1 ] && bundle exec rake log:clear
 
-RAILS_ENV=test rake db:seed
-RAILS_ENV=test rails s -p 3002 -d -P $PID_FILE
+RAILS_ENV=test bundle exec rake db:seed
+RAILS_ENV=test bundle exec rails s -p 3002 -d -P $PID_FILE
 
 cd $PATH_ONLINE
-rake log:clear
+[ "$LOG_CLEAR" == 1 ] && bundle exec rake log:clear
 
 if [ -n "$FILES" ]; then
-  rspec $FILES --fail-fast
+  bundle exec rspec $FILES --fail-fast
 else
-  rspec spec --fail-fast
+  bundle exec rspec spec --fail-fast
 fi
 
 if [ -e "$PID_FILE" ]; then
