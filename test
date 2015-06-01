@@ -42,9 +42,9 @@ cd $PATH_ONLINE
 [ "$LOG_CLEAR" == 1 ] && bundle exec rake log:clear
 
 if [ -n "$FILES" ]; then
-  bundle exec rspec $FILES --fail-fast
+  bundle exec rspec $FILES
 else
-  bundle exec rspec spec --fail-fast
+  bundle exec rspec spec
 fi
 
 if [ -e "$PID_FILE" ]; then

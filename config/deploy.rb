@@ -36,8 +36,10 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets tmp/sessions public/asse
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+set :normalize_asset_timestamps, %{public/assets}
+
 namespace :deploy do
-	%w[start stop restart].each do |command|
+	%w[start stop restart upgrade].each do |command|
     desc "#{command} Unicorn server."
     task command do
       on roles(:app) do
@@ -46,36 +48,5 @@ namespace :deploy do
     end
   end
 
-  desc 'Normalize asset timestamps'
-  task :normalize_assets do
-    on release_roles(fetch(:assets_roles)) do
-      assets = fetch(:normalize_asset_timestamps)
-      if assets
-        within release_path do
-          execute :find, "#{assets} -exec touch -t #{asset_timestamp} {} ';'; true"
-        end
-      end
-    end
-  end
-
-  desc 'Compile assets'
-  task :compile_assets do
-    invoke 'deploy:assets:precompile'
-  end
-
-  after 'deploy:updated', 'deploy:compile_assets'
-  after 'deploy:updated', 'deploy:normalize_assets'
-
-  namespace :assets do
-    task :precompile do
-      on release_roles(fetch(:assets_roles)) do
-        within release_path do
-          execute :rake, "assets:precompile"
-        end
-      end
-    end
-  end
-
-  after :deploy, "deploy:stop"
-  after :deploy, "deploy:start"
+  after :deploy, "deploy:upgrade"
 end

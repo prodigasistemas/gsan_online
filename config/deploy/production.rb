@@ -14,7 +14,7 @@ set :rvm_type, :system
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-server '10.20.100.104', user: 'jenkins', port: 64422, roles: %w{web app db}, primary: true
+server '10.20.100.24', user: 'jenkins', port: 64422, roles: %w{web app db}, primary: true
 
 # role-based syntax
 # ==================
