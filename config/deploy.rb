@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'gsan_online'
-set :repo_url, 'git@github.com:prodigasistemas/gsan_online.git'
+set :repo_url, 'https://github.com/prodigasistemas/gsan_online.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
