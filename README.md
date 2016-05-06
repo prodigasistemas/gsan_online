@@ -9,7 +9,7 @@ Parte cliente dos cadastros do GSAN
     rvm install 2.3.0
 
 ### Fazer o clone do projeto
-    git clone git@github.com:prodigasistemas/gsan_online.git
+    git clone [URL DO REPOSITÓRIO]
 
 ### Acessar o projeto
     cd gsan_online
