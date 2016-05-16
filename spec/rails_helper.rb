@@ -15,7 +15,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
-  config.before(:each) do
-    page.driver.block_unknown_urls
+  Capybara::Webkit.configure do |config|
+    config.block_unknown_urls
   end
 end
