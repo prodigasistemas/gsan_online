@@ -4,7 +4,7 @@ Parte cliente dos cadastros do GSAN
 
 ### Instalar o gerenciador de versões Ruby (http://rvm.io)
     curl -sSL https://get.rvm.io | bash -s stable
-    
+
 ### Usar a versão 2 do Ruby
     rvm install 2.3.0
 
@@ -40,7 +40,7 @@ Parte cliente dos cadastros do GSAN
 
 ### Setar variável de ambiente RAILS_SERVE_STATIC_FILES como true se não usar Nginx ou Apache
 
-## Ambiente de Teste
+## Ambiente de Testes
 
 ### Rodar os testes de integração (gsan_cadastro deve estar instalado e configurado na mesma pasta do gsan_online)
     ./test
