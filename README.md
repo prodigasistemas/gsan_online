@@ -2,6 +2,8 @@
 
 Parte cliente dos cadastros do GSAN
 
+## Ambiente de Desenvolvimento
+
 ### Instalar o gerenciador de versões Ruby (http://rvm.io)
     curl -sSL https://get.rvm.io | bash -s stable
 
@@ -18,8 +20,6 @@ Parte cliente dos cadastros do GSAN
     bundle install
 
 ### Configurar o TimeZone em config/application.rb
-
-## Ambiente de Desenvolvimento
 
 ### Executar o gsan_online no localhost:3000
     rails server
