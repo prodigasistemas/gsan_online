@@ -9,7 +9,7 @@ if [ "$1" = "--help" ]; then
 fi
 
 PATH_ONLINE=$(pwd)
-PATH_CADASTRO="../gsan_cadastro"
+PATH_CADASTRO="../gsan-api"
 LOG_CLEAR=0
 
 while test "$1"
