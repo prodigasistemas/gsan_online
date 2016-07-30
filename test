@@ -2,7 +2,7 @@
 
 if [ "$1" = "--help" ]; then
   echo "Uso:"
-  echo "--path <caminho do gsan_cadastro>"
+  echo "--path <caminho do gsan-api>"
   echo "--files <lista de arquivos a serem testados>"
   echo "--log-clear <limpa todos os logs das aplicações>"
   exit
